@@ -52,5 +52,22 @@ jobs:
         run: |
           git config user.name "Benchmark Bot"
           git config user.email "bot@benchmark.ai"
+          
+          echo "📂 Files in data/results/:"
+          ls -la data/results/
+          
+          echo "➕ Adding files to git..."
           git add data/results/ || true
-          git diff --quiet && git diff --staged --quiet || (git commit -m "📊 Update benchmark results - $(date +'%Y-%m-%d')" && git push)
+          
+          echo "📝 Git status:"
+          git status
+          
+          echo "💾 Committing..."
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "✅ No changes to commit"
+          else
+            git commit -m "📊 Update benchmark results - $(date +'%Y-%m-%d')"
+            echo "⬆️  Pushing to GitHub..."
+            git push
+            echo "✅ Push successful!"
+          fi
