@@ -96,7 +96,7 @@
     // Load data
     async function loadData() {
       try {
-        const response = await fetch('../data/results/latest.json');
+        const response = await fetch('data/results/latest.json');
         const data = await response.json();
         allModels = data.results;
         filterAndDisplay();

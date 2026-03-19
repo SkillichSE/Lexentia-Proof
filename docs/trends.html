@@ -80,7 +80,7 @@
     async function loadTrends() {
       try {
         // For now, use latest data (in production, would load historical data)
-        const response = await fetch('../data/results/latest.json');
+        const response = await fetch('data/results/latest.json');
         const data = await response.json();
         
         // Create speed chart

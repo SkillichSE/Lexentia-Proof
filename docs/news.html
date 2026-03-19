@@ -83,7 +83,7 @@
 
     async function loadNews() {
       try {
-        const response = await fetch('../data/results/news.json');
+        const response = await fetch('data/results/news.json');
         const data = await response.json();
         
         // Update last update time
