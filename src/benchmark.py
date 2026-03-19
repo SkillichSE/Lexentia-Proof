@@ -144,8 +144,10 @@ class ModelBenchmark:
                             "time": result["total_time"],
                             "tokens_per_sec": result["tokens_per_sec"]
                         })
+                    else:
+                        print(f"    ⚠️  Speed test '{test_name}' failed: {result.get('error', 'Unknown')}")
                     
-                    time.sleep(1)  # Rate limiting
+                    time.sleep(2)  # Rate limiting - 2 seconds between requests
                 
                 avg_speed = sum(r["tokens_per_sec"] for r in speed_results) / len(speed_results) if speed_results else 0
                 model_results["tests"]["speed"] = {
@@ -169,8 +171,10 @@ class ModelBenchmark:
                             "score": score,
                             "code": result["content"][:200]  # First 200 chars
                         })
+                    else:
+                        print(f"    ⚠️  Code test '{test_name}' failed: {result.get('error', 'Unknown')}")
                     
-                    time.sleep(1)
+                    time.sleep(2)
                 
                 avg_code = sum(r["score"] for r in code_results) / len(code_results) if code_results else 0
                 model_results["tests"]["code"] = {
