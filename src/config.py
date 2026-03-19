@@ -12,49 +12,42 @@ MODELS = {
             "size": "8B",
             "context": "128k"
         },
-        "llama-3.2-3b": {
-            "id": "llama-3.2-3b-preview",
-            "name": "Llama 3.2 3B",
+        "llama-3.1-70b": {
+            "id": "llama-3.1-70b-versatile",
+            "name": "Llama 3.1 70B",
             "provider": "Groq",
-            "size": "3B",
-            "context": "8k"
+            "size": "70B",
+            "context": "128k"
         },
-        "llama-3.2-1b": {
-            "id": "llama-3.2-1b-preview",
-            "name": "Llama 3.2 1B",
+        "llama-3.3-70b": {
+            "id": "llama-3.3-70b-versatile",
+            "name": "Llama 3.3 70B",
             "provider": "Groq",
-            "size": "1B",
-            "context": "8k"
+            "size": "70B",
+            "context": "128k"
         },
-        "gemma-2-9b": {
-            "id": "gemma2-9b-it",
-            "name": "Gemma 2 9B",
+        "llama-guard-3-8b": {
+            "id": "llama-guard-3-8b",
+            "name": "Llama Guard 3 8B",
             "provider": "Groq",
-            "size": "9B",
+            "size": "8B",
             "context": "8k"
-        },
-        "mixtral-8x7b": {
-            "id": "mixtral-8x7b-32768",
-            "name": "Mixtral 8x7B",
-            "provider": "Groq",
-            "size": "8x7B",
-            "context": "32k"
         }
     },
     "google": {
         "gemini-flash": {
-            "id": "gemini-1.5-flash-latest",
+            "id": "gemini-1.5-flash",
             "name": "Gemini 1.5 Flash",
             "provider": "Google",
             "size": "N/A",
             "context": "1M"
         },
-        "gemini-flash-8b": {
-            "id": "gemini-1.5-flash-8b-latest",
-            "name": "Gemini 1.5 Flash 8B",
+        "gemini-pro": {
+            "id": "gemini-1.5-pro",
+            "name": "Gemini 1.5 Pro",
             "provider": "Google",
-            "size": "8B",
-            "context": "1M"
+            "size": "N/A",
+            "context": "2M"
         }
     }
 }
