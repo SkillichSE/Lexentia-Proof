@@ -53,20 +53,13 @@ class ModelBenchmark:
                     "tokens_per_sec": usage.get("total_tokens", 0) / (end - start) if (end - start) > 0 else 0
                 }
             else:
-                error_msg = f"Status {response.status_code}"
-                try:
-                    error_data = response.json()
-                    if "error" in error_data:
-                        error_msg += f" - {error_data['error'].get('message', '')}"
-                except:
-                    pass
-                return {"success": False, "error": error_msg}
+                return {"success": False, "error": f"Status {response.status_code}"}
         except Exception as e:
             return {"success": False, "error": str(e)}
     
     def test_google_model(self, model_id, prompt):
         """Test a Google Gemini model"""
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_id}:generateContent?key={self.google_key}"
+        url = f"{GOOGLE_API}/{model_id}:generateContent?key={self.google_key}"
         
         data = {
             "contents": [{
@@ -80,16 +73,11 @@ class ModelBenchmark:
         
         start = time.time()
         try:
-            response = requests.post(url, json=data, timeout=60)
+            response = requests.post(url, json=data, timeout=30)
             end = time.time()
             
             if response.status_code == 200:
                 result = response.json()
-                
-                # Check if response has the expected structure
-                if "candidates" not in result or len(result["candidates"]) == 0:
-                    return {"success": False, "error": "No candidates in response"}
-                
                 content = result["candidates"][0]["content"]["parts"][0]["text"]
                 usage = result.get("usageMetadata", {})
                 
@@ -101,14 +89,7 @@ class ModelBenchmark:
                     "tokens_per_sec": usage.get("totalTokenCount", 0) / (end - start) if (end - start) > 0 else 0
                 }
             else:
-                error_msg = f"Status {response.status_code}"
-                try:
-                    error_data = response.json()
-                    if "error" in error_data:
-                        error_msg += f" - {error_data['error'].get('message', '')}"
-                except:
-                    pass
-                return {"success": False, "error": error_msg}
+                return {"success": False, "error": f"Status {response.status_code}"}
         except Exception as e:
             return {"success": False, "error": str(e)}
     

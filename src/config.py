@@ -10,21 +10,21 @@ MODELS = {
             "name": "Llama 3.1 70B",
             "provider": "Groq",
             "size": "70B",
-            "context": "128k"
+            "context": "32k"
         },
         "llama-8b": {
             "id": "llama-3.1-8b-instant",
             "name": "Llama 3.1 8B",
             "provider": "Groq",
             "size": "8B",
-            "context": "128k"
+            "context": "32k"
         },
-        "llama-3b": {
-            "id": "llama-3.3-70b-versatile",
-            "name": "Llama 3.3 70B",
+        "mixtral": {
+            "id": "mixtral-8x7b-32768",
+            "name": "Mixtral 8x7B",
             "provider": "Groq",
-            "size": "70B",
-            "context": "128k"
+            "size": "8x7B",
+            "context": "32k"
         }
     },
     "google": {

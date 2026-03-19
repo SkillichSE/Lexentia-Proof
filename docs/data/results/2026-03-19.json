@@ -1,0 +1,124 @@
+[
+  {
+    "model_id": "llama-70b",
+    "model_name": "Llama 3.1 70B",
+    "provider": "Groq",
+    "size": "70B",
+    "timestamp": "2026-03-19T21:25:29.212905",
+    "tests": {
+      "speed": {
+        "avg_tokens_per_sec": 0,
+        "details": []
+      },
+      "code": {
+        "avg_score": 0,
+        "details": []
+      }
+    },
+    "overall_score": 0.0
+  },
+  {
+    "model_id": "llama-8b",
+    "model_name": "Llama 3.1 8B",
+    "provider": "Groq",
+    "size": "8B",
+    "timestamp": "2026-03-19T21:25:41.811627",
+    "tests": {
+      "speed": {
+        "avg_tokens_per_sec": 424.13,
+        "details": [
+          {
+            "test": "simple",
+            "time": 0.3076362609863281,
+            "tokens_per_sec": 191.78493396986795
+          },
+          {
+            "test": "medium",
+            "time": 0.6150164604187012,
+            "tokens_per_sec": 497.54765879221543
+          },
+          {
+            "test": "long",
+            "time": 0.9347066879272461,
+            "tokens_per_sec": 583.0706113899344
+          }
+        ]
+      },
+      "code": {
+        "avg_score": 100.0,
+        "details": [
+          {
+            "test": "easy",
+            "score": 100,
+            "code": "## Checking if a Number is Prime in Python\n### Function Definition\n\nHere's a Python function to check if a number is prime. This function uses a helper function `is_prime_helper` to avoid repeated cal"
+          },
+          {
+            "test": "medium",
+            "score": 100,
+            "code": "**Binary Search Implementation in Python**\n=====================================================\n\n### Overview\n\nBinary search is an efficient algorithm for finding an item from a sorted list of items."
+          },
+          {
+            "test": "hard",
+            "score": 100,
+            "code": "**LRU Cache Implementation in Python using OrderedDict**\n\nWe will use the `collections` module's `OrderedDict` to implement a Least Recently Used (LRU) cache in Python. This will allow us to efficient"
+          }
+        ]
+      }
+    },
+    "overall_score": 71.21
+  },
+  {
+    "model_id": "mixtral",
+    "model_name": "Mixtral 8x7B",
+    "provider": "Groq",
+    "size": "8x7B",
+    "timestamp": "2026-03-19T21:25:57.964852",
+    "tests": {
+      "speed": {
+        "avg_tokens_per_sec": 0,
+        "details": []
+      },
+      "code": {
+        "avg_score": 0,
+        "details": []
+      }
+    },
+    "overall_score": 0.0
+  },
+  {
+    "model_id": "gemini-flash",
+    "model_name": "Gemini 1.5 Flash",
+    "provider": "Google",
+    "size": "N/A",
+    "timestamp": "2026-03-19T21:26:10.466169",
+    "tests": {
+      "speed": {
+        "avg_tokens_per_sec": 0,
+        "details": []
+      },
+      "code": {
+        "avg_score": 0,
+        "details": []
+      }
+    },
+    "overall_score": 0.0
+  },
+  {
+    "model_id": "gemini-pro",
+    "model_name": "Gemini 1.5 Pro",
+    "provider": "Google",
+    "size": "N/A",
+    "timestamp": "2026-03-19T21:26:23.230159",
+    "tests": {
+      "speed": {
+        "avg_tokens_per_sec": 0,
+        "details": []
+      },
+      "code": {
+        "avg_score": 0,
+        "details": []
+      }
+    },
+    "overall_score": 0.0
+  }
+]
