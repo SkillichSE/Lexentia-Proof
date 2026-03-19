@@ -5,26 +5,12 @@ Configuration for AI model benchmarks
 # Models to test (all free tier)
 MODELS = {
     "groq": {
-        "llama-70b": {
-            "id": "llama-3.1-70b-versatile",
-            "name": "Llama 3.1 70B",
-            "provider": "Groq",
-            "size": "70B",
-            "context": "32k"
-        },
         "llama-8b": {
             "id": "llama-3.1-8b-instant",
             "name": "Llama 3.1 8B",
             "provider": "Groq",
             "size": "8B",
-            "context": "32k"
-        },
-        "mixtral": {
-            "id": "mixtral-8x7b-32768",
-            "name": "Mixtral 8x7B",
-            "provider": "Groq",
-            "size": "8x7B",
-            "context": "32k"
+            "context": "128k"
         }
     },
     "google": {
