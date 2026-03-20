@@ -1,5 +1,146 @@
 {
-  "updated": "2026-03-19T22:32:44.116932",
-  "count": 0,
-  "items": []
+  "updated": "2026-03-20T13:56:42.329787+00:00",
+  "count": 20,
+  "items": [
+    {
+      "title": "**Introducing SPEED-Bench: A Unified and Diverse Benchmark for Speculative Decoding**",
+      "link": "https://huggingface.co/blog/nvidia/speed-bench",
+      "date": "2026-03-19T14:04:54+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "State of Open Source on Hugging Face: Spring 2026",
+      "link": "https://huggingface.co/blog/huggingface/state-of-os-hf-spring-2026",
+      "date": "2026-03-17T16:37:55+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "Bringing the power of Personal Intelligence to more people",
+      "link": "https://blog.google/products-and-platforms/products/search/personal-intelligence-expansion/",
+      "date": "2026-03-17T16:00:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "Bubble that says \"Personal Intelligence\" with Google G, Google Photos logo, and Gmail logo around it"
+    },
+    {
+      "title": "Our latest investment in open source security for the AI era",
+      "link": "https://blog.google/innovation-and-ai/technology/safety-security/ai-powered-open-source-security/",
+      "date": "2026-03-17T16:00:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "A collage including security icons and photos of hands clasped, a man looking at a computer, and two people pointing at something off camera"
+    },
+    {
+      "title": "How AI is helping improve heart health in rural Australia",
+      "link": "https://blog.google/innovation-and-ai/technology/health/google-ai-heart-health-australia/",
+      "date": "2026-03-12T15:00:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "A doctor is sitting across a desk from a patient. The doctor is holding a tablet and a pen. Medical charts renderings are in the background."
+    },
+    {
+      "title": "Gemini in Google Sheets just achieved state-of-the-art performance.",
+      "link": "https://blog.google/products-and-platforms/products/workspace/gemini-google-sheets-state-of-the-art/",
+      "date": "2026-03-10T13:00:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "Today we announced new beta features for Gemini in Sheets to help you create, organize and edit entire sheets, from basic tasks to complex data analysis \u2014 just describe \u2026"
+    },
+    {
+      "title": "Keep the Tokens Flowing: Lessons from 16 Open-Source RL Libraries",
+      "link": "https://huggingface.co/blog/async-rl-training-landscape",
+      "date": "2026-03-10T00:00:00+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "How our open-source AI model SpeciesNet is helping to promote wildlife conservation",
+      "link": "https://blog.google/company-news/outreach-and-initiatives/sustainability/speciesnet-open-source-ai-wildlife/",
+      "date": "2026-03-06T18:00:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "Photos of animals being identified by the SpeciesNet AI model"
+    },
+    {
+      "title": "Ask a Techspert: How does AI understand my visual searches?",
+      "link": "https://blog.google/company-news/inside-google/googlers/how-google-ai-visual-search-works/",
+      "date": "2026-03-05T18:00:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "Mobile phone with a search bar that says \"Ask anything\""
+    },
+    {
+      "title": "The latest AI news we announced in February",
+      "link": "https://blog.google/innovation-and-ai/products/google-ai-updates-february-2026/",
+      "date": "2026-03-05T16:30:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "an MP4 of a carousel with images reading \"Gemini 3.1 Pro\" and \"Nano Banana 2\""
+    },
+    {
+      "title": "Use Canvas in AI Mode to get things done and bring your ideas to life, right in Search.",
+      "link": "https://blog.google/products-and-platforms/products/search/ai-mode-canvas-writing-coding/",
+      "date": "2026-03-04T17:00:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "Canvas in AI Mode is now available for everyone in the U.S. Plus, it can now help you draft documents or build interactive tools."
+    },
+    {
+      "title": "PRX Part 3 \u2014 Training a Text-to-Image Model in 24h!",
+      "link": "https://huggingface.co/blog/Photoroom/prx-part3",
+      "date": "2026-03-03T16:50:49+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "Gemini 3.1 Flash-Lite: Built for intelligence at scale",
+      "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/",
+      "date": "2026-03-03T16:34:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "Gemini 3.1 Flash Lite logo"
+    },
+    {
+      "title": "Google and the Massachusetts AI Hub are launching a new AI training initiative for the Commonwealth.",
+      "link": "https://blog.google/company-news/outreach-and-initiatives/grow-with-google/google-ai-training-massachusetts-residents/",
+      "date": "2026-02-26T18:55:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "Google is partnering with the Massachusetts AI Hub to provide every Baystater with no-cost access to Google\u2019s AI training."
+    },
+    {
+      "title": "Get more context and understand translations more deeply with new AI-powered updates in Translate.",
+      "link": "https://blog.google/products-and-platforms/products/translate/translation-context-ai-update/",
+      "date": "2026-02-26T18:00:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "New alternatives, \u201cunderstand\u201d and \u201cask\u201d buttons in Google Translate help you navigate the complexities of natural language."
+    },
+    {
+      "title": "Nano Banana 2: Combining Pro capabilities with lightning-fast speed",
+      "link": "https://blog.google/innovation-and-ai/technology/ai/nano-banana-2/",
+      "date": "2026-02-26T16:00:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "Nano Banana 2 text with AI generated images around it"
+    },
+    {
+      "title": "Build with Nano Banana 2, our best image generation and editing model",
+      "link": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-nano-banana-2/",
+      "date": "2026-02-26T16:00:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "Build with Nano Banana 2"
+    },
+    {
+      "title": "See the whole picture and find the look with Circle to Search",
+      "link": "https://blog.google/products-and-platforms/products/search/circle-to-search-february-2026/",
+      "date": "2026-02-25T18:00:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "Google Search interface featuring AI-powered tools including an \"AI Overview\" that breaks down an outfit's components and a virtual \"Try it on\" button that visualizes apparel on diverse body types."
+    },
+    {
+      "title": "GGML and llama.cpp join HF to ensure the long-term progress of Local AI",
+      "link": "https://huggingface.co/blog/ggml-joins-hf",
+      "date": "2026-02-20T00:00:00+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "Train AI models with Unsloth and Hugging Face Jobs for FREE",
+      "link": "https://huggingface.co/blog/unsloth-jobs",
+      "date": "2026-02-20T00:00:00+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    }
+  ]
 }
