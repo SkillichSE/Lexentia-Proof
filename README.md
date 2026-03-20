@@ -1,4 +1,4 @@
-# ⚔️ ModelArena
+# ModelArena
 
 **[skillichse.github.io/ModelArena](https://skillichse.github.io/ModelArena)**
 
