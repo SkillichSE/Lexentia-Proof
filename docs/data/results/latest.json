@@ -1,31 +1,31 @@
 {
-  "date": "2026-03-19",
-  "timestamp": "2026-03-19T22:38:25.613977",
+  "date": "2026-03-20",
+  "timestamp": "2026-03-20T04:31:18.789929",
   "results": [
     {
       "model_id": "llama-3.1-8b",
       "model_name": "Llama 3.1 8B Instant",
       "provider": "Groq",
       "size": "8B",
-      "timestamp": "2026-03-19T22:37:15.372559",
+      "timestamp": "2026-03-20T04:30:08.105229",
       "tests": {
         "speed": {
-          "avg_tokens_per_sec": 580.58,
+          "avg_tokens_per_sec": 518.23,
           "details": [
             {
               "test": "simple",
-              "time": 0.12260270118713379,
-              "tokens_per_sec": 473.07277440382086
+              "time": 0.18706512451171875,
+              "tokens_per_sec": 310.05244912108975
             },
             {
               "test": "medium",
-              "time": 0.5075232982635498,
-              "tokens_per_sec": 581.2541040171334
+              "time": 0.5934755802154541,
+              "tokens_per_sec": 488.64689579092544
             },
             {
               "test": "long",
-              "time": 0.7928314208984375,
-              "tokens_per_sec": 687.409688408168
+              "time": 0.7209184169769287,
+              "tokens_per_sec": 755.9801319619241
             }
           ]
         },
@@ -35,47 +35,47 @@
             {
               "test": "easy",
               "score": 100,
-              "code": "## Checking if a Number is Prime\n### Function Implementation\n\n```python\ndef is_prime(n):\n    \"\"\"\n    Checks if a number is prime.\n\n    Args:\n        n (int): The number to check.\n\n    Returns:\n       "
+              "code": "**Prime Number Checker Function**\n=====================================\n\nHere's a simple Python function to check if a number is prime:\n\n```python\ndef is_prime(n):\n    \"\"\"\n    Checks if a number is pr"
             },
             {
               "test": "medium",
               "score": 100,
-              "code": "**Binary Search Implementation in Python**\n=====================================================\n\n### Overview\n\nBinary search is an efficient algorithm for finding an item from a sorted list of items."
+              "code": "**Binary Search Implementation in Python**\n=====================================================\n\nHere's a simple implementation of the binary search algorithm in Python. This algorithm works by repea"
             },
             {
               "test": "hard",
               "score": 100,
-              "code": "**LRU Cache Implementation in Python using OrderedDict**\n===========================================================\n\nBelow is a Python implementation of a Least Recently Used (LRU) cache using the `O"
+              "code": "**LRU Cache Implementation in Python using OrderedDict**\n\nHere's an implementation of a Least Recently Used (LRU) cache using Python's `OrderedDict` from the `collections` module.\n\n```python\nfrom coll"
             }
           ]
         }
       },
-      "overall_score": 79.03
+      "overall_score": 75.91
     },
     {
       "model_id": "llama-3.3-70b",
       "model_name": "Llama 3.3 70B Versatile",
       "provider": "Groq",
       "size": "70B",
-      "timestamp": "2026-03-19T22:37:30.707755",
+      "timestamp": "2026-03-20T04:30:23.530684",
       "tests": {
         "speed": {
-          "avg_tokens_per_sec": 414.14,
+          "avg_tokens_per_sec": 356.65,
           "details": [
             {
               "test": "simple",
-              "time": 0.13103103637695312,
-              "tokens_per_sec": 465.5385600745291
+              "time": 0.2879164218902588,
+              "tokens_per_sec": 211.86703974548053
             },
             {
               "test": "medium",
-              "time": 0.9251205921173096,
-              "tokens_per_sec": 313.472646129605
+              "time": 0.7104718685150146,
+              "tokens_per_sec": 384.25166723435245
             },
             {
               "test": "long",
-              "time": 1.176072597503662,
-              "tokens_per_sec": 463.40676685845744
+              "time": 1.1502058506011963,
+              "tokens_per_sec": 473.8282279777452
             }
           ]
         },
@@ -85,29 +85,29 @@
             {
               "test": "easy",
               "score": 100,
-              "code": "**Prime Number Checker Function**\n=====================================\n\nBelow is a Python function that checks if a given number is prime.\n\n```python\ndef is_prime(n: int) -> bool:\n    \"\"\"\n    Check i"
+              "code": "**Prime Number Checker Function**\n=====================================\n\n### Function Description\n\nThe following Python function checks if a given integer is a prime number. A prime number is a natura"
             },
             {
               "test": "medium",
               "score": 100,
-              "code": "```python\ndef binary_search(arr, target):\n    \"\"\"\n    Searches for a target value in a sorted array using binary search.\n\n    Args:\n        arr (list): A sorted list of values.\n        target: The val"
+              "code": "```python\ndef binary_search(arr, target):\n    \"\"\"\n    Performs a binary search on a sorted array to find a target value.\n\n    Args:\n        arr (list): A sorted list of elements.\n        target: The v"
             },
             {
               "test": "hard",
               "score": 100,
-              "code": "**LRU Cache Implementation in Python using OrderedDict**\n===========================================================\n\n### Overview\n\nAn LRU (Least Recently Used) cache is a type of cache that discards "
+              "code": "**LRU Cache Implementation in Python**\n=========================================\n\n### Overview\n\nThis implementation uses the `OrderedDict` class from the `collections` module to create a Least Recentl"
             }
           ]
         }
       },
-      "overall_score": 70.71
+      "overall_score": 67.83
     },
     {
       "model_id": "llama-3.3-70b-specdec",
       "model_name": "Llama 3.3 70B SpecDec",
       "provider": "Groq",
       "size": "70B",
-      "timestamp": "2026-03-19T22:37:48.239208",
+      "timestamp": "2026-03-20T04:30:40.943756",
       "tests": {
         "speed": {
           "avg_tokens_per_sec": 0,
@@ -125,7 +125,7 @@
       "model_name": "Gemini 1.5 Flash",
       "provider": "Google",
       "size": "N/A",
-      "timestamp": "2026-03-19T22:38:00.569937",
+      "timestamp": "2026-03-20T04:30:53.452360",
       "tests": {
         "speed": {
           "avg_tokens_per_sec": 0,
@@ -143,7 +143,7 @@
       "model_name": "Gemini 1.5 Pro",
       "provider": "Google",
       "size": "N/A",
-      "timestamp": "2026-03-19T22:38:13.087492",
+      "timestamp": "2026-03-20T04:31:06.138301",
       "tests": {
         "speed": {
           "avg_tokens_per_sec": 0,
