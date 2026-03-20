@@ -73,8 +73,8 @@ MODELS = {
             "context": "64k",
         },
         "deepseek-v3": {
-            "id": "deepseek/deepseek-chat-v3-0324"
-            "name": "DeepSeek V3.1",
+            "id": "deepseek/deepseek-chat-v3-0324",
+            "name": "DeepSeek V3",
             "provider": "OpenRouter",
             "size": "671B",
             "context": "128k",
