@@ -1,15 +1,3 @@
-"""
-Configuration for AI model benchmarks.
-All models are 100% free — no billing required on any provider.
-
-Providers:
-  - Groq:       free tier, no credit card needed
-  - Google:     free tier via aistudio.google.com (get key there, not cloud console)
-  - OpenRouter: only :free suffix models ($0/M tokens)
-  - Cerebras:   free tier, extremely fast inference
-  - Together:   free tier models
-"""
-
 MODELS = {
     "groq": {
         "llama-3.1-8b": {
@@ -26,12 +14,12 @@ MODELS = {
             "size": "70B",
             "context": "128k"
         },
-        "llama-4-scout": {
-            "id": "meta-llama/llama-4-scout-17b-16e-instruct",
-            "name": "Llama 4 Scout 17B",
+        "qwen2.5-72b": {
+            "id": "qwen/qwen2.5-72b",
+            "name": "Qwen 2.5 72B",
             "provider": "Groq",
-            "size": "17Bx16E",
-            "context": "131k"
+            "size": "72B",
+            "context": "128k"
         },
         "qwen3-32b": {
             "id": "qwen/qwen3-32b",
@@ -40,13 +28,13 @@ MODELS = {
             "size": "32B",
             "context": "32k"
         },
-        "gpt-oss-120b": {
-            "id": "openai/gpt-oss-120b",
-            "name": "GPT-OSS 120B",
+        "mistral-large-2": {
+            "id": "mistral-large-latest",
+            "name": "Mistral Large 2",
             "provider": "Groq",
-            "size": "120B",
+            "size": "123B",
             "context": "128k"
-        }
+        },
     },
     "google": {
         "gemini-2.0-flash": {
@@ -64,35 +52,41 @@ MODELS = {
             "context": "1M"
         }
     },
-    # All OpenRouter models MUST have :free suffix — verified $0/M tokens
     "openrouter": {
-        "step-3.5-flash": {
-            "id": "stepfun/step-3.5-flash:free",
-            "name": "Step 3.5 Flash",
+        "llama-3.1-405b": {
+            "id": "meta-llama/llama-3.1-405b-instruct:free",
+            "name": "Llama 3.1 405B",
             "provider": "OpenRouter",
-            "size": "196B",
-            "context": "256k"
+            "size": "405B",
+            "context": "128k"
         },
-        "nemotron-super-120b": {
-            "id": "nvidia/nemotron-3-super-120b-a12b:free",
-            "name": "Nemotron 3 Super 120B",
+        "llama-3.1-70b-or": {
+            "id": "meta-llama/llama-3.1-70b-instruct:free",
+            "name": "Llama 3.1 70B",
             "provider": "OpenRouter",
-            "size": "120B",
-            "context": "262k"
+            "size": "70B",
+            "context": "128k"
         },
-        "gpt-oss-120b-or": {
-            "id": "openai/gpt-oss-120b:free",
-            "name": "GPT-OSS 120B",
+        "llama-3.2-3b": {
+            "id": "meta-llama/llama-3.2-3b-instruct:free",
+            "name": "Llama 3.2 3B",
             "provider": "OpenRouter",
-            "size": "120B",
+            "size": "3B",
             "context": "131k"
         },
-        "gpt-oss-20b": {
-            "id": "openai/gpt-oss-20b:free",
-            "name": "GPT-OSS 20B",
+        "qwen2.5-7b": {
+            "id": "qwen/qwen-2.5-7b-instruct:free",
+            "name": "Qwen 2.5 7B",
             "provider": "OpenRouter",
-            "size": "20B",
-            "context": "131k"
+            "size": "7B",
+            "context": "128k"
+        },
+        "mistral-7b": {
+            "id": "mistralai/mistral-7b-instruct:free",
+            "name": "Mistral 7B",
+            "provider": "OpenRouter",
+            "size": "7B",
+            "context": "32k"
         },
         "mistral-small-3.1": {
             "id": "mistralai/mistral-small-3.1-24b-instruct:free",
@@ -101,63 +95,58 @@ MODELS = {
             "size": "24B",
             "context": "128k"
         },
-        "minimax-m2.5": {
-            "id": "minimax/minimax-m2.5:free",
-            "name": "MiniMax M2.5",
-            "provider": "OpenRouter",
-            "size": "N/A",
-            "context": "197k"
-        },
-        "llama-3.3-70b-or": {
-            "id": "meta-llama/llama-3.3-70b-instruct:free",
-            "name": "Llama 3.3 70B",
+        "nemotron-super-49b": {
+            "id": "nvidia/llama-3.1-nemotron-70b-instruct:free",
+            "name": "Nemotron 70B",
             "provider": "OpenRouter",
             "size": "70B",
-            "context": "66k"
+            "context": "131k"
         },
-        "qwen3-4b": {
-            "id": "qwen/qwen3-4b:free",
-            "name": "Qwen 3 4B",
+        "deepseek-r1": {
+            "id": "deepseek/deepseek-r1:free",
+            "name": "DeepSeek R1",
             "provider": "OpenRouter",
-            "size": "4B",
-            "context": "41k"
-        }
+            "size": "671B",
+            "context": "164k"
+        },
+        "deepseek-v3": {
+            "id": "deepseek/deepseek-chat-v3-0324:free",
+            "name": "DeepSeek V3",
+            "provider": "OpenRouter",
+            "size": "671B",
+            "context": "131k"
+        },
     }
 }
 
-# ── Tests ──────────────────────────────────────────────────────────────────────
-# Each test has a PROMPT and an EXPECTED answer for deterministic scoring.
-# Speed tests are prompt-only (no grading needed, we measure tok/s).
 TESTS = {
     "speed": {
         "simple": "Write a haiku about artificial intelligence.",
         "medium": "Explain quantum computing in simple terms (200 words).",
-        "long":   "Write a detailed tutorial on Python decorators with examples (300 words)."
+        "long":   "Write a detailed tutorial on Python decorators with examples (300 words).",
     },
 
-    # Code: graded by actually running the code in a subprocess
     "code": {
         "prime": {
             "prompt": "Write a Python function called is_prime(n) that returns True if n is prime, False otherwise. Return ONLY the function, no explanation.",
-            "func_name": "is_prime",
+            "fn": "is_prime",
             "test_input": [2, 3, 4, 17, 100],
             "expected":   [True, True, False, True, False]
         },
         "fibonacci": {
             "prompt": "Write a Python function called fibonacci(n) that returns the nth Fibonacci number (0-indexed, so fibonacci(0)=0, fibonacci(1)=1, fibonacci(7)=13). Return ONLY the function, no explanation.",
-            "func_name": "fibonacci",
+            "fn": "fibonacci",
             "test_input": [0, 1, 7, 10],
             "expected":   [0, 1, 13, 55]
         },
         "palindrome": {
             "prompt": "Write a Python function called is_palindrome(s) that returns True if string s is a palindrome (ignore case and spaces). Return ONLY the function, no explanation.",
-            "func_name": "is_palindrome",
+            "fn": "is_palindrome",
             "test_input": ["racecar", "hello", "A man a plan a canal Panama", "world"],
             "expected":   [True, False, True, False]
         }
     },
 
-    # Reasoning: graded against known correct answers
     "reasoning": {
         "syllogism": {
             "prompt": "If all bloops are razzies and all razzies are lazzies, are all bloops definitely lazzies? Answer with just Yes or No.",
@@ -181,7 +170,6 @@ TESTS = {
         }
     },
 
-    # Instruction following: graded by exact format checks
     "instruction": {
         "json": {
             "prompt": 'Return a JSON object with exactly these keys: "name", "age", "city". Use any values you like. Return ONLY valid JSON, nothing else.',
@@ -200,7 +188,6 @@ TESTS = {
         }
     },
 
-    # Translation: graded by script/keyword detection
     "translation": {
         "en_ru": {
             "prompt": "Translate to Russian: 'Artificial intelligence is changing the world.' Return only the translation.",
@@ -216,21 +203,6 @@ TESTS = {
             "keywords": ["el", "la", "los", "las", "que", "de", "su", "sus", "futuro", "sueños", "pertenece", "creen", "belleza"]
         }
     }
-}
-
-EVALUATION = {
-    "speed":       {"weight": 0.20},
-    "code":        {"weight": 0.30},
-    "reasoning":   {"weight": 0.25},
-    "instruction": {"weight": 0.15},
-    "translation": {"weight": 0.10}
-}
-
-NEWS_SOURCES = {
-    "groq":        {"url": "https://groq.com/blog/", "selector": "article", "keywords": ["release", "launch", "update", "model"]},
-    "google":      {"url": "https://ai.google.dev/gemini-api/docs/changelog", "selector": ".changelog-entry", "keywords": ["gemini", "release", "update"]},
-    "huggingface": {"rss": "https://huggingface.co/blog/feed.xml", "keywords": ["release", "model", "launch"]},
-    "together":    {"url": "https://www.together.ai/blog", "selector": "article", "keywords": ["release", "model", "update"]}
 }
 
 RATE_LIMITS = {
