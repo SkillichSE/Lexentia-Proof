@@ -1,0 +1,203 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   LIGHTER DESIGN OVERRIDES
+   Add this after style.css in all HTML files:
+   <link rel="stylesheet" href="style-light.css">
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Increase overall spacing */
+.container {
+  padding: 56px 32px !important; /* was 40px 24px */
+  max-width: 1120px !important; /* narrower for less density */
+}
+
+/* Hero - more breathing room */
+.hero {
+  padding: 64px 32px 56px !important; /* was 48px 24px 40px */
+}
+
+.hero-title {
+  margin-bottom: 24px !important; /* was 16px */
+  font-size: 52px !important; /* slightly larger */
+}
+
+.hero-subtitle {
+  font-size: 19px !important; /* was 18px */
+  line-height: 1.6 !important; /* more line height */
+  margin-bottom: 16px !important;
+}
+
+.hero-meta {
+  margin-top: 20px !important; /* was implicit */
+}
+
+/* Stats grid - more spacing */
+.stats-grid {
+  gap: 20px !important; /* was probably 16px */
+  margin-bottom: 56px !important; /* was probably 48px */
+}
+
+.stat-card {
+  padding: 28px 24px !important; /* was probably 24px 20px */
+}
+
+.stat-value {
+  margin-bottom: 10px !important; /* add space between value and label */
+}
+
+/* Cards - less dense */
+.card {
+  padding: 28px !important; /* was 24px */
+  margin-bottom: 20px !important; /* space between cards */
+}
+
+.model-card {
+  padding: 28px !important; /* was 24px */
+  margin-bottom: 20px !important;
+}
+
+/* Grid layouts - more gap */
+.grid {
+  gap: 24px !important; /* was 20px */
+  margin-bottom: 56px !important; /* was 48px */
+}
+
+/* Section spacing */
+section {
+  margin-bottom: 56px !important; /* more space between sections */
+}
+
+h2 {
+  margin-bottom: 28px !important; /* was probably 24px */
+  margin-top: 8px !important; /* add top margin */
+}
+
+h3 {
+  margin-bottom: 16px !important; /* was 12px */
+}
+
+/* Model cards - less cramped */
+.model-header {
+  margin-bottom: 20px !important; /* was 16px */
+}
+
+.model-metrics {
+  gap: 20px !important; /* was 16px */
+  margin: 20px 0 !important; /* was 16px 0 */
+}
+
+/* Score displays */
+.score-row {
+  gap: 10px !important; /* was 5px - much more breathing room */
+  margin-top: 20px !important; /* was 16px */
+}
+
+.score-line {
+  gap: 14px !important; /* was 10px */
+  font-size: .85rem !important; /* slightly larger */
+  padding: 2px 0 !important; /* add vertical padding */
+}
+
+/* News items */
+.news-item {
+  padding: 24px !important; /* was 20px */
+  margin-bottom: 20px !important; /* was 16px */
+}
+
+/* Category sections */
+.category-section {
+  margin-bottom: 56px !important; /* was 48px */
+}
+
+.category-label {
+  margin-bottom: 20px !important; /* was 16px */
+  padding-bottom: 12px !important; /* was 8px */
+}
+
+/* Leaderboard panels */
+.leaderboard-panel {
+  margin-top: 20px !important; /* add spacing above */
+}
+
+/* Tab bar */
+.tab-bar {
+  margin-bottom: 32px !important; /* was 24px */
+}
+
+/* Why section */
+.why-section {
+  padding: 32px !important; /* was 24px */
+  margin-bottom: 56px !important; /* was 48px */
+}
+
+.why-grid {
+  gap: 28px !important; /* was 24px */
+  margin-top: 24px !important; /* was 20px */
+}
+
+/* Footer */
+.footer {
+  padding: 56px 0 !important; /* was 48px 0 */
+  margin-top: 64px !important; /* was 48px */
+}
+
+/* Reduce text density */
+p {
+  line-height: 1.7 !important; /* more line height for readability */
+  margin-bottom: 16px !important; /* space between paragraphs */
+}
+
+/* Champion cards */
+.champion-card {
+  padding: 28px 24px !important; /* more padding */
+}
+
+/* Legend */
+.legend {
+  gap: 24px !important; /* was 20px */
+  margin-bottom: 32px !important; /* was 24px */
+}
+
+/* Provider badges and chips - slightly more padding */
+.chip {
+  padding: 5px 14px !important; /* was 4px 12px */
+  margin: 2px !important; /* add small margin */
+}
+
+/* Form elements - more spacious */
+.search-box {
+  margin-bottom: 28px !important; /* was 24px */
+}
+
+.search-input {
+  padding: 16px 24px 16px 52px !important; /* was 14px 20px 14px 48px */
+  font-size: 1.05rem !important; /* slightly larger */
+}
+
+.filters {
+  gap: 12px !important; /* was 8px */
+  margin-bottom: 24px !important;
+}
+
+.filter-btn {
+  padding: 10px 20px !important; /* was 8px 16px */
+}
+
+/* Overall reduce visual weight */
+body {
+  line-height: 1.7 !important; /* was 1.6 */
+}
+
+/* Responsive - maintain lightness on mobile */
+@media (max-width: 768px) {
+  .container {
+    padding: 40px 20px !important;
+  }
+  
+  .hero {
+    padding: 48px 20px 40px !important;
+  }
+  
+  .card, .model-card {
+    padding: 24px 20px !important;
+  }
+}

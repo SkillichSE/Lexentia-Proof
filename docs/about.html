@@ -1,568 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>
-    (function(){
-      var t = localStorage.getItem('theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', t);
-    })();
-  </script>
+  <script>(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — AI Model Benchmarker</title>
-  <meta name="description" content="How ModelArena works — daily automated benchmarks of free AI models.">
+  <title>About & How It Works — ModelArena</title>
+  <meta name="description" content="Learn how ModelArena works — daily automated benchmarks of free AI models">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-light.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
-
-    /* ── Hero ── */
-    .about-hero {
-      position: relative;
-      overflow: hidden;
-      padding: 80px 0 64px;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-    }
-    .about-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--hero-gradient);
-      z-index: 0;
-    }
-    /* animated grid lines */
-    .about-hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 48px 48px;
-      opacity: 0.35;
-      z-index: 0;
-      animation: gridpan 20s linear infinite;
-    }
-    @keyframes gridpan {
-      from { background-position: 0 0; }
-      to   { background-position: 48px 48px; }
-    }
-    .about-hero-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 var(--space-lg);
-    }
-    .about-badge {
-      display: inline-block;
-      padding: 4px 14px;
-      border: 1px solid var(--primary);
-      border-radius: var(--radius-full);
-      color: var(--primary);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: var(--space-lg);
-    }
-    .about-title {
-      font-size: 3rem;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-      margin-bottom: var(--space-lg);
-      background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-light) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    [data-theme="light"] .about-title {
-      background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-    .about-lead {
-      font-size: 1.125rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-
-    /* ── Pipeline diagram ── */
-    .pipeline {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      flex-wrap: wrap;
-      margin: var(--space-2xl) 0;
-    }
-    .pipe-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      padding: 20px 24px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      min-width: 130px;
-      text-align: center;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .pipe-step:hover {
-      border-color: var(--primary);
-      box-shadow: 0 0 20px rgba(96,165,250,0.1);
-    }
-    .pipe-icon { font-size: 1.75rem; }
-    .pipe-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-    .pipe-sub {
-      font-size: 0.65rem;
-      color: var(--text-tertiary);
-    }
-    .pipe-arrow {
-      color: var(--text-tertiary);
-      font-size: 1.25rem;
-      padding: 0 4px;
-      flex-shrink: 0;
-    }
-
-    /* ── Section layout ── */
-    .about-section {
-      max-width: 800px;
-      margin: 0 auto var(--space-2xl);
-    }
-    .about-section h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: var(--space-lg);
-      letter-spacing: -0.02em;
-    }
-
-    /* ── Scoring cards ── */
-    .score-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: var(--space-md);
-      margin-bottom: var(--space-xl);
-    }
-    .score-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: var(--space-lg);
-      transition: all 0.2s;
-    }
-    .score-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
-    }
-    .score-card-icon { font-size: 1.75rem; margin-bottom: 10px; }
-    .score-card-name {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 4px;
-    }
-    .score-card-weight {
-      font-size: 0.7rem;
-      color: var(--primary);
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .score-card-desc {
-      font-size: 0.75rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    /* ── Philosophy callout ── */
-    .callout {
-      border-left: 3px solid var(--primary);
-      padding: var(--space-lg) var(--space-xl);
-      background: var(--surface);
-      border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
-      margin: var(--space-xl) 0;
-    }
-    .callout p {
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin: 0;
-    }
-    .callout strong { color: var(--text-primary); }
-
-    /* ── Provider table ── */
-    .provider-grid {
-      display: grid;
-      gap: var(--space-md);
-      margin-bottom: var(--space-xl);
-    }
-    .provider-row {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-lg);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: var(--space-lg);
-      transition: border-color 0.2s;
-    }
-    .provider-row:hover { border-color: var(--border-hover); }
-    .provider-name {
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--text-primary);
-      min-width: 80px;
-    }
-    .provider-badge {
-      font-size: 0.65rem;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: var(--radius-full);
-      background: var(--chip-green-bg);
-      color: var(--chip-green-text);
-      white-space: nowrap;
-    }
-    .provider-models {
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      flex: 1;
-    }
-
-    /* ── Code block ── */
-    .code-block {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: var(--space-lg);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      overflow-x: auto;
-      line-height: 1.7;
-      margin: var(--space-lg) 0;
-    }
-    .code-block .kw  { color: var(--primary-light); }
-    .code-block .cm  { color: var(--text-tertiary); }
-    .code-block .str { color: var(--success); }
-    .code-block .num { color: var(--warning); }
-
-    /* ── Setup steps ── */
-    .setup-steps {
-      counter-reset: step;
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-    }
-    .setup-step {
-      display: flex;
-      gap: var(--space-lg);
-      align-items: flex-start;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: var(--space-lg);
-    }
-    .step-num {
-      counter-increment: step;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(96,165,250,0.12);
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 0.875rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .step-num::after { content: counter(step); }
-    .step-body { flex: 1; }
-    .step-title {
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--text-primary);
-      margin-bottom: 4px;
-    }
-    .step-desc {
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-    .step-desc code {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      background: var(--surface-2);
-      padding: 1px 6px;
-      border-radius: 4px;
-      color: var(--primary-light);
-    }
-
-    @media (max-width: 600px) {
-      .about-title { font-size: 2rem; }
-      .pipeline { gap: 8px; }
-      .pipe-arrow { display: none; }
-    }
+    .content-section { margin-bottom: 64px; }
+    .content-section h2 { font-size: 2rem; margin-bottom: 20px; }
+    .content-section p { font-size: 1.05rem; line-height: 1.8; color: var(--md-on-surface-var); margin-bottom: 20px; }
+    
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 32px 0; }
+    .feature-card { background: var(--md-surface-1); border: 1px solid var(--md-outline-var); border-radius: var(--md-shape-lg); padding: 28px; }
+    .feature-icon { font-size: 2rem; margin-bottom: 12px; }
+    .feature-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    .feature-text { color: var(--md-on-surface-var); font-size: .95rem; line-height: 1.6; }
+    
+    .metrics-list { display: grid; gap: 16px; margin: 24px 0; }
+    .metric-item { background: var(--md-surface-1); border-left: 4px solid var(--md-primary); padding: 20px 24px; border-radius: var(--md-shape-md); }
+    .metric-name { font-weight: 600; font-size: 1.05rem; margin-bottom: 8px; color: var(--md-primary); }
+    .metric-desc { color: var(--md-on-surface-var); font-size: .95rem; line-height: 1.6; }
+    
+    .pipeline { display: flex; gap: 16px; align-items: center; margin: 32px 0; flex-wrap: wrap; justify-content: center; }
+    .pipe-step { background: var(--md-surface-1); border: 1px solid var(--md-outline-var); padding: 20px 28px; border-radius: var(--md-shape-lg); font-weight: 500; }
+    .pipe-arrow { font-size: 1.5rem; color: var(--md-on-surface-low); }
+    
+    .faq-item { margin-bottom: 28px; }
+    .faq-q { font-weight: 600; font-size: 1.1rem; margin-bottom: 12px; color: var(--md-on-surface); }
+    .faq-a { color: var(--md-on-surface-var); line-height: 1.7; }
+    
+    code { background: var(--md-surface-2); padding: 2px 8px; border-radius: 4px; font-family: 'Roboto Mono', monospace; font-size: .9em; }
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="header-content">
-      <a href="index.html" class="logo">
-        <span class="logo-icon">⚡</span>
-        <span>AI Benchmarker</span>
-      </a>
-      <nav class="nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="search.html" class="nav-link">Search</a>
-        <a href="news.html" class="nav-link">News</a>
-        <a href="trends.html" class="nav-link">Trends</a>
-        <a href="about.html" class="nav-link active">About</a>
-      </nav>
-      <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">
-        <span class="icon-sun">☀️</span>
-        <span class="icon-moon">🌙</span>
-      </button>
-    </div>
-  </header>
 
-  <!-- Hero -->
-  <div class="about-hero">
-    <div class="about-hero-inner">
-      <div class="about-badge">Open Source · Free to Use</div>
-      <h1 class="about-title">How ModelArena Works</h1>
-      <p class="about-lead">
-        A GitHub Actions workflow runs every morning, fires 180 prompts across 15 free AI models,
-        and publishes the results here. No paid APIs. No manual work.
-      </p>
-    </div>
+<!-- Navigation -->
+<header class="header">
+  <div class="header-content">
+    <a href="index.html" class="logo"><span class="logo-icon">⚔️</span><span>ModelArena</span></a>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Rankings</a>
+      <a href="search.html" class="nav-link">Search</a>
+      <a href="trends.html" class="nav-link">Trends</a>
+      <a href="news.html" class="nav-link">News</a>
+      <a href="about.html" class="nav-link active">About</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      <span class="icon-sun">☀️</span><span class="icon-moon">🌙</span>
+    </button>
   </div>
+</header>
 
-  <main class="container" style="max-width: 900px;">
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <h1 class="hero-title">About ModelArena</h1>
+    <p class="hero-subtitle">How we test and rank free AI models every day</p>
+  </div>
+</div>
 
-    <!-- Pipeline -->
-    <div class="about-section">
-      <h2>🔄 The Pipeline</h2>
-      <div class="pipeline">
-        <div class="pipe-step">
-          <div class="pipe-icon">⏰</div>
-          <div class="pipe-label">Cron</div>
-          <div class="pipe-sub">03:00 UTC daily</div>
-        </div>
-        <div class="pipe-arrow">→</div>
-        <div class="pipe-step">
-          <div class="pipe-icon">🐍</div>
-          <div class="pipe-label">benchmark.py</div>
-          <div class="pipe-sub">180 prompts</div>
-        </div>
-        <div class="pipe-arrow">→</div>
-        <div class="pipe-step">
-          <div class="pipe-icon">📊</div>
-          <div class="pipe-label">JSON results</div>
-          <div class="pipe-sub">scored + ranked</div>
-        </div>
-        <div class="pipe-arrow">→</div>
-        <div class="pipe-step">
-          <div class="pipe-icon">💾</div>
-          <div class="pipe-label">Git commit</div>
-          <div class="pipe-sub">docs/data/</div>
-        </div>
-        <div class="pipe-arrow">→</div>
-        <div class="pipe-step">
-          <div class="pipe-icon">🌐</div>
-          <div class="pipe-label">GitHub Pages</div>
-          <div class="pipe-sub">this site</div>
-        </div>
+<main class="container">
+
+  <!-- What is ModelArena -->
+  <section class="content-section">
+    <h2>What is ModelArena?</h2>
+    <p>
+      ModelArena is an open-source platform that automatically benchmarks free AI models every 24 hours. 
+      We test real performance—speed, code quality, reasoning, and more—so you can make informed decisions 
+      without hype or marketing fluff.
+    </p>
+    <p>
+      All tests run via GitHub Actions. All code is public. All data is reproducible. Zero cost, zero bias.
+    </p>
+  </section>
+
+  <!-- Why We Built This -->
+  <section class="content-section">
+    <h2>Why We Built This</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-title">Real Data</div>
+        <div class="feature-text">No cherry-picked examples. Every model runs the same tests daily.</div>
       </div>
-
-      <div class="callout">
-        <p>
-          <strong>Why automate this?</strong> Model quality changes constantly — providers
-          deprecate models, release updates, and tweak inference settings without notice.
-          A daily benchmark catches regressions and improvements as they happen,
-          building a historical record that one-off evaluations can't provide.
-        </p>
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <div class="feature-title">Free Models Only</div>
+        <div class="feature-text">Focus on models you can actually use without a credit card.</div>
       </div>
-    </div>
-
-    <!-- Scoring philosophy -->
-    <div class="about-section">
-      <h2>🎯 Scoring Philosophy</h2>
-
-      <p style="color: var(--text-secondary); margin-bottom: var(--space-xl); line-height: 1.7;">
-        Most benchmarks collapse everything into one score — which means a tiny 8B model
-        that runs at 600 tok/s will always lose to a 70B that generates 40 tok/s but writes
-        better code. That's not a useful comparison. ModelArena keeps speed and quality
-        completely separate, and groups models by size tier.
-      </p>
-
-      <div class="score-cards">
-        <div class="score-card">
-          <div class="score-card-icon">💻</div>
-          <div class="score-card-name">Code</div>
-          <div class="score-card-weight">40% of Quality</div>
-          <div class="score-card-desc">Three Python tasks — prime check, binary search, LRU cache. Scored on function structure, logic, and documentation.</div>
-        </div>
-        <div class="score-card">
-          <div class="score-card-icon">🧠</div>
-          <div class="score-card-name">Reasoning</div>
-          <div class="score-card-weight">40% of Quality</div>
-          <div class="score-card-desc">Logic syllogism, speed math, 12-ball puzzle. Answers matched against known correct solutions.</div>
-        </div>
-        <div class="score-card">
-          <div class="score-card-icon">🌍</div>
-          <div class="score-card-name">Translation</div>
-          <div class="score-card-weight">20% of Quality</div>
-          <div class="score-card-desc">EN↔RU and EN→ES. Verified by script detection and target-language keyword matching.</div>
-        </div>
-        <div class="score-card">
-          <div class="score-card-icon">⚡</div>
-          <div class="score-card-name">Speed</div>
-          <div class="score-card-weight">Separate board</div>
-          <div class="score-card-desc">Tokens per second across three prompt lengths. Normalised to 100 within each run — never mixed with quality.</div>
-        </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔄</div>
+        <div class="feature-title">Always Fresh</div>
+        <div class="feature-text">Daily updates catch model improvements and regressions instantly.</div>
       </div>
-
-      <div class="callout">
-        <p>
-          <strong>Size categories</strong> — models are grouped as
-          <strong>small (≤10B)</strong>, <strong>medium (10–50B)</strong>, and <strong>large (50B+)</strong>.
-          Rankings within a tier are the most meaningful comparisons.
-          A small model that beats other smalls is genuinely impressive;
-          ranking it against a 671B MoE is not.
-        </p>
+      <div class="feature-card">
+        <div class="feature-icon">📖</div>
+        <div class="feature-title">Open Source</div>
+        <div class="feature-text">All code, prompts, and results are public on GitHub.</div>
       </div>
     </div>
+  </section>
 
-    <!-- Providers -->
-    <div class="about-section">
-      <h2>🔑 Providers &amp; Models</h2>
-      <p style="color: var(--text-secondary); margin-bottom: var(--space-lg); line-height: 1.7;">
-        Every model tested here is available for free — no credit card, no trial period.
-      </p>
-      <div class="provider-grid">
-        <div class="provider-row">
-          <div>
-            <div class="provider-name">Groq</div>
-            <span class="provider-badge">Free tier</span>
-          </div>
-          <div class="provider-models">
-            Llama 3.1 8B Instant · Llama 3.3 70B Versatile · Llama 4 Scout 17B · Qwen 3 32B · GPT-OSS 120B
-            <br><span style="color:var(--text-tertiary); font-size:0.7rem;">30 req/min · no billing required</span>
-          </div>
+  <!-- How It Works -->
+  <section class="content-section">
+    <h2>How It Works</h2>
+    
+    <div class="pipeline">
+      <div class="pipe-step">⏰ GitHub Actions triggers at 3:00 UTC</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step">🤖 Python script tests all models</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step">💾 Results saved to JSON</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step">📊 Site updates automatically</div>
+    </div>
+    
+    <p>
+      Every day at 3:00 AM UTC, our GitHub Actions workflow spins up, runs identical prompts across all free models, 
+      measures speed and quality, then commits the results. The site pulls fresh data on every visit.
+    </p>
+    <p>
+      No manual intervention. No bias. Just automated, consistent testing.
+    </p>
+  </section>
+
+  <!-- What We Test -->
+  <section class="content-section">
+    <h2>What We Test</h2>
+    
+    <div class="metrics-list">
+      <div class="metric-item">
+        <div class="metric-name">⚡ Speed</div>
+        <div class="metric-desc">
+          Tokens per second (tok/s) across short, medium, and long prompts. Faster = better for interactive use.
         </div>
-        <div class="provider-row">
-          <div>
-            <div class="provider-name">Google</div>
-            <span class="provider-badge">Free tier</span>
-          </div>
-          <div class="provider-models">
-            Gemini 2.0 Flash · Gemini 2.0 Flash Lite
-            <br><span style="color:var(--text-tertiary); font-size:0.7rem;">Key from aistudio.google.com · 1500 req/day</span>
-          </div>
+      </div>
+      
+      <div class="metric-item">
+        <div class="metric-name">💻 Code Quality</div>
+        <div class="metric-desc">
+          Can it write working code? Syntax correctness, comments, logic. Tested with Python functions of varying complexity.
         </div>
-        <div class="provider-row">
-          <div>
-            <div class="provider-name">OpenRouter</div>
-            <span class="provider-badge">:free models</span>
-          </div>
-          <div class="provider-models">
-            Step 3.5 Flash · Nemotron 3 Super 120B · Llama 3.3 70B · GPT-OSS 120B/20B · Mistral Small 3.1 · MiniMax M2.5 · Qwen 3 4B
-            <br><span style="color:var(--text-tertiary); font-size:0.7rem;">$0/M tokens · only :free suffix models used</span>
-          </div>
+      </div>
+      
+      <div class="metric-item">
+        <div class="metric-name">🧠 Reasoning</div>
+        <div class="metric-desc">
+          Logic puzzles, math problems, common-sense questions. Does it actually think or just pattern-match?
+        </div>
+      </div>
+      
+      <div class="metric-item">
+        <div class="metric-name">📋 Instruction Following</div>
+        <div class="metric-desc">
+          Can it follow multi-step instructions accurately? Critical for real-world tasks.
+        </div>
+      </div>
+      
+      <div class="metric-item">
+        <div class="metric-name">🌐 Translation</div>
+        <div class="metric-desc">
+          English ↔ Russian, English ↔ Spanish. Accuracy and fluency compared against reference translations.
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Setup -->
-    <div class="about-section">
-      <h2>🚀 Run It Yourself</h2>
-      <div class="setup-steps">
-        <div class="setup-step">
-          <div class="step-num"></div>
-          <div class="step-body">
-            <div class="step-title">Fork the repository</div>
-            <div class="step-desc">Fork <code>ModelArena</code> on GitHub — the workflow and all code comes with it.</div>
-          </div>
-        </div>
-        <div class="setup-step">
-          <div class="step-num"></div>
-          <div class="step-body">
-            <div class="step-title">Enable GitHub Pages</div>
-            <div class="step-desc">Settings → Pages → Source: <code>main</code> branch → Folder: <code>/docs</code></div>
-          </div>
-        </div>
-        <div class="setup-step">
-          <div class="step-num"></div>
-          <div class="step-body">
-            <div class="step-title">Add API keys to Secrets</div>
-            <div class="step-desc">
-              Settings → Secrets → Actions. Add <code>GROQ_API_KEY</code> (required),
-              <code>GOOGLE_API_KEY</code> (optional), <code>OPENROUTER_API_KEY</code> (optional).
-              Google and OpenRouter keys are optional — Groq alone gives you 5 models.
-            </div>
-          </div>
-        </div>
-        <div class="setup-step">
-          <div class="step-num"></div>
-          <div class="step-body">
-            <div class="step-title">Trigger the first run</div>
-            <div class="step-desc">Actions → Daily AI Benchmark → Run workflow. Takes ~20 minutes. Results appear automatically.</div>
-          </div>
-        </div>
-      </div>
+  <!-- Models We Test -->
+  <section class="content-section">
+    <h2>Models We Test</h2>
+    <p>
+      We focus exclusively on <strong>free-tier models</strong> with generous limits. Current lineup includes:
+    </p>
+    <ul style="line-height: 1.8; color: var(--md-on-surface-var); margin-left: 24px;">
+      <li><strong>Groq</strong> — Llama 3.1 8B, Llama 3.3 70B, and more (blazing fast inference)</li>
+      <li><strong>Google</strong> — Gemini 1.5 Flash, Gemini 1.5 Pro (huge context windows)</li>
+      <li><strong>More coming</strong> — we add models as they become available for free</li>
+    </ul>
+    <p style="margin-top: 20px;">
+      Models are added when: (1) they're free without credit card, (2) API is publicly accessible, (3) rate limits allow daily testing.
+    </p>
+  </section>
+
+  <!-- Limitations -->
+  <section class="content-section">
+    <h2>Limitations & Caveats</h2>
+    <p>
+      No benchmark is perfect. Here's what ours doesn't cover:
+    </p>
+    <ul style="line-height: 1.8; color: var(--md-on-surface-var); margin-left: 24px; margin-top: 16px;">
+      <li><strong>Long-form quality</strong> — our prompts are short by design (speed testing)</li>
+      <li><strong>Multimodal</strong> — text-only for now (vision/audio coming later)</li>
+      <li><strong>Domain-specific</strong> — we test general ability, not medical/legal/scientific expertise</li>
+      <li><strong>Subjective quality</strong> — style, creativity, tone are hard to quantify</li>
+    </ul>
+    <p style="margin-top: 20px;">
+      Use our data as <strong>one signal</strong>, not the only signal. Always test models yourself for your specific use case.
+    </p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="content-section">
+    <h2>FAQ</h2>
+    
+    <div class="faq-item">
+      <div class="faq-q">How often do results update?</div>
+      <div class="faq-a">Every 24 hours at 3:00 AM UTC via GitHub Actions.</div>
     </div>
-
-    <!-- Add models -->
-    <div class="about-section">
-      <h2>➕ Adding Models</h2>
-      <p style="color: var(--text-secondary); margin-bottom: var(--space-md); line-height: 1.7;">
-        Edit <code style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; background: var(--surface-2); padding: 2px 8px; border-radius: 4px; color: var(--primary-light);">src/config.py</code>
-        and add an entry to the appropriate provider section.
-        For OpenRouter, always use the <code style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; background: var(--surface-2); padding: 2px 8px; border-radius: 4px; color: var(--success);">:free</code> suffix — models without it require credits.
-      </p>
-      <div class="code-block"><span class="cm"># src/config.py → "openrouter" section</span>
-<span class="str">"my-model"</span>: {
-    <span class="str">"id"</span>:       <span class="str">"provider/model-name:free"</span>,
-    <span class="str">"name"</span>:     <span class="str">"Display Name"</span>,
-    <span class="str">"provider"</span>: <span class="str">"OpenRouter"</span>,
-    <span class="str">"size"</span>:     <span class="str">"7B"</span>,
-    <span class="str">"context"</span>:  <span class="str">"128k"</span>
-}</div>
+    
+    <div class="faq-item">
+      <div class="faq-q">Can I see the test prompts?</div>
+      <div class="faq-a">Yes! All prompts are in <code>src/config.py</code> in our GitHub repo.</div>
     </div>
-
-  </main>
-
-  <footer class="footer">
-    <div class="footer-links">
-      <a href="https://github.com/yourusername/ModelArena" class="footer-link">GitHub</a>
-      <a href="index.html" class="footer-link">Leaderboard</a>
-      <a href="about.html" class="footer-link">About</a>
+    
+    <div class="faq-item">
+      <div class="faq-q">Why are some models missing?</div>
+      <div class="faq-a">We only test models with free access (no credit card required) and public APIs.</div>
     </div>
-    <p>Open source · MIT License · Updated daily via GitHub Actions</p>
-  </footer>
+    
+    <div class="faq-item">
+      <div class="faq-q">Can I run benchmarks myself?</div>
+      <div class="faq-a">Absolutely. Fork the repo, add your API keys to GitHub Secrets, enable Actions. Done.</div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-q">How do you calculate overall scores?</div>
+      <div class="faq-a">Weighted average of speed, code, reasoning, instruction, translation. Exact weights in <code>src/config.py</code>.</div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-q">Who runs this?</div>
+      <div class="faq-a">Open-source community project. Anyone can contribute via GitHub.</div>
+    </div>
+  </section>
 
-  <script src="app.js"></script>
-  <script>
-    (function() {
-      function applyTheme(t) {
-        document.documentElement.setAttribute('data-theme', t);
-        localStorage.setItem('theme', t);
-      }
-      var btn = document.getElementById('theme-toggle');
-      if (btn) {
-        btn.addEventListener('click', function() {
-          var current = document.documentElement.getAttribute('data-theme') || 'dark';
-          applyTheme(current === 'dark' ? 'light' : 'dark');
-        });
-      }
-    })();
-  </script>
+  <!-- Get Involved -->
+  <section class="content-section">
+    <h2>Get Involved</h2>
+    <p>
+      ModelArena is open source. Want to help?
+    </p>
+    <ul style="line-height: 1.8; color: var(--md-on-surface-var); margin-left: 24px; margin-top: 16px;">
+      <li>⭐ Star the repo on GitHub</li>
+      <li>🐛 Report bugs or suggest features (open an issue)</li>
+      <li>🤝 Add new models or test categories (pull requests welcome)</li>
+      <li>📣 Share the site if you find it useful</li>
+    </ul>
+    <p style="margin-top: 24px;">
+      <a href="https://github.com/SkillichSE/ModelArena" target="_blank" style="display: inline-block; padding: 12px 32px; background: var(--md-primary); color: var(--md-on-primary); border-radius: var(--md-shape-full); text-decoration: none; font-weight: 600;">
+        View on GitHub →
+      </a>
+    </p>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="https://github.com/SkillichSE/ModelArena" class="footer-link" target="_blank">GitHub</a>
+    <a href="about.html" class="footer-link">About</a>
+    <a href="index.html" class="footer-link">Rankings</a>
+  </div>
+  <p style="margin-top: 16px; color: var(--md-on-surface-low); font-size: .875rem;">
+    Open source • Updated daily via GitHub Actions • No ads, no tracking
+  </p>
+</footer>
+
+<script>
+// Theme toggle
+document.getElementById('theme-toggle').addEventListener('click', function() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme') || 'dark';
+  const next = current === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+});
+</script>
+
 </body>
 </html>
