@@ -49,11 +49,12 @@ def _bucket(b):
 
 
 class ModelBenchmark:
-    def __init__(self, active_providers=None, merge=False):
+    def __init__(self, active_providers=None, active_models=None, merge=False):
         self.groq_key       = os.getenv("GROQ_API_KEY")
         self.google_key     = os.getenv("GOOGLE_API_KEY")
         self.openrouter_key = os.getenv("OPENROUTER_API_KEY")
         self.active_providers = active_providers
+        self.active_models = active_models
         self.merge = merge
         self.results = []
 
@@ -421,6 +422,8 @@ class ModelBenchmark:
                 print(f"\n⏭️  Skipping {provider} — API key not set")
                 continue
             for mkey, minfo in models.items():
+                if self.active_models and mkey not in self.active_models:
+                    continue
                 minfo = dict(minfo, key=mkey)
                 cat = size_category(minfo["size"])
                 print(f"\n🤖 {minfo['name']} [{cat}] via {provider}...")
@@ -476,6 +479,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--providers", default=None,
         help="Comma-separated providers: groq,openrouter,google")
+    parser.add_argument("--models", default=None,
+        help="Comma-separated model keys to run, e.g. llama-3.1-8b,qwen3-32b")
     parser.add_argument("--merge", action="store_true",
         help="Merge into existing daily file instead of overwriting")
     args = parser.parse_args()
@@ -484,5 +489,9 @@ if __name__ == "__main__":
     if args.providers:
         active_providers = [p.strip().lower() for p in args.providers.split(",")]
 
-    ModelBenchmark(active_providers=active_providers, merge=args.merge).run_benchmark()
+    active_models = None
+    if args.models:
+        active_models = [m.strip() for m in args.models.split(",")]
+
+    ModelBenchmark(active_providers=active_providers, active_models=active_models, merge=args.merge).run_benchmark()
     print("\n✨ Benchmark complete!")

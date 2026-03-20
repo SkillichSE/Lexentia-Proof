@@ -2,8 +2,8 @@ name: Daily AI Benchmark
 
 on:
   schedule:
-    - cron: '0 3 * * *'   # 03:00 UTC каждый день
-  workflow_dispatch:       # ручной запуск
+    - cron: '0 3 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -11,8 +11,6 @@ permissions:
 jobs:
   benchmark:
     runs-on: ubuntu-latest
-    # Стандартный таймаут GitHub Actions — 360 мин, но Google 429 может раздуть
-    # до 70 мин. Ставим явный лимит чтобы не висеть вечно при проблемах.
     timeout-minutes: 90
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -28,40 +26,156 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'          # кэшируем зависимости между запусками
+          cache: 'pip'
 
       - name: 📦 Install dependencies
         run: pip install requests feedparser
 
-      # ── Groq + OpenRouter (быстрые, без лимитов) ──────────────────────────
-      - name: ⚡ Benchmark — Groq & OpenRouter
+      # ── Models — each runs independently, failures don't block others ──────
+
+      - name: 🤖 Llama 3.1 8B
+        continue-on-error: true
+        timeout-minutes: 10
         env:
-          GROQ_API_KEY:       ${{ secrets.GROQ_API_KEY }}
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
           cd src
-          python benchmark.py --providers groq,openrouter
+          python benchmark.py --providers groq --models llama-3.1-8b
 
-      # ── Google (отдельный шаг с retry и увеличенным таймаутом) ─────────────
-      # Если GOOGLE_API_KEY не выставлен в Secrets — шаг пропускается,
-      # не падает и не тормозит весь workflow.
-      - name: 🔵 Benchmark — Google
-        continue-on-error: true        # Google 429 не роняет весь workflow
-        timeout-minutes: 60            # Google worst-case ~56 мин, даём запас
+      - name: 🤖 Llama 3.3 70B
+        continue-on-error: true
+        timeout-minutes: 10
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          cd src
+          python benchmark.py --providers groq --models llama-3.3-70b --merge
+
+      - name: 🤖 Llama 4 Scout 17B
+        continue-on-error: true
+        timeout-minutes: 10
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          cd src
+          python benchmark.py --providers groq --models llama-4-scout --merge
+
+      - name: 🤖 Qwen 3 32B
+        continue-on-error: true
+        timeout-minutes: 10
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          cd src
+          python benchmark.py --providers groq --models qwen3-32b --merge
+
+      - name: 🤖 GPT-OSS 120B
+        continue-on-error: true
+        timeout-minutes: 10
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          cd src
+          python benchmark.py --providers groq --models gpt-oss-120b --merge
+
+      - name: 🤖 Gemini 2.0 Flash
+        continue-on-error: true
+        timeout-minutes: 20
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
         run: |
           cd src
-          python benchmark.py --providers google --merge
+          python benchmark.py --providers google --models gemini-2.0-flash --merge
 
-      # ── Новости ────────────────────────────────────────────────────────────
+      - name: 🤖 Gemini 2.0 Flash Lite
+        continue-on-error: true
+        timeout-minutes: 20
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: |
+          cd src
+          python benchmark.py --providers google --models gemini-2.0-flash-lite --merge
+
+      - name: 🤖 Step 3.5 Flash
+        continue-on-error: true
+        timeout-minutes: 15
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          cd src
+          python benchmark.py --providers openrouter --models step-3.5-flash --merge
+
+      - name: 🤖 Nemotron 3 Super 120B
+        continue-on-error: true
+        timeout-minutes: 15
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          cd src
+          python benchmark.py --providers openrouter --models nemotron-super-120b --merge
+
+      - name: 🤖 GPT-OSS 120B
+        continue-on-error: true
+        timeout-minutes: 15
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          cd src
+          python benchmark.py --providers openrouter --models gpt-oss-120b-or --merge
+
+      - name: 🤖 GPT-OSS 20B
+        continue-on-error: true
+        timeout-minutes: 15
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          cd src
+          python benchmark.py --providers openrouter --models gpt-oss-20b --merge
+
+      - name: 🤖 Mistral Small 3.1 24B
+        continue-on-error: true
+        timeout-minutes: 15
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          cd src
+          python benchmark.py --providers openrouter --models mistral-small-3.1 --merge
+
+      - name: 🤖 MiniMax M2.5
+        continue-on-error: true
+        timeout-minutes: 15
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          cd src
+          python benchmark.py --providers openrouter --models minimax-m2.5 --merge
+
+      - name: 🤖 Llama 3.3 70B
+        continue-on-error: true
+        timeout-minutes: 15
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          cd src
+          python benchmark.py --providers openrouter --models llama-3.3-70b-or --merge
+
+      - name: 🤖 Qwen 3 4B
+        continue-on-error: true
+        timeout-minutes: 15
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          cd src
+          python benchmark.py --providers openrouter --models qwen3-4b --merge
+
+      # ── News ────────────────────────────────────────────────────────────────
       - name: 📰 Fetch news
-        continue-on-error: true        # не роняем workflow если парсер упал
+        continue-on-error: true
         run: |
           cd src
           python news_parser.py
 
-      # ── Commit ────────────────────────────────────────────────────────────
+      # ── Commit ──────────────────────────────────────────────────────────────
       - name: 💾 Commit results
         run: |
           git config user.name  "Benchmark Bot"
