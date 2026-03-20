@@ -1,6 +1,6 @@
-# ModelArena
+# ModelLens
 
-**[skillichse.github.io/ModelArena](https://skillichse.github.io/ModelArena)**
+**[skillichse.github.io/ModelArena](https://skillichse.github.io/ModelLens)**
 
 Free AI models, ranked every day. 
 
