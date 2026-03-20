@@ -1,23 +1,27 @@
 """
 Configuration for AI model benchmarks.
-All models here are 100% free — no billing required.
-  - Groq:       free tier, no credit card
-  - Google:     free tier via AI Studio (aistudio.google.com)
-  - OpenRouter: only :free suffix models ($0/M tokens, confirmed March 2026)
+All models are 100% free — no billing required on any provider.
+
+Providers:
+  - Groq:       free tier, no credit card needed
+  - Google:     free tier via aistudio.google.com (get key there, not cloud console)
+  - OpenRouter: only :free suffix models ($0/M tokens)
+  - Cerebras:   free tier, extremely fast inference
+  - Together:   free tier models
 """
 
 MODELS = {
     "groq": {
         "llama-3.1-8b": {
             "id": "llama-3.1-8b-instant",
-            "name": "Llama 3.1 8B Instant",
+            "name": "Llama 3.1 8B",
             "provider": "Groq",
             "size": "8B",
             "context": "128k"
         },
         "llama-3.3-70b": {
             "id": "llama-3.3-70b-versatile",
-            "name": "Llama 3.3 70B Versatile",
+            "name": "Llama 3.3 70B",
             "provider": "Groq",
             "size": "70B",
             "context": "128k"
@@ -60,8 +64,7 @@ MODELS = {
             "context": "1M"
         }
     },
-    # OpenRouter: все с суффиксом :free — $0/M токенов, подтверждено март 2026.
-    # Set OPENROUTER_API_KEY in GitHub Secrets to enable.
+    # All OpenRouter models MUST have :free suffix — verified $0/M tokens
     "openrouter": {
         "step-3.5-flash": {
             "id": "stepfun/step-3.5-flash:free",
@@ -77,16 +80,9 @@ MODELS = {
             "size": "120B",
             "context": "262k"
         },
-        "llama-3.3-70b": {
-            "id": "meta-llama/llama-3.3-70b-instruct:free",
-            "name": "Llama 3.3 70B (OR)",
-            "provider": "OpenRouter",
-            "size": "70B",
-            "context": "66k"
-        },
-        "gpt-oss-120b": {
+        "gpt-oss-120b-or": {
             "id": "openai/gpt-oss-120b:free",
-            "name": "GPT-OSS 120B (OR)",
+            "name": "GPT-OSS 120B",
             "provider": "OpenRouter",
             "size": "120B",
             "context": "131k"
@@ -112,6 +108,13 @@ MODELS = {
             "size": "N/A",
             "context": "197k"
         },
+        "llama-3.3-70b-or": {
+            "id": "meta-llama/llama-3.3-70b-instruct:free",
+            "name": "Llama 3.3 70B",
+            "provider": "OpenRouter",
+            "size": "70B",
+            "context": "66k"
+        },
         "qwen3-4b": {
             "id": "qwen/qwen3-4b:free",
             "name": "Qwen 3 4B",
@@ -122,34 +125,102 @@ MODELS = {
     }
 }
 
+# ── Tests ──────────────────────────────────────────────────────────────────────
+# Each test has a PROMPT and an EXPECTED answer for deterministic scoring.
+# Speed tests are prompt-only (no grading needed, we measure tok/s).
 TESTS = {
     "speed": {
         "simple": "Write a haiku about artificial intelligence.",
         "medium": "Explain quantum computing in simple terms (200 words).",
-        "long": "Write a detailed tutorial on Python decorators with examples."
+        "long":   "Write a detailed tutorial on Python decorators with examples (300 words)."
     },
+
+    # Code: graded by actually running the code in a subprocess
     "code": {
-        "easy": "Write a Python function to check if a number is prime.",
-        "medium": "Create a binary search implementation in Python with comments.",
-        "hard": "Implement a LRU cache in Python using OrderedDict."
+        "prime": {
+            "prompt": "Write a Python function called is_prime(n) that returns True if n is prime, False otherwise. Return ONLY the function, no explanation.",
+            "test_input": [2, 3, 4, 17, 100],
+            "expected":   [True, True, False, True, False]
+        },
+        "fibonacci": {
+            "prompt": "Write a Python function called fibonacci(n) that returns the nth Fibonacci number (0-indexed, so fibonacci(0)=0, fibonacci(1)=1, fibonacci(7)=13). Return ONLY the function, no explanation.",
+            "test_input": [0, 1, 7, 10],
+            "expected":   [0, 1, 13, 55]
+        },
+        "palindrome": {
+            "prompt": "Write a Python function called is_palindrome(s) that returns True if string s is a palindrome (ignore case and spaces). Return ONLY the function, no explanation.",
+            "test_input": ["racecar", "hello", "A man a plan a canal Panama", "world"],
+            "expected":   [True, False, True, False]
+        }
     },
+
+    # Reasoning: graded against known correct answers
     "reasoning": {
-        "logic": "If all bloops are razzies and all razzies are lazzies, are all bloops definitely lazzies?",
-        "math": "A train travels 120 km in 2 hours. Another train travels 180 km in 3 hours. Which is faster?",
-        "puzzle": "You have 12 balls, one is slightly heavier. Using a balance scale only 3 times, how do you find it?"
+        "syllogism": {
+            "prompt": "If all bloops are razzies and all razzies are lazzies, are all bloops definitely lazzies? Answer with just Yes or No.",
+            "answer": "yes"
+        },
+        "speed_math": {
+            "prompt": "A train travels 120 km in 2 hours. Another train travels 180 km in 3 hours. Which is faster? Answer with: First, Second, or Same.",
+            "answer": "same"
+        },
+        "river_crossing": {
+            "prompt": "A farmer has a fox, a chicken, and a bag of grain. He needs to cross a river with a boat that can only carry him and one item. The fox eats the chicken if left alone, and the chicken eats the grain. What does he take first? Answer with one word: Fox, Chicken, or Grain.",
+            "answer": "chicken"
+        },
+        "coin_flip": {
+            "prompt": "I flip a fair coin 3 times and get heads each time. What is the probability of getting heads on the 4th flip? Answer with a fraction like 1/2.",
+            "answer": "1/2"
+        },
+        "counting": {
+            "prompt": "How many letters are in the word MISSISSIPPI? Answer with just the number.",
+            "answer": "11"
+        }
     },
+
+    # Instruction following: graded by exact format checks
+    "instruction": {
+        "json": {
+            "prompt": 'Return a JSON object with exactly these keys: "name", "age", "city". Use any values you like. Return ONLY valid JSON, nothing else.',
+            "check": "json_keys",
+            "required_keys": ["name", "age", "city"]
+        },
+        "list": {
+            "prompt": "List exactly 5 programming languages, one per line, numbered 1-5. No extra text.",
+            "check": "numbered_list",
+            "count": 5
+        },
+        "word_count": {
+            "prompt": "Write a description of Paris in exactly 3 sentences. No more, no less.",
+            "check": "sentence_count",
+            "count": 3
+        }
+    },
+
+    # Translation: graded by script/keyword detection
     "translation": {
-        "en_ru": "Translate to Russian: 'The quick brown fox jumps over the lazy dog.'",
-        "ru_en": "Translate to English: 'Искусственный интеллект меняет мир.'",
-        "complex": "Translate to Spanish: 'Machine learning models require substantial computational resources.'"
+        "en_ru": {
+            "prompt": "Translate to Russian: 'Artificial intelligence is changing the world.' Return only the translation.",
+            "check": "cyrillic"
+        },
+        "ru_en": {
+            "prompt": "Translate to English: 'Машинное обучение помогает решать сложные задачи.' Return only the translation.",
+            "check": "latin"
+        },
+        "en_es": {
+            "prompt": "Translate to Spanish: 'The future belongs to those who believe in the beauty of their dreams.' Return only the translation.",
+            "check": "spanish_words",
+            "keywords": ["el", "la", "los", "las", "que", "de", "su", "sus", "futuro", "sueños", "pertenece", "creen", "belleza"]
+        }
     }
 }
 
 EVALUATION = {
-    "speed":       {"weight": 0.3, "metrics": ["ttft", "tokens_per_sec", "total_time"]},
-    "code":        {"weight": 0.3, "metrics": ["syntax_valid", "runs_correctly", "has_comments"]},
-    "reasoning":   {"weight": 0.2, "metrics": ["correct_answer", "explanation_quality"]},
-    "translation": {"weight": 0.2, "metrics": ["accuracy", "fluency"]}
+    "speed":       {"weight": 0.20},
+    "code":        {"weight": 0.30},
+    "reasoning":   {"weight": 0.25},
+    "instruction": {"weight": 0.15},
+    "translation": {"weight": 0.10}
 }
 
 NEWS_SOURCES = {

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Methodology — How We Rank Free AI Models | ModelArena</title>
+  <meta name="description" content="How ModelArena benchmarks free AI models: real code execution, verified reasoning answers, instruction following, and translation checks. Full methodology explained.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .method-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:var(--space-xl);margin-bottom:var(--space-lg)}
+    .method-header{display:flex;align-items:center;gap:12px;margin-bottom:var(--space-md)}
+    .method-icon{font-size:1.75rem}
+    .method-title{font-size:1.125rem;font-weight:600}
+    .method-weight{background:var(--chip-blue-bg);color:var(--chip-blue-text);padding:3px 10px;border-radius:var(--radius-full);font-size:.75rem;font-weight:600;margin-left:auto}
+    .test-example{background:var(--surface-2);border-radius:var(--radius-md);padding:var(--space-md);margin-top:var(--space-md);font-size:.825rem}
+    .test-example code{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--primary)}
+    .verdict-pass{color:var(--success);font-weight:600}
+    .verdict-fail{color:var(--error);font-weight:600}
+    .weight-bar-wrap{background:var(--surface-2);border-radius:var(--radius-full);height:8px;margin-top:6px;overflow:hidden}
+    .weight-bar{height:100%;border-radius:var(--radius-full)}
+    table{width:100%;border-collapse:collapse;font-size:.875rem;margin-top:var(--space-md)}
+    th{text-align:left;padding:10px 12px;border-bottom:2px solid var(--border);color:var(--text-tertiary);font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+    td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text-secondary)}
+    tr:last-child td{border-bottom:none}
+    tr:hover td{background:var(--surface-2)}
+  </style>
+</head>
+<body>
+<header class="header">
+  <div class="header-content">
+    <a href="index.html" class="logo"><span class="logo-icon">⚔️</span><span>ModelArena</span></a>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Rankings</a>
+      <a href="methodology.html" class="nav-link active">Methodology</a>
+      <a href="search.html" class="nav-link">Search</a>
+      <a href="trends.html" class="nav-link">Trends</a>
+      <a href="news.html" class="nav-link">News</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      <span class="icon-sun">☀️</span><span class="icon-moon">🌙</span>
+    </button>
+  </div>
+</header>
+
+<main class="container">
+  <h1>How We Rank Free AI Models</h1>
+  <p style="color:var(--text-secondary);margin-bottom:var(--space-2xl);font-size:1.05rem;max-width:680px;">
+    Every benchmark runs automatically at 03:00 UTC via GitHub Actions. No human grading,
+    no sponsored rankings — just code and math.
+  </p>
+
+  <!-- Score weights overview -->
+  <div class="method-card">
+    <h2 style="margin-bottom:var(--space-lg);">Score Weights</h2>
+    <p style="color:var(--text-secondary);margin-bottom:var(--space-lg);font-size:.875rem;">
+      <strong>Speed is never mixed into quality score.</strong> A model that writes perfect code but responds slowly
+      still scores 100 on quality. Speed has its own separate leaderboard.
+    </p>
+    <table>
+      <thead><tr><th>Category</th><th>Weight</th><th>What it measures</th></tr></thead>
+      <tbody>
+        <tr><td>💻 Code</td><td>30%</td><td>Functions that actually run and produce correct output</td></tr>
+        <tr><td>🧠 Reasoning</td><td>25%</td><td>Logic, math, and puzzle problems with known correct answers</td></tr>
+        <tr><td>📋 Instructions</td><td>15%</td><td>Ability to follow exact formatting requirements</td></tr>
+        <tr><td>🌍 Translation</td><td>10%</td><td>Correct target language script and vocabulary</td></tr>
+        <tr><td>⚡ Speed</td><td>separate</td><td>Tokens per second — own leaderboard, not in quality score</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Code tests -->
+  <div class="method-card">
+    <div class="method-header">
+      <span class="method-icon">💻</span>
+      <span class="method-title">Code Tests — Real Execution</span>
+      <span class="method-weight">30% of quality</span>
+    </div>
+    <p style="color:var(--text-secondary);font-size:.875rem;line-height:1.6;">
+      The model is asked to write a Python function. We then <strong>actually run that function</strong>
+      in a subprocess with test inputs and compare outputs to known correct values.
+      Syntax errors, wrong logic, or empty responses all score 0. There's no partial credit for
+      "it looks like it could work."
+    </p>
+    <div class="test-example">
+      <strong>Example — is_prime test:</strong><br><br>
+      Prompt: <em>"Write a Python function called is_prime(n) that returns True if n is prime..."</em><br><br>
+      We run: <code>is_prime(2) → True ✅  |  is_prime(4) → False ✅  |  is_prime(17) → True ✅</code><br><br>
+      Score = passed / total test cases × 100
+    </div>
+    <div class="test-example" style="margin-top:var(--space-sm)">
+      <strong>3 code problems tested:</strong> Prime checker · Fibonacci · Palindrome detection
+    </div>
+  </div>
+
+  <!-- Reasoning tests -->
+  <div class="method-card">
+    <div class="method-header">
+      <span class="method-icon">🧠</span>
+      <span class="method-title">Reasoning Tests — Verified Answers</span>
+      <span class="method-weight">25% of quality</span>
+    </div>
+    <p style="color:var(--text-secondary);font-size:.875rem;line-height:1.6;">
+      Each question has exactly one correct answer. The model's response is checked against
+      a list of accepted phrasings of that answer. We check only the first 50 characters
+      to avoid giving credit for accidentally mentioning the answer later.
+    </p>
+    <table>
+      <thead><tr><th>Question</th><th>Correct answer</th></tr></thead>
+      <tbody>
+        <tr><td>All bloops are razzies, all razzies are lazzies — are all bloops lazzies?</td><td>Yes</td></tr>
+        <tr><td>Train A: 120km/2h, Train B: 180km/3h — which is faster?</td><td>Same (both 60 km/h)</td></tr>
+        <tr><td>Fox/chicken/grain river crossing — what to take first?</td><td>Chicken</td></tr>
+        <tr><td>3 heads in a row — probability of 4th being heads?</td><td>1/2</td></tr>
+        <tr><td>How many letters in MISSISSIPPI?</td><td>11</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Instruction following -->
+  <div class="method-card">
+    <div class="method-header">
+      <span class="method-icon">📋</span>
+      <span class="method-title">Instruction Following</span>
+      <span class="method-weight">15% of quality</span>
+    </div>
+    <p style="color:var(--text-secondary);font-size:.875rem;line-height:1.6;">
+      Tests whether the model follows exact format requirements — critical for real-world API usage
+      where you need structured output.
+    </p>
+    <table>
+      <thead><tr><th>Task</th><th>How graded</th></tr></thead>
+      <tbody>
+        <tr><td>Return a JSON object with exactly 3 required keys</td><td>JSON parsed, all keys present = 100, some missing = 50, invalid JSON = 0</td></tr>
+        <tr><td>List exactly 5 programming languages, numbered 1-5</td><td>Count numbered lines: exact = 100, any number present = 50, none = 0</td></tr>
+        <tr><td>Describe Paris in exactly 3 sentences</td><td>Sentence count: exact = 100, ±1 = 50, off by more = 0</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Translation -->
+  <div class="method-card">
+    <div class="method-header">
+      <span class="method-icon">🌍</span>
+      <span class="method-title">Translation Tests</span>
+      <span class="method-weight">10% of quality</span>
+    </div>
+    <p style="color:var(--text-secondary);font-size:.875rem;line-height:1.6;">
+      Lightweight script and vocabulary detection. We don't measure translation quality deeply —
+      that would require human evaluation. We check that the model translated into the right language at all.
+    </p>
+    <table>
+      <thead><tr><th>Task</th><th>Check</th></tr></thead>
+      <tbody>
+        <tr><td>English → Russian</td><td>Cyrillic character ratio &gt; 20%</td></tr>
+        <tr><td>Russian → English</td><td>Latin character ratio &gt; 60%</td></tr>
+        <tr><td>English → Spanish</td><td>≥3 Spanish function words found (el, la, que, de, futuro...)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Speed -->
+  <div class="method-card">
+    <div class="method-header">
+      <span class="method-icon">⚡</span>
+      <span class="method-title">Speed Measurement</span>
+      <span class="method-weight">separate leaderboard</span>
+    </div>
+    <p style="color:var(--text-secondary);font-size:.875rem;line-height:1.6;">
+      We send 3 prompts of varying length (short, medium, long) and measure tokens per second
+      from the API response's usage field. The fastest model in a given run gets a normalised
+      score of 100; others are scaled proportionally.
+    </p>
+    <p style="color:var(--text-secondary);font-size:.875rem;margin-top:var(--space-md);">
+      ⚠️ Speed depends heavily on server load at the time of testing. Numbers reflect
+      real-world performance at 03:00 UTC but may differ at peak hours.
+    </p>
+  </div>
+
+  <!-- Size categories -->
+  <div class="method-card">
+    <div class="method-header">
+      <span class="method-icon">📐</span>
+      <span class="method-title">Size Categories</span>
+    </div>
+    <p style="color:var(--text-secondary);font-size:.875rem;line-height:1.6;">
+      Comparing a 4B model against a 120B model in a single ranking is misleading.
+      We group models by active parameter count and rank within groups.
+    </p>
+    <table>
+      <thead><tr><th>Category</th><th>Parameter range</th><th>Example models</th></tr></thead>
+      <tbody>
+        <tr><td>🟢 Small</td><td>≤ 10B</td><td>Llama 3.1 8B, Qwen 3 4B</td></tr>
+        <tr><td>🟡 Medium</td><td>10B – 50B</td><td>Llama 4 Scout 17B, Mistral Small 24B, Qwen 3 32B</td></tr>
+        <tr><td>🔴 Large</td><td>50B+</td><td>Llama 3.3 70B, GPT-OSS 120B, Nemotron 120B</td></tr>
+      </tbody>
+    </table>
+    <p style="color:var(--text-tertiary);font-size:.8rem;margin-top:var(--space-md);">
+      For MoE models (e.g. Llama 4 Scout 17Bx16E), we use the per-expert active parameter count
+      as the size for categorisation since that reflects actual compute at inference time.
+    </p>
+  </div>
+
+  <!-- Providers -->
+  <div class="method-card">
+    <div class="method-header">
+      <span class="method-icon">🔑</span>
+      <span class="method-title">Providers &amp; Free Tiers</span>
+    </div>
+    <table>
+      <thead><tr><th>Provider</th><th>Free tier</th><th>Limits</th><th>Get key</th></tr></thead>
+      <tbody>
+        <tr><td>Groq</td><td>✅ No credit card</td><td>30 req/min</td><td>console.groq.com</td></tr>
+        <tr><td>Google AI Studio</td><td>✅ No credit card</td><td>1500 req/day, 15 RPM</td><td>aistudio.google.com</td></tr>
+        <tr><td>OpenRouter</td><td>✅ :free models only</td><td>50 req/day (no balance)</td><td>openrouter.ai</td></tr>
+      </tbody>
+    </table>
+    <p style="color:var(--text-tertiary);font-size:.8rem;margin-top:var(--space-md);">
+      For Google: use the AI Studio key (aistudio.google.com), not the Google Cloud Console key.
+      Cloud Console keys require billing enabled even for free-tier usage.
+    </p>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html" class="footer-link">Rankings</a>
+    <a href="https://github.com/yourusername/ModelArena" class="footer-link">GitHub</a>
+  </div>
+  <p>ModelArena · Open source · All models tested are free to use</p>
+</footer>
+
+<script>
+(function(){
+  function applyTheme(t){document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t);}
+  var btn=document.getElementById('theme-toggle');
+  if(btn)btn.addEventListener('click',function(){
+    applyTheme((document.documentElement.getAttribute('data-theme')||'dark')==='dark'?'light':'dark');
+  });
+})();
+</script>
+
+<script>
+window.addEventListener('scroll', function() {
+  document.querySelector('.header').classList.toggle('scrolled', window.scrollY > 0);
+});
+</script>
+
+</body>
+</html>

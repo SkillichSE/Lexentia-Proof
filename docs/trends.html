@@ -10,7 +10,7 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trends - AI Benchmarker</title>
+  <title>Trends - ModelArena</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
@@ -19,11 +19,12 @@
   <header class="header">
     <div class="header-content">
       <a href="index.html" class="logo">
-        <span class="logo-icon">⚡</span>
-        <span>AI Benchmarker</span>
+        <span class="logo-icon">⚔️</span>
+        <span>ModelArena</span>
       </a>
       <nav class="nav">
-        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html" class="nav-link">Rankings</a>
+        <a href="methodology.html" class="nav-link">Methodology</a>
         <a href="search.html" class="nav-link">Search</a>
         <a href="news.html" class="nav-link">News</a>
         <a href="trends.html" class="nav-link active">Trends</a>
@@ -70,7 +71,7 @@
     <div class="footer-links">
       <a href="https://github.com/yourusername/ai-benchmarker" class="footer-link">GitHub</a>
       <a href="#" class="footer-link">API Docs</a>
-      <a href="#" class="footer-link">About</a>
+      <a href="about.html" class="footer-link">About</a>
     </div>
     <p>Open source project • Updated daily</p>
   </footer>
@@ -305,5 +306,12 @@
       }
     })();
   </script>
+
+<script>
+window.addEventListener('scroll', function() {
+  document.querySelector('.header').classList.toggle('scrolled', window.scrollY > 0);
+});
+</script>
+
 </body>
 </html>
