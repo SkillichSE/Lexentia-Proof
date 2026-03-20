@@ -39,7 +39,7 @@ async function loadNews() {
         <h3 style="color: var(--md-on-surface);">Unable to load news</h3>
         <p style="color: var(--md-on-surface-var); margin-top: 12px;">
           Please check back later or view our 
-          <a href="https://github.com/SkillichSE/ModelArena" target="_blank" style="color: var(--md-primary);">GitHub repository</a> 
+          <a href="https://github.com/SkillichSE/ModelLens" target="_blank" style="color: var(--md-primary);">GitHub repository</a> 
           for updates.
         </p>
       </div>

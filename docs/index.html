@@ -4,11 +4,11 @@
   <script>(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ModelArena — Free AI Model Rankings</title>
+  <title>ModelLens — Free AI Model Rankings</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta name="description" content="Daily automated benchmark of the best free AI models. Compare quality, speed, and reasoning across Groq, OpenRouter, and Google. Updated every 24 hours.">
   <meta name="keywords" content="best free AI model, free LLM benchmark, free GPT alternative, Llama vs Gemini free, open source AI comparison, free API models 2025">
-  <meta property="og:title" content="Best Free AI Models Ranked — ModelArena">
+  <meta property="og:title" content="Best Free AI Models Ranked — ModelLens">
   <meta property="og:description" content="Daily benchmark of free AI models. Real scores, real speed, tested automatically every 24 hours.">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="style.css">
@@ -51,7 +51,7 @@
 <body>
 <header class="header">
   <div class="header-content">
-    <a href="index.html" class="logo"><span class="logo-icon">⚔️</span><span>ModelArena</span></a>
+    <a href="index.html" class="logo"><span class="logo-icon">🔍</span><span>ModelLens</span></a>
           <nav class="nav">
         <a href="index.html" class="nav-link active">Rankings</a>
         <a href="methodology.html" class="nav-link">How it works</a>
@@ -67,7 +67,7 @@
 
 <div class="hero">
   <div class="hero-inner">
-    <h1 class="hero-title" id="hero-title">ModelArena</h1>
+    <h1 class="hero-title" id="hero-title">ModelLens</h1>
     <p class="hero-subtitle" id="hero-subtitle">Free AI models, ranked daily</p>
     <p class="hero-meta" id="last-update">Last updated: Loading...</p>
   </div>
@@ -177,7 +177,7 @@
        ═══════════════════════════════════════════════════════════════════ -->
 
   <section style="margin-top:80px;">
-    <h2>What is ModelArena?</h2>
+    <h2>What is ModelLens?</h2>
     <p style="font-size:1.05rem;line-height:1.7;color:var(--md-on-surface-var);max-width:800px;">
       An open-source benchmark that tests <strong>free AI models</strong> every 24 hours. 
       We measure real performance—speed, code quality, reasoning—so you can choose the best model 
@@ -259,7 +259,7 @@
 
 <footer class="footer">
   <div class="footer-links">
-    <a href="https://github.com/SkillichSE/ModelArena" class="footer-link">GitHub</a>
+    <a href="https://github.com/SkillichSE/ModelLens" class="footer-link">GitHub</a>
     <a href="about.html" class="footer-link">About</a>
     <a href="news.html" class="footer-link">News</a>
   </div>
@@ -449,7 +449,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
       const heroEl = document.getElementById('hero-title');
       if(heroEl) heroEl.innerHTML =
         `<em>${top.model_name}</em> leads quality &middot; <em>${fastest.model_name}</em> leads speed`;
-      document.title = `${top.model_name} #1 today — ModelArena`;
+      document.title = `${top.model_name} #1 today — ModelLens`;
     }
     const freeCount = results.length;
     const subEl = document.getElementById('hero-subtitle');
@@ -477,7 +477,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
       });
     }catch(e){}
   }catch(err){
-    console.error('ModelArena load error:', err);
+    console.error('ModelLens load error:', err);
     document.querySelector('main.container').innerHTML=`<div class="card" style="text-align:center;padding:48px;">
       <h2 style="margin-bottom:16px;">Could not load results</h2>
       <p style="color:var(--md-on-surface-var);font-family:monospace;font-size:12px;background:var(--md-surface-2);padding:12px;border-radius:8px;text-align:left;">${err.message}</p>

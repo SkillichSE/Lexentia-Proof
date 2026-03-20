@@ -1,5 +1,5 @@
 """
-ModelArena — AI Model Benchmarking Script
+ModelLens — AI Model Benchmarking Script
 
 Scoring:
   - Code:        actually runs generated functions, checks outputs vs expected
@@ -48,15 +48,66 @@ def _bucket(b):
     return "large"
 
 
+def _load_openrouter_keys():
+    """
+    Load all available OpenRouter API keys.
+    Supports:
+      - OPENROUTER_API_KEY          -- single key (legacy)
+      - OPENROUTER_API_KEY_1,
+        OPENROUTER_API_KEY_2, ...   -- multiple numbered keys
+    All non-empty values are returned as an ordered list (numbered keys first,
+    then the plain key if it isn't already in the list).
+    """
+    keys = []
+    # Numbered keys: OPENROUTER_API_KEY_1, _2, ... up to _10
+    for i in range(1, 11):
+        k = os.getenv(f"OPENROUTER_API_KEY_{i}", "").strip()
+        if k:
+            keys.append(k)
+    # Plain legacy key -- add only if not a duplicate
+    plain = os.getenv("OPENROUTER_API_KEY", "").strip()
+    if plain and plain not in keys:
+        keys.append(plain)
+    return keys
+
+
+# HTTP status codes that mean "this key is exhausted -- try the next one"
+_OR_ROTATE_STATUSES = {429, 402}
+
+
 class ModelBenchmark:
     def __init__(self, active_providers=None, active_models=None, merge=False):
         self.groq_key        = os.getenv("GROQ_API_KEY")
         self.google_key      = os.getenv("GOOGLE_API_KEY")
-        self.openrouter_key  = os.getenv("OPENROUTER_API_KEY")
+
+        # OpenRouter: ordered list of keys; _or_key_index tracks the active one
+        self._openrouter_keys = _load_openrouter_keys()
+        self._or_key_index    = 0
+
         self.active_providers = active_providers
         self.active_models    = active_models
         self.merge            = merge
         self.results          = []
+
+    @property
+    def openrouter_key(self):
+        """Return the currently active OpenRouter key, or None if none configured."""
+        if not self._openrouter_keys:
+            return None
+        return self._openrouter_keys[self._or_key_index]
+
+    def _rotate_openrouter_key(self):
+        """
+        Advance to the next OpenRouter key.
+        Returns True if a new key is available, False if all keys are exhausted.
+        """
+        if self._or_key_index + 1 < len(self._openrouter_keys):
+            self._or_key_index += 1
+            hint = self._openrouter_keys[self._or_key_index][:8] + "..."
+            print(f"\n    [openrouter] rate-limited → switching to key "
+                  f"#{self._or_key_index + 1}/{len(self._openrouter_keys)} ({hint})", end="")
+            return True
+        return False
 
     # ── HTTP ─────────────────────────────────────────────────────────────────
 
@@ -128,14 +179,37 @@ class ModelBenchmark:
             return {"success": False, "error": str(e)[:120]}
 
     def call_openrouter(self, model_id, prompt):
-        if not self.openrouter_key:
-            return {"success": False, "error": "OPENROUTER_API_KEY not set"}
-        return self._openai_post(OPENROUTER_API, {
-            "Authorization": f"Bearer {self.openrouter_key}",
-            "Content-Type": "application/json",
-            "HTTP-Referer": "https://modelarena.ai",
-            "X-Title": "ModelArena",
-        }, model_id, prompt, timeout=45)
+        if not self._openrouter_keys:
+            return {"success": False, "error": "No OPENROUTER_API_KEY configured"}
+
+        # Try each key in order; rotate on rate-limit / billing errors
+        attempts_start = self._or_key_index  # remember where we started this call
+        while True:
+            key = self.openrouter_key
+            result = self._openai_post(OPENROUTER_API, {
+                "Authorization": f"Bearer {key}",
+                "Content-Type": "application/json",
+                "HTTP-Referer": "https://modellens.ai",
+                "X-Title": "ModelLens",
+            }, model_id, prompt, timeout=45)
+
+            if result["success"]:
+                return result
+
+            # Check whether the error warrants trying the next key.
+            # _openai_post encodes the HTTP status as "Status NNN" in the error string.
+            err = result.get("error", "")
+            status_match = re.search(r"Status (\d+)", err)
+            status = int(status_match.group(1)) if status_match else 0
+
+            if status in _OR_ROTATE_STATUSES and self._rotate_openrouter_key():
+                # We successfully switched to a new key — retry the same request
+                continue
+
+            # Either not a rotatable error, or all keys are exhausted
+            if status in _OR_ROTATE_STATUSES and not self._rotate_openrouter_key():
+                print(f"\n    [openrouter] all {len(self._openrouter_keys)} key(s) exhausted", end="")
+            return result
 
     def _call(self, provider, model_id, prompt):
         return {"groq": self.call_groq, "google": self.call_google,
@@ -371,12 +445,17 @@ class ModelBenchmark:
     # ── Main ──────────────────────────────────────────────────────────────────
 
     def run_benchmark(self):
-        print("ModelArena Benchmark")
+        print("ModelLens Benchmark")
         print(f"Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
         key_map = {"groq": self.groq_key, "google": self.google_key,
-                   "openrouter": self.openrouter_key}
-        active = [p.capitalize() for p, k in key_map.items() if k]
+                   "openrouter": bool(self._openrouter_keys)}
+        active = []
+        if self.groq_key: active.append("Groq")
+        if self.google_key: active.append("Google")
+        if self._openrouter_keys:
+            n = len(self._openrouter_keys)
+            active.append(f"Openrouter ({n} key{'s' if n > 1 else ''})")
         print(f"Providers: {', '.join(active) or 'none'}")
 
         for provider, models in MODELS.items():

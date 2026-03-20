@@ -1,5 +1,5 @@
 """
-News Parser for ModelArena
+News Parser for ModelLens
 Fetches AI news from reliable RSS feeds.
 """
 

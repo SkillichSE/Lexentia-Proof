@@ -3,7 +3,7 @@
    Add AFTER style.css and style-light.css
    ═══════════════════════════════════════════════════════════════════════ */
 
-/* Hide verbose "Why ModelArena" section - keep site focused on data */
+/* Hide verbose "Why ModelLens" section - keep site focused on data */
 .why-section {
   display: none !important;
 }
