@@ -145,7 +145,8 @@ class ModelBenchmark:
 
     def eval_code(self, test_name, response):
         cfg = TESTS["code"][test_name]
-        fn_name = cfg["fn"]
+        # fn is explicit in config; fallback: parse from prompt
+        fn_name = cfg.get("fn") or cfg["prompt"].split("called ")[1].split("(")[0].strip()
 
         if not response:
             return {"pass_rate": 0.0, "passed": 0, "total": len(cfg["expected"]),
