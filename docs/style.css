@@ -742,7 +742,6 @@ h1,h2,h3 { font-family: 'Google Sans', sans-serif; font-weight: 400; line-height
   gap: 10px;
   position: relative;
 }
-.score-row:hover .score-tooltip { opacity: 1; }
 .score-label {
   width: 72px;
   font-size: 11px;
@@ -754,6 +753,7 @@ h1,h2,h3 { font-family: 'Google Sans', sans-serif; font-weight: 400; line-height
 }
 .score-bar-wrap {
   flex: 1;
+  min-width: 0;
   height: 6px;
   background: var(--color-surf-cont-high);
   border-radius: 3px;
@@ -761,9 +761,11 @@ h1,h2,h3 { font-family: 'Google Sans', sans-serif; font-weight: 400; line-height
   position: relative;
 }
 .score-bar-fill {
+  display: block;
   height: 100%;
   border-radius: 3px;
   transition: width .5s cubic-bezier(.4,0,.2,1);
+  min-width: 2px;
 }
 .fill-code   { background: var(--metric-code); }
 .fill-reason { background: var(--metric-reason); }
@@ -798,6 +800,7 @@ h1,h2,h3 { font-family: 'Google Sans', sans-serif; font-weight: 400; line-height
   box-shadow: var(--elev3);
   z-index: 30;
 }
+.score-row:hover .score-tooltip { opacity: 1; }
 
 .card-score-footer {
   border-top: 1px solid var(--color-outline-var);
