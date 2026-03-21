@@ -1,6 +1,6 @@
 {
   "date": "2026-03-21",
-  "timestamp": "2026-03-21T04:30:02.363990",
+  "timestamp": "2026-03-21T17:47:41.963974",
   "results": [
     {
       "model_id": "llama-3.1-8b",
@@ -9,27 +9,27 @@
       "size": "8B",
       "size_category": "small",
       "context": "128k",
-      "timestamp": "2026-03-21T04:27:55.516205",
+      "timestamp": "2026-03-21T17:44:59.449725",
       "tests": {
         "speed": {
-          "avg_tokens_per_sec": 582.05,
+          "avg_tokens_per_sec": 569.11,
           "details": [
             {
               "test": "simple",
-              "time": 0.229,
-              "tokens_per_sec": 253.24,
-              "tokens": 58
+              "time": 0.21,
+              "tokens_per_sec": 280.85,
+              "tokens": 59
             },
             {
               "test": "medium",
-              "time": 0.408,
-              "tokens_per_sec": 742.4,
-              "tokens": 303
+              "time": 0.39,
+              "tokens_per_sec": 755.86,
+              "tokens": 295
             },
             {
               "test": "long",
-              "time": 0.464,
-              "tokens_per_sec": 750.5,
+              "time": 0.519,
+              "tokens_per_sec": 670.61,
               "tokens": 348
             }
           ]
@@ -142,8 +142,8 @@
           ]
         },
         "reasoning": {
-          "score": 80.0,
-          "correct": 4,
+          "score": 60.0,
+          "correct": 3,
           "total": 5,
           "details": [
             {
@@ -156,13 +156,13 @@
               "test": "speed_math",
               "correct": false,
               "score": 0,
-              "answer_given": "To determine which train is faster, we need to calculate their speeds.\n\nThe firs"
+              "answer_given": "To determine which train is faster, we need to calculate their speeds.\n\nTrain 1:"
             },
             {
               "test": "river_crossing",
-              "correct": true,
-              "score": 100,
-              "answer_given": "Chicken."
+              "correct": false,
+              "score": 0,
+              "answer_given": "Grain"
             },
             {
               "test": "coin_flip",
@@ -221,9 +221,9 @@
           ]
         }
       },
-      "quality_score": 75.0,
-      "raw_speed": 582.05,
-      "overall_score": 75.0,
+      "quality_score": 70.0,
+      "raw_speed": 569.11,
+      "overall_score": 70.0,
       "speed_score": 100.0
     },
     {
@@ -233,27 +233,27 @@
       "size": "70B",
       "size_category": "large",
       "context": "128k",
-      "timestamp": "2026-03-21T04:28:34.435838",
+      "timestamp": "2026-03-21T17:45:37.040383",
       "tests": {
         "speed": {
-          "avg_tokens_per_sec": 350.65,
+          "avg_tokens_per_sec": 336.41,
           "details": [
             {
               "test": "simple",
-              "time": 0.289,
-              "tokens_per_sec": 211.0,
+              "time": 0.28,
+              "tokens_per_sec": 217.83,
               "tokens": 61
             },
             {
               "test": "medium",
-              "time": 0.68,
-              "tokens_per_sec": 403.23,
-              "tokens": 274
+              "time": 0.744,
+              "tokens_per_sec": 380.27,
+              "tokens": 283
             },
             {
               "test": "long",
-              "time": 0.795,
-              "tokens_per_sec": 437.72,
+              "time": 0.846,
+              "tokens_per_sec": 411.14,
               "tokens": 348
             }
           ]
@@ -392,7 +392,7 @@
               "test": "coin_flip",
               "correct": false,
               "score": 0,
-              "answer_given": "Since the coin is fair, the outcome of each flip is independent of the previous "
+              "answer_given": "Since the coin is fair, the probability of getting heads on any given flip is 1/"
             },
             {
               "test": "counting",
@@ -446,7 +446,7 @@
         }
       },
       "quality_score": 70.0,
-      "raw_speed": 350.65,
+      "raw_speed": 336.41,
       "overall_score": 70.0,
       "speed_score": 100.0
     },
@@ -457,27 +457,27 @@
       "size": "32B",
       "size_category": "medium",
       "context": "32k",
-      "timestamp": "2026-03-21T04:29:14.049887",
+      "timestamp": "2026-03-21T17:46:16.781817",
       "tests": {
         "speed": {
-          "avg_tokens_per_sec": 360.73,
+          "avg_tokens_per_sec": 361.64,
           "details": [
             {
               "test": "simple",
-              "time": 0.904,
-              "tokens_per_sec": 349.52,
+              "time": 0.889,
+              "tokens_per_sec": 355.29,
               "tokens": 316
             },
             {
               "test": "medium",
-              "time": 0.885,
-              "tokens_per_sec": 362.57,
+              "time": 0.897,
+              "tokens_per_sec": 357.8,
               "tokens": 321
             },
             {
               "test": "long",
-              "time": 0.873,
-              "tokens_per_sec": 370.09,
+              "time": 0.869,
+              "tokens_per_sec": 371.83,
               "tokens": 323
             }
           ]
@@ -494,31 +494,31 @@
                 {
                   "input": "2",
                   "expected": "True",
-                  "got": "File \"<string>\", line 6\n    Then, for numbers 2 and up, I need to check if any number between 2 and ",
+                  "got": "File \"<string>\", line 1\n    <think>\n    ^\nSyntaxError: invalid syntax",
                   "passed": false
                 },
                 {
                   "input": "3",
                   "expected": "True",
-                  "got": "File \"<string>\", line 6\n    Then, for numbers 2 and up, I need to check if any number between 2 and ",
+                  "got": "File \"<string>\", line 1\n    <think>\n    ^\nSyntaxError: invalid syntax",
                   "passed": false
                 },
                 {
                   "input": "4",
                   "expected": "False",
-                  "got": "File \"<string>\", line 6\n    Then, for numbers 2 and up, I need to check if any number between 2 and ",
+                  "got": "File \"<string>\", line 1\n    <think>\n    ^\nSyntaxError: invalid syntax",
                   "passed": false
                 },
                 {
                   "input": "17",
                   "expected": "True",
-                  "got": "File \"<string>\", line 6\n    Then, for numbers 2 and up, I need to check if any number between 2 and ",
+                  "got": "File \"<string>\", line 1\n    <think>\n    ^\nSyntaxError: invalid syntax",
                   "passed": false
                 },
                 {
                   "input": "100",
                   "expected": "False",
-                  "got": "File \"<string>\", line 6\n    Then, for numbers 2 and up, I need to check if any number between 2 and ",
+                  "got": "File \"<string>\", line 1\n    <think>\n    ^\nSyntaxError: invalid syntax",
                   "passed": false
                 }
               ]
@@ -564,25 +564,25 @@
                 {
                   "input": "'racecar'",
                   "expected": "True",
-                  "got": "File \"<string>\", line 12\n    So first, I'll process the string by replacing all spaces. Wait, but wh",
+                  "got": "File \"<string>\", line 14\n    How to remove spaces? Well, I can use the replace method to take out al",
                   "passed": false
                 },
                 {
                   "input": "'hello'",
                   "expected": "False",
-                  "got": "File \"<string>\", line 12\n    So first, I'll process the string by replacing all spaces. Wait, but wh",
+                  "got": "File \"<string>\", line 14\n    How to remove spaces? Well, I can use the replace method to take out al",
                   "passed": false
                 },
                 {
                   "input": "'A man a plan a canal Panama'",
                   "expected": "True",
-                  "got": "File \"<string>\", line 12\n    So first, I'll process the string by replacing all spaces. Wait, but wh",
+                  "got": "File \"<string>\", line 14\n    How to remove spaces? Well, I can use the replace method to take out al",
                   "passed": false
                 },
                 {
                   "input": "'world'",
                   "expected": "False",
-                  "got": "File \"<string>\", line 12\n    So first, I'll process the string by replacing all spaces. Wait, but wh",
+                  "got": "File \"<string>\", line 14\n    How to remove spaces? Well, I can use the replace method to take out al",
                   "passed": false
                 }
               ]
@@ -643,7 +643,7 @@
             {
               "test": "word_count",
               "score": 0,
-              "found": 22,
+              "found": 18,
               "expected": 3
             }
           ]
@@ -654,7 +654,7 @@
             {
               "test": "en_ru",
               "score": 0,
-              "cyrillic_ratio": 0.15
+              "cyrillic_ratio": 0.14
             },
             {
               "test": "ru_en",
@@ -670,9 +670,123 @@
         }
       },
       "quality_score": 21.7,
-      "raw_speed": 360.73,
+      "raw_speed": 361.64,
       "overall_score": 21.7,
       "speed_score": 100.0
+    },
+    {
+      "model_id": "mistral-small-3.1",
+      "model_name": "Mistral Small 3.1 24B",
+      "provider": "OpenRouter",
+      "size": "24B",
+      "size_category": "medium",
+      "context": "128k",
+      "timestamp": "2026-03-21T17:47:04.692855",
+      "tests": {
+        "speed": {
+          "avg_tokens_per_sec": 0,
+          "details": []
+        },
+        "code": {
+          "avg_score": 0.0,
+          "details": [
+            {
+              "test": "prime",
+              "pass_rate": 0.0,
+              "passed": 0,
+              "total": 5,
+              "error": "Status 429 - Provider returned error"
+            },
+            {
+              "test": "fibonacci",
+              "pass_rate": 0.0,
+              "passed": 0,
+              "total": 4,
+              "error": "Status 429 - Provider returned error"
+            },
+            {
+              "test": "palindrome",
+              "pass_rate": 0.0,
+              "passed": 0,
+              "total": 4,
+              "error": "Status 429 - Provider returned error"
+            }
+          ]
+        },
+        "reasoning": {
+          "score": 0.0,
+          "correct": 0,
+          "total": 5,
+          "details": [
+            {
+              "test": "syllogism",
+              "correct": false,
+              "score": 0
+            },
+            {
+              "test": "speed_math",
+              "correct": false,
+              "score": 0
+            },
+            {
+              "test": "river_crossing",
+              "correct": false,
+              "score": 0
+            },
+            {
+              "test": "coin_flip",
+              "correct": false,
+              "score": 0
+            },
+            {
+              "test": "counting",
+              "correct": false,
+              "score": 0
+            }
+          ]
+        },
+        "instruction": {
+          "avg_score": 0.0,
+          "details": [
+            {
+              "test": "json",
+              "score": 0,
+              "error": "Status 429 - Rate limit exceeded: limit_rpm/mistralai/mistral-small-3.1-24b-instruct-2503/ecbdc9f1-ecca-4f91-83cf-b3495a60e874. High "
+            },
+            {
+              "test": "list",
+              "score": 0,
+              "error": "Status 429 - Rate limit exceeded: limit_rpm/mistralai/mistral-small-3.1-24b-instruct-2503/ecbdc9f1-ecca-4f91-83cf-b3495a60e874. High "
+            },
+            {
+              "test": "word_count",
+              "score": 0,
+              "error": "Status 429 - Rate limit exceeded: limit_rpm/mistralai/mistral-small-3.1-24b-instruct-2503/ecbdc9f1-ecca-4f91-83cf-b3495a60e874. High "
+            }
+          ]
+        },
+        "translation": {
+          "avg_score": 0.0,
+          "details": [
+            {
+              "test": "en_ru",
+              "score": 0
+            },
+            {
+              "test": "ru_en",
+              "score": 0
+            },
+            {
+              "test": "en_es",
+              "score": 0
+            }
+          ]
+        }
+      },
+      "quality_score": 0.0,
+      "raw_speed": 0,
+      "overall_score": 0.0,
+      "speed_score": 0.0
     }
   ]
 }

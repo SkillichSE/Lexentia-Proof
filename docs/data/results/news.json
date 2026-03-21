@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-21T04:30:18.637895+00:00",
+  "updated": "2026-03-21T17:47:58.327676+00:00",
   "count": 30,
   "items": [
     {
@@ -129,18 +129,18 @@
       "summary": ""
     },
     {
-      "title": "OpenAI Japan announces Japan Teen Safety Blueprint to put teen safety first",
-      "link": "https://openai.com/index/japan-teen-safety-blueprint",
-      "date": "2026-03-17T10:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "OpenAI Japan announces the Japan Teen Safety Blueprint, introducing stronger age protections, parental controls, and well-being safeguards for teens using generative AI."
-    },
-    {
       "title": "Introducing GPT-5.4 mini and nano",
       "link": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano",
       "date": "2026-03-17T10:00:00+00:00",
       "source": "OpenAI",
       "summary": "GPT-5.4 mini and nano are smaller, faster versions of GPT-5.4 optimized for coding, tool use, multimodal reasoning, and high-volume API and sub-agent workloads."
+    },
+    {
+      "title": "OpenAI Japan announces Japan Teen Safety Blueprint to put teen safety first",
+      "link": "https://openai.com/index/japan-teen-safety-blueprint",
+      "date": "2026-03-17T10:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "OpenAI Japan announces the Japan Teen Safety Blueprint, introducing stronger age protections, parental controls, and well-being safeguards for teens using generative AI."
     },
     {
       "title": "Mamba-3",
