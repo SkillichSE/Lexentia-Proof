@@ -1,13 +1,12 @@
 MODELS = {
     "groq": {
-        # PRODUCTION MODELS
         "llama-3.1-8b": {
             "id": "llama-3.1-8b-instant",
             "name": "Llama 3.1 8B Instant",
             "provider": "Groq",
             "size": "8B",
             "size_category": "small",
-            "context": "131k"
+            "context": "128k"
         },
         "llama-3.2-1b": {
             "id": "llama-3.2-1b-preview",
@@ -31,7 +30,7 @@ MODELS = {
             "provider": "Groq",
             "size": "70B",
             "size_category": "large",
-            "context": "131k"
+            "context": "128k"
         },
         "llama-3.3-70b-specdec": {
             "id": "llama-3.3-70b-specdec",
@@ -52,7 +51,6 @@ MODELS = {
     },
     
     "openrouter": {
-        # META LLAMA MODELS
         "llama-3.2-1b": {
             "id": "meta-llama/llama-3.2-1b-instruct:free",
             "name": "Llama 3.2 1B",
@@ -93,15 +91,13 @@ MODELS = {
             "size_category": "large",
             "context": "131k"
         },
-        
-        # QWEN MODELS
         "qwen-2.5-7b": {
             "id": "qwen/qwen-2.5-7b-instruct:free",
             "name": "Qwen 2.5 7B",
             "provider": "OpenRouter",
             "size": "7B",
             "size_category": "small",
-            "context": "32k"
+            "context": "128k"
         },
         "qwen-2.5-72b": {
             "id": "qwen/qwen-2.5-72b-instruct:free",
@@ -111,8 +107,6 @@ MODELS = {
             "size_category": "large",
             "context": "131k"
         },
-        
-        # MISTRAL MODELS
         "mistral-7b": {
             "id": "mistralai/mistral-7b-instruct:free",
             "name": "Mistral 7B",
@@ -129,8 +123,6 @@ MODELS = {
             "size_category": "medium",
             "context": "128k"
         },
-        
-        # GOOGLE MODELS
         "gemma-2-9b": {
             "id": "google/gemma-2-9b-it:free",
             "name": "Gemma 2 9B",
@@ -139,8 +131,6 @@ MODELS = {
             "size_category": "small",
             "context": "8k"
         },
-        
-        # MICROSOFT PHI MODELS
         "phi-3-medium": {
             "id": "microsoft/phi-3-medium-128k-instruct:free",
             "name": "Phi-3 Medium 14B",
@@ -157,8 +147,6 @@ MODELS = {
             "size_category": "small",
             "context": "128k"
         },
-        
-        # COMMUNITY MODELS
         "mythomax-13b": {
             "id": "gryphe/mythomax-l2-13b:free",
             "name": "MythoMax 13B",
@@ -175,7 +163,7 @@ MODELS = {
             "size_category": "small",
             "context": "4k"
         },
-    },
+    }
 }
 
 TESTS = {
@@ -265,6 +253,6 @@ TESTS = {
 }
 
 RATE_LIMITS = {
-    "groq": 30,
+    "groq": 25,
     "openrouter": 8
 }
