@@ -35,20 +35,14 @@ MODELS = {
             "provider": "Groq", "size": "17B",
             "size_category": "medium", "context": "131k"
         },
-        "llama-4-maverick": {
-            "id": "meta-llama/llama-4-maverick-17b-128e-instruct",
-            "name": "Llama 4 Maverick 17B",
-            "provider": "Groq", "size": "17B",
-            "size_category": "medium", "context": "131k"
-        },
         "qwen3-32b": {
-            "id": "qwen/qwen-3-32b",
+            "id": "qwen/qwen3-32b",
             "name": "Qwen 3 32B",
             "provider": "Groq", "size": "32B",
             "size_category": "medium", "context": "32k"
         },
         "kimi-k2": {
-            "id": "moonshotai/kimi-k2-instruct-0905",
+            "id": "moonshotai/kimi-k2-instruct",
             "name": "Kimi K2",
             "provider": "Groq", "size": "N/A",
             "size_category": "unknown", "context": "131k"
