@@ -1,7 +1,4 @@
-<!-- Add this code to news.html after loadNews() function -->
-
 <script>
-// Enhanced news display with placeholder
 async function loadNews() {
   try {
     const response = await fetch('data/results/news.json');
@@ -12,7 +9,6 @@ async function loadNews() {
     
     allNews = data.items || [];
     
-    // If no news, show helpful placeholder
     if (allNews.length === 0) {
       document.getElementById('news-feed').innerHTML = `
         <div style="text-align: center; padding: 64px 24px;">

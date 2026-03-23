@@ -12,7 +12,7 @@ SAMBANOVA_API  = "https://api.sambanova.ai/v1/chat/completions"
 
 REQUEST_DELAY = {"groq": 2, "google": 6, "openrouter": 4, "cerebras": 1, "together": 2}
 
-# Per-key jitter: adds random delay to avoid thundering herd on same RPM window
+                                                                               
 import random
 
 REASONING_ANSWERS = {
@@ -24,9 +24,17 @@ REASONING_ANSWERS = {
 }
 
 _OR_ROTATE_STATUSES = {429, 402}
-# How long (seconds) a key stays "at limit" after a 429/402.
-# OR resets RPM every 60s, so 62s covers it.
+                                                            
+                                            
 _OR_KEY_COOLDOWN = 62
+_FATAL_MODEL_PATTERNS = (
+    "decommissioned",
+    "no longer supported",
+    "not found",
+    "unable to access model",
+    "credit limit exceeded",
+    "all keys at limit",
+)
 
 
 def size_category(size_str):
@@ -50,7 +58,7 @@ def _bucket(b):
 
 def _load_openrouter_keys():
     keys = []
-    # Numbered keys: OPENROUTER_API_KEY_1, _2, _3, ... until gap
+                                                                
     i = 1
     while True:
         k = os.getenv(f"OPENROUTER_API_KEY_{i}", "").strip()
@@ -58,7 +66,7 @@ def _load_openrouter_keys():
             break
         keys.append(k)
         i += 1
-    # Also accept plain OPENROUTER_API_KEY
+                                          
     plain = os.getenv("OPENROUTER_API_KEY", "").strip()
     if plain and plain not in keys:
         keys.append(plain)
@@ -74,7 +82,7 @@ class ModelBenchmark:
         self.sambanova_key    = os.getenv("SAMBANOVA_API_KEY")
         self._openrouter_keys = _load_openrouter_keys()
         self._or_key_index    = 0
-        # Maps key index -> timestamp when it becomes available again
+                                                                     
         self._or_key_limited_until = {}
         self.active_providers = active_providers
         self.active_models    = active_models
@@ -108,7 +116,7 @@ class ModelBenchmark:
         """Check all OR keys in parallel with a tiny prompt. Returns True if at least one works."""
         import concurrent.futures
         now = time.time()
-        # Skip keys already known to be limited
+                                               
         candidates = [i for i, k in enumerate(self._openrouter_keys)
                       if now >= self._or_key_limited_until.get(i, 0)]
         if not candidates:
@@ -142,7 +150,7 @@ class ModelBenchmark:
                     self._mark_or_key_limited(idx)
                 elif status == 200:
                     any_ok = True
-                # other errors (timeout, 5xx) — leave key available, will retry properly
+                                                                                        
         return any_ok
 
     def _openai_post(self, url, headers, model_id, prompt, timeout=45):
@@ -214,7 +222,7 @@ class ModelBenchmark:
     def call_openrouter(self, model_id, prompt):
         if not self._openrouter_keys:
             return {"success": False, "error": "no OPENROUTER_API_KEY configured"}
-        # Find a non-limited key to start from
+                                              
         start_idx = self._next_available_or_key()
         if start_idx is None:
             return {"success": False, "error": "all keys at limit (skipped)"}
@@ -223,7 +231,7 @@ class ModelBenchmark:
         while True:
             idx = self._or_key_index
             if idx in tried:
-                # We have looped — all tried keys failed
+                                                        
                 print(f"\n    [openrouter] all {len(self._openrouter_keys)} keys at limit, skipping", flush=True)
                 return {"success": False, "error": "all keys at limit (skipped)"}
             tried.add(idx)
@@ -247,7 +255,7 @@ class ModelBenchmark:
                 if next_idx is not None and next_idx not in tried:
                     self._or_key_index = next_idx
                     continue
-                # All available keys exhausted
+                                              
                 print(f"\n    [openrouter] all {len(self._openrouter_keys)} keys at limit, skipping", flush=True)
                 return {"success": False, "error": "all keys at limit (skipped)"}
             return result
@@ -282,7 +290,7 @@ class ModelBenchmark:
         if not fn:
             return {"success": False, "error": f"unknown provider: {provider}"}
         result = fn(model_id, prompt)
-        # Fallback chain: if primary fails with 429, try fallback providers
+                                                                           
         if not result["success"] and "429" in result.get("error", ""):
             model_info = self._current_model_info
             fallbacks = model_info.get("fallbacks", [])
@@ -297,6 +305,12 @@ class ModelBenchmark:
                         fb_result["via_fallback"] = f"{fb_provider}/{fb_model_id}"
                         return fb_result
         return result
+
+    def _is_fatal_model_error(self, err):
+        if not err:
+            return False
+        low = err.lower()
+        return any(p in low for p in _FATAL_MODEL_PATTERNS)
 
     def eval_code(self, test_name, response):
         cfg = TESTS["code"][test_name]
@@ -384,15 +398,15 @@ class ModelBenchmark:
     def run_model(self, provider, model_info):
         delay = REQUEST_DELAY.get(provider, 2)
         mid   = model_info["id"]
-        self._current_model_info = model_info  # for fallback lookup
+        self._current_model_info = model_info                       
         success_calls = 0
         if provider == "openrouter":
-            self._or_key_index = 0  # start from key #1 for each new model
-            # Quick parallel check: if ALL keys are at limit, skip this model entirely
+            self._or_key_index = 0                                        
+                                                                                      
             if self._next_available_or_key() is None:
                 print("  [openrouter] all keys at limit — skipping model")
                 return None
-            # If we have keys to try but first one might be limited, do a fast parallel ping
+                                                                                            
             has_live = self._ping_openrouter_keys_parallel(mid)
             if not has_live:
                 print("  [openrouter] all keys at limit — skipping model")
@@ -418,6 +432,9 @@ class ModelBenchmark:
                                   "tokens_per_sec": r["tokens_per_sec"], "tokens": r["tokens"]})
             else:
                 print(f"\n    [{name}] {r['error']}", end="")
+                if self._is_fatal_model_error(r.get("error")):
+                    print("\n  [skip] fatal model error")
+                    return None
             time.sleep(delay)
         avg_tps = round(sum(x["tokens_per_sec"] for x in speed_raw) / len(speed_raw), 2) if speed_raw else 0
         result["tests"]["speed"] = {"avg_tokens_per_sec": avg_tps, "details": speed_raw}

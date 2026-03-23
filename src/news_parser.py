@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from email.utils import parsedate_to_datetime
 
-# RSS feeds that reliably cover AI model releases and updates
+                                                             
 RSS_FEEDS = [
     {
         "url": "https://huggingface.co/blog/feed.xml",
@@ -61,7 +61,7 @@ KEYWORDS_ALWAYS_INCLUDE = [
     "open-source", "api", "fine-tun", "instruct", "inference"
 ]
 
-# feedparser timeout workaround — set socket timeout via urllib
+                                                               
 import socket
 _DEFAULT_TIMEOUT = 15
 
@@ -77,7 +77,7 @@ def parse_date(entry) -> str:
             return dt.astimezone(timezone.utc).isoformat()
         except Exception:
             pass
-        # Already ISO-ish
+                         
         if "T" in val or val.count("-") >= 2:
             return val
     return datetime.now(timezone.utc).isoformat()
@@ -104,7 +104,7 @@ def fetch_feed_with_retry(url: str, retries: int = 2) -> feedparser.FeedParserDi
         for attempt in range(retries + 1):
             try:
                 feed = feedparser.parse(url)
-                # feedparser returns bozo=True on errors but still may have entries
+                                                                                   
                 if feed.entries or attempt == retries:
                     return feed
                 time.sleep(2)
@@ -133,9 +133,9 @@ def fetch_all_news() -> list:
 
                 if not title or title in seen_titles:
                     continue
-                # Relaxed filtering: include if title alone matches, even without summary
+                                                                                         
                 if not is_relevant(title, summary, feed_cfg["keywords"]):
-                    # Still include any entry from trusted AI-focused sources
+                                                                             
                     if feed_cfg["source"] not in ("Hugging Face", "Together AI", "OpenAI",
                                                    "Anthropic", "Mistral AI"):
                         continue
@@ -154,10 +154,10 @@ def fetch_all_news() -> list:
         except Exception as e:
             print(f"⚠️  error: {e}")
 
-    # Sort newest first
+                       
     items.sort(key=lambda x: x["date"], reverse=True)
 
-    # Deduplicate by title again (cross-feed)
+                                             
     seen = set()
     unique = []
     for item in items:

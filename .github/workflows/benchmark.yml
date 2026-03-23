@@ -28,16 +28,58 @@ jobs:
 
       - run: pip install requests feedparser
 
-      - name: Benchmark all Groq free models
+      - name: Groq — llama-3.1-8b
         continue-on-error: true
-        timeout-minutes: 70
+        timeout-minutes: 12
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        run: cd src && python benchmark.py --providers groq
+        run: cd src && python benchmark.py --providers groq --models llama-3.1-8b
 
-      - name: Benchmark all OpenRouter free models
+      - name: Groq — llama-3.3-70b
         continue-on-error: true
-        timeout-minutes: 100
+        timeout-minutes: 12
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: cd src && python benchmark.py --providers groq --models llama-3.3-70b --merge
+
+      - name: Groq — gpt-oss-120b
+        continue-on-error: true
+        timeout-minutes: 12
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: cd src && python benchmark.py --providers groq --models gpt-oss-120b --merge
+
+      - name: Groq — gpt-oss-20b
+        continue-on-error: true
+        timeout-minutes: 12
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: cd src && python benchmark.py --providers groq --models gpt-oss-20b --merge
+
+      - name: Groq — llama-4-scout
+        continue-on-error: true
+        timeout-minutes: 12
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: cd src && python benchmark.py --providers groq --models llama-4-scout --merge
+
+      - name: Groq — qwen3-32b
+        continue-on-error: true
+        timeout-minutes: 12
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: cd src && python benchmark.py --providers groq --models qwen3-32b --merge
+
+      - name: Groq — kimi-k2
+        continue-on-error: true
+        timeout-minutes: 12
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: cd src && python benchmark.py --providers groq --models kimi-k2 --merge
+
+      - name: OpenRouter — batch 1
+        continue-on-error: true
+        timeout-minutes: 45
         env:
           OPENROUTER_API_KEY_1: ${{ secrets.OPENROUTER_API_KEY_1 }}
           OPENROUTER_API_KEY_2: ${{ secrets.OPENROUTER_API_KEY_2 }}
@@ -49,35 +91,176 @@ jobs:
           OPENROUTER_API_KEY_8: ${{ secrets.OPENROUTER_API_KEY_8 }}
           OPENROUTER_API_KEY_9: ${{ secrets.OPENROUTER_API_KEY_9 }}
           OPENROUTER_API_KEY_10: ${{ secrets.OPENROUTER_API_KEY_10 }}
-        run: cd src && python benchmark.py --providers openrouter --merge
+        run: cd src && python benchmark.py --providers openrouter --models nemotron-super-120b,nemotron-nano-30b,nemotron-nano-12b,nemotron-nano-9b,trinity-large,trinity-mini --merge
 
-      - name: Benchmark all Google free models
+      - name: OpenRouter — batch 2
         continue-on-error: true
-        timeout-minutes: 50
+        timeout-minutes: 45
+        env:
+          OPENROUTER_API_KEY_1: ${{ secrets.OPENROUTER_API_KEY_1 }}
+          OPENROUTER_API_KEY_2: ${{ secrets.OPENROUTER_API_KEY_2 }}
+          OPENROUTER_API_KEY_3: ${{ secrets.OPENROUTER_API_KEY_3 }}
+          OPENROUTER_API_KEY_4: ${{ secrets.OPENROUTER_API_KEY_4 }}
+          OPENROUTER_API_KEY_5: ${{ secrets.OPENROUTER_API_KEY_5 }}
+          OPENROUTER_API_KEY_6: ${{ secrets.OPENROUTER_API_KEY_6 }}
+          OPENROUTER_API_KEY_7: ${{ secrets.OPENROUTER_API_KEY_7 }}
+          OPENROUTER_API_KEY_8: ${{ secrets.OPENROUTER_API_KEY_8 }}
+          OPENROUTER_API_KEY_9: ${{ secrets.OPENROUTER_API_KEY_9 }}
+          OPENROUTER_API_KEY_10: ${{ secrets.OPENROUTER_API_KEY_10 }}
+        run: cd src && python benchmark.py --providers openrouter --models step-3.5-flash,gemma-3-27b,gemma-3-12b,gemma-3-4b,gemma-3n-e4b,gemma-3n-e2b --merge
+
+      - name: OpenRouter — batch 3
+        continue-on-error: true
+        timeout-minutes: 45
+        env:
+          OPENROUTER_API_KEY_1: ${{ secrets.OPENROUTER_API_KEY_1 }}
+          OPENROUTER_API_KEY_2: ${{ secrets.OPENROUTER_API_KEY_2 }}
+          OPENROUTER_API_KEY_3: ${{ secrets.OPENROUTER_API_KEY_3 }}
+          OPENROUTER_API_KEY_4: ${{ secrets.OPENROUTER_API_KEY_4 }}
+          OPENROUTER_API_KEY_5: ${{ secrets.OPENROUTER_API_KEY_5 }}
+          OPENROUTER_API_KEY_6: ${{ secrets.OPENROUTER_API_KEY_6 }}
+          OPENROUTER_API_KEY_7: ${{ secrets.OPENROUTER_API_KEY_7 }}
+          OPENROUTER_API_KEY_8: ${{ secrets.OPENROUTER_API_KEY_8 }}
+          OPENROUTER_API_KEY_9: ${{ secrets.OPENROUTER_API_KEY_9 }}
+          OPENROUTER_API_KEY_10: ${{ secrets.OPENROUTER_API_KEY_10 }}
+        run: cd src && python benchmark.py --providers openrouter --models lfm-2.5-instruct,lfm-2.5-thinking,llama-3.3-70b,llama-3.2-3b,qwen3-coder,qwen3-next-80b --merge
+
+      - name: OpenRouter — batch 4
+        continue-on-error: true
+        timeout-minutes: 45
+        env:
+          OPENROUTER_API_KEY_1: ${{ secrets.OPENROUTER_API_KEY_1 }}
+          OPENROUTER_API_KEY_2: ${{ secrets.OPENROUTER_API_KEY_2 }}
+          OPENROUTER_API_KEY_3: ${{ secrets.OPENROUTER_API_KEY_3 }}
+          OPENROUTER_API_KEY_4: ${{ secrets.OPENROUTER_API_KEY_4 }}
+          OPENROUTER_API_KEY_5: ${{ secrets.OPENROUTER_API_KEY_5 }}
+          OPENROUTER_API_KEY_6: ${{ secrets.OPENROUTER_API_KEY_6 }}
+          OPENROUTER_API_KEY_7: ${{ secrets.OPENROUTER_API_KEY_7 }}
+          OPENROUTER_API_KEY_8: ${{ secrets.OPENROUTER_API_KEY_8 }}
+          OPENROUTER_API_KEY_9: ${{ secrets.OPENROUTER_API_KEY_9 }}
+          OPENROUTER_API_KEY_10: ${{ secrets.OPENROUTER_API_KEY_10 }}
+        run: cd src && python benchmark.py --providers openrouter --models qwen3-4b,mistral-small-3.1,hermes-405b,dolphin-mistral-24b,glm-4.5-air,gpt-oss-120b-openrouter --merge
+
+      - name: OpenRouter — batch 5
+        continue-on-error: true
+        timeout-minutes: 45
+        env:
+          OPENROUTER_API_KEY_1: ${{ secrets.OPENROUTER_API_KEY_1 }}
+          OPENROUTER_API_KEY_2: ${{ secrets.OPENROUTER_API_KEY_2 }}
+          OPENROUTER_API_KEY_3: ${{ secrets.OPENROUTER_API_KEY_3 }}
+          OPENROUTER_API_KEY_4: ${{ secrets.OPENROUTER_API_KEY_4 }}
+          OPENROUTER_API_KEY_5: ${{ secrets.OPENROUTER_API_KEY_5 }}
+          OPENROUTER_API_KEY_6: ${{ secrets.OPENROUTER_API_KEY_6 }}
+          OPENROUTER_API_KEY_7: ${{ secrets.OPENROUTER_API_KEY_7 }}
+          OPENROUTER_API_KEY_8: ${{ secrets.OPENROUTER_API_KEY_8 }}
+          OPENROUTER_API_KEY_9: ${{ secrets.OPENROUTER_API_KEY_9 }}
+          OPENROUTER_API_KEY_10: ${{ secrets.OPENROUTER_API_KEY_10 }}
+        run: cd src && python benchmark.py --providers openrouter --models gpt-oss-20b-openrouter,minimax-m2.5 --merge
+
+      - name: Google — gemini-2.5-flash
+        continue-on-error: true
+        timeout-minutes: 20
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-        run: cd src && python benchmark.py --providers google --merge
+        run: cd src && python benchmark.py --providers google --models gemini-2.5-flash --merge
 
-      - name: Benchmark all SambaNova free models
+      - name: Google — gemini-2.5-flash-lite
         continue-on-error: true
-        timeout-minutes: 50
+        timeout-minutes: 20
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: cd src && python benchmark.py --providers google --models gemini-2.5-flash-lite --merge
+
+      - name: Google — gemma-3-27b-google
+        continue-on-error: true
+        timeout-minutes: 20
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: cd src && python benchmark.py --providers google --models gemma-3-27b-google --merge
+
+      - name: SambaNova — llama-4-maverick
+        continue-on-error: true
+        timeout-minutes: 20
         env:
           SAMBANOVA_API_KEY: ${{ secrets.SAMBANOVA_API_KEY }}
-        run: cd src && python benchmark.py --providers sambanova --merge
+        run: cd src && python benchmark.py --providers sambanova --models llama-4-maverick --merge
 
-      - name: Benchmark all Cerebras free models
+      - name: SambaNova — llama-4-scout-sn
         continue-on-error: true
-        timeout-minutes: 35
+        timeout-minutes: 20
+        env:
+          SAMBANOVA_API_KEY: ${{ secrets.SAMBANOVA_API_KEY }}
+        run: cd src && python benchmark.py --providers sambanova --models llama-4-scout-sn --merge
+
+      - name: SambaNova — llama-3.3-70b-sn
+        continue-on-error: true
+        timeout-minutes: 20
+        env:
+          SAMBANOVA_API_KEY: ${{ secrets.SAMBANOVA_API_KEY }}
+        run: cd src && python benchmark.py --providers sambanova --models llama-3.3-70b-sn --merge
+
+      - name: SambaNova — llama-3.1-405b-sn
+        continue-on-error: true
+        timeout-minutes: 20
+        env:
+          SAMBANOVA_API_KEY: ${{ secrets.SAMBANOVA_API_KEY }}
+        run: cd src && python benchmark.py --providers sambanova --models llama-3.1-405b-sn --merge
+
+      - name: SambaNova — deepseek-r1-sn
+        continue-on-error: true
+        timeout-minutes: 20
+        env:
+          SAMBANOVA_API_KEY: ${{ secrets.SAMBANOVA_API_KEY }}
+        run: cd src && python benchmark.py --providers sambanova --models deepseek-r1-sn --merge
+
+      - name: SambaNova — qwen3-32b-sn
+        continue-on-error: true
+        timeout-minutes: 20
+        env:
+          SAMBANOVA_API_KEY: ${{ secrets.SAMBANOVA_API_KEY }}
+        run: cd src && python benchmark.py --providers sambanova --models qwen3-32b-sn --merge
+
+      - name: Cerebras — llama-3.1-8b
+        continue-on-error: true
+        timeout-minutes: 16
         env:
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
-        run: cd src && python benchmark.py --providers cerebras --merge
+        run: cd src && python benchmark.py --providers cerebras --models llama-3.1-8b --merge
 
-      - name: Benchmark all Together free models
+      - name: Cerebras — llama-3.3-70b
         continue-on-error: true
-        timeout-minutes: 35
+        timeout-minutes: 16
+        env:
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+        run: cd src && python benchmark.py --providers cerebras --models llama-3.3-70b --merge
+
+      - name: Cerebras — qwen3-32b
+        continue-on-error: true
+        timeout-minutes: 16
+        env:
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+        run: cd src && python benchmark.py --providers cerebras --models qwen3-32b --merge
+
+      - name: Together — llama-3.3-70b
+        continue-on-error: true
+        timeout-minutes: 16
         env:
           TOGETHER_API_KEY: ${{ secrets.TOGETHER_API_KEY }}
-        run: cd src && python benchmark.py --providers together --merge
+        run: cd src && python benchmark.py --providers together --models llama-3.3-70b --merge
+
+      - name: Together — llama-3.2-3b
+        continue-on-error: true
+        timeout-minutes: 16
+        env:
+          TOGETHER_API_KEY: ${{ secrets.TOGETHER_API_KEY }}
+        run: cd src && python benchmark.py --providers together --models llama-3.2-3b --merge
+
+      - name: Together — deepseek-r1-free
+        continue-on-error: true
+        timeout-minutes: 16
+        env:
+          TOGETHER_API_KEY: ${{ secrets.TOGETHER_API_KEY }}
+        run: cd src && python benchmark.py --providers together --models deepseek-r1-free --merge
 
       - name: News
         continue-on-error: true

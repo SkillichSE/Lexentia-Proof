@@ -1,25 +1,13 @@
-# ModelLens — Model configuration
-# Last verified: March 2026
+                                 
+                           
 
 MODELS = {
     "groq": {
-        # ── Production models (stable, no deprecation planned) ─────────────
+                                                                             
         "llama-3.1-8b": {
             "id": "llama-3.1-8b-instant",
             "name": "Llama 3.1 8B Instant",
             "provider": "Groq", "size": "8B",
-            "size_category": "small", "context": "131k"
-        },
-        "llama-3.2-1b": {
-            "id": "llama-3.2-1b-preview",
-            "name": "Llama 3.2 1B",
-            "provider": "Groq", "size": "1B",
-            "size_category": "small", "context": "131k"
-        },
-        "llama-3.2-3b": {
-            "id": "llama-3.2-3b-preview",
-            "name": "Llama 3.2 3B",
-            "provider": "Groq", "size": "3B",
             "size_category": "small", "context": "131k"
         },
         "llama-3.3-70b": {
@@ -27,18 +15,6 @@ MODELS = {
             "name": "Llama 3.3 70B",
             "provider": "Groq", "size": "70B",
             "size_category": "large", "context": "131k"
-        },
-        "llama-3.3-70b-specdec": {
-            "id": "llama-3.3-70b-specdec",
-            "name": "Llama 3.3 70B SpecDec",
-            "provider": "Groq", "size": "70B",
-            "size_category": "large", "context": "8k"
-        },
-        "gemma2-9b": {
-            "id": "gemma2-9b-it",
-            "name": "Gemma 2 9B",
-            "provider": "Groq", "size": "9B",
-            "size_category": "small", "context": "8k"
         },
         "gpt-oss-120b": {
             "id": "openai/gpt-oss-120b",
@@ -52,7 +28,7 @@ MODELS = {
             "provider": "Groq", "size": "20B",
             "size_category": "medium", "context": "131k"
         },
-        # ── Preview models (for eval, may change) ──────────────────────────
+                                                                             
         "llama-4-scout": {
             "id": "meta-llama/llama-4-scout-17b-16e-instruct",
             "name": "Llama 4 Scout 17B",
@@ -66,7 +42,7 @@ MODELS = {
             "size_category": "medium", "context": "32k"
         },
         "kimi-k2": {
-            "id": "moonshotai/kimi-k2-instruct",
+            "id": "moonshotai/kimi-k2-instruct-0905",
             "name": "Kimi K2",
             "provider": "Groq", "size": "N/A",
             "size_category": "unknown", "context": "131k"
@@ -74,10 +50,10 @@ MODELS = {
     },
 
     "openrouter": {
-        # Verified working March 2026 via API probe
-        # ERR latin-1 = Windows encoding issue only, work fine on Linux/GitHub Actions
+                                                   
+                                                                                      
 
-        # ── NVIDIA ────────────────────────────────────────────────────────
+                                                                            
         "nemotron-super-120b": {
             "id": "nvidia/nemotron-3-super-120b-a12b:free",
             "name": "Nemotron 3 Super 120B",
@@ -103,7 +79,7 @@ MODELS = {
             "size_category": "small", "context": "128k"
         },
 
-        # ── Arcee ─────────────────────────────────────────────────────────
+                                                                            
         "trinity-large": {
             "id": "arcee-ai/trinity-large-preview:free",
             "name": "Trinity Large 400B",
@@ -117,7 +93,7 @@ MODELS = {
             "size_category": "medium", "context": "131k"
         },
 
-        # ── StepFun ───────────────────────────────────────────────────────
+                                                                            
         "step-3.5-flash": {
             "id": "stepfun/step-3.5-flash:free",
             "name": "Step 3.5 Flash 196B",
@@ -125,7 +101,7 @@ MODELS = {
             "size_category": "large", "context": "256k"
         },
 
-        # ── Google Gemma ──────────────────────────────────────────────────
+                                                                            
         "gemma-3-27b": {
             "id": "google/gemma-3-27b-it:free",
             "name": "Gemma 3 27B",
@@ -157,7 +133,7 @@ MODELS = {
             "size_category": "small", "context": "8k"
         },
 
-        # ── Liquid AI ─────────────────────────────────────────────────────
+                                                                            
         "lfm-2.5-instruct": {
             "id": "liquid/lfm-2.5-1.2b-instruct:free",
             "name": "LFM 2.5 1.2B Instruct",
@@ -171,7 +147,7 @@ MODELS = {
             "size_category": "small", "context": "32k"
         },
 
-        # ── ERR latin-1 on Windows = work fine on Linux ───────────────────
+                                                                            
         "llama-3.3-70b": {
             "id": "meta-llama/llama-3.3-70b-instruct:free",
             "name": "Llama 3.3 70B",
@@ -226,88 +202,28 @@ MODELS = {
             "provider": "OpenRouter", "size": "N/A",
             "size_category": "medium", "context": "131k"
         },
-        "llama-3.2-1b": {
-            "id": "meta-llama/llama-3.2-1b-instruct:free",
-            "name": "Llama 3.2 1B",
-            "provider": "OpenRouter", "size": "1B",
-            "size_category": "small", "context": "131k"
-        },
-        "llama-3.1-8b": {
-            "id": "meta-llama/llama-3.1-8b-instruct:free",
-            "name": "Llama 3.1 8B",
-            "provider": "OpenRouter", "size": "8B",
-            "size_category": "small", "context": "131k"
-        },
-        "llama-3.1-70b": {
-            "id": "meta-llama/llama-3.1-70b-instruct:free",
-            "name": "Llama 3.1 70B",
-            "provider": "OpenRouter", "size": "70B",
+        "gpt-oss-120b-openrouter": {
+            "id": "openai/gpt-oss-120b:free",
+            "name": "GPT-OSS 120B (OpenRouter)",
+            "provider": "OpenRouter", "size": "120B",
             "size_category": "large", "context": "131k"
         },
-        "llama-3.1-405b": {
-            "id": "meta-llama/llama-3.1-405b-instruct:free",
-            "name": "Llama 3.1 405B",
-            "provider": "OpenRouter", "size": "405B",
-            "size_category": "large", "context": "131k"
+        "gpt-oss-20b-openrouter": {
+            "id": "openai/gpt-oss-20b:free",
+            "name": "GPT-OSS 20B (OpenRouter)",
+            "provider": "OpenRouter", "size": "20B",
+            "size_category": "medium", "context": "131k"
         },
-        "qwen-2.5-7b": {
-            "id": "qwen/qwen-2.5-7b-instruct:free",
-            "name": "Qwen 2.5 7B",
-            "provider": "OpenRouter", "size": "7B",
-            "size_category": "small", "context": "128k"
-        },
-        "qwen-2.5-72b": {
-            "id": "qwen/qwen-2.5-72b-instruct:free",
-            "name": "Qwen 2.5 72B",
-            "provider": "OpenRouter", "size": "72B",
-            "size_category": "large", "context": "131k"
-        },
-        "mistral-7b": {
-            "id": "mistralai/mistral-7b-instruct:free",
-            "name": "Mistral 7B",
-            "provider": "OpenRouter", "size": "7B",
-            "size_category": "small", "context": "32k"
-        },
-        "mistral-nemo": {
-            "id": "mistralai/mistral-nemo:free",
-            "name": "Mistral Nemo 12B",
-            "provider": "OpenRouter", "size": "12B",
+        "minimax-m2.5": {
+            "id": "minimax/minimax-m2.5:free",
+            "name": "MiniMax M2.5",
+            "provider": "OpenRouter", "size": "N/A",
             "size_category": "medium", "context": "128k"
-        },
-        "gemma-2-9b": {
-            "id": "google/gemma-2-9b-it:free",
-            "name": "Gemma 2 9B",
-            "provider": "OpenRouter", "size": "9B",
-            "size_category": "small", "context": "8k"
-        },
-        "phi-3-medium": {
-            "id": "microsoft/phi-3-medium-128k-instruct:free",
-            "name": "Phi-3 Medium 14B",
-            "provider": "OpenRouter", "size": "14B",
-            "size_category": "medium", "context": "128k"
-        },
-        "phi-3-mini": {
-            "id": "microsoft/phi-3-mini-128k-instruct:free",
-            "name": "Phi-3 Mini 3.8B",
-            "provider": "OpenRouter", "size": "3.8B",
-            "size_category": "small", "context": "128k"
-        },
-        "mythomax-13b": {
-            "id": "gryphe/mythomax-l2-13b:free",
-            "name": "MythoMax 13B",
-            "provider": "OpenRouter", "size": "13B",
-            "size_category": "medium", "context": "8k"
-        },
-        "toppy-m-7b": {
-            "id": "undi95/toppy-m-7b:free",
-            "name": "Toppy M 7B",
-            "provider": "OpenRouter", "size": "7B",
-            "size_category": "small", "context": "4k"
         },
     },
 
     "cerebras": {
-        # Free tier, extremely fast inference
+                                             
         "llama-3.1-8b": {
             "id": "llama3.1-8b",
             "name": "Llama 3.1 8B",
@@ -329,7 +245,7 @@ MODELS = {
     },
 
     "together": {
-        # Free models (suffix -Free or -Free-Turbo)
+                                                   
         "llama-3.3-70b": {
             "id": "meta-llama/Llama-3.3-70B-Instruct-Turbo-Free",
             "name": "Llama 3.3 70B",
@@ -351,24 +267,18 @@ MODELS = {
     },
 
     "google": {
-        # Free tier via Google AI Studio (GOOGLE_API_KEY)
-        "gemini-2.0-flash": {
-            "id": "gemini-2.0-flash",
-            "name": "Gemini 2.0 Flash",
-            "provider": "Google", "size": "N/A",
-            "size_category": "medium", "context": "1048k"
-        },
-        "gemini-2.0-flash-lite": {
-            "id": "gemini-2.0-flash-lite",
-            "name": "Gemini 2.0 Flash Lite",
-            "provider": "Google", "size": "N/A",
-            "size_category": "small", "context": "1048k"
-        },
+                                                         
         "gemini-2.5-flash": {
-            "id": "gemini-2.5-flash-preview-04-17",
+            "id": "gemini-2.5-flash",
             "name": "Gemini 2.5 Flash",
             "provider": "Google", "size": "N/A",
             "size_category": "large", "context": "1048k"
+        },
+        "gemini-2.5-flash-lite": {
+            "id": "gemini-2.5-flash-lite",
+            "name": "Gemini 2.5 Flash-Lite",
+            "provider": "Google", "size": "N/A",
+            "size_category": "small", "context": "1048k"
         },
         "gemma-3-27b-google": {
             "id": "gemma-3-27b-it",
@@ -379,7 +289,7 @@ MODELS = {
     },
 
     "sambanova": {
-        # Free tier — SAMBANOVA_API_KEY — extremely fast inference
+                                                                  
         "llama-4-maverick": {
             "id": "Meta-Llama-4-Maverick-17B-128E-Instruct",
             "name": "Llama 4 Maverick 17B",
