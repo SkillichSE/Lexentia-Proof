@@ -87,16 +87,13 @@ class ModelBenchmark:
             self._or_key_index += 1
             hint = self._openrouter_keys[self._or_key_index][:12] + "..."
             print(f"\n    [openrouter] key #{self._or_key_index + 1}/{len(self._openrouter_keys)} ({hint})", end="", flush=True)
-            time.sleep(3)   # brief pause before trying next key
+            time.sleep(1)   # brief pause before trying next key
             return True
         return False
 
-    def _reset_openrouter_keys(self, attempt=1):
-        """After exhausting all keys — wait for RPM window to reset, then start over."""
-        wait = 65 * attempt  # longer wait on each retry: 65s, 130s, 195s
-        print(f"\n    [openrouter] all keys at limit, waiting {wait}s (attempt {attempt}/3)...", flush=True)
-        time.sleep(wait)
-        self._or_key_index = 0   # reset to key #1
+    def _reset_openrouter_keys(self):
+        """All keys exhausted — reset index for next model (no waiting)."""
+        self._or_key_index = 0
 
     def _openai_post(self, url, headers, model_id, prompt, timeout=45):
         data = {
@@ -167,7 +164,6 @@ class ModelBenchmark:
     def call_openrouter(self, model_id, prompt):
         if not self._openrouter_keys:
             return {"success": False, "error": "no OPENROUTER_API_KEY configured"}
-        resets = 0
         while True:
             result = self._openai_post(OPENROUTER_API, {
                 "Authorization": f"Bearer {self.openrouter_key}",
@@ -176,6 +172,7 @@ class ModelBenchmark:
                 "X-Title": "ModelLens",
             }, model_id, prompt, timeout=45)
             if result["success"]:
+                self._reset_openrouter_keys()  # reset index for next call
                 return result
             err = result.get("error", "")
             m = re.search(r"Status (\d+)", err)
@@ -183,11 +180,10 @@ class ModelBenchmark:
             if status in _OR_ROTATE_STATUSES:
                 if self._rotate_openrouter_key():
                     continue
-                # All keys exhausted — wait and retry (up to 3 times)
-                if resets < 3:
-                    resets += 1
-                    self._reset_openrouter_keys(resets)
-                    continue
+                # All keys exhausted — skip immediately, no waiting
+                print(f"\n    [openrouter] all {len(self._openrouter_keys)} keys at limit, skipping", flush=True)
+                self._reset_openrouter_keys()
+                return {"success": False, "error": "all keys at limit (skipped)"}
             return result
 
     def call_cerebras(self, model_id, prompt):
@@ -323,6 +319,8 @@ class ModelBenchmark:
         delay = REQUEST_DELAY.get(provider, 2)
         mid   = model_info["id"]
         self._current_model_info = model_info  # for fallback lookup
+        if provider == "openrouter":
+            self._or_key_index = 0  # always start from key #1 for each new model
         result = {
             "model_id":      model_info.get("key", mid),
             "model_name":    model_info["name"],
