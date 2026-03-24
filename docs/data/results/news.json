@@ -1,7 +1,21 @@
 {
-  "updated": "2026-03-23T18:46:18.193017+00:00",
+  "updated": "2026-03-24T05:57:27.926611+00:00",
   "count": 30,
   "items": [
+    {
+      "title": "A New Framework for Evaluating Voice Agents (EVA)",
+      "link": "https://huggingface.co/blog/ServiceNow-AI/eva",
+      "date": "2026-03-24T02:01:52+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "NVIDIA IGX Thor Powers Industrial, Medical, and Robotics Edge AI Applications",
+      "link": "https://developer.nvidia.com/blog/nvidia-igx-thor-powers-industrial-medical-and-robotics-edge-ai-applications/",
+      "date": "2026-03-23T20:24:17Z",
+      "source": "NVIDIA Developer",
+      "summary": "Industrial and medical systems are rapidly increasing the use of high-performance AI to improve worker productivity, human-machine interaction, and downtime..."
+    },
     {
       "title": "How Reco transforms security alerts using Amazon Bedrock",
       "link": "https://aws.amazon.com/blogs/machine-learning/how-reco-transforms-security-alerts-using-amazon-bedrock/",
@@ -164,18 +178,18 @@
       "summary": ""
     },
     {
-      "title": "Introducing GPT-5.4 mini and nano",
-      "link": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano",
-      "date": "2026-03-17T10:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "GPT-5.4 mini and nano are smaller, faster versions of GPT-5.4 optimized for coding, tool use, multimodal reasoning, and high-volume API and sub-agent workloads."
-    },
-    {
       "title": "OpenAI Japan announces Japan Teen Safety Blueprint to put teen safety first",
       "link": "https://openai.com/index/japan-teen-safety-blueprint",
       "date": "2026-03-17T10:00:00+00:00",
       "source": "OpenAI",
       "summary": "OpenAI Japan announces the Japan Teen Safety Blueprint, introducing stronger age protections, parental controls, and well-being safeguards for teens using generative AI."
+    },
+    {
+      "title": "Introducing GPT-5.4 mini and nano",
+      "link": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano",
+      "date": "2026-03-17T10:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "GPT-5.4 mini and nano are smaller, faster versions of GPT-5.4 optimized for coding, tool use, multimodal reasoning, and high-volume API and sub-agent workloads."
     },
     {
       "title": "Mamba-3",
@@ -197,20 +211,6 @@
       "date": "2026-03-16T20:30:00Z",
       "source": "NVIDIA Developer",
       "summary": "AI\u2011native organizations increasingly face scaling challenges as agentic AI workflows drive context windows to millions of tokens and models scale toward..."
-    },
-    {
-      "title": "How NVIDIA Dynamo 1.0 Powers Multi-Node Inference at Production Scale",
-      "link": "https://developer.nvidia.com/blog/nvidia-dynamo-1-production-ready/",
-      "date": "2026-03-16T20:30:00Z",
-      "source": "NVIDIA Developer",
-      "summary": "Reasoning models are growing rapidly in size and are increasingly being integrated into agentic AI workflows that interact with other models and external tools...."
-    },
-    {
-      "title": "Design, Simulate, and Scale AI Factory Infrastructure with NVIDIA DSX Air",
-      "link": "https://developer.nvidia.com/blog/design-simulate-and-scale-ai-factory-infrastructure-with-nvidia-dsx-air/",
-      "date": "2026-03-16T20:01:33Z",
-      "source": "NVIDIA Developer",
-      "summary": "Building AI factories is complex and requires efficient integration across compute, networking, security, and storage systems. To achieve rapid Time to AI and..."
     }
   ]
 }

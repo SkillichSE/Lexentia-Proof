@@ -1,32 +1,256 @@
 [
   {
+    "model_id": "llama-3.3-70b",
+    "model_name": "Llama 3.3 70B",
+    "provider": "Groq",
+    "size": "70B",
+    "size_category": "large",
+    "context": "131k",
+    "timestamp": "2026-03-23T19:18:24.523290",
+    "tests": {
+      "speed": {
+        "avg_tokens_per_sec": 299.65,
+        "details": [
+          {
+            "test": "simple",
+            "time": 0.326,
+            "tokens_per_sec": 187.39,
+            "tokens": 61
+          },
+          {
+            "test": "medium",
+            "time": 0.755,
+            "tokens_per_sec": 361.78,
+            "tokens": 273
+          },
+          {
+            "test": "long",
+            "time": 0.995,
+            "tokens_per_sec": 349.77,
+            "tokens": 348
+          }
+        ]
+      },
+      "code": {
+        "avg_score": 100.0,
+        "details": [
+          {
+            "test": "prime",
+            "pass_rate": 1.0,
+            "passed": 5,
+            "total": 5,
+            "details": [
+              {
+                "input": "2",
+                "expected": "True",
+                "got": "True",
+                "passed": true
+              },
+              {
+                "input": "3",
+                "expected": "True",
+                "got": "True",
+                "passed": true
+              },
+              {
+                "input": "4",
+                "expected": "False",
+                "got": "False",
+                "passed": true
+              },
+              {
+                "input": "17",
+                "expected": "True",
+                "got": "True",
+                "passed": true
+              },
+              {
+                "input": "100",
+                "expected": "False",
+                "got": "False",
+                "passed": true
+              }
+            ]
+          },
+          {
+            "test": "fibonacci",
+            "pass_rate": 1.0,
+            "passed": 4,
+            "total": 4,
+            "details": [
+              {
+                "input": "0",
+                "expected": "0",
+                "got": "0",
+                "passed": true
+              },
+              {
+                "input": "1",
+                "expected": "1",
+                "got": "1",
+                "passed": true
+              },
+              {
+                "input": "7",
+                "expected": "13",
+                "got": "13",
+                "passed": true
+              },
+              {
+                "input": "10",
+                "expected": "55",
+                "got": "55",
+                "passed": true
+              }
+            ]
+          },
+          {
+            "test": "palindrome",
+            "pass_rate": 1.0,
+            "passed": 4,
+            "total": 4,
+            "details": [
+              {
+                "input": "'racecar'",
+                "expected": "True",
+                "got": "True",
+                "passed": true
+              },
+              {
+                "input": "'hello'",
+                "expected": "False",
+                "got": "False",
+                "passed": true
+              },
+              {
+                "input": "'A man a plan a canal Panama'",
+                "expected": "True",
+                "got": "True",
+                "passed": true
+              },
+              {
+                "input": "'world'",
+                "expected": "False",
+                "got": "False",
+                "passed": true
+              }
+            ]
+          }
+        ]
+      },
+      "reasoning": {
+        "score": 60.0,
+        "correct": 3,
+        "total": 5,
+        "details": [
+          {
+            "test": "syllogism",
+            "correct": true,
+            "score": 100,
+            "answer_given": "Yes"
+          },
+          {
+            "test": "speed_math",
+            "correct": false,
+            "score": 0,
+            "answer_given": "To determine which train is faster, we need to calculate the speed of each train"
+          },
+          {
+            "test": "river_crossing",
+            "correct": true,
+            "score": 100,
+            "answer_given": "Chicken."
+          },
+          {
+            "test": "coin_flip",
+            "correct": false,
+            "score": 0,
+            "answer_given": "Since the coin is fair, the probability of getting heads on any given flip is 1/"
+          },
+          {
+            "test": "counting",
+            "correct": true,
+            "score": 100,
+            "answer_given": "11"
+          }
+        ]
+      },
+      "instruction": {
+        "avg_score": 100.0,
+        "details": [
+          {
+            "test": "json",
+            "score": 100,
+            "reason": "ok"
+          },
+          {
+            "test": "list",
+            "score": 100,
+            "found": 5,
+            "expected": 5
+          },
+          {
+            "test": "word_count",
+            "score": 100,
+            "found": 3,
+            "expected": 3
+          }
+        ]
+      },
+      "translation": {
+        "avg_score": 100.0,
+        "details": [
+          {
+            "test": "en_ru",
+            "score": 100,
+            "cyrillic_ratio": 0.89
+          },
+          {
+            "test": "ru_en",
+            "score": 100,
+            "latin_ratio": 0.87
+          },
+          {
+            "test": "en_es",
+            "score": 100,
+            "keywords_found": 12
+          }
+        ]
+      }
+    },
+    "quality_score": 70.0,
+    "raw_speed": 299.65,
+    "overall_score": 70.0,
+    "speed_score": 100.0
+  },
+  {
     "model_id": "gpt-oss-120b",
     "model_name": "GPT-OSS 120B",
     "provider": "Groq",
     "size": "120B",
     "size_category": "large",
     "context": "131k",
-    "timestamp": "2026-03-23T18:22:35.012964",
+    "timestamp": "2026-03-23T19:19:05.514792",
     "tests": {
       "speed": {
-        "avg_tokens_per_sec": 536.66,
+        "avg_tokens_per_sec": 526.11,
         "details": [
           {
             "test": "simple",
-            "time": 0.708,
-            "tokens_per_sec": 535.58,
+            "time": 0.723,
+            "tokens_per_sec": 524.39,
             "tokens": 379
           },
           {
             "test": "medium",
-            "time": 0.703,
-            "tokens_per_sec": 542.18,
+            "time": 0.721,
+            "tokens_per_sec": 528.57,
             "tokens": 381
           },
           {
             "test": "long",
-            "time": 0.722,
-            "tokens_per_sec": 532.21,
+            "time": 0.731,
+            "tokens_per_sec": 525.37,
             "tokens": 384
           }
         ]
@@ -219,7 +443,7 @@
       }
     },
     "quality_score": 80.0,
-    "raw_speed": 536.66,
+    "raw_speed": 526.11,
     "overall_score": 80.0,
     "speed_score": 100.0
   },
@@ -230,27 +454,27 @@
     "size": "20B",
     "size_category": "medium",
     "context": "131k",
-    "timestamp": "2026-03-23T18:23:16.384149",
+    "timestamp": "2026-03-23T19:19:45.945197",
     "tests": {
       "speed": {
-        "avg_tokens_per_sec": 348.7,
+        "avg_tokens_per_sec": 415.75,
         "details": [
           {
             "test": "simple",
-            "time": 0.788,
-            "tokens_per_sec": 481.03,
+            "time": 1.642,
+            "tokens_per_sec": 230.8,
             "tokens": 379
           },
           {
             "test": "medium",
-            "time": 1.956,
-            "tokens_per_sec": 194.82,
+            "time": 1.981,
+            "tokens_per_sec": 192.34,
             "tokens": 381
           },
           {
             "test": "long",
-            "time": 1.037,
-            "tokens_per_sec": 370.24,
+            "time": 0.466,
+            "tokens_per_sec": 824.1,
             "tokens": 384
           }
         ]
@@ -400,7 +624,7 @@
         ]
       },
       "instruction": {
-        "avg_score": 100.0,
+        "avg_score": 83.3,
         "details": [
           {
             "test": "json",
@@ -415,8 +639,8 @@
           },
           {
             "test": "word_count",
-            "score": 100,
-            "found": 3,
+            "score": 50,
+            "found": 2,
             "expected": 3
           }
         ]
@@ -442,9 +666,9 @@
         ]
       }
     },
-    "quality_score": 80.0,
-    "raw_speed": 348.7,
-    "overall_score": 80.0,
+    "quality_score": 77.5,
+    "raw_speed": 415.75,
+    "overall_score": 77.5,
     "speed_score": 100.0
   },
   {
@@ -454,27 +678,27 @@
     "size": "17B",
     "size_category": "medium",
     "context": "131k",
-    "timestamp": "2026-03-23T18:24:00.053849",
+    "timestamp": "2026-03-23T19:20:35.781881",
     "tests": {
       "speed": {
-        "avg_tokens_per_sec": 386.69,
+        "avg_tokens_per_sec": 343.45,
         "details": [
           {
             "test": "simple",
-            "time": 0.103,
-            "tokens_per_sec": 339.88,
+            "time": 0.15,
+            "tokens_per_sec": 232.65,
             "tokens": 35
           },
           {
             "test": "medium",
-            "time": 0.663,
-            "tokens_per_sec": 419.19,
-            "tokens": 278
+            "time": 0.677,
+            "tokens_per_sec": 412.21,
+            "tokens": 279
           },
           {
             "test": "long",
-            "time": 0.805,
-            "tokens_per_sec": 401.01,
+            "time": 0.838,
+            "tokens_per_sec": 385.48,
             "tokens": 323
           }
         ]
@@ -601,7 +825,7 @@
             "test": "speed_math",
             "correct": false,
             "score": 0,
-            "answer_given": "## Step 1: Calculate the speed of the first train\nTo determine the speed of the "
+            "answer_given": "## Step 1: Calculate the speed of the first train\nTo determine which train is fa"
           },
           {
             "test": "river_crossing",
@@ -667,8 +891,232 @@
       }
     },
     "quality_score": 65.0,
-    "raw_speed": 386.69,
+    "raw_speed": 343.45,
     "overall_score": 65.0,
+    "speed_score": 100.0
+  },
+  {
+    "model_id": "qwen3-32b",
+    "model_name": "Qwen 3 32B",
+    "provider": "Groq",
+    "size": "32B",
+    "size_category": "medium",
+    "context": "32k",
+    "timestamp": "2026-03-23T19:21:16.647842",
+    "tests": {
+      "speed": {
+        "avg_tokens_per_sec": 445.18,
+        "details": [
+          {
+            "test": "simple",
+            "time": 0.903,
+            "tokens_per_sec": 350.13,
+            "tokens": 316
+          },
+          {
+            "test": "medium",
+            "time": 0.633,
+            "tokens_per_sec": 507.4,
+            "tokens": 321
+          },
+          {
+            "test": "long",
+            "time": 0.676,
+            "tokens_per_sec": 478.0,
+            "tokens": 323
+          }
+        ]
+      },
+      "code": {
+        "avg_score": 0.0,
+        "details": [
+          {
+            "test": "prime",
+            "pass_rate": 0.0,
+            "passed": 0,
+            "total": 5,
+            "details": [
+              {
+                "input": "2",
+                "expected": "True",
+                "got": "File \"<string>\", line 6\n    Then, for numbers 2 and up, I need to check if any number between 2 and ",
+                "passed": false
+              },
+              {
+                "input": "3",
+                "expected": "True",
+                "got": "File \"<string>\", line 6\n    Then, for numbers 2 and up, I need to check if any number between 2 and ",
+                "passed": false
+              },
+              {
+                "input": "4",
+                "expected": "False",
+                "got": "File \"<string>\", line 6\n    Then, for numbers 2 and up, I need to check if any number between 2 and ",
+                "passed": false
+              },
+              {
+                "input": "17",
+                "expected": "True",
+                "got": "File \"<string>\", line 6\n    Then, for numbers 2 and up, I need to check if any number between 2 and ",
+                "passed": false
+              },
+              {
+                "input": "100",
+                "expected": "False",
+                "got": "File \"<string>\", line 6\n    Then, for numbers 2 and up, I need to check if any number between 2 and ",
+                "passed": false
+              }
+            ]
+          },
+          {
+            "test": "fibonacci",
+            "pass_rate": 0.0,
+            "passed": 0,
+            "total": 4,
+            "details": [
+              {
+                "input": "0",
+                "expected": "0",
+                "got": "File \"<string>\", line 2\n    Okay, I need to write a Python function called fibonacci(n) that returns",
+                "passed": false
+              },
+              {
+                "input": "1",
+                "expected": "1",
+                "got": "File \"<string>\", line 2\n    Okay, I need to write a Python function called fibonacci(n) that returns",
+                "passed": false
+              },
+              {
+                "input": "7",
+                "expected": "13",
+                "got": "File \"<string>\", line 2\n    Okay, I need to write a Python function called fibonacci(n) that returns",
+                "passed": false
+              },
+              {
+                "input": "10",
+                "expected": "55",
+                "got": "File \"<string>\", line 2\n    Okay, I need to write a Python function called fibonacci(n) that returns",
+                "passed": false
+              }
+            ]
+          },
+          {
+            "test": "palindrome",
+            "pass_rate": 0.0,
+            "passed": 0,
+            "total": 4,
+            "details": [
+              {
+                "input": "'racecar'",
+                "expected": "True",
+                "got": "File \"<string>\", line 10\n    For example, if the input is \"RaceCar\", after processing it becomes \"ra",
+                "passed": false
+              },
+              {
+                "input": "'hello'",
+                "expected": "False",
+                "got": "File \"<string>\", line 10\n    For example, if the input is \"RaceCar\", after processing it becomes \"ra",
+                "passed": false
+              },
+              {
+                "input": "'A man a plan a canal Panama'",
+                "expected": "True",
+                "got": "File \"<string>\", line 10\n    For example, if the input is \"RaceCar\", after processing it becomes \"ra",
+                "passed": false
+              },
+              {
+                "input": "'world'",
+                "expected": "False",
+                "got": "File \"<string>\", line 10\n    For example, if the input is \"RaceCar\", after processing it becomes \"ra",
+                "passed": false
+              }
+            ]
+          }
+        ]
+      },
+      "reasoning": {
+        "score": 20.0,
+        "correct": 1,
+        "total": 5,
+        "details": [
+          {
+            "test": "syllogism",
+            "correct": false,
+            "score": 0,
+            "answer_given": "<think>\nOkay, let's see. The question is about whether all bloops are definitely"
+          },
+          {
+            "test": "speed_math",
+            "correct": false,
+            "score": 0,
+            "answer_given": "<think>\nOkay, let's see. I need to figure out which train is faster between the "
+          },
+          {
+            "test": "river_crossing",
+            "correct": true,
+            "score": 100,
+            "answer_given": "<think>\nOkay, let's see. The farmer has a fox, a chicken, and a bag of grain. He"
+          },
+          {
+            "test": "coin_flip",
+            "correct": false,
+            "score": 0,
+            "answer_given": "<think>\nOkay, so I need to figure out the probability of getting heads on the 4t"
+          },
+          {
+            "test": "counting",
+            "correct": false,
+            "score": 0,
+            "answer_given": "<think>\nOkay, let's see. The question is asking how many letters are in the word"
+          }
+        ]
+      },
+      "instruction": {
+        "avg_score": 66.7,
+        "details": [
+          {
+            "test": "json",
+            "score": 100,
+            "reason": "ok"
+          },
+          {
+            "test": "list",
+            "score": 100,
+            "found": 5,
+            "expected": 5
+          },
+          {
+            "test": "word_count",
+            "score": 0,
+            "found": 21,
+            "expected": 3
+          }
+        ]
+      },
+      "translation": {
+        "avg_score": 66.7,
+        "details": [
+          {
+            "test": "en_ru",
+            "score": 0,
+            "cyrillic_ratio": 0.17
+          },
+          {
+            "test": "ru_en",
+            "score": 100,
+            "latin_ratio": 0.7
+          },
+          {
+            "test": "en_es",
+            "score": 100,
+            "keywords_found": 11
+          }
+        ]
+      }
+    },
+    "quality_score": 21.7,
+    "raw_speed": 445.18,
+    "overall_score": 21.7,
     "speed_score": 100.0
   },
   {
@@ -678,27 +1126,27 @@
     "size": "N/A",
     "size_category": "unknown",
     "context": "131k",
-    "timestamp": "2026-03-23T18:25:28.330830",
+    "timestamp": "2026-03-23T19:22:02.776136",
     "tests": {
       "speed": {
-        "avg_tokens_per_sec": 81.75,
+        "avg_tokens_per_sec": 121.62,
         "details": [
           {
             "test": "simple",
-            "time": 1.216,
-            "tokens_per_sec": 43.57,
-            "tokens": 53
+            "time": 1.616,
+            "tokens_per_sec": 33.41,
+            "tokens": 54
           },
           {
             "test": "medium",
-            "time": 5.063,
-            "tokens_per_sec": 55.5,
-            "tokens": 281
+            "time": 3.337,
+            "tokens_per_sec": 79.41,
+            "tokens": 265
           },
           {
             "test": "long",
-            "time": 2.319,
-            "tokens_per_sec": 146.19,
+            "time": 1.345,
+            "tokens_per_sec": 252.05,
             "tokens": 339
           }
         ]
@@ -891,7 +1339,7 @@
       }
     },
     "quality_score": 75.0,
-    "raw_speed": 81.75,
+    "raw_speed": 121.62,
     "overall_score": 75.0,
     "speed_score": 100.0
   },
@@ -902,27 +1350,27 @@
     "size": "196B",
     "size_category": "large",
     "context": "256k",
-    "timestamp": "2026-03-23T18:26:41.953300",
+    "timestamp": "2026-03-23T19:23:08.491374",
     "tests": {
       "speed": {
-        "avg_tokens_per_sec": 57.72,
+        "avg_tokens_per_sec": 40.55,
         "details": [
           {
             "test": "simple",
-            "time": 4.446,
-            "tokens_per_sec": 64.1,
-            "tokens": 285
+            "time": 10.076,
+            "tokens_per_sec": 17.57,
+            "tokens": 177
           },
           {
             "test": "medium",
-            "time": 8.394,
-            "tokens_per_sec": 38.36,
+            "time": 12.801,
+            "tokens_per_sec": 25.15,
             "tokens": 322
           },
           {
             "test": "long",
-            "time": 4.612,
-            "tokens_per_sec": 70.69,
+            "time": 4.13,
+            "tokens_per_sec": 78.94,
             "tokens": 326
           }
         ]
@@ -954,8 +1402,8 @@
         ]
       },
       "reasoning": {
-        "score": 80.0,
-        "correct": 4,
+        "score": 100.0,
+        "correct": 5,
         "total": 5,
         "details": [
           {
@@ -972,8 +1420,9 @@
           },
           {
             "test": "river_crossing",
-            "correct": false,
-            "score": 0
+            "correct": true,
+            "score": 100,
+            "answer_given": "Chicken"
           },
           {
             "test": "coin_flip",
@@ -990,18 +1439,17 @@
         ]
       },
       "instruction": {
-        "avg_score": 66.7,
+        "avg_score": 33.3,
         "details": [
           {
             "test": "json",
             "score": 0,
-            "reason": "no JSON found"
+            "reason": "empty response"
           },
           {
             "test": "list",
-            "score": 100,
-            "found": 5,
-            "expected": 5
+            "score": 0,
+            "reason": "empty response"
           },
           {
             "test": "word_count",
@@ -1032,237 +1480,9 @@
       }
     },
     "quality_score": 36.7,
-    "raw_speed": 57.72,
+    "raw_speed": 40.55,
     "overall_score": 36.7,
     "speed_score": 100.0
-  },
-  {
-    "model_id": "gemini-2.0-flash",
-    "model_name": "Gemini 2.0 Flash",
-    "provider": "Google",
-    "size": "N/A",
-    "size_category": "unknown",
-    "context": "1048k",
-    "timestamp": "2026-03-23T18:29:28.541008",
-    "tests": {
-      "speed": {
-        "avg_tokens_per_sec": 0,
-        "details": []
-      },
-      "code": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "prime",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 5,
-            "error": "Status 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to"
-          },
-          {
-            "test": "fibonacci",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to"
-          },
-          {
-            "test": "palindrome",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to"
-          }
-        ]
-      },
-      "reasoning": {
-        "score": 0.0,
-        "correct": 0,
-        "total": 5,
-        "details": [
-          {
-            "test": "syllogism",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "speed_math",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "river_crossing",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "coin_flip",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "counting",
-            "correct": false,
-            "score": 0
-          }
-        ]
-      },
-      "instruction": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "json",
-            "score": 0,
-            "error": "Status 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to"
-          },
-          {
-            "test": "list",
-            "score": 0,
-            "error": "Status 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to"
-          },
-          {
-            "test": "word_count",
-            "score": 0,
-            "error": "Status 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to"
-          }
-        ]
-      },
-      "translation": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "en_ru",
-            "score": 0
-          },
-          {
-            "test": "ru_en",
-            "score": 0
-          },
-          {
-            "test": "en_es",
-            "score": 0
-          }
-        ]
-      }
-    },
-    "quality_score": 0.0,
-    "raw_speed": 0,
-    "overall_score": 0.0,
-    "speed_score": 0.0
-  },
-  {
-    "model_id": "gemini-2.0-flash-lite",
-    "model_name": "Gemini 2.0 Flash Lite",
-    "provider": "Google",
-    "size": "N/A",
-    "size_category": "unknown",
-    "context": "1048k",
-    "timestamp": "2026-03-23T18:31:12.366616",
-    "tests": {
-      "speed": {
-        "avg_tokens_per_sec": 0,
-        "details": []
-      },
-      "code": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "prime",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 5,
-            "error": "Status 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to"
-          },
-          {
-            "test": "fibonacci",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to"
-          },
-          {
-            "test": "palindrome",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to"
-          }
-        ]
-      },
-      "reasoning": {
-        "score": 0.0,
-        "correct": 0,
-        "total": 5,
-        "details": [
-          {
-            "test": "syllogism",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "speed_math",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "river_crossing",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "coin_flip",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "counting",
-            "correct": false,
-            "score": 0
-          }
-        ]
-      },
-      "instruction": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "json",
-            "score": 0,
-            "error": "Status 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to"
-          },
-          {
-            "test": "list",
-            "score": 0,
-            "error": "Status 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to"
-          },
-          {
-            "test": "word_count",
-            "score": 0,
-            "error": "Status 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to"
-          }
-        ]
-      },
-      "translation": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "en_ru",
-            "score": 0
-          },
-          {
-            "test": "ru_en",
-            "score": 0
-          },
-          {
-            "test": "en_es",
-            "score": 0
-          }
-        ]
-      }
-    },
-    "quality_score": 0.0,
-    "raw_speed": 0,
-    "overall_score": 0.0,
-    "speed_score": 0.0
   },
   {
     "model_id": "gemini-2.5-flash",
@@ -1271,11 +1491,30 @@
     "size": "N/A",
     "size_category": "unknown",
     "context": "1048k",
-    "timestamp": "2026-03-23T18:32:56.253927",
+    "timestamp": "2026-03-23T19:25:59.481799",
     "tests": {
       "speed": {
-        "avg_tokens_per_sec": 0,
-        "details": []
+        "avg_tokens_per_sec": 153.15,
+        "details": [
+          {
+            "test": "simple",
+            "time": 2.153,
+            "tokens_per_sec": 141.2,
+            "tokens": 304
+          },
+          {
+            "test": "medium",
+            "time": 1.942,
+            "tokens_per_sec": 158.62,
+            "tokens": 308
+          },
+          {
+            "test": "long",
+            "time": 1.948,
+            "tokens_per_sec": 159.62,
+            "tokens": 311
+          }
+        ]
       },
       "code": {
         "avg_score": 0.0,
@@ -1285,27 +1524,108 @@
             "pass_rate": 0.0,
             "passed": 0,
             "total": 5,
-            "error": "Status 404 - models/gemini-2.5-flash-preview-04-17 is not found for API version v1beta, or is not supported for generateContent. Call"
+            "details": [
+              {
+                "input": "2",
+                "expected": "True",
+                "got": "File \"<string>\", line 2\n    print(repr(is_prime(2)))\n    ^\nIndentationError: expected an indented bl",
+                "passed": false
+              },
+              {
+                "input": "3",
+                "expected": "True",
+                "got": "File \"<string>\", line 2\n    print(repr(is_prime(3)))\n    ^\nIndentationError: expected an indented bl",
+                "passed": false
+              },
+              {
+                "input": "4",
+                "expected": "False",
+                "got": "File \"<string>\", line 2\n    print(repr(is_prime(4)))\n    ^\nIndentationError: expected an indented bl",
+                "passed": false
+              },
+              {
+                "input": "17",
+                "expected": "True",
+                "got": "File \"<string>\", line 2\n    print(repr(is_prime(17)))\n    ^\nIndentationError: expected an indented b",
+                "passed": false
+              },
+              {
+                "input": "100",
+                "expected": "False",
+                "got": "File \"<string>\", line 2\n    print(repr(is_prime(100)))\n    ^\nIndentationError: expected an indented ",
+                "passed": false
+              }
+            ]
           },
           {
             "test": "fibonacci",
             "pass_rate": 0.0,
             "passed": 0,
             "total": 4,
-            "error": "Status 404 - models/gemini-2.5-flash-preview-04-17 is not found for API version v1beta, or is not supported for generateContent. Call"
+            "details": [
+              {
+                "input": "0",
+                "expected": "0",
+                "got": "File \"<string>\", line 2\n    print(repr(fibonacci(0)))\n    ^\nIndentationError: expected an indented b",
+                "passed": false
+              },
+              {
+                "input": "1",
+                "expected": "1",
+                "got": "File \"<string>\", line 2\n    print(repr(fibonacci(1)))\n    ^\nIndentationError: expected an indented b",
+                "passed": false
+              },
+              {
+                "input": "7",
+                "expected": "13",
+                "got": "File \"<string>\", line 2\n    print(repr(fibonacci(7)))\n    ^\nIndentationError: expected an indented b",
+                "passed": false
+              },
+              {
+                "input": "10",
+                "expected": "55",
+                "got": "File \"<string>\", line 2\n    print(repr(fibonacci(10)))\n    ^\nIndentationError: expected an indented ",
+                "passed": false
+              }
+            ]
           },
           {
             "test": "palindrome",
             "pass_rate": 0.0,
             "passed": 0,
             "total": 4,
-            "error": "Status 404 - models/gemini-2.5-flash-preview-04-17 is not found for API version v1beta, or is not supported for generateContent. Call"
+            "details": [
+              {
+                "input": "'racecar'",
+                "expected": "True",
+                "got": "File \"<string>\", line 2\n    print(repr(is_palindrome('racecar')))\n    ^\nIndentationError: expected a",
+                "passed": false
+              },
+              {
+                "input": "'hello'",
+                "expected": "False",
+                "got": "File \"<string>\", line 2\n    print(repr(is_palindrome('hello')))\n    ^\nIndentationError: expected an ",
+                "passed": false
+              },
+              {
+                "input": "'A man a plan a canal Panama'",
+                "expected": "True",
+                "got": "File \"<string>\", line 2\n    print(repr(is_palindrome('A man a plan a canal Panama')))\n    ^\nIndentat",
+                "passed": false
+              },
+              {
+                "input": "'world'",
+                "expected": "False",
+                "got": "File \"<string>\", line 2\n    print(repr(is_palindrome('world')))\n    ^\nIndentationError: expected an ",
+                "passed": false
+              }
+            ]
           }
         ]
       },
       "reasoning": {
-        "score": 0.0,
-        "correct": 0,
+        "score": 60.0,
+        "correct": 3,
         "total": 5,
         "details": [
           {
@@ -1320,38 +1640,43 @@
           },
           {
             "test": "river_crossing",
-            "correct": false,
-            "score": 0
+            "correct": true,
+            "score": 100,
+            "answer_given": "Chicken"
           },
           {
             "test": "coin_flip",
-            "correct": false,
-            "score": 0
+            "correct": true,
+            "score": 100,
+            "answer_given": "The probability of getting heads on the 4th flip is **1/2**.\n\nEach coin flip is "
           },
           {
             "test": "counting",
-            "correct": false,
-            "score": 0
+            "correct": true,
+            "score": 100,
+            "answer_given": "11"
           }
         ]
       },
       "instruction": {
-        "avg_score": 0.0,
+        "avg_score": 66.7,
         "details": [
           {
             "test": "json",
-            "score": 0,
-            "error": "Status 404 - models/gemini-2.5-flash-preview-04-17 is not found for API version v1beta, or is not supported for generateContent. Call"
+            "score": 100,
+            "reason": "ok"
           },
           {
             "test": "list",
-            "score": 0,
-            "error": "Status 404 - models/gemini-2.5-flash-preview-04-17 is not found for API version v1beta, or is not supported for generateContent. Call"
+            "score": 100,
+            "found": 5,
+            "expected": 5
           },
           {
             "test": "word_count",
             "score": 0,
-            "error": "Status 404 - models/gemini-2.5-flash-preview-04-17 is not found for API version v1beta, or is not supported for generateContent. Call"
+            "found": 1,
+            "expected": 3
           }
         ]
       },
@@ -1373,10 +1698,234 @@
         ]
       }
     },
-    "quality_score": 0.0,
-    "raw_speed": 0,
-    "overall_score": 0.0,
-    "speed_score": 0.0
+    "quality_score": 25.0,
+    "raw_speed": 153.15,
+    "overall_score": 25.0,
+    "speed_score": 100.0
+  },
+  {
+    "model_id": "gemini-2.5-flash-lite",
+    "model_name": "Gemini 2.5 Flash-Lite",
+    "provider": "Google",
+    "size": "N/A",
+    "size_category": "unknown",
+    "context": "1048k",
+    "timestamp": "2026-03-23T19:28:02.603384",
+    "tests": {
+      "speed": {
+        "avg_tokens_per_sec": 145.19,
+        "details": [
+          {
+            "test": "simple",
+            "time": 0.505,
+            "tokens_per_sec": 51.48,
+            "tokens": 26
+          },
+          {
+            "test": "medium",
+            "time": 1.358,
+            "tokens_per_sec": 155.4,
+            "tokens": 211
+          },
+          {
+            "test": "long",
+            "time": 1.377,
+            "tokens_per_sec": 228.69,
+            "tokens": 315
+          }
+        ]
+      },
+      "code": {
+        "avg_score": 100.0,
+        "details": [
+          {
+            "test": "prime",
+            "pass_rate": 1.0,
+            "passed": 5,
+            "total": 5,
+            "details": [
+              {
+                "input": "2",
+                "expected": "True",
+                "got": "True",
+                "passed": true
+              },
+              {
+                "input": "3",
+                "expected": "True",
+                "got": "True",
+                "passed": true
+              },
+              {
+                "input": "4",
+                "expected": "False",
+                "got": "False",
+                "passed": true
+              },
+              {
+                "input": "17",
+                "expected": "True",
+                "got": "True",
+                "passed": true
+              },
+              {
+                "input": "100",
+                "expected": "False",
+                "got": "False",
+                "passed": true
+              }
+            ]
+          },
+          {
+            "test": "fibonacci",
+            "pass_rate": 1.0,
+            "passed": 4,
+            "total": 4,
+            "details": [
+              {
+                "input": "0",
+                "expected": "0",
+                "got": "0",
+                "passed": true
+              },
+              {
+                "input": "1",
+                "expected": "1",
+                "got": "1",
+                "passed": true
+              },
+              {
+                "input": "7",
+                "expected": "13",
+                "got": "13",
+                "passed": true
+              },
+              {
+                "input": "10",
+                "expected": "55",
+                "got": "55",
+                "passed": true
+              }
+            ]
+          },
+          {
+            "test": "palindrome",
+            "pass_rate": 1.0,
+            "passed": 4,
+            "total": 4,
+            "details": [
+              {
+                "input": "'racecar'",
+                "expected": "True",
+                "got": "True",
+                "passed": true
+              },
+              {
+                "input": "'hello'",
+                "expected": "False",
+                "got": "False",
+                "passed": true
+              },
+              {
+                "input": "'A man a plan a canal Panama'",
+                "expected": "True",
+                "got": "True",
+                "passed": true
+              },
+              {
+                "input": "'world'",
+                "expected": "False",
+                "got": "False",
+                "passed": true
+              }
+            ]
+          }
+        ]
+      },
+      "reasoning": {
+        "score": 80.0,
+        "correct": 4,
+        "total": 5,
+        "details": [
+          {
+            "test": "syllogism",
+            "correct": true,
+            "score": 100,
+            "answer_given": "Yes"
+          },
+          {
+            "test": "speed_math",
+            "correct": false,
+            "score": 0,
+            "answer_given": "Here's how to solve this:\n\n* **Train 1:** Speed = Distance / Time = 120 km / 2 h"
+          },
+          {
+            "test": "river_crossing",
+            "correct": true,
+            "score": 100,
+            "answer_given": "Chicken"
+          },
+          {
+            "test": "coin_flip",
+            "correct": true,
+            "score": 100,
+            "answer_given": "The probability of getting heads on the 4th flip is **1/2**.\n\nHere's why:\n\nEach "
+          },
+          {
+            "test": "counting",
+            "correct": true,
+            "score": 100,
+            "answer_given": "11"
+          }
+        ]
+      },
+      "instruction": {
+        "avg_score": 100.0,
+        "details": [
+          {
+            "test": "json",
+            "score": 100,
+            "reason": "ok"
+          },
+          {
+            "test": "list",
+            "score": 100,
+            "found": 5,
+            "expected": 5
+          },
+          {
+            "test": "word_count",
+            "score": 100,
+            "found": 3,
+            "expected": 3
+          }
+        ]
+      },
+      "translation": {
+        "avg_score": 100.0,
+        "details": [
+          {
+            "test": "en_ru",
+            "score": 100,
+            "cyrillic_ratio": 0.89
+          },
+          {
+            "test": "ru_en",
+            "score": 100,
+            "latin_ratio": 0.87
+          },
+          {
+            "test": "en_es",
+            "score": 100,
+            "keywords_found": 10
+          }
+        ]
+      }
+    },
+    "quality_score": 75.0,
+    "raw_speed": 145.19,
+    "overall_score": 75.0,
+    "speed_score": 100.0
   },
   {
     "model_id": "gemma-3-27b-google",
@@ -1385,22 +1934,28 @@
     "size": "27B",
     "size_category": "medium",
     "context": "131k",
-    "timestamp": "2026-03-23T18:34:39.890438",
+    "timestamp": "2026-03-23T19:29:55.262293",
     "tests": {
       "speed": {
-        "avg_tokens_per_sec": 1.14,
+        "avg_tokens_per_sec": 2.71,
         "details": [
           {
             "test": "simple",
-            "time": 7.108,
-            "tokens_per_sec": 1.13,
+            "time": 1.734,
+            "tokens_per_sec": 4.61,
             "tokens": 8
           },
           {
             "test": "medium",
-            "time": 10.415,
-            "tokens_per_sec": 1.15,
+            "time": 6.0,
+            "tokens_per_sec": 2.0,
             "tokens": 12
+          },
+          {
+            "test": "long",
+            "time": 9.939,
+            "tokens_per_sec": 1.51,
+            "tokens": 15
           }
         ]
       },
@@ -1592,237 +2147,9 @@
       }
     },
     "quality_score": 75.0,
-    "raw_speed": 1.14,
+    "raw_speed": 2.71,
     "overall_score": 75.0,
     "speed_score": 100.0
-  },
-  {
-    "model_id": "llama-4-maverick",
-    "model_name": "Llama 4 Maverick 17B",
-    "provider": "SambaNova",
-    "size": "17B",
-    "size_category": "medium",
-    "context": "131k",
-    "timestamp": "2026-03-23T18:38:28.532899",
-    "tests": {
-      "speed": {
-        "avg_tokens_per_sec": 0,
-        "details": []
-      },
-      "code": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "prime",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 5,
-            "error": "Status 404"
-          },
-          {
-            "test": "fibonacci",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 404"
-          },
-          {
-            "test": "palindrome",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 404"
-          }
-        ]
-      },
-      "reasoning": {
-        "score": 0.0,
-        "correct": 0,
-        "total": 5,
-        "details": [
-          {
-            "test": "syllogism",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "speed_math",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "river_crossing",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "coin_flip",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "counting",
-            "correct": false,
-            "score": 0
-          }
-        ]
-      },
-      "instruction": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "json",
-            "score": 0,
-            "error": "Status 404"
-          },
-          {
-            "test": "list",
-            "score": 0,
-            "error": "Status 404"
-          },
-          {
-            "test": "word_count",
-            "score": 0,
-            "error": "Status 404"
-          }
-        ]
-      },
-      "translation": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "en_ru",
-            "score": 0
-          },
-          {
-            "test": "ru_en",
-            "score": 0
-          },
-          {
-            "test": "en_es",
-            "score": 0
-          }
-        ]
-      }
-    },
-    "quality_score": 0.0,
-    "raw_speed": 0,
-    "overall_score": 0.0,
-    "speed_score": 0.0
-  },
-  {
-    "model_id": "llama-4-scout-sn",
-    "model_name": "Llama 4 Scout 17B",
-    "provider": "SambaNova",
-    "size": "17B",
-    "size_category": "medium",
-    "context": "131k",
-    "timestamp": "2026-03-23T18:39:07.689491",
-    "tests": {
-      "speed": {
-        "avg_tokens_per_sec": 0,
-        "details": []
-      },
-      "code": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "prime",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 5,
-            "error": "Status 404"
-          },
-          {
-            "test": "fibonacci",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 404"
-          },
-          {
-            "test": "palindrome",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 404"
-          }
-        ]
-      },
-      "reasoning": {
-        "score": 0.0,
-        "correct": 0,
-        "total": 5,
-        "details": [
-          {
-            "test": "syllogism",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "speed_math",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "river_crossing",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "coin_flip",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "counting",
-            "correct": false,
-            "score": 0
-          }
-        ]
-      },
-      "instruction": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "json",
-            "score": 0,
-            "error": "Status 404"
-          },
-          {
-            "test": "list",
-            "score": 0,
-            "error": "Status 404"
-          },
-          {
-            "test": "word_count",
-            "score": 0,
-            "error": "Status 404"
-          }
-        ]
-      },
-      "translation": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "en_ru",
-            "score": 0
-          },
-          {
-            "test": "ru_en",
-            "score": 0
-          },
-          {
-            "test": "en_es",
-            "score": 0
-          }
-        ]
-      }
-    },
-    "quality_score": 0.0,
-    "raw_speed": 0,
-    "overall_score": 0.0,
-    "speed_score": 0.0
   },
   {
     "model_id": "llama-3.3-70b-sn",
@@ -1831,154 +2158,59 @@
     "size": "70B",
     "size_category": "large",
     "context": "131k",
-    "timestamp": "2026-03-23T18:39:45.126325",
+    "timestamp": "2026-03-23T19:34:21.007122",
     "tests": {
       "speed": {
-        "avg_tokens_per_sec": 216.65,
+        "avg_tokens_per_sec": 189.77,
         "details": [
           {
             "test": "simple",
-            "time": 0.479,
-            "tokens_per_sec": 125.39,
+            "time": 0.316,
+            "tokens_per_sec": 189.77,
             "tokens": 60
-          },
-          {
-            "test": "medium",
-            "time": 1.195,
-            "tokens_per_sec": 230.08,
-            "tokens": 275
-          },
-          {
-            "test": "long",
-            "time": 1.182,
-            "tokens_per_sec": 294.47,
-            "tokens": 348
           }
         ]
       },
       "code": {
-        "avg_score": 100.0,
+        "avg_score": 0.0,
         "details": [
           {
             "test": "prime",
-            "pass_rate": 1.0,
-            "passed": 5,
+            "pass_rate": 0.0,
+            "passed": 0,
             "total": 5,
-            "details": [
-              {
-                "input": "2",
-                "expected": "True",
-                "got": "True",
-                "passed": true
-              },
-              {
-                "input": "3",
-                "expected": "True",
-                "got": "True",
-                "passed": true
-              },
-              {
-                "input": "4",
-                "expected": "False",
-                "got": "False",
-                "passed": true
-              },
-              {
-                "input": "17",
-                "expected": "True",
-                "got": "True",
-                "passed": true
-              },
-              {
-                "input": "100",
-                "expected": "False",
-                "got": "False",
-                "passed": true
-              }
-            ]
+            "error": "Status 429 - Rate limit exceeded"
           },
           {
             "test": "fibonacci",
-            "pass_rate": 1.0,
-            "passed": 4,
+            "pass_rate": 0.0,
+            "passed": 0,
             "total": 4,
-            "details": [
-              {
-                "input": "0",
-                "expected": "0",
-                "got": "0",
-                "passed": true
-              },
-              {
-                "input": "1",
-                "expected": "1",
-                "got": "1",
-                "passed": true
-              },
-              {
-                "input": "7",
-                "expected": "13",
-                "got": "13",
-                "passed": true
-              },
-              {
-                "input": "10",
-                "expected": "55",
-                "got": "55",
-                "passed": true
-              }
-            ]
+            "error": "Status 429 - Rate limit exceeded"
           },
           {
             "test": "palindrome",
-            "pass_rate": 1.0,
-            "passed": 4,
+            "pass_rate": 0.0,
+            "passed": 0,
             "total": 4,
-            "details": [
-              {
-                "input": "'racecar'",
-                "expected": "True",
-                "got": "True",
-                "passed": true
-              },
-              {
-                "input": "'hello'",
-                "expected": "False",
-                "got": "False",
-                "passed": true
-              },
-              {
-                "input": "'A man a plan a canal Panama'",
-                "expected": "True",
-                "got": "True",
-                "passed": true
-              },
-              {
-                "input": "'world'",
-                "expected": "False",
-                "got": "False",
-                "passed": true
-              }
-            ]
+            "error": "Status 429 - Rate limit exceeded"
           }
         ]
       },
       "reasoning": {
-        "score": 60.0,
-        "correct": 3,
+        "score": 40.0,
+        "correct": 2,
         "total": 5,
         "details": [
           {
             "test": "syllogism",
-            "correct": true,
-            "score": 100,
-            "answer_given": "Yes."
+            "correct": false,
+            "score": 0
           },
           {
             "test": "speed_math",
             "correct": false,
-            "score": 0,
-            "answer_given": "To determine which train is faster, we need to calculate the speed of each train"
+            "score": 0
           },
           {
             "test": "river_crossing",
@@ -1989,8 +2221,7 @@
           {
             "test": "coin_flip",
             "correct": false,
-            "score": 0,
-            "answer_given": "## Step 1: Understand the problem\nThe problem involves flipping a fair coin 3 ti"
+            "score": 0
           },
           {
             "test": "counting",
@@ -2001,12 +2232,12 @@
         ]
       },
       "instruction": {
-        "avg_score": 100.0,
+        "avg_score": 33.3,
         "details": [
           {
             "test": "json",
-            "score": 100,
-            "reason": "ok"
+            "score": 0,
+            "error": "Status 429 - Rate limit exceeded"
           },
           {
             "test": "list",
@@ -2016,14 +2247,13 @@
           },
           {
             "test": "word_count",
-            "score": 100,
-            "found": 3,
-            "expected": 3
+            "score": 0,
+            "error": "Status 429 - Rate limit exceeded"
           }
         ]
       },
       "translation": {
-        "avg_score": 100.0,
+        "avg_score": 33.3,
         "details": [
           {
             "test": "en_ru",
@@ -2032,122 +2262,6 @@
           },
           {
             "test": "ru_en",
-            "score": 100,
-            "latin_ratio": 0.87
-          },
-          {
-            "test": "en_es",
-            "score": 100,
-            "keywords_found": 12
-          }
-        ]
-      }
-    },
-    "quality_score": 70.0,
-    "raw_speed": 216.65,
-    "overall_score": 70.0,
-    "speed_score": 100.0
-  },
-  {
-    "model_id": "llama-3.1-405b-sn",
-    "model_name": "Llama 3.1 405B",
-    "provider": "SambaNova",
-    "size": "405B",
-    "size_category": "large",
-    "context": "16k",
-    "timestamp": "2026-03-23T18:40:39.104786",
-    "tests": {
-      "speed": {
-        "avg_tokens_per_sec": 0,
-        "details": []
-      },
-      "code": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "prime",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 5,
-            "error": "Status 410"
-          },
-          {
-            "test": "fibonacci",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 410"
-          },
-          {
-            "test": "palindrome",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 410"
-          }
-        ]
-      },
-      "reasoning": {
-        "score": 0.0,
-        "correct": 0,
-        "total": 5,
-        "details": [
-          {
-            "test": "syllogism",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "speed_math",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "river_crossing",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "coin_flip",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "counting",
-            "correct": false,
-            "score": 0
-          }
-        ]
-      },
-      "instruction": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "json",
-            "score": 0,
-            "error": "Status 410"
-          },
-          {
-            "test": "list",
-            "score": 0,
-            "error": "Status 410"
-          },
-          {
-            "test": "word_count",
-            "score": 0,
-            "error": "Status 410"
-          }
-        ]
-      },
-      "translation": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "en_ru",
-            "score": 0
-          },
-          {
-            "test": "ru_en",
             "score": 0
           },
           {
@@ -2157,275 +2271,9 @@
         ]
       }
     },
-    "quality_score": 0.0,
-    "raw_speed": 0,
-    "overall_score": 0.0,
-    "speed_score": 0.0
-  },
-  {
-    "model_id": "deepseek-r1-sn",
-    "model_name": "DeepSeek R1",
-    "provider": "SambaNova",
-    "size": "671B",
-    "size_category": "large",
-    "context": "32k",
-    "timestamp": "2026-03-23T18:41:16.405381",
-    "tests": {
-      "speed": {
-        "avg_tokens_per_sec": 156.92,
-        "details": [
-          {
-            "test": "simple",
-            "time": 2.109,
-            "tokens_per_sec": 147.45,
-            "tokens": 311
-          },
-          {
-            "test": "medium",
-            "time": 1.917,
-            "tokens_per_sec": 163.26,
-            "tokens": 313
-          },
-          {
-            "test": "long",
-            "time": 1.98,
-            "tokens_per_sec": 160.06,
-            "tokens": 317
-          }
-        ]
-      },
-      "code": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "prime",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 5,
-            "error": "Status 429 - Rate limit exceeded"
-          },
-          {
-            "test": "fibonacci",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 429 - Rate limit exceeded"
-          },
-          {
-            "test": "palindrome",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 429 - Rate limit exceeded"
-          }
-        ]
-      },
-      "reasoning": {
-        "score": 0.0,
-        "correct": 0,
-        "total": 5,
-        "details": [
-          {
-            "test": "syllogism",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "speed_math",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "river_crossing",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "coin_flip",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "counting",
-            "correct": false,
-            "score": 0
-          }
-        ]
-      },
-      "instruction": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "json",
-            "score": 0,
-            "error": "Status 429 - Rate limit exceeded"
-          },
-          {
-            "test": "list",
-            "score": 0,
-            "error": "Status 429 - Rate limit exceeded"
-          },
-          {
-            "test": "word_count",
-            "score": 0,
-            "error": "Status 429 - Rate limit exceeded"
-          }
-        ]
-      },
-      "translation": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "en_ru",
-            "score": 0
-          },
-          {
-            "test": "ru_en",
-            "score": 0
-          },
-          {
-            "test": "en_es",
-            "score": 0
-          }
-        ]
-      }
-    },
-    "quality_score": 0.0,
-    "raw_speed": 156.92,
-    "overall_score": 0.0,
-    "speed_score": 100.0
-  },
-  {
-    "model_id": "qwen3-32b-sn",
-    "model_name": "Qwen 3 32B",
-    "provider": "SambaNova",
-    "size": "32B",
-    "size_category": "medium",
-    "context": "131k",
-    "timestamp": "2026-03-23T18:41:59.882818",
-    "tests": {
-      "speed": {
-        "avg_tokens_per_sec": 200.9,
-        "details": [
-          {
-            "test": "simple",
-            "time": 1.602,
-            "tokens_per_sec": 197.26,
-            "tokens": 316
-          },
-          {
-            "test": "medium",
-            "time": 1.588,
-            "tokens_per_sec": 202.2,
-            "tokens": 321
-          },
-          {
-            "test": "long",
-            "time": 1.589,
-            "tokens_per_sec": 203.24,
-            "tokens": 323
-          }
-        ]
-      },
-      "code": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "prime",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 5,
-            "error": "Status 429 - Rate limit exceeded"
-          },
-          {
-            "test": "fibonacci",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 429 - Rate limit exceeded"
-          },
-          {
-            "test": "palindrome",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 429 - Rate limit exceeded"
-          }
-        ]
-      },
-      "reasoning": {
-        "score": 0.0,
-        "correct": 0,
-        "total": 5,
-        "details": [
-          {
-            "test": "syllogism",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "speed_math",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "river_crossing",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "coin_flip",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "counting",
-            "correct": false,
-            "score": 0
-          }
-        ]
-      },
-      "instruction": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "json",
-            "score": 0,
-            "error": "Status 429 - Rate limit exceeded"
-          },
-          {
-            "test": "list",
-            "score": 0,
-            "error": "Status 429 - Rate limit exceeded"
-          },
-          {
-            "test": "word_count",
-            "score": 0,
-            "error": "Status 429 - Rate limit exceeded"
-          }
-        ]
-      },
-      "translation": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "en_ru",
-            "score": 0
-          },
-          {
-            "test": "ru_en",
-            "score": 0
-          },
-          {
-            "test": "en_es",
-            "score": 0
-          }
-        ]
-      }
-    },
-    "quality_score": 0.0,
-    "raw_speed": 200.9,
-    "overall_score": 0.0,
+    "quality_score": 18.3,
+    "raw_speed": 189.77,
+    "overall_score": 18.3,
     "speed_score": 100.0
   },
   {
@@ -2435,27 +2283,27 @@
     "size": "8B",
     "size_category": "small",
     "context": "131k",
-    "timestamp": "2026-03-23T18:42:47.949148",
+    "timestamp": "2026-03-23T19:36:56.866247",
     "tests": {
       "speed": {
-        "avg_tokens_per_sec": 568.73,
+        "avg_tokens_per_sec": 790.06,
         "details": [
           {
             "test": "simple",
-            "time": 0.57,
-            "tokens_per_sec": 101.77,
+            "time": 0.374,
+            "tokens_per_sec": 155.11,
             "tokens": 58
           },
           {
             "test": "medium",
-            "time": 0.291,
-            "tokens_per_sec": 1028.18,
-            "tokens": 299
+            "time": 0.358,
+            "tokens_per_sec": 807.28,
+            "tokens": 289
           },
           {
             "test": "long",
-            "time": 0.604,
-            "tokens_per_sec": 576.23,
+            "time": 0.247,
+            "tokens_per_sec": 1407.8,
             "tokens": 348
           }
         ]
@@ -2568,8 +2416,8 @@
         ]
       },
       "reasoning": {
-        "score": 60.0,
-        "correct": 3,
+        "score": 80.0,
+        "correct": 4,
         "total": 5,
         "details": [
           {
@@ -2582,13 +2430,13 @@
             "test": "speed_math",
             "correct": false,
             "score": 0,
-            "answer_given": "To determine which train is faster, we need to calculate their speeds.\n\nTrain 1:"
+            "answer_given": "To determine which train is faster, we need to calculate their speeds.\n\nThe firs"
           },
           {
             "test": "river_crossing",
-            "correct": false,
-            "score": 0,
-            "answer_given": "Grain."
+            "correct": true,
+            "score": 100,
+            "answer_given": "Chicken."
           },
           {
             "test": "coin_flip",
@@ -2647,465 +2495,9 @@
         ]
       }
     },
-    "quality_score": 70.0,
-    "raw_speed": 568.73,
-    "overall_score": 70.0,
+    "quality_score": 75.0,
+    "raw_speed": 790.06,
+    "overall_score": 75.0,
     "speed_score": 100.0
-  },
-  {
-    "model_id": "qwen3-32b",
-    "model_name": "Qwen 3 32B",
-    "provider": "Cerebras",
-    "size": "32B",
-    "size_category": "medium",
-    "context": "131k",
-    "timestamp": "2026-03-23T18:43:32.466896",
-    "tests": {
-      "speed": {
-        "avg_tokens_per_sec": 0,
-        "details": []
-      },
-      "code": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "prime",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 5,
-            "error": "Status 404"
-          },
-          {
-            "test": "fibonacci",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 404"
-          },
-          {
-            "test": "palindrome",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 404"
-          }
-        ]
-      },
-      "reasoning": {
-        "score": 0.0,
-        "correct": 0,
-        "total": 5,
-        "details": [
-          {
-            "test": "syllogism",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "speed_math",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "river_crossing",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "coin_flip",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "counting",
-            "correct": false,
-            "score": 0
-          }
-        ]
-      },
-      "instruction": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "json",
-            "score": 0,
-            "error": "Status 404"
-          },
-          {
-            "test": "list",
-            "score": 0,
-            "error": "Status 404"
-          },
-          {
-            "test": "word_count",
-            "score": 0,
-            "error": "Status 404"
-          }
-        ]
-      },
-      "translation": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "en_ru",
-            "score": 0
-          },
-          {
-            "test": "ru_en",
-            "score": 0
-          },
-          {
-            "test": "en_es",
-            "score": 0
-          }
-        ]
-      }
-    },
-    "quality_score": 0.0,
-    "raw_speed": 0,
-    "overall_score": 0.0,
-    "speed_score": 0.0
-  },
-  {
-    "model_id": "llama-3.3-70b",
-    "model_name": "Llama 3.3 70B",
-    "provider": "Together",
-    "size": "70B",
-    "size_category": "large",
-    "context": "131k",
-    "timestamp": "2026-03-23T18:43:51.424066",
-    "tests": {
-      "speed": {
-        "avg_tokens_per_sec": 0,
-        "details": []
-      },
-      "code": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "prime",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 5,
-            "error": "Status 402 - Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment,"
-          },
-          {
-            "test": "fibonacci",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 402 - Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment,"
-          },
-          {
-            "test": "palindrome",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 402 - Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment,"
-          }
-        ]
-      },
-      "reasoning": {
-        "score": 0.0,
-        "correct": 0,
-        "total": 5,
-        "details": [
-          {
-            "test": "syllogism",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "speed_math",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "river_crossing",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "coin_flip",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "counting",
-            "correct": false,
-            "score": 0
-          }
-        ]
-      },
-      "instruction": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "json",
-            "score": 0,
-            "error": "Status 402 - Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment,"
-          },
-          {
-            "test": "list",
-            "score": 0,
-            "error": "Status 402 - Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment,"
-          },
-          {
-            "test": "word_count",
-            "score": 0,
-            "error": "Status 402 - Credit limit exceeded, please [add credits](https://api.together.ai/settings/billing). If you've already made a payment,"
-          }
-        ]
-      },
-      "translation": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "en_ru",
-            "score": 0
-          },
-          {
-            "test": "ru_en",
-            "score": 0
-          },
-          {
-            "test": "en_es",
-            "score": 0
-          }
-        ]
-      }
-    },
-    "quality_score": 0.0,
-    "raw_speed": 0,
-    "overall_score": 0.0,
-    "speed_score": 0.0
-  },
-  {
-    "model_id": "llama-3.2-3b",
-    "model_name": "Llama 3.2 3B",
-    "provider": "Together",
-    "size": "3B",
-    "size_category": "small",
-    "context": "131k",
-    "timestamp": "2026-03-23T18:44:28.818113",
-    "tests": {
-      "speed": {
-        "avg_tokens_per_sec": 0,
-        "details": []
-      },
-      "code": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "prime",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 5,
-            "error": "Status 404 - Unable to access model meta-llama/Llama-3.2-3B-Instruct-Turbo-Free. Please visit https://api.together.ai/models to view "
-          },
-          {
-            "test": "fibonacci",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 404 - Unable to access model meta-llama/Llama-3.2-3B-Instruct-Turbo-Free. Please visit https://api.together.ai/models to view "
-          },
-          {
-            "test": "palindrome",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 404 - Unable to access model meta-llama/Llama-3.2-3B-Instruct-Turbo-Free. Please visit https://api.together.ai/models to view "
-          }
-        ]
-      },
-      "reasoning": {
-        "score": 0.0,
-        "correct": 0,
-        "total": 5,
-        "details": [
-          {
-            "test": "syllogism",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "speed_math",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "river_crossing",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "coin_flip",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "counting",
-            "correct": false,
-            "score": 0
-          }
-        ]
-      },
-      "instruction": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "json",
-            "score": 0,
-            "error": "Status 404 - Unable to access model meta-llama/Llama-3.2-3B-Instruct-Turbo-Free. Please visit https://api.together.ai/models to view "
-          },
-          {
-            "test": "list",
-            "score": 0,
-            "error": "Status 404 - Unable to access model meta-llama/Llama-3.2-3B-Instruct-Turbo-Free. Please visit https://api.together.ai/models to view "
-          },
-          {
-            "test": "word_count",
-            "score": 0,
-            "error": "Status 404 - Unable to access model meta-llama/Llama-3.2-3B-Instruct-Turbo-Free. Please visit https://api.together.ai/models to view "
-          }
-        ]
-      },
-      "translation": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "en_ru",
-            "score": 0
-          },
-          {
-            "test": "ru_en",
-            "score": 0
-          },
-          {
-            "test": "en_es",
-            "score": 0
-          }
-        ]
-      }
-    },
-    "quality_score": 0.0,
-    "raw_speed": 0,
-    "overall_score": 0.0,
-    "speed_score": 0.0
-  },
-  {
-    "model_id": "deepseek-r1-free",
-    "model_name": "DeepSeek R1",
-    "provider": "Together",
-    "size": "671B",
-    "size_category": "large",
-    "context": "32k",
-    "timestamp": "2026-03-23T18:45:16.027638",
-    "tests": {
-      "speed": {
-        "avg_tokens_per_sec": 0,
-        "details": []
-      },
-      "code": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "prime",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 5,
-            "error": "Status 404 - Unable to access model deepseek-ai/DeepSeek-R1-Free. Please visit https://api.together.ai/models to view the list of sup"
-          },
-          {
-            "test": "fibonacci",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 404 - Unable to access model deepseek-ai/DeepSeek-R1-Free. Please visit https://api.together.ai/models to view the list of sup"
-          },
-          {
-            "test": "palindrome",
-            "pass_rate": 0.0,
-            "passed": 0,
-            "total": 4,
-            "error": "Status 404 - Unable to access model deepseek-ai/DeepSeek-R1-Free. Please visit https://api.together.ai/models to view the list of sup"
-          }
-        ]
-      },
-      "reasoning": {
-        "score": 0.0,
-        "correct": 0,
-        "total": 5,
-        "details": [
-          {
-            "test": "syllogism",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "speed_math",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "river_crossing",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "coin_flip",
-            "correct": false,
-            "score": 0
-          },
-          {
-            "test": "counting",
-            "correct": false,
-            "score": 0
-          }
-        ]
-      },
-      "instruction": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "json",
-            "score": 0,
-            "error": "Status 404 - Unable to access model deepseek-ai/DeepSeek-R1-Free. Please visit https://api.together.ai/models to view the list of sup"
-          },
-          {
-            "test": "list",
-            "score": 0,
-            "error": "Status 404 - Unable to access model deepseek-ai/DeepSeek-R1-Free. Please visit https://api.together.ai/models to view the list of sup"
-          },
-          {
-            "test": "word_count",
-            "score": 0,
-            "error": "Status 404 - Unable to access model deepseek-ai/DeepSeek-R1-Free. Please visit https://api.together.ai/models to view the list of sup"
-          }
-        ]
-      },
-      "translation": {
-        "avg_score": 0.0,
-        "details": [
-          {
-            "test": "en_ru",
-            "score": 0
-          },
-          {
-            "test": "ru_en",
-            "score": 0
-          },
-          {
-            "test": "en_es",
-            "score": 0
-          }
-        ]
-      }
-    },
-    "quality_score": 0.0,
-    "raw_speed": 0,
-    "overall_score": 0.0,
-    "speed_score": 0.0
   }
 ]
