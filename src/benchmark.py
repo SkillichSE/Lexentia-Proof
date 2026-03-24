@@ -352,7 +352,7 @@ class ModelBenchmark:
             return {"correct": False, "score": 0}
         short = response.lower().strip()[:60]
         correct = any(a in short for a in REASONING_ANSWERS.get(test_name, []))
-        return {"correct": correct, "score": 100 if correct else 0, "answer_given": response.strip()[:80]}
+        return {"correct": correct, "score": 100 if correct else 0, "answer_given": response.strip()}
 
     def eval_instruction(self, test_name, response):
         if not response:

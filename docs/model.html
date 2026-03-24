@@ -496,6 +496,7 @@ var INSTR_CHECK = {
 
 // ── Render functions ──
 function renderCodeSection(tests) {
+  if (!tests.code || !tests.code.details) return '';
   var details = tests.code.details;
   var avg = tests.code.avg_score;
   var cls = scoreClass(avg);
@@ -503,7 +504,7 @@ function renderCodeSection(tests) {
   details.forEach(function(t){ totalPassed += t.passed; totalCases += t.total; });
 
   var body = details.map(function(t) {
-    var rows = t.details.map(function(c){
+    var rows = (t.details || []).map(function(c){
       return '<tr><td><code>' + esc(c.input) + '</code></td>' +
              '<td><code>' + esc(c.expected) + '</code></td>' +
              '<td><code>' + esc(c.got) + '</code></td>' +
@@ -531,6 +532,7 @@ function renderCodeSection(tests) {
 }
 
 function renderReasoningSection(tests) {
+  if (!tests.reasoning || !tests.reasoning.details) return '';
   var d = tests.reasoning;
   var avg = d.score;
   var cls = scoreClass(avg);
@@ -558,6 +560,7 @@ function renderReasoningSection(tests) {
 }
 
 function renderInstructionSection(tests) {
+  if (!tests.instruction || !tests.instruction.details) return '';
   var d = tests.instruction;
   var avg = d.avg_score;
   var cls = scoreClass(avg);
@@ -583,6 +586,7 @@ function renderInstructionSection(tests) {
 }
 
 function renderTranslationSection(tests) {
+  if (!tests.translation || !tests.translation.details) return '';
   var d = tests.translation;
   var avg = d.avg_score;
   var cls = scoreClass(avg);
@@ -607,6 +611,7 @@ function renderTranslationSection(tests) {
 }
 
 function renderSpeedSection(tests) {
+  if (!tests.speed || !tests.speed.details) return '';
   var d = tests.speed;
   var items = d.details.map(function(t) {
     return '<div class="speed-item">' +
@@ -704,7 +709,8 @@ if (!modelId) {
   fetch('data/results/latest.json')
     .then(function(r){ return r.json(); })
     .then(function(data) {
-      var model = data.results.find(function(m){ return m.model_id === modelId; });
+      var results = Array.isArray(data) ? data : (data.results || []);
+      var model = results.find(function(m){ return m.model_id === modelId; });
       if (!model) {
         document.getElementById('page-root').innerHTML =
           '<div class="page-error"><h2>Model not found</h2><p>ID: ' + esc(modelId) + '</p><p><a href="index.html">← Back to rankings</a></p></div>';
