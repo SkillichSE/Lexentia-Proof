@@ -23,7 +23,7 @@
 <header class="header" id="app-bar">
   <div class="header-content">
     <a href="index.html" class="logo">
-      <span class="logo-icon">🔍</span>Lexentia Proof
+      <span class="logo-icon">LP</span>Lexentia Proof
     </a>
     <nav class="nav">
       <a href="index.html" class="nav-link active">Rankings</a>
@@ -37,7 +37,7 @@
       <label class="theme-switch" aria-label="Toggle theme">
         <input type="checkbox" id="theme-toggle">
         <span class="theme-switch-track"></span>
-        <span class="theme-switch-thumb" id="thumb-icon">🌙</span>
+        <span class="theme-switch-thumb" id="thumb-icon"></span>
       </label>
     </div>
   </div>
@@ -46,36 +46,7 @@
   <div class="beta-ribbon">BETA</div>
 </div>
 
-<style>
-  .beta-ribbon-wrapper {
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 9999;
-  }
 
-  .beta-ribbon {
-    font-family: sans-serif;
-    font-weight: bold;
-    text-align: center;
-    line-height: 30px;
-    letter-spacing: 1px;
-    color: #fff;
-    
-    background: #ff4757; /* Цвет фона */
-    
-    width: 200px;
-    position: absolute;
-    top: 30px;
-    right: -50px;
-    transform: rotate(45deg);
-    
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  }
-</style>
 <div class="hero">
   <div class="hero-inner">
     <h1 class="hero-headline" id="hero-headline">Lexentia Proof</h1>
@@ -92,22 +63,22 @@
 
   <div class="stats-grid reveal">
     <div class="stat-card">
-      <div class="stat-card-icon primary-cont">🤖</div>
+      <div class="stat-card-icon primary-cont"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3l2 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <div class="stat-value" id="stat-models">–</div>
       <div class="stat-label">Models Tested</div>
     </div>
     <div class="stat-card">
-      <div class="stat-card-icon tertiary-cont">⚡</div>
+      <div class="stat-card-icon tertiary-cont"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L8 8M8 8L5 11M8 8L11 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <div class="stat-value" id="stat-fastest">–</div>
       <div class="stat-label">Fastest tok/s</div>
     </div>
     <div class="stat-card">
-      <div class="stat-card-icon secondary-cont">🎯</div>
+      <div class="stat-card-icon secondary-cont"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 2v1M8 13v1M2 8h1M13 8h1M3.5 3.5l.7.7M11.8 11.8l.7.7M3.5 12.5l.7-.7M11.8 4.2l.7-.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <div class="stat-value" id="stat-quality">–</div>
       <div class="stat-label">Top Score /100</div>
     </div>
     <div class="stat-card">
-      <div class="stat-card-icon error-cont">📐</div>
+      <div class="stat-card-icon error-cont"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="10" width="3" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="6.5" y="7" width="3" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="11" y="4" width="3" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/></svg></div>
       <div class="stat-value">3</div>
       <div class="stat-label">Size Categories</div>
     </div>
@@ -142,13 +113,13 @@
     </div>
 
     <div class="legend" id="quality-legend" style="margin-top:16px;">
-      <span class="legend-item"><span class="legend-dot" style="background:var(--metric-code)"></span>HumanEval · code</span>
-      <span class="legend-item"><span class="legend-dot" style="background:var(--metric-reason)"></span>GSM8K · reasoning</span>
-      <span class="legend-item"><span class="legend-dot" style="background:var(--metric-mmlu)"></span>MMLU · knowledge</span>
-      <span class="legend-item"><span class="legend-dot" style="background:var(--metric-trans)"></span>Translation</span>
+      <span class="legend-item"><span class="legend-dot" style="background:linear-gradient(90deg,#6366f1,#8b5cf6)"></span>HumanEval · code</span>
+      <span class="legend-item"><span class="legend-dot" style="background:linear-gradient(90deg,#3b82f6,#6366f1)"></span>GSM8K · reasoning</span>
+      <span class="legend-item"><span class="legend-dot" style="background:linear-gradient(90deg,#06b6d4,#3b82f6)"></span>MMLU · knowledge</span>
+      <span class="legend-item"><span class="legend-dot" style="background:linear-gradient(90deg,#10b981,#06b6d4)"></span>Translation</span>
     </div>
     <div class="legend" id="speed-legend" style="display:none;margin-top:16px;">
-      <span class="legend-item"><span class="legend-dot" style="background:var(--color-primary)"></span>Tokens/second — averaged over short, medium, and long prompts</span>
+      <span class="legend-item"><span class="legend-dot" style="background:linear-gradient(90deg,#f59e0b,#10b981)"></span>Tokens/second — averaged over short, medium, and long prompts</span>
     </div>
 
     <div class="leaderboard-panel active" id="panel-quality">
@@ -220,37 +191,37 @@
     <p class="section-sub reveal reveal-d1">Industry-standard benchmarks — no invented metrics</p>
     <div class="feature-grid">
       <div class="feature-card" onclick="window.location.href='methodology.html#humaneval'" role="button" tabindex="0" aria-label="Learn more about HumanEval benchmark">
-        <div class="feature-icon" style="background:var(--color-tertiary-cont);">💻</div>
+        <div class="feature-icon" style="">HE</div>
         <div class="feature-name">HumanEval</div>
         <div class="feature-metric" style="color:var(--metric-code);">Code quality</div>
         <div class="feature-desc">Functions are executed against real test cases. Syntax and edge-case logic must pass.</div>
       </div>
       <div class="feature-card" onclick="window.location.href='methodology.html#gsm8k'" role="button" tabindex="0" aria-label="Learn more about GSM8K benchmark">
-        <div class="feature-icon" style="background:var(--color-secondary-cont);">🧮</div>
+        <div class="feature-icon" style="">GS</div>
         <div class="feature-name">GSM8K</div>
         <div class="feature-metric" style="color:var(--metric-reason);">Reasoning</div>
         <div class="feature-desc">Math word problems and multi-step logic. Verified correct answers only, no partial credit.</div>
       </div>
       <div class="feature-card" onclick="window.location.href='methodology.html#mmlu'" role="button" tabindex="0" aria-label="Learn more about MMLU benchmark">
-        <div class="feature-icon" style="background:var(--color-primary-cont);">📚</div>
+        <div class="feature-icon" style="">ML</div>
         <div class="feature-name">MMLU</div>
         <div class="feature-metric" style="color:var(--metric-mmlu);">Knowledge &amp; instructions</div>
         <div class="feature-desc">Instruction following, format compliance, and multi-domain knowledge checks.</div>
       </div>
       <div class="feature-card" onclick="window.location.href='methodology.html#translation'" role="button" tabindex="0" aria-label="Learn more about Translation benchmark">
-        <div class="feature-icon" style="background:color-mix(in srgb,var(--metric-trans) 15%,transparent);">🌐</div>
+        <div class="feature-icon" style="">TR</div>
         <div class="feature-name">Translation</div>
         <div class="feature-metric" style="color:var(--metric-trans);">Multilingual</div>
         <div class="feature-desc">English ↔ Russian, English ↔ Spanish. Scored via script detection and vocabulary matching.</div>
       </div>
       <div class="feature-card" onclick="window.location.href='methodology.html#throughput'" role="button" tabindex="0" aria-label="Learn more about Speed benchmark">
-        <div class="feature-icon" style="background:var(--color-primary-cont);">⚡</div>
+        <div class="feature-icon" style="">SP</div>
         <div class="feature-name">Throughput</div>
         <div class="feature-metric" style="color:var(--color-primary);">Speed</div>
         <div class="feature-desc">Tokens/second averaged over short, medium, and long prompts. Ranked per size tier.</div>
       </div>
       <div class="feature-card" onclick="window.location.href='about.html'" role="button" tabindex="0" aria-label="Learn more about daily updates">
-        <div class="feature-icon" style="background:var(--color-tertiary-cont);">🔄</div>
+        <div class="feature-icon" style="">24</div>
         <div class="feature-name">Daily Updates</div>
         <div class="feature-metric" style="color:var(--color-tertiary);">Automated</div>
         <div class="feature-desc">GitHub Actions runs every 24 hours. Results reflect the current state of each model.</div>
@@ -281,7 +252,7 @@
 
 <div class="compare-bar" id="compare-bar">
   <span class="compare-bar-label" id="compare-count">0 selected</span>
-  <button class="btn-filled" id="compare-go" style="height:36px;padding:0 20px;font-size:13px;">⚖️ Compare</button>
+  <button class="btn-filled" id="compare-go" style="height:36px;padding:0 20px;font-size:13px;">Compare</button>
   <button class="btn-tonal" id="compare-clear" style="height:36px;padding:0 16px;font-size:13px;">Clear</button>
 </div>
 
@@ -292,7 +263,7 @@
         <h2 class="dialog-title">Model Comparison</h2>
         <p style="font-size:13px;color:var(--color-on-surface-var);margin-top:2px;">Radar charts show relative strengths · highlighted = best in row</p>
       </div>
-      <button class="dialog-close" id="dialog-close" aria-label="Close">✕</button>
+      <button class="dialog-close" id="dialog-close" aria-label="Close">&times;</button>
     </div>
     <div class="dialog-body">
       <div class="radar-grid" id="radar-grid"></div>
@@ -310,16 +281,15 @@ const thumbIcon   = document.getElementById('thumb-icon');
 function applyTheme(t) {
   document.documentElement.setAttribute('data-theme', t);
   localStorage.setItem('theme', t);
-  const dark = t === 'dark';
-  themeToggle.checked = dark;
-  themeLabel.textContent = dark ? 'Dark' : 'Light';
-  thumbIcon.textContent  = dark ? '🌙' : '☀️';
+  const isLight = t === 'light';
+  themeToggle.checked = isLight;
+  themeLabel.textContent = isLight ? 'Light' : 'Dark';
 }
 
 applyTheme(localStorage.getItem('theme') || 'dark');
 
 themeToggle.addEventListener('change', () => {
-  applyTheme(themeToggle.checked ? 'dark' : 'light');
+  applyTheme(themeToggle.checked ? 'light' : 'dark');
 });
 
 window.addEventListener('scroll', () =>
@@ -340,14 +310,24 @@ function cardClass(i) { return i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : ''; }
 
 function scoreRow(label, val, fillClass, tip) {
   const w = scalePct(val);
+  // store target in data-w, start at 0 so css transition animates on load
   return `<div class="score-row">
     <span class="score-label">${label}</span>
     <span class="score-bar-wrap">
-      <div class="score-bar-fill ${fillClass}" style="width:${w}%;height:100%;border-radius:3px;"></div>
+      <div class="score-bar-fill ${fillClass}" style="width:0%" data-w="${w}"></div>
       <span class="score-tooltip">${tip}</span>
     </span>
     <span class="score-val">${Math.round(val)}</span>
   </div>`;
+}
+
+function animateBars(container) {
+  if (!container) return;
+  // stagger bar fill animations for each card
+  container.querySelectorAll('.score-bar-fill[data-w]').forEach((bar, i) => {
+    const target = bar.dataset.w;
+    setTimeout(() => { bar.style.width = target + '%'; }, 80 + i * 25);
+  });
 }
 
 function toggleCompare(btn) {
@@ -362,7 +342,7 @@ function toggleCompare(btn) {
   const sel = compareMap.has(key);
   document.querySelectorAll(`.cmp-chip[data-key="${CSS.escape(key)}"]`).forEach(b => {
     b.classList.toggle('selected', sel);
-    b.textContent = sel ? '✓ Selected' : '+ Compare';
+    b.textContent = sel ? 'Selected' : '+ Compare';
   });
   const n = compareMap.size;
   document.getElementById('compare-bar').classList.toggle('visible', n > 0);
@@ -390,7 +370,7 @@ function renderCard(m, i) {
         <span class="rank-num ${rm.cls}">${rm.label}</span>
         <button class="cmp-chip ${sel ? 'selected' : ''}"
                 data-key="${key}" data-model="${enc}"
-                onclick="toggleCompare(this)">${sel ? '✓ Selected' : '+ Compare'}</button>
+                onclick="toggleCompare(this)">${sel ? 'Selected' : '+ Compare'}</button>
       </div>
     </div>
     <div class="score-block">
@@ -428,7 +408,7 @@ function renderSpeedCard(m, i, maxSpd) {
       <div class="score-row">
         <span class="score-label">Speed</span>
         <span class="score-bar-wrap">
-          <span class="score-bar-fill fill-speed" style="width:${pct}%;height:100%;border-radius:3px;display:block;"></span>
+          <span class="score-bar-fill fill-speed" style="width:0%" data-w="${pct}"></span>
           <span class="score-tooltip">${Math.round(spd)} tok/s — ${pct.toFixed(0)}% of tier best</span>
         </span>
         <span class="score-val">${Math.round(pct)}</span>
@@ -761,13 +741,16 @@ window.buildQualityBoard = function(results) {
     animateCounter(document.getElementById('stat-fastest'), fastest, 1100);
     animateCounter(document.getElementById('stat-quality'), quality, 1000);
   }, 320);
-  
+
   ['large','medium','small'].forEach(function(t) {
     var container = document.getElementById('quality-board-' + t);
     if (!container) return;
+    // stagger card reveal animations
     container.querySelectorAll('.model-card').forEach(function(card, i) {
-      card.style.animationDelay = (i * 0.055) + 's';
+      card.style.animationDelay = (i * 0.06) + 's';
     });
+    // animate score bars after cards appear
+    setTimeout(function() { animateBars(container); }, 200);
   });
 };
 
@@ -778,8 +761,9 @@ window.buildSpeedBoard = function(results) {
     var container = document.getElementById('speed-board-' + t);
     if (!container) return;
     container.querySelectorAll('.model-card').forEach(function(card, i) {
-      card.style.animationDelay = (i * 0.055) + 's';
+      card.style.animationDelay = (i * 0.06) + 's';
     });
+    setTimeout(function() { animateBars(container); }, 200);
   });
 };
 

@@ -41,7 +41,6 @@ function handleError(error, container) {
   if (container) {
     container.innerHTML = `
       <div class="card" style="text-align: center; padding: 48px; background: var(--surface);">
-        <div style="font-size: 3rem; margin-bottom: 16px;">⚠️</div>
         <h3>Unable to load data</h3>
         <p style="color: var(--text-secondary); margin-top: 8px;">
           Please try refreshing the page or check back later.

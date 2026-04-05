@@ -1,43 +1,45 @@
-/* lexentia proof — animations
-   intentionally minimal: no glows, no color flashes
-   only structural motion (reveal, slide) */
-
-/* page load reveal — staggered fade-in from slight y offset */
+/* page load reveal — stagger from below */
 @keyframes reveal {
-  from { opacity: 0; transform: translateY(6px); }
+  from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.stat-card   { animation: reveal 0.3s ease both; }
-.model-card  { animation: reveal 0.3s ease both; }
-.news-item   { animation: reveal 0.3s ease both; }
-.feature-card{ animation: reveal 0.3s ease both; }
+.stat-card    { animation: reveal 0.4s cubic-bezier(0.4,0,0.2,1) both; }
+.model-card   { animation: reveal 0.4s cubic-bezier(0.4,0,0.2,1) both; }
+.news-item    { animation: reveal 0.4s cubic-bezier(0.4,0,0.2,1) both; }
+.feature-card { animation: reveal 0.4s cubic-bezier(0.4,0,0.2,1) both; }
 
-.stat-card:nth-child(1)  { animation-delay: 0.04s; }
-.stat-card:nth-child(2)  { animation-delay: 0.08s; }
-.stat-card:nth-child(3)  { animation-delay: 0.12s; }
-.stat-card:nth-child(4)  { animation-delay: 0.16s; }
-
-/* score bar fill animation is handled via CSS transition in style.css */
-
-/* card hover lift — subtle, no shadow */
-.model-card  { transition: background 0.15s; }
+.stat-card:nth-child(1) { animation-delay: 0.05s; }
+.stat-card:nth-child(2) { animation-delay: 0.10s; }
+.stat-card:nth-child(3) { animation-delay: 0.15s; }
+.stat-card:nth-child(4) { animation-delay: 0.20s; }
 
 /* nav underline slide */
-.nav-link::after { transition: transform 0.2s cubic-bezier(0.4,0,0.2,1); }
+.nav-link::after { transition: transform 0.25s cubic-bezier(0.4,0,0.2,1); }
 
 /* dialog open */
 @keyframes dialog-in {
-  from { opacity: 0; transform: scale(0.97) translateY(4px); }
+  from { opacity: 0; transform: scale(0.96) translateY(8px); }
   to   { opacity: 1; transform: scale(1) translateY(0); }
 }
-.dialog-scrim.open .dialog { animation: dialog-in 0.2s ease both; }
+.dialog-scrim.open .dialog { animation: dialog-in 0.25s cubic-bezier(0.4,0,0.2,1) both; }
 
 /* compare bar slide up */
 @keyframes bar-in {
-  from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+  from { opacity: 0; transform: translateX(-50%) translateY(12px); }
   to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
-.compare-bar.visible { animation: bar-in 0.2s ease both; }
+.compare-bar.visible { animation: bar-in 0.25s cubic-bezier(0.4,0,0.2,1) both; }
 
-/* skeleton pulse already defined in style.css */
+/* ripple on card click */
+@keyframes ripple-out {
+  from { width: 0; height: 0; opacity: 0.25; transform: translate(-50%, -50%) scale(0); }
+  to   { width: 200px; height: 200px; opacity: 0; transform: translate(-50%, -50%) scale(1); }
+}
+.ripple-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.3);
+  pointer-events: none;
+  animation: ripple-out 0.5s cubic-bezier(0.4,0,0.2,1) both;
+}
