@@ -2,7 +2,7 @@ import os, re, json, time, subprocess, argparse
 from datetime import datetime
 from pathlib import Path
 import requests
-from config import MODELS, TESTS, TESTS_BY_TIER
+from config import MODELS, TESTS, TESTS_BY_TIER, SCORE_WEIGHTS
 
 
 def get_tests_for_tier(tier):
@@ -21,12 +21,16 @@ REQUEST_DELAY = {"groq": 2, "google": 6, "openrouter": 4, "cerebras": 1, "togeth
 import random
 
 REASONING_ANSWERS = {
-    "syllogism": ["yes", "correct", "true", "definitely"],
-    "speed_math": ["same", "equal", "neither", "both"],
+    "syllogism":    ["yes", "correct", "true", "definitely"],
+    "speed_math":   ["same", "equal", "neither", "both"],
     "river_crossing": ["chicken"],
-    "coin_flip": ["1/2", "0.5", "50%", "50 percent", "one half", "half"],
-    "counting": ["11", "eleven"],
+    "coin_flip":    ["1/2", "0.5", "50%", "50 percent", "one half", "half"],
+    "counting":     ["11", "eleven"],
     "knights_knaves": ["knight"],
+    "word_problem": ["14", "fourteen"],
+    "deduction":    ["yes", "correct", "true"],
+    "scheduling":   ["no", "not possible", "impossible"],
+    "base_rate":    ["healthy", "not sick", "more likely healthy"],
 }
 
 _OR_ROTATE_STATUSES = {429, 402}
@@ -555,7 +559,7 @@ class ModelBenchmark:
         result["tests"]["translation"] = {"avg_score": avg_trans, "details": trans_raw}
         print(f"done ({avg_trans}/100)")
 
-        quality = round(avg_code * 0.30 + reasoning_score * 0.25 + avg_instr * 0.15 + avg_trans * 0.10, 1)
+        quality = round(avg_code * SCORE_WEIGHTS['code'] + reasoning_score * SCORE_WEIGHTS['reasoning'] + avg_instr * SCORE_WEIGHTS['instruction'] + avg_trans * SCORE_WEIGHTS['translation'], 1)
         result["quality_score"] = quality
         result["raw_speed"] = avg_tps
         result["overall_score"] = quality
@@ -711,6 +715,48 @@ class ModelBenchmark:
                          key=lambda x: x["raw_speed"], reverse=True)
         with open(results_dir / "leaderboard_speed.json", "w") as f:
             json.dump(s_board, f, indent=2)
+
+        # ------------------------------------------------------------------ #
+        # summary.json — lightweight integration endpoint
+        # one entry per model, all key fields, no raw test data
+        # ------------------------------------------------------------------ #
+        summary_models = []
+        for rank, r in enumerate(
+            sorted(_best_per_model(self.results, "quality_score"),
+                   key=lambda x: x["quality_score"], reverse=True), start=1
+        ):
+            t = r.get("tests", {})
+            summary_models.append({
+                "id":       r["model_id"],
+                "rank":     rank,
+                "name":     r["model_name"],
+                "provider": r.get("provider") or r.get("api_provider", "unknown").capitalize(),
+                "api_provider": r.get("api_provider", ""),
+                "size":     r.get("size", "N/A"),
+                "tier":     r.get("size_category", "unknown"),
+                "context":  r.get("context", "N/A"),
+                "is_os":    r.get("is_open_source", False),
+                "quality":  r["quality_score"],
+                "speed":    r["raw_speed"],
+                "scores": {
+                    "code":   round(t.get("code",        {}).get("avg_score", 0), 1),
+                    "reason": round(t.get("reasoning",   {}).get("score",     0), 1),
+                    "instr":  round(t.get("instruction", {}).get("avg_score", 0), 1),
+                    "trans":  round(t.get("translation", {}).get("avg_score", 0), 1),
+                },
+                "updated": r.get("timestamp", now_iso),
+            })
+
+        summary_doc = {
+            "v":         2,
+            "generated": now_iso,
+            "date":      date_str,
+            "count":     len(summary_models),
+            "weights":   {"code": 0.35, "reasoning": 0.30, "instruction": 0.20, "translation": 0.15},
+            "models":    summary_models,
+        }
+        with open(results_dir / "summary.json", "w") as f:
+            json.dump(summary_doc, f, separators=(",", ":"))
 
         # ------------------------------------------------------------------ #
         # 2. /models/{model_id}.json — tech passport + rolling history

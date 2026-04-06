@@ -8,27 +8,248 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta name="description" content="How Lexentia Proof works — daily automated benchmarks of free AI models. Real code execution, verified answers, no human grading.">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-spacing.css">
   <link rel="stylesheet" href="animations.css">
   <style>
-    .method-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:var(--space-xl);margin-bottom:var(--space-lg)}
-    .method-header{display:flex;align-items:center;gap:12px;margin-bottom:var(--space-md)}
-    .method-icon{font-size:1.75rem}
-    .method-title{font-size:1.125rem;font-weight:600}
-    .method-weight{background:var(--chip-blue-bg);color:var(--chip-blue-text);padding:3px 10px;border-radius:var(--radius-full);font-size:.75rem;font-weight:600;margin-left:auto}
-    .test-example{background:var(--surface-2);border-radius:var(--radius-md);padding:var(--space-md);margin-top:var(--space-md);font-size:.825rem}
-    .test-example code{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--primary)}
-    table{width:100%;border-collapse:collapse;font-size:.875rem;margin-top:var(--space-md)}
-    th{text-align:left;padding:10px 12px;border-bottom:2px solid var(--border);color:var(--text-tertiary);font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
-    td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text-secondary)}
-    tr:last-child td{border-bottom:none}
-    tr:hover td{background:var(--surface-2)}
+    .about-hero {
+      padding: 48px 0 36px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+    .about-hero h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+    .about-hero p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 640px;
+      line-height: 1.6;
+    }
+
+    .section { margin-bottom: 48px; }
+    .section-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title .icon { font-size: 1.2rem; }
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    /* Weight badge */
+    .weight-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    /* Cards grid for test categories */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .cat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+    .cat-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .cat-icon { font-size: 1.4rem; }
+    .cat-name { font-size: 0.9rem; font-weight: 600; }
+    .cat-weight {
+      margin-left: auto;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .cat-desc {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .cat-tests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .test-chip {
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--surface-raised);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-tertiary);
+    }
+
+    /* Tier table */
+    .tier-table-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th {
+      text-align: left;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-tertiary);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+      background: var(--surface);
+    }
+    td { padding: 12px 16px; border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--accent-hover); }
+    .td-tier { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+    .td-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 1px 7px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .badge-small  { background: rgba(16,185,129,0.12); color: #34d399; }
+    .badge-medium { background: rgba(99,102,241,0.12); color: #a5b4fc; }
+    .badge-large  { background: rgba(245,158,11,0.12); color: #fbbf24; }
+
+    /* Code block */
+    .code-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      overflow-x: auto;
+    }
+    .code-block .hl { color: var(--accent); }
+    .code-block .str { color: #34d399; }
+    .code-block .num { color: #fbbf24; }
+    .code-block .comment { color: var(--text-tertiary); }
+
+    /* API section */
+    .api-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 640px) { .api-grid { grid-template-columns: 1fr; } }
+
+    .endpoint-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+    }
+    .endpoint-url {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent);
+      margin-bottom: 6px;
+      word-break: break-all;
+    }
+    .endpoint-desc {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .endpoint-size {
+      font-size: 0.7rem;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+    }
+
+    /* How it works steps */
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-body strong { color: var(--text-primary); font-size: 0.875rem; }
+    .step-body p { color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5; margin-top: 3px; }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+    .oss-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .oss-box p { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.6; margin-bottom: 12px; }
+    .btn-outline {
+      display: inline-block;
+      padding: 9px 20px;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      transition: background 0.15s;
+    }
+    .btn-outline:hover { background: var(--accent-hover); }
   </style>
 </head>
 <body>
 
 <header class="header" id="app-bar">
   <div class="header-content">
-    <a href="index.html" class="logo"><img src="media/L_logo.png" alt="Lexentia Proof logo" class="logo-icon">Lexentia Proof</a>
+    <a href="index.html" class="logo">
+      <img src="media/L_logo.png" alt="Lexentia Proof logo" class="logo-icon">Lexentia Proof
+    </a>
     <nav class="nav">
       <a href="index.html" class="nav-link">Rankings</a>
       <a href="about.html" class="nav-link active">About</a>
@@ -47,156 +268,304 @@
   </div>
 </header>
 
-<main class="container" style="padding-top:var(--space-2xl);">
-  <h1>About Lexentia Proof</h1>
-  <p style="color:var(--text-secondary);margin-bottom:var(--space-2xl);font-size:1.05rem;max-width:680px;">
-    Free AI model rankings updated daily. No sponsorships, no bias — just automated benchmarks running via GitHub Actions at 03:00 UTC.
-  </p>
+<main class="container">
 
-  <div class="method-card">
-    <h2 style="margin-bottom:var(--space-lg);">What We Test</h2>
-    <p style="color:var(--text-secondary);margin-bottom:var(--space-lg);font-size:.875rem;">
-      Every model is tested across <strong>5 categories</strong>. Speed is tracked separately from quality — a slow model that writes perfect code still scores 100/100 on quality.
+  <div class="about-hero">
+    <h1>How Lexentia Proof Works</h1>
+    <p>
+      Daily automated benchmarks of free AI models — no human grading, no sponsorships.
+      Every score comes from code that actually runs, logic puzzles with known answers,
+      and strict formatting checks.
     </p>
-    <table>
-      <thead><tr><th>Category</th><th>Weight</th><th>What it measures</th></tr></thead>
-      <tbody>
-        <tr><td>Code</td><td>30%</td><td>Functions that actually run and produce correct output</td></tr>
-        <tr><td>Reasoning</td><td>25%</td><td>Logic, math, and puzzle problems with verified answers</td></tr>
-        <tr><td>Instructions</td><td>25%</td><td>Following exact formatting requirements (JSON, lists, word counts)</td></tr>
-        <tr><td>Translation</td><td>20%</td><td>Correct target language script and vocabulary</td></tr>
-        <tr><td>Speed</td><td>separate</td><td>Tokens per second — own leaderboard, not mixed into quality</td></tr>
-      </tbody>
-    </table>
   </div>
 
-  <div class="method-card">
-    <div class="method-header">
-      <span class="method-icon">💻</span>
-      <span class="method-title">Code Tests — Real Execution</span>
-      <span class="method-weight">30% of quality</span>
+
+  <!-- SCORE FORMULA -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📐</span> Quality Score Formula</div>
+    <div class="section-subtitle">
+      One final number — <strong>Quality Score 0–100</strong> — is a weighted average of four categories.
+      Speed is measured separately and never affects quality.
     </div>
-    <p style="color:var(--text-secondary);font-size:.875rem;line-height:1.6;">
-      The model writes Python functions. We <strong>actually run them</strong> with test inputs and verify outputs match expected values. Syntax errors, wrong logic, or empty responses score 0. No partial credit.
-    </p>
-    <div class="test-example">
-      <strong>Example — is_prime test:</strong><br><br>
-      Prompt: <em>"Write a Python function called is_prime(n) that returns True if n is prime..."</em><br><br>
-      We run: <code>is_prime(2) → True ✅  |  is_prime(4) → False ✅  |  is_prime(17) → True ✅</code><br><br>
-      Score = (passed / total) × 100
+
+    <div class="categories-grid">
+
+      <div class="cat-card">
+        <div class="cat-card-header">
+          <span class="cat-icon">💻</span>
+          <span class="cat-name">Code</span>
+          <span class="cat-weight">35%</span>
+        </div>
+        <p class="cat-desc">
+          Model writes a Python function. We <strong>actually execute it</strong> with test inputs
+          and compare outputs to expected values. Syntax error or wrong logic = 0. No partial credit for broken code.
+        </p>
+        <div class="cat-tests">
+          <span class="test-chip">fibonacci</span>
+          <span class="test-chip">palindrome</span>
+          <span class="test-chip">is_prime</span>
+          <span class="test-chip">bubble_sort</span>
+          <span class="test-chip">count_vowels</span>
+          <span class="test-chip">binary_search</span>
+          <span class="test-chip">flatten</span>
+          <span class="test-chip">longest_common_prefix</span>
+        </div>
+      </div>
+
+      <div class="cat-card">
+        <div class="cat-card-header">
+          <span class="cat-icon">🧠</span>
+          <span class="cat-name">Reasoning</span>
+          <span class="cat-weight">30%</span>
+        </div>
+        <p class="cat-desc">
+          Logic puzzles, probability traps, and multi-step deduction — each with a single
+          correct answer. We check if the model's response contains the right answer string.
+        </p>
+        <div class="cat-tests">
+          <span class="test-chip">syllogism</span>
+          <span class="test-chip">river crossing</span>
+          <span class="test-chip">coin flip</span>
+          <span class="test-chip">knights & knaves</span>
+          <span class="test-chip">base rate / Bayes</span>
+          <span class="test-chip">scheduling constraints</span>
+          <span class="test-chip">word problem</span>
+          <span class="test-chip">counting trap</span>
+        </div>
+      </div>
+
+      <div class="cat-card">
+        <div class="cat-card-header">
+          <span class="cat-icon">📋</span>
+          <span class="cat-name">Instruction Following</span>
+          <span class="cat-weight">20%</span>
+        </div>
+        <p class="cat-desc">
+          Can the model follow exact formatting rules? We ask for JSON with specific keys,
+          numbered lists of exact length, and precise sentence counts.
+          We parse the output programmatically.
+        </p>
+        <div class="cat-tests">
+          <span class="test-chip">JSON 3 keys</span>
+          <span class="test-chip">JSON nested</span>
+          <span class="test-chip">numbered list ×5</span>
+          <span class="test-chip">sentence count ×3</span>
+        </div>
+      </div>
+
+      <div class="cat-card">
+        <div class="cat-card-header">
+          <span class="cat-icon">🌍</span>
+          <span class="cat-name">Translation</span>
+          <span class="cat-weight">15%</span>
+        </div>
+        <p class="cat-desc">
+          English ↔ Russian ↔ Spanish. We check for the correct writing system (Cyrillic ratio
+          for Russian) and expected vocabulary keywords. No LLM judge — purely deterministic checks.
+        </p>
+        <div class="cat-tests">
+          <span class="test-chip">EN → RU</span>
+          <span class="test-chip">RU → EN</span>
+          <span class="test-chip">EN → ES</span>
+        </div>
+      </div>
+
     </div>
-    <div class="test-example" style="margin-top:var(--space-sm)">
-      <strong>3 problems tested:</strong> Prime checker · Fibonacci sequence · Palindrome detection
+
+    <div class="code-block">
+      <span class="comment"># quality_score formula (benchmark.py)</span><br>
+      quality = (<br>
+      &nbsp;&nbsp;avg_code &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl">* 0.35</span>  <span class="comment">+  # 35% — real execution</span><br>
+      &nbsp;&nbsp;reasoning_score &nbsp;<span class="hl">* 0.30</span>  <span class="comment">+  # 30% — logic & math</span><br>
+      &nbsp;&nbsp;avg_instruction &nbsp;<span class="hl">* 0.20</span>  <span class="comment">+  # 20% — format compliance</span><br>
+      &nbsp;&nbsp;avg_translation &nbsp;<span class="hl">* 0.15</span>  &nbsp;&nbsp;&nbsp;<span class="comment">   # 15% — language accuracy</span><br>
+      )
     </div>
   </div>
 
-  <div class="method-card">
-    <div class="method-header">
-      <span class="method-icon">🧠</span>
-      <span class="method-title">Reasoning Tests</span>
-      <span class="method-weight">25% of quality</span>
+  <hr class="divider">
+
+  <!-- TIER SYSTEM -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📊</span> Tiered Testing — Difficulty Scales with Size</div>
+    <div class="section-subtitle">
+      Small models get easier tasks — basic recursion, simple logic.
+      Large models get harder ones — algorithmic problems, Bayesian traps, multi-step constraints.
+      This makes scores <strong>meaningful within each tier</strong> and prevents small models
+      from looking better than they are by acing trivial tasks.
     </div>
-    <p style="color:var(--text-secondary);font-size:.875rem;line-height:1.6;">
-      Logic puzzles, math problems, and reasoning challenges with known correct answers. We check if the model's answer contains the correct value.
+
+    <div class="tier-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Size</th>
+            <th>Code tests</th>
+            <th>Reasoning tests</th>
+            <th>Instruction tests</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-tier"><span class="td-badge badge-small">Small</span></td>
+            <td>≤10B</td>
+            <td>fibonacci, palindrome</td>
+            <td>syllogism, speed math, counting</td>
+            <td>JSON (3 keys), list ×5</td>
+          </tr>
+          <tr>
+            <td class="td-tier"><span class="td-badge badge-medium">Medium</span></td>
+            <td>11–50B</td>
+            <td>+ is_prime, bubble_sort, count_vowels</td>
+            <td>+ river crossing, coin flip, word problem, deduction</td>
+            <td>+ sentence count ×3</td>
+          </tr>
+          <tr>
+            <td class="td-tier"><span class="td-badge badge-large">Large</span></td>
+            <td>50B+</td>
+            <td>+ binary_search, flatten, longest_common_prefix</td>
+            <td>+ knights & knaves, Bayes base rate, scheduling</td>
+            <td>+ JSON nested (name/scores/active)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:14px;font-size:0.8rem;color:var(--text-tertiary);">
+      Rankings are normalized <em>within</em> each tier — a Small #1 is the best among small models, not globally.
+      Models with unknown size fall back to the Medium tier.
     </p>
-    <div class="test-example">
-      <strong>Example — Coin flip probability:</strong><br><br>
-      Prompt: <em>"I flip a fair coin 3 times and get heads each time. What is the probability of getting heads on the 4th flip?"</em><br><br>
-      Correct answer: <code>1/2</code> or <code>50%</code> or <code>0.5</code><br>
-      We check if model's response contains any of these ✅
-    </div>
-    <div class="test-example" style="margin-top:var(--space-sm)">
-      <strong>5 reasoning tests:</strong> Syllogisms · Speed math · River crossing puzzle · Probability · Letter counting
+  </div>
+
+  <hr class="divider">
+
+  <!-- HOW IT WORKS -->
+  <div class="section">
+    <div class="section-title"><span class="icon">⚙️</span> How It Runs</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Daily at 03:00 UTC — GitHub Actions triggers the benchmark</strong>
+          <p>Fully automated, no human involvement. The workflow runs <code>benchmark.py</code> against all configured models.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Each model runs its tier's test suite</strong>
+          <p>Small models run 2 code + 3 reasoning tests. Large models run 4 code + 6 reasoning tests.
+          Python functions are executed in a sandbox via subprocess. All results are deterministic.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Scores computed, JSON files written</strong>
+          <p>Results saved to <code>docs/data/results/YYYY-MM-DD.json</code> (full proof),
+          <code>leaderboard.json</code> (ranked list), and <code>summary.json</code> (lightweight integration endpoint).</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Git commit → GitHub Pages redeploys automatically</strong>
+          <p>The updated JSON files are committed and pushed. GitHub Pages picks up the changes within minutes.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>Speed measured separately, never mixed into quality</strong>
+          <p>Three speed prompts (short / medium / long) measure raw tokens/second.
+          A model can score 100/100 on quality and rank last on speed — or vice versa.</p>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="method-card">
-    <div class="method-header">
-      <span class="method-icon">📋</span>
-      <span class="method-title">Instruction Following</span>
-      <span class="method-weight">25% of quality</span>
+  <hr class="divider">
+
+  <!-- API / INTEGRATION -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🔌</span> Public API — Use in Your Projects</div>
+    <div class="section-subtitle">
+      All data is available as plain JSON over HTTPS with CORS. No auth, no rate limits.
+      Fetch rankings, embed a leaderboard, or pipe scores into your own tooling.
     </div>
-    <p style="color:var(--text-secondary);font-size:.875rem;line-height:1.6;">
-      Can the model follow exact formatting rules? We ask for JSON with specific keys, numbered lists with exact counts, and precise sentence counts.
-    </p>
-    <div class="test-example">
-      <strong>Example — JSON formatting:</strong><br><br>
-      Prompt: <em>'Return a JSON object with exactly these keys: "name", "age", "city". Return ONLY valid JSON.'</em><br><br>
-      We parse the JSON and check all 3 required keys are present ✅
+
+    <div class="api-grid">
+
+      <div class="endpoint-card">
+        <div class="endpoint-url">data/results/summary.json</div>
+        <div class="endpoint-desc">
+          <strong>Recommended for integrations.</strong> One entry per model — id, name, provider,
+          tier, quality score, speed, per-category scores. ~6 KB, updated daily.
+        </div>
+        <div class="endpoint-size">~6 KB · updated daily</div>
+      </div>
+
+      <div class="endpoint-card">
+        <div class="endpoint-url">data/results/leaderboard.json</div>
+        <div class="endpoint-desc">
+          Quality-ranked list with rank, score, speed, tier, and status for every model.
+          Same data as the main Rankings page.
+        </div>
+        <div class="endpoint-size">~6 KB · updated daily</div>
+      </div>
+
+      <div class="endpoint-card">
+        <div class="endpoint-url">data/results/leaderboard_speed.json</div>
+        <div class="endpoint-desc">
+          Same structure, ranked by tokens/second instead of quality score.
+        </div>
+        <div class="endpoint-size">~6 KB · updated daily</div>
+      </div>
+
+      <div class="endpoint-card">
+        <div class="endpoint-url">data/results/YYYY-MM-DD.json</div>
+        <div class="endpoint-desc">
+          Full daily snapshot with raw test outputs, execution logs, and per-case results.
+          Use this to audit scores or build custom analysis.
+        </div>
+        <div class="endpoint-size">~165 KB · one file per day</div>
+      </div>
+
     </div>
-    <div class="test-example" style="margin-top:var(--space-sm)">
-      <strong>3 instruction tests:</strong> JSON formatting · Numbered lists · Exact sentence counts
+
+    <div class="code-block" style="margin-top:20px;">
+      <span class="comment">// Minimal example — fetch top 5 models</span><br>
+      <span class="hl">const</span> res = <span class="hl">await</span> fetch(<span class="str">'https://skillichse.github.io/Lexentia-Proof/data/results/summary.json'</span>);<br>
+      <span class="hl">const</span> { models } = <span class="hl">await</span> res.json();<br>
+      <span class="hl">const</span> top5 = models.slice(<span class="num">0</span>, <span class="num">5</span>); <span class="comment">// already sorted by quality desc</span><br><br>
+      top5.forEach(m =&gt; {<br>
+      &nbsp;&nbsp;console.log(<span class="str">`#${m.rank} ${m.name} — quality: ${m.quality}, speed: ${m.speed} tok/s`</span>);<br>
+      });
+    </div>
+
+    <div class="code-block" style="margin-top:12px;">
+      <span class="comment"># Python example</span><br>
+      <span class="hl">import</span> requests<br>
+      data = requests.get(<span class="str">'https://skillichse.github.io/Lexentia-Proof/data/results/summary.json'</span>).json()<br>
+      <span class="hl">for</span> m <span class="hl">in</span> data[<span class="str">'models'</span>][:5]:<br>
+      &nbsp;&nbsp;<span class="hl">print</span>(<span class="str">f"#{m['rank']} {m['name']} — {m['quality']}/100 quality, {m['speed']} tok/s"</span>)
     </div>
   </div>
 
-  <div class="method-card">
-    <div class="method-header">
-      <span class="method-icon">🌍</span>
-      <span class="method-title">Translation Tests</span>
-      <span class="method-weight">20% of quality</span>
-    </div>
-    <p style="color:var(--text-secondary);font-size:.875rem;line-height:1.6;">
-      Translating between English, Russian, and Spanish. We check if the output uses the correct writing system (Cyrillic for Russian) and contains expected vocabulary.
-    </p>
-    <div class="test-example">
-      <strong>Example — English to Russian:</strong><br><br>
-      Prompt: <em>"Translate to Russian: 'Artificial intelligence is changing the world.'"</em><br><br>
-      We check: Uses Cyrillic characters ✅ + Contains Russian keywords ✅
-    </div>
-    <div class="test-example" style="margin-top:var(--space-sm)">
-      <strong>3 translation pairs:</strong> EN→RU · RU→EN · EN→ES
-    </div>
-  </div>
+  <hr class="divider">
 
-  <div class="method-card">
-    <div class="method-header">
-      <span class="method-icon">⚡</span>
-      <span class="method-title">Speed Tests</span>
-      <span class="method-weight">Separate leaderboard</span>
+  <!-- OPEN SOURCE -->
+  <div class="oss-box">
+    <div style="flex:1;">
+      <div style="font-size:0.95rem;font-weight:600;margin-bottom:8px;">Open Source</div>
+      <p>All benchmark code, scoring logic, and raw result data is public.
+      No hidden weights, no paid placements, no LLM-as-judge black boxes.
+      Every score can be reproduced by running <code>benchmark.py</code> yourself.</p>
+      <a href="https://skillichse.github.io/Lexentia-Proof/" target="_blank" rel="noopener" class="btn-outline">
+        View on GitHub →
+      </a>
     </div>
-    <p style="color:var(--text-secondary);font-size:.875rem;line-height:1.6;">
-      We measure <strong>tokens per second</strong> across short, medium, and long generation tasks. Speed is tracked separately — it never affects quality scores.
-    </p>
-    <div class="test-example">
-      <strong>3 speed tests:</strong> Short prompt (haiku) · Medium (200 words) · Long (300 words)<br><br>
-      Final score = average tokens/second across all 3
-    </div>
-  </div>
-
-  <div class="method-card">
-    <h2 style="margin-bottom:var(--space-lg);">How It Works</h2>
-    <ol style="color:var(--text-secondary);font-size:.875rem;line-height:1.8;padding-left:20px;">
-      <li><strong>Daily at 03:00 UTC</strong> — GitHub Actions triggers the benchmark workflow</li>
-      <li><strong>Each model tested</strong> — Python script runs all tests via API calls to Groq, OpenRouter</li>
-      <li><strong>Results saved to JSON</strong> — Scores written to <code>docs/data/results/YYYY-MM-DD.json</code></li>
-      <li><strong>Git commit + push</strong> — GitHub Pages automatically rebuilds and deploys the updated site</li>
-      <li><strong>News aggregated</strong> — RSS feeds from HuggingFace, OpenAI, Anthropic, etc. parsed and displayed</li>
-    </ol>
-  </div>
-
-  <div class="method-card">
-    <h2 style="margin-bottom:var(--space-lg);">Size Categories</h2>
-    <p style="color:var(--text-secondary);margin-bottom:var(--space-md);font-size:.875rem;">
-      Models are ranked <strong>within their size tier</strong> — not globally. A top-ranked 8B model isn't compared to a 405B model.
-    </p>
-    <table>
-      <thead><tr><th>Category</th><th>Parameter range</th><th>Typical models</th></tr></thead>
-      <tbody>
-        <tr><td>Small</td><td>≤10B parameters</td><td>Llama 3.2 1B/3B, Gemma 7B, Qwen 2.5 7B</td></tr>
-        <tr><td>Medium</td><td>10B–50B parameters</td><td>Mixtral 8x7B, Phi-3 Medium, MythoMax 13B</td></tr>
-        <tr><td>Large</td><td>50B+ parameters</td><td>Llama 3.3 70B, Qwen 2.5 72B, Llama 3.1 405B</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="method-card">
-    <h2 style="margin-bottom:var(--space-lg);">Open Source</h2>
-    <p style="color:var(--text-secondary);font-size:.875rem;line-height:1.6;margin-bottom:var(--space-md);">
-      All code, data, and methodology is public on GitHub. No hidden algorithms, no sponsored rankings.
-    </p>
-    <a href="https://skillichse.github.io/Lexentia-Proof/" target="_blank" rel="noopener" class="btn-filled" style="display:inline-block;padding:12px 24px;text-decoration:none;">
-      View on GitHub →
-    </a>
   </div>
 
 </main>
@@ -212,8 +581,8 @@
 
 <script>
 const themeToggle = document.getElementById('theme-toggle');
-const themeLabel = document.getElementById('theme-label');
-const thumbIcon = document.getElementById('thumb-icon');
+const themeLabel  = document.getElementById('theme-label');
+const thumbIcon   = document.getElementById('thumb-icon');
 
 function applyTheme(t) {
   document.documentElement.setAttribute('data-theme', t);
@@ -221,12 +590,11 @@ function applyTheme(t) {
   const dark = t === 'dark';
   themeToggle.checked = dark;
   themeLabel.textContent = dark ? 'Dark' : 'Light';
-  thumbIcon.textContent = dark ? '🌙' : '☀️';
+  thumbIcon.textContent  = dark ? '🌙'   : '☀️';
 }
 
 applyTheme(localStorage.getItem('theme') || 'dark');
 themeToggle.addEventListener('change', () => applyTheme(themeToggle.checked ? 'dark' : 'light'));
-
 window.addEventListener('scroll', () =>
   document.getElementById('app-bar').classList.toggle('scrolled', window.scrollY > 0));
 </script>

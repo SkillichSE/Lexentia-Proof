@@ -25,7 +25,6 @@ MODELS = {
             "provider": "Groq", "size": "20B",
             "size_category": "medium", "context": "131k"
         },
-
         "llama-4-scout": {
             "id": "meta-llama/llama-4-scout-17b-16e-instruct",
             "name": "Llama 4 Scout 17B",
@@ -72,7 +71,6 @@ MODELS = {
             "provider": "OpenRouter", "size": "9B",
             "size_category": "small", "context": "128k"
         },
-
         "trinity-large": {
             "id": "arcee-ai/trinity-large-preview:free",
             "name": "Trinity Large 400B",
@@ -85,14 +83,12 @@ MODELS = {
             "provider": "OpenRouter", "size": "26B",
             "size_category": "medium", "context": "131k"
         },
-
         "step-3.5-flash": {
             "id": "stepfun/step-3.5-flash:free",
             "name": "Step 3.5 Flash 196B",
             "provider": "OpenRouter", "size": "196B",
             "size_category": "large", "context": "256k"
         },
-
         "gemma-3-27b": {
             "id": "google/gemma-3-27b-it:free",
             "name": "Gemma 3 27B",
@@ -123,7 +119,6 @@ MODELS = {
             "provider": "OpenRouter", "size": "2B",
             "size_category": "small", "context": "8k"
         },
-
         "lfm-2.5-instruct": {
             "id": "liquid/lfm-2.5-1.2b-instruct:free",
             "name": "LFM 2.5 1.2B Instruct",
@@ -136,7 +131,6 @@ MODELS = {
             "provider": "OpenRouter", "size": "1.2B",
             "size_category": "small", "context": "32k"
         },
-
         "llama-3.3-70b": {
             "id": "meta-llama/llama-3.3-70b-instruct:free",
             "name": "Llama 3.3 70B",
@@ -316,38 +310,51 @@ MODELS = {
             "size_category": "medium", "context": "131k"
         },
     },
-
 }
 
 # ---------------------------------------------------------------------------
 # Tiered tests: small / medium / large
 #
 # Philosophy:
-#   small  (≤10B)  — basic functionality: can the model follow instructions,
-#                    do simple arithmetic, write a trivial function?
+#   small  (≤10B)  — basic functionality: follow instructions, simple math,
+#                    trivial functions. These models struggle with anything complex.
 #   medium (11-50B) — standard tasks: solid coding, multi-step reasoning,
 #                    structured output, translation.
-#   large  (>50B)  — advanced tasks: algorithmic complexity, nuanced logic,
-#                    harder translation, richer instruction following.
+#   large  (>50B)  — hard tasks: algorithmic problems, multi-step logic chains,
+#                    complex instruction following, nuanced translation.
 #
-# Every tier shares the same speed prompts (measuring tok/s, not quality),
-# but code / reasoning / instruction / translation tasks differ in depth.
+# Score weights (must sum to 100):
+#   code 35% | reasoning 30% | instruction 20% | translation 15%
 # ---------------------------------------------------------------------------
 
-# Speed prompts are the same for all tiers — we measure raw throughput.
 _SPEED_TESTS = {
     "simple": "Write a haiku about artificial intelligence.",
     "medium": "Explain quantum computing in simple terms (200 words).",
-    "long": "Write a detailed tutorial on Python decorators with examples (300 words).",
+    "long":   "Write a detailed tutorial on Python decorators with examples (300 words).",
+}
+
+# ---------------------------------------------------------------------------
+# Score weights — shared across all tiers so quality_score is comparable
+# ---------------------------------------------------------------------------
+SCORE_WEIGHTS = {
+    "code":        0.35,
+    "reasoning":   0.30,
+    "instruction": 0.20,
+    "translation": 0.15,
 }
 
 TESTS_BY_TIER = {
+
     # -----------------------------------------------------------------------
-    # SMALL  ≤10B  — straightforward tasks; models should handle these well
+    # SMALL  ≤10B
+    # Goal: verify the model can do basic programming, simple logic,
+    # follow short instructions, and translate a sentence.
     # -----------------------------------------------------------------------
     "small": {
         "speed": _SPEED_TESTS,
+
         "code": {
+            # Basic recursion / iteration
             "fibonacci": {
                 "prompt": (
                     "Write a Python function called fibonacci(n) that returns the nth Fibonacci number "
@@ -355,10 +362,10 @@ TESTS_BY_TIER = {
                     "Return ONLY the function, no explanation."
                 ),
                 "fn": "fibonacci",
-                # Inputs chosen to discriminate 0-indexed vs 1-indexed implementations
                 "test_input": [0, 1, 2, 6, 9],
-                "expected": [0, 1, 1, 8, 34],
+                "expected":   [0, 1, 1, 8, 34],
             },
+            # String manipulation
             "palindrome": {
                 "prompt": (
                     "Write a Python function called is_palindrome(s) that returns True if string s "
@@ -366,35 +373,43 @@ TESTS_BY_TIER = {
                 ),
                 "fn": "is_palindrome",
                 "test_input": ["racecar", "hello", "A man a plan a canal Panama", "world"],
-                "expected": [True, False, True, False],
+                "expected":   [True, False, True, False],
             },
         },
+
         "reasoning": {
+            # Basic deduction
             "syllogism": {
                 "prompt": "If all bloops are razzies and all razzies are lazzies, are all bloops definitely lazzies? Answer with just Yes or No.",
                 "answer": "yes",
             },
+            # Trick question — same speed
             "speed_math": {
                 "prompt": "A train travels 120 km in 2 hours. Another train travels 180 km in 3 hours. Which is faster? Answer with: First, Second, or Same.",
                 "answer": "same",
             },
+            # Simple counting
             "counting": {
                 "prompt": "How many letters are in the word MISSISSIPPI? Answer with just the number.",
                 "answer": "11",
             },
         },
+
         "instruction": {
+            # Basic JSON output
             "json": {
                 "prompt": 'Return a JSON object with exactly these keys: "name", "age", "city". Use any values you like. Return ONLY valid JSON, nothing else.',
                 "check": "json_keys",
                 "required_keys": ["name", "age", "city"],
             },
+            # Numbered list
             "list": {
                 "prompt": "List exactly 5 programming languages, one per line, numbered 1-5. No extra text.",
                 "check": "numbered_list",
                 "count": 5,
             },
         },
+
         "translation": {
             "en_ru": {
                 "prompt": "Translate to Russian: 'Artificial intelligence is changing the world.' Return only the translation.",
@@ -408,79 +423,95 @@ TESTS_BY_TIER = {
     },
 
     # -----------------------------------------------------------------------
-    # MEDIUM  11–50B  — standard professional tasks
+    # MEDIUM  11–50B
+    # Goal: standard professional use — coding tasks, multi-step reasoning,
+    # structured output with constraints, multi-language translation.
     # -----------------------------------------------------------------------
     "medium": {
         "speed": _SPEED_TESTS,
+
         "code": {
-            "prime": {
+            # Number theory
+            "is_prime": {
                 "prompt": (
                     "Write a Python function called is_prime(n) that returns True if n is prime, "
-                    "False otherwise. Return ONLY the function, no explanation."
+                    "False otherwise. Handle edge cases (n<=1 is not prime). Return ONLY the function."
                 ),
                 "fn": "is_prime",
-                "test_input": [2, 3, 4, 17, 100],
-                "expected": [True, True, False, True, False],
+                "test_input": [1, 2, 3, 4, 17, 100],
+                "expected":   [False, True, True, False, True, False],
             },
-            "fibonacci": {
+            # Sorting
+            "bubble_sort": {
                 "prompt": (
-                    "Write a Python function called fibonacci(n) that returns the nth Fibonacci number "
-                    "(0-indexed: fibonacci(0)=0, fibonacci(1)=1, fibonacci(2)=1, fibonacci(6)=8). "
-                    "Return ONLY the function, no explanation."
+                    "Write a Python function called bubble_sort(arr) that returns a new sorted list "
+                    "(ascending). Do not modify the input list. Return ONLY the function."
                 ),
-                "fn": "fibonacci",
-                "test_input": [0, 1, 2, 6, 9],
-                "expected": [0, 1, 1, 8, 34],
+                "fn": "bubble_sort",
+                "test_input": [[3,1,4,1,5], [5,4,3,2,1], [], [1], [2,2,2]],
+                "expected":   [[1,1,3,4,5], [1,2,3,4,5], [], [1], [2,2,2]],
             },
-            "palindrome": {
+            # String manipulation with logic
+            "count_vowels": {
                 "prompt": (
-                    "Write a Python function called is_palindrome(s) that returns True if string s "
-                    "is a palindrome (ignore case and spaces). Return ONLY the function, no explanation."
+                    "Write a Python function called count_vowels(s) that returns the number of vowels "
+                    "(a,e,i,o,u — case-insensitive) in string s. Return ONLY the function."
                 ),
-                "fn": "is_palindrome",
-                "test_input": ["racecar", "hello", "A man a plan a canal Panama", "world"],
-                "expected": [True, False, True, False],
+                "fn": "count_vowels",
+                "test_input": ["hello", "AEIOU", "rhythm", "Python is great", ""],
+                "expected":   [2, 5, 0, 5, 0],
             },
         },
+
         "reasoning": {
-            "syllogism": {
-                "prompt": "If all bloops are razzies and all razzies are lazzies, are all bloops definitely lazzies? Answer with just Yes or No.",
-                "answer": "yes",
-            },
-            "speed_math": {
-                "prompt": "A train travels 120 km in 2 hours. Another train travels 180 km in 3 hours. Which is faster? Answer with: First, Second, or Same.",
-                "answer": "same",
-            },
+            # Classic puzzle
             "river_crossing": {
                 "prompt": "A farmer has a fox, a chicken, and a bag of grain. He needs to cross a river with a boat that can only carry him and one item. The fox eats the chicken if left alone, and the chicken eats the grain. What does he take first? Answer with one word: Fox, Chicken, or Grain.",
                 "answer": "chicken",
             },
+            # Probability with a common misconception trap
             "coin_flip": {
                 "prompt": "I flip a fair coin 3 times and get heads each time. What is the probability of getting heads on the 4th flip? Answer with a fraction like 1/2.",
                 "answer": "1/2",
             },
+            # Multi-step arithmetic
+            "word_problem": {
+                "prompt": "Alice has twice as many apples as Bob. Bob has 3 more than Carol. Carol has 4 apples. How many apples does Alice have? Answer with just the number.",
+                "answer": "14",
+            },
+            # Logical deduction with negation
+            "deduction": {
+                "prompt": "Some cats are black. All black things are visible at night. Does it follow that some cats are visible at night? Answer with just Yes or No.",
+                "answer": "yes",
+            },
+            # Counting trap
             "counting": {
                 "prompt": "How many letters are in the word MISSISSIPPI? Answer with just the number.",
                 "answer": "11",
             },
         },
+
         "instruction": {
+            # JSON with required keys
             "json": {
                 "prompt": 'Return a JSON object with exactly these keys: "name", "age", "city". Use any values you like. Return ONLY valid JSON, nothing else.',
                 "check": "json_keys",
                 "required_keys": ["name", "age", "city"],
             },
+            # Exact list length
             "list": {
                 "prompt": "List exactly 5 programming languages, one per line, numbered 1-5. No extra text.",
                 "check": "numbered_list",
                 "count": 5,
             },
-            "word_count": {
+            # Exact sentence count
+            "sentence_count": {
                 "prompt": "Write a description of Paris in exactly 3 sentences. No more, no less.",
                 "check": "sentence_count",
                 "count": 3,
             },
         },
+
         "translation": {
             "en_ru": {
                 "prompt": "Translate to Russian: 'Artificial intelligence is changing the world.' Return only the translation.",
@@ -493,77 +524,66 @@ TESTS_BY_TIER = {
             "en_es": {
                 "prompt": "Translate to Spanish: 'The future belongs to those who believe in the beauty of their dreams.' Return only the translation.",
                 "check": "spanish_words",
-                "keywords": ["el", "la", "los", "las", "que", "de", "su", "sus", "futuro", "sueños", "pertenece",
-                             "creen", "belleza"],
+                "keywords": ["el", "la", "los", "las", "que", "de", "su", "sus", "futuro", "sueños",
+                             "pertenece", "creen", "belleza"],
             },
         },
     },
 
     # -----------------------------------------------------------------------
-    # LARGE  >50B  — demanding tasks; frontier models should excel here
+    # LARGE  >50B
+    # Goal: hard tasks that separate frontier models — algorithmic complexity,
+    # multi-step logic, nested structured output, nuanced translation.
     # -----------------------------------------------------------------------
     "large": {
         "speed": _SPEED_TESTS,
+
         "code": {
-            "prime": {
-                "prompt": (
-                    "Write a Python function called is_prime(n) that returns True if n is prime, "
-                    "False otherwise. Return ONLY the function, no explanation."
-                ),
-                "fn": "is_prime",
-                "test_input": [2, 3, 4, 17, 100],
-                "expected": [True, True, False, True, False],
-            },
-            "fibonacci": {
-                "prompt": (
-                    "Write a Python function called fibonacci(n) that returns the nth Fibonacci number "
-                    "(0-indexed: fibonacci(0)=0, fibonacci(1)=1, fibonacci(2)=1, fibonacci(6)=8). "
-                    "Return ONLY the function, no explanation."
-                ),
-                "fn": "fibonacci",
-                "test_input": [0, 1, 2, 6, 9],
-                "expected": [0, 1, 1, 8, 34],
-            },
-            "palindrome": {
-                "prompt": (
-                    "Write a Python function called is_palindrome(s) that returns True if string s "
-                    "is a palindrome (ignore case and spaces). Return ONLY the function, no explanation."
-                ),
-                "fn": "is_palindrome",
-                "test_input": ["racecar", "hello", "A man a plan a canal Panama", "world"],
-                "expected": [True, False, True, False],
-            },
+            # Binary search — index correctness matters
             "binary_search": {
                 "prompt": (
                     "Write a Python function called binary_search(arr, target) that returns the index "
-                    "of target in the sorted list arr, or -1 if not found. Return ONLY the function, no explanation."
+                    "of target in sorted list arr, or -1 if not found. Return ONLY the function."
                 ),
                 "fn": "binary_search",
-                "test_input": [([1, 3, 5, 7, 9], 5), ([1, 3, 5, 7, 9], 6), ([2, 4, 6], 2), ([], 1)],
-                "expected": [2, -1, 0, -1],
+                "test_input": [([1,3,5,7,9],5), ([1,3,5,7,9],6), ([2,4,6],2), ([],1), ([42],42)],
+                "expected":   [2, -1, 0, -1, 0],
+            },
+            # Graph / tree — harder data structures
+            "flatten": {
+                "prompt": (
+                    "Write a Python function called flatten(lst) that takes a nested list of any depth "
+                    "and returns a flat list of all integers in order. Example: flatten([1,[2,[3,4]],5]) = [1,2,3,4,5]. "
+                    "Return ONLY the function."
+                ),
+                "fn": "flatten",
+                "test_input": [[1,[2,[3,4]],5], [[[]]], [1,2,3], [[[1]],[[2]],[[3]]]],
+                "expected":   [[1,2,3,4,5], [], [1,2,3], [1,2,3]],
+            },
+            # Algorithm — requires understanding of the problem
+            "longest_common_prefix": {
+                "prompt": (
+                    "Write a Python function called longest_common_prefix(strs) that takes a list of strings "
+                    "and returns the longest common prefix. Return '' if there is none. Return ONLY the function."
+                ),
+                "fn": "longest_common_prefix",
+                "test_input": [["flower","flow","flight"], ["dog","racecar","car"], ["interview","interact","interface"], [""]],
+                "expected":   ["fl", "", "inter", ""],
+            },
+            # Correctness under edge cases
+            "is_prime": {
+                "prompt": (
+                    "Write a Python function called is_prime(n) that returns True if n is prime, "
+                    "False otherwise. Handle edge cases (n<=1). Return ONLY the function."
+                ),
+                "fn": "is_prime",
+                "test_input": [1, 2, 3, 4, 17, 100],
+                "expected":   [False, True, True, False, True, False],
             },
         },
+
         "reasoning": {
-            "syllogism": {
-                "prompt": "If all bloops are razzies and all razzies are lazzies, are all bloops definitely lazzies? Answer with just Yes or No.",
-                "answer": "yes",
-            },
-            "speed_math": {
-                "prompt": "A train travels 120 km in 2 hours. Another train travels 180 km in 3 hours. Which is faster? Answer with: First, Second, or Same.",
-                "answer": "same",
-            },
-            "river_crossing": {
-                "prompt": "A farmer has a fox, a chicken, and a bag of grain. He needs to cross a river with a boat that can only carry him and one item. The fox eats the chicken if left alone, and the chicken eats the grain. What does he take first? Answer with one word: Fox, Chicken, or Grain.",
-                "answer": "chicken",
-            },
-            "coin_flip": {
-                "prompt": "I flip a fair coin 3 times and get heads each time. What is the probability of getting heads on the 4th flip? Answer with a fraction like 1/2.",
-                "answer": "1/2",
-            },
-            "counting": {
-                "prompt": "How many letters are in the word MISSISSIPPI? Answer with just the number.",
-                "answer": "11",
-            },
+            # Logic puzzle with truth/lie roles
             "knights_knaves": {
                 "prompt": (
                     "On an island, knights always tell the truth and knaves always lie. "
@@ -572,23 +592,42 @@ TESTS_BY_TIER = {
                 ),
                 "answer": "knight",
             },
+            # Multi-constraint scheduling
+            "scheduling": {
+                "prompt": (
+                    "Alice, Bob, and Carol each have one meeting today. "
+                    "Alice meets before Bob. Bob meets before Carol. "
+                    "Carol does not meet last. Is this possible? Answer with just Yes or No."
+                ),
+                "answer": "no",
+            },
+            # Probability — requires Bayes thinking
+            "base_rate": {
+                "prompt": (
+                    "A disease affects 1 in 1000 people. A test is 99% accurate (correctly identifies both sick and healthy). "
+                    "You test positive. Are you more likely sick or healthy? Answer with one word: Sick or Healthy."
+                ),
+                "answer": "healthy",
+            },
+            # River crossing
+            "river_crossing": {
+                "prompt": "A farmer has a fox, a chicken, and a bag of grain. He needs to cross a river with a boat that can only carry him and one item. The fox eats the chicken if left alone, and the chicken eats the grain. What does he take first? Answer with one word: Fox, Chicken, or Grain.",
+                "answer": "chicken",
+            },
+            # Coin trap
+            "coin_flip": {
+                "prompt": "I flip a fair coin 3 times and get heads each time. What is the probability of getting heads on the 4th flip? Answer with a fraction like 1/2.",
+                "answer": "1/2",
+            },
+            # Counting trap
+            "counting": {
+                "prompt": "How many letters are in the word MISSISSIPPI? Answer with just the number.",
+                "answer": "11",
+            },
         },
+
         "instruction": {
-            "json": {
-                "prompt": 'Return a JSON object with exactly these keys: "name", "age", "city". Use any values you like. Return ONLY valid JSON, nothing else.',
-                "check": "json_keys",
-                "required_keys": ["name", "age", "city"],
-            },
-            "list": {
-                "prompt": "List exactly 5 programming languages, one per line, numbered 1-5. No extra text.",
-                "check": "numbered_list",
-                "count": 5,
-            },
-            "word_count": {
-                "prompt": "Write a description of Paris in exactly 3 sentences. No more, no less.",
-                "check": "sentence_count",
-                "count": 3,
-            },
+            # Nested JSON structure
             "json_nested": {
                 "prompt": (
                     'Return a JSON object with key "user" whose value is an object containing '
@@ -597,7 +636,26 @@ TESTS_BY_TIER = {
                 ),
                 "check": "json_nested_user",
             },
+            # Exact sentence count
+            "sentence_count": {
+                "prompt": "Write a description of Paris in exactly 3 sentences. No more, no less.",
+                "check": "sentence_count",
+                "count": 3,
+            },
+            # Numbered list with constraint
+            "list": {
+                "prompt": "List exactly 5 programming languages, one per line, numbered 1-5. No extra text.",
+                "check": "numbered_list",
+                "count": 5,
+            },
+            # Basic JSON
+            "json": {
+                "prompt": 'Return a JSON object with exactly these keys: "name", "age", "city". Use any values you like. Return ONLY valid JSON, nothing else.',
+                "check": "json_keys",
+                "required_keys": ["name", "age", "city"],
+            },
         },
+
         "translation": {
             "en_ru": {
                 "prompt": "Translate to Russian: 'Artificial intelligence is changing the world.' Return only the translation.",
@@ -610,25 +668,24 @@ TESTS_BY_TIER = {
             "en_es": {
                 "prompt": "Translate to Spanish: 'The future belongs to those who believe in the beauty of their dreams.' Return only the translation.",
                 "check": "spanish_words",
-                "keywords": ["el", "la", "los", "las", "que", "de", "su", "sus", "futuro", "sueños", "pertenece",
-                             "creen", "belleza"],
+                "keywords": ["el", "la", "los", "las", "que", "de", "su", "sus", "futuro", "sueños",
+                             "pertenece", "creen", "belleza"],
             },
         },
     },
 }
 
-# unknown-tier models fall back to the medium tier
+# unknown-tier models fall back to medium
 TESTS_BY_TIER["unknown"] = TESTS_BY_TIER["medium"]
 
-# Legacy alias so any code still importing TESTS directly keeps working.
-# Points to the medium tier as a safe default.
+# Legacy alias
 TESTS = TESTS_BY_TIER["medium"]
 
 RATE_LIMITS = {
-    "groq": 30,
-    "openrouter": 8,
-    "google": 4,
-    "sambanova": 2,
-    "cerebras": 1,
-    "together": 2,
+    "groq":       30,
+    "openrouter":  8,
+    "google":      4,
+    "sambanova":   2,
+    "cerebras":    1,
+    "together":    2,
 }
