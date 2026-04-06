@@ -1,4 +1,6 @@
-docs/ linguist-documentation=false
-docs/*.html linguist-language=HTML
-docs/*.css linguist-language=CSS
-docs/*.js linguist-language=JavaScript
+docs/**/*.html linguist-detectable=true linguist-documentation=false
+docs/**/*.css linguist-detectable=true linguist-documentation=false
+docs/**/*.js linguist-detectable=true linguist-documentation=false
+docs/*.html linguist-detectable=true linguist-documentation=false
+docs/*.css linguist-detectable=true linguist-documentation=false
+docs/*.js linguist-detectable=true linguist-documentation=false
