@@ -66,8 +66,8 @@ h1,h2,h3 { font-family: var(--font-sans); font-weight: 600; line-height: 1.2; co
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
-  height: 56px;
-  max-height: 56px;
+  height: 64px;
+  max-height: 64px;
   overflow: hidden;
   position: sticky;
   top: 0;
@@ -126,13 +126,13 @@ h1,h2,h3 { font-family: var(--font-sans); font-weight: 600; line-height: 1.2; co
   margin-right: 8px;
   flex-shrink: 0;
 }
-.logo-icon { height: 24px !important; width: 24px !important; max-height: 24px !important; max-width: 24px !important; object-fit: contain; display: inline-block; flex-shrink: 0; vertical-align: middle; }
+.logo-icon { height: 46px !important; width: 46px !important; max-height: 46px !important; max-width: 46px !important; object-fit: contain; display: inline-block; flex-shrink: 0; vertical-align: middle; }
 .nav { display: flex; align-items: center; flex: 1; }
 .nav-link {
   position: relative;
   display: flex;
   align-items: center;
-  height: 56px;
+  height: 64px;
   padding: 0 14px;
   color: #8fa3bf;
   text-decoration: none;
