@@ -1,7 +1,42 @@
 {
-  "updated": "2026-04-06T06:12:34.314869+00:00",
+  "updated": "2026-04-07T05:55:48.238229+00:00",
   "count": 30,
   "items": [
+    {
+      "title": "Accelerate agentic tool calling with serverless model customization in Amazon SageMaker AI",
+      "link": "https://aws.amazon.com/blogs/machine-learning/accelerate-agentic-tool-calling-with-serverless-model-customization-in-amazon-sagemaker-ai/",
+      "date": "2026-04-06T17:54:00+00:00",
+      "source": "AWS ML Blog",
+      "summary": "In this post, we walk through how we fine-tuned Qwen 2.5 7B Instruct for tool calling using RLVR. We cover dataset preparation across three distinct agent behaviors, reward function design with tiered scoring, training configuration and results interpretation, evaluation on held-"
+    },
+    {
+      "title": "Building Intelligent Search with Amazon Bedrock and Amazon OpenSearch for hybrid RAG solutions",
+      "link": "https://aws.amazon.com/blogs/machine-learning/building-intelligent-search-with-amazon-bedrock-and-amazon-opensearch-for-hybrid-rag-solutions/",
+      "date": "2026-04-06T17:49:32+00:00",
+      "source": "AWS ML Blog",
+      "summary": "In this post, we show how to implement a generative AI agentic assistant that uses both semantic and text-based search using Amazon Bedrock, Amazon Bedrock AgentCore, Strands Agents and Amazon OpenSearch."
+    },
+    {
+      "title": "Connecting MCP servers to Amazon Bedrock AgentCore Gateway using Authorization Code flow",
+      "link": "https://aws.amazon.com/blogs/machine-learning/connecting-mcp-servers-to-amazon-bedrock-agentcore-gateway-using-authorization-code-flow/",
+      "date": "2026-04-06T14:41:46+00:00",
+      "source": "AWS ML Blog",
+      "summary": "Amazon Bedrock AgentCore Gateway provides a centralized layer for managing how AI agents connect to tools and MCP servers across your organization. In this post, we walk through how to configure AgentCore Gateway to connect to an OAuth-protected MCP server using the Authorization"
+    },
+    {
+      "title": "Announcing the OpenAI Safety Fellowship",
+      "link": "https://openai.com/index/introducing-openai-safety-fellowship",
+      "date": "2026-04-06T10:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "A pilot program to support independent safety and alignment research and develop the next generation of talent"
+    },
+    {
+      "title": "Industrial policy for the Intelligence Age",
+      "link": "https://openai.com/index/industrial-policy-for-the-intelligence-age",
+      "date": "2026-04-06T02:30:00+00:00",
+      "source": "OpenAI",
+      "summary": "Explore our ambitious, people-first industrial policy ideas for the AI era\u2014focused on expanding opportunity, sharing prosperity, and building resilient institutions as advanced intelligence evolves."
+    },
     {
       "title": "Wan 2.7 now available on Together AI",
       "link": "https://www.together.ai/blog/wan-2-7-now-available-on-together-ai",
@@ -129,6 +164,13 @@
       "summary": "Gradient Labs uses GPT-4.1 and GPT-5.4 mini and nano to power AI agents that automate banking support workflows with low latency and high reliability."
     },
     {
+      "title": "Any Custom Frontend with Gradio's Backend",
+      "link": "https://huggingface.co/blog/introducing-gradio-server",
+      "date": "2026-04-01T00:00:00+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
       "title": "Inside the Together AI kernels team",
       "link": "https://www.together.ai/blog/inside-the-together-ai-kernels-team",
       "date": "2026-04-01T00:00:00+00:00",
@@ -169,48 +211,6 @@
       "date": "2026-03-31T15:10:41+00:00",
       "source": "Hugging Face",
       "summary": ""
-    },
-    {
-      "title": "Accelerating the next phase of AI",
-      "link": "https://openai.com/index/accelerating-the-next-phase-ai",
-      "date": "2026-03-31T13:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "OpenAI raises $122 billion in new funding to expand frontier AI globally, invest in next-generation compute, and meet growing demand for ChatGPT, Codex, and enterprise AI."
-    },
-    {
-      "title": "TRL v1.0: Post-Training Library Built to Move with the Field",
-      "link": "https://huggingface.co/blog/trl-v1",
-      "date": "2026-03-31T00:00:00+00:00",
-      "source": "Hugging Face",
-      "summary": ""
-    },
-    {
-      "title": "Aurora",
-      "link": "https://www.together.ai/blog/aurora",
-      "date": "2026-03-31T00:00:00+00:00",
-      "source": "Together AI",
-      "summary": "1.25x over a well-trained static speculator. Aurora is an open-source RL framework that turns speculative decoding from a one-time offline setup into a self-improving system that learns from every request it serves."
-    },
-    {
-      "title": "How Ring scales global customer support with Amazon Bedrock Knowledge Bases",
-      "link": "https://aws.amazon.com/blogs/machine-learning/how-ring-scales-global-customer-support-with-amazon-bedrock-knowledge-bases/",
-      "date": "2026-03-30T15:29:02+00:00",
-      "source": "AWS ML Blog",
-      "summary": "In this post, you'll learn how Ring implemented metadata-driven filtering for Region-specific content, separated content management into ingestion, evaluation and promotion workflows, and achieved cost savings while scaling up."
-    },
-    {
-      "title": "Build a solar flare detection system on SageMaker AI LSTM networks and ESA STIX data",
-      "link": "https://aws.amazon.com/blogs/machine-learning/build-a-solar-flare-detection-system-on-sagemaker-ai-lstm-networks-and-esa-stix-data/",
-      "date": "2026-03-30T15:20:24+00:00",
-      "source": "AWS ML Blog",
-      "summary": "In this post, we show you how to use Amazon SageMaker AI to build and deploy a deep learning model for detecting solar flares using data from the European Space Agency's STIX instrument."
-    },
-    {
-      "title": "Deliver hyper-personalized viewer experiences with an agentic AI movie assistant using Amazon Bedrock AgentCore and Amazon Nova Sonic 2.0",
-      "link": "https://aws.amazon.com/blogs/machine-learning/deliver-hyper-personalized-viewer-experiences-with-an-agentic-ai-movie-assistant-using-amazon-bedrock-agentcore-and-amazon-nova-sonic-2-0/",
-      "date": "2026-03-30T15:17:26+00:00",
-      "source": "AWS ML Blog",
-      "summary": "In this post, we walk through two use cases that help enhance the user viewing experience using agentic AI tools and frameworks including Strands Agents SDK, Amazon Bedrock AgentCore, and Amazon Nova Sonic 2.0. This agentic AI system uses a Model Context Protocol (MCP) to deliver"
     }
   ]
 }
