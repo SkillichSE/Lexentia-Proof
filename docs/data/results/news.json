@@ -1,7 +1,49 @@
 {
-  "updated": "2026-04-08T05:58:19.204786+00:00",
+  "updated": "2026-04-09T06:03:33.610853+00:00",
   "count": 30,
   "items": [
+    {
+      "title": "Customize Amazon Nova models with Amazon Bedrock fine-tuning",
+      "link": "https://aws.amazon.com/blogs/machine-learning/customize-amazon-nova-models-with-amazon-bedrock-fine-tuning/",
+      "date": "2026-04-08T19:51:50+00:00",
+      "source": "AWS ML Blog",
+      "summary": "In this post, we'll walk you through a complete implementation of model fine-tuning in Amazon Bedrock using Amazon Nova models, demonstrating each step through an intent classifier example that achieves superior performance on a domain specific task. Throughout this guide, you'll"
+    },
+    {
+      "title": "Reinforcement fine-tuning on Amazon Bedrock: Best practices",
+      "link": "https://aws.amazon.com/blogs/machine-learning/reinforcement-fine-tuning-on-amazon-bedrock-best-practices/",
+      "date": "2026-04-08T19:43:28+00:00",
+      "source": "AWS ML Blog",
+      "summary": "In this post, we explore where RFT is most effective, using the GSM8K mathematical reasoning dataset as a concrete example. We then walk through best practices for dataset preparation and reward function design, show how to monitor training progress using Amazon Bedrock metrics, "
+    },
+    {
+      "title": "ALTK\u2011Evolve: On\u2011the\u2011Job Learning for AI Agents",
+      "link": "https://huggingface.co/blog/ibm-research/altk-evolve",
+      "date": "2026-04-08T14:27:42+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "The next phase of enterprise AI",
+      "link": "https://openai.com/index/next-phase-of-enterprise-ai",
+      "date": "2026-04-08T14:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "OpenAI outlines the next phase of enterprise AI, as adoption accelerates across industries with Frontier, ChatGPT Enterprise, Codex, and company-wide AI agents."
+    },
+    {
+      "title": "Introducing the Child Safety Blueprint",
+      "link": "https://openai.com/index/introducing-child-safety-blueprint",
+      "date": "2026-04-08T05:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "Discover OpenAI\u2019s Child Safety Blueprint\u2014a roadmap for building AI responsibly with safeguards, age-appropriate design, and collaboration to protect and empower young people online."
+    },
+    {
+      "title": "Safetensors is Joining the PyTorch Foundation",
+      "link": "https://huggingface.co/blog/safetensors-joins-pytorch-foundation",
+      "date": "2026-04-08T00:00:00+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
     {
       "title": "Manage AI costs with Amazon Bedrock Projects",
       "link": "https://aws.amazon.com/blogs/machine-learning/manage-ai-costs-with-amazon-bedrock-projects/",
@@ -169,48 +211,6 @@
       "date": "2026-04-01T13:00:00+00:00",
       "source": "Google AI Blog",
       "summary": "March 2026 AI Recap showing new updates"
-    },
-    {
-      "title": "Falcon Perception",
-      "link": "https://huggingface.co/blog/tiiuae/falcon-perception",
-      "date": "2026-04-01T07:13:20+00:00",
-      "source": "Hugging Face",
-      "summary": ""
-    },
-    {
-      "title": "Gradient Labs gives every bank customer an AI account manager",
-      "link": "https://openai.com/index/gradient-labs",
-      "date": "2026-04-01T02:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Gradient Labs uses GPT-4.1 and GPT-5.4 mini and nano to power AI agents that automate banking support workflows with low latency and high reliability."
-    },
-    {
-      "title": "Any Custom Frontend with Gradio's Backend",
-      "link": "https://huggingface.co/blog/introducing-gradio-server",
-      "date": "2026-04-01T00:00:00+00:00",
-      "source": "Hugging Face",
-      "summary": ""
-    },
-    {
-      "title": "Inside the Together AI kernels team",
-      "link": "https://www.together.ai/blog/inside-the-together-ai-kernels-team",
-      "date": "2026-04-01T00:00:00+00:00",
-      "source": "Together AI",
-      "summary": "The team behind FlashAttention and ThunderKittens \u2014 how Together AI's kernel researchers close the gap between GPU hardware and production AI."
-    },
-    {
-      "title": "Build reliable AI agents with Amazon Bedrock AgentCore Evaluations",
-      "link": "https://aws.amazon.com/blogs/machine-learning/build-reliable-ai-agents-with-amazon-bedrock-agentcore-evaluations/",
-      "date": "2026-03-31T22:11:23+00:00",
-      "source": "AWS ML Blog",
-      "summary": "In this post, we introduce Amazon Bedrock AgentCore Evaluations, a fully managed service for assessing AI agent performance across the development lifecycle. We walk through how the service measures agent accuracy across multiple quality dimensions. We explain the two evaluation "
-    },
-    {
-      "title": "Stream High-Fidelity Spatial Computing Content to Any Device with NVIDIA CloudXR 6.0",
-      "link": "https://developer.nvidia.com/blog/stream-high-fidelity-spatial-computing-content-to-any-device-with-nvidia-cloudxr-6-0/",
-      "date": "2026-03-31T18:14:50Z",
-      "source": "NVIDIA Developer",
-      "summary": "Spatial computing is moving from visualization to active collaboration, adding increasingly more GPU demands on XR hardware to render photorealistic,..."
     }
   ]
 }
