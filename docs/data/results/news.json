@@ -1,7 +1,70 @@
 {
-  "updated": "2026-04-09T06:03:33.610853+00:00",
+  "updated": "2026-04-10T06:13:34.632606+00:00",
   "count": 30,
   "items": [
+    {
+      "title": "Understanding Amazon Bedrock model lifecycle",
+      "link": "https://aws.amazon.com/blogs/machine-learning/understanding-amazon-bedrock-model-lifecycle/",
+      "date": "2026-04-09T17:33:28+00:00",
+      "source": "AWS ML Blog",
+      "summary": "This post shows you how to manage FM transitions in Amazon Bedrock, so you can make sure your AI applications remain operational as models evolve. We discuss the three lifecycle states, how to plan migrations with the new extended access feature, and practical strategies to trans"
+    },
+    {
+      "title": "Embed a live AI browser agent in your React app with Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/embed-a-live-ai-browser-agent-in-your-react-app-with-amazon-bedrock-agentcore/",
+      "date": "2026-04-09T17:06:07+00:00",
+      "source": "AWS ML Blog",
+      "summary": "This post walks you through three steps: starting a session and generating the Live View URL, rendering the stream in your React application, and wiring up an AI agent that drives the browser while your users watch. At the end, you will have a working sample application you can c"
+    },
+    {
+      "title": "Running Large-Scale GPU Workloads on Kubernetes with Slurm",
+      "link": "https://developer.nvidia.com/blog/running-large-scale-gpu-workloads-on-kubernetes-with-slurm/",
+      "date": "2026-04-09T17:00:00Z",
+      "source": "NVIDIA Developer",
+      "summary": "Slurm is an open source cluster management and job scheduling system for Linux. It manages job scheduling for over 65% of TOP500 systems. Most organizations..."
+    },
+    {
+      "title": "Cut Checkpoint Costs with About 30 Lines of Python and NVIDIA nvCOMP",
+      "link": "https://developer.nvidia.com/blog/cut-checkpoint-costs-with-about-30-lines-of-python-and-nvidia-nvcomp/",
+      "date": "2026-04-09T16:48:38Z",
+      "source": "NVIDIA Developer",
+      "summary": "Training LLMs requires periodic checkpoints. These full snapshots of model weights, optimizer states, and gradients are saved to storage so training can resume..."
+    },
+    {
+      "title": "Introducing stateful MCP client capabilities on Amazon Bedrock AgentCore Runtime",
+      "link": "https://aws.amazon.com/blogs/machine-learning/introducing-stateful-mcp-client-capabilities-on-amazon-bedrock-agentcore-runtime/",
+      "date": "2026-04-09T14:47:57+00:00",
+      "source": "AWS ML Blog",
+      "summary": "In this post, you will learn how to build stateful MCP servers that request user input during execution, invoke LLM sampling for dynamic content generation, and stream progress updates for long-running tasks. You will see code examples for each capability and deploy a working sta"
+    },
+    {
+      "title": "Waypoint-1.5: Higher-Fidelity Interactive Worlds for Everyday GPUs",
+      "link": "https://huggingface.co/blog/waypoint-1-5",
+      "date": "2026-04-09T00:00:00+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "Multimodal Embedding & Reranker Models with Sentence Transformers",
+      "link": "https://huggingface.co/blog/multimodal-sentence-transformers",
+      "date": "2026-04-09T00:00:00+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "CyberAgent moves faster with ChatGPT Enterprise and Codex",
+      "link": "https://openai.com/index/cyberagent",
+      "date": "2026-04-09T00:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "CyberAgent uses ChatGPT Enterprise and Codex to securely scale AI adoption, improve quality, and accelerate decisions across advertising, media, and gaming."
+    },
+    {
+      "title": "OpenAI Full Fan Mode Contest: Terms & Conditions",
+      "link": "https://openai.com/index/full-fan-mode-contest-terms-conditions",
+      "date": "2026-04-09T00:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "Explore the official terms and conditions for the OpenAI Full Fan Mode Contest, including eligibility, entry steps, judging criteria, and prize details. Learn how to participate, submit your entry on Instagram, and win IPL match tickets."
+    },
     {
       "title": "Customize Amazon Nova models with Amazon Bedrock fine-tuning",
       "link": "https://aws.amazon.com/blogs/machine-learning/customize-amazon-nova-models-with-amazon-bedrock-fine-tuning/",
@@ -148,69 +211,6 @@
       "date": "2026-04-02T13:30:57+00:00",
       "source": "AWS ML Blog",
       "summary": "This post describes how TGS achieved near-linear scaling for distributed training and expanded context windows for their Vision Transformer-based SFM using Amazon SageMaker HyperPod. This joint solution cut training time from 6 months to just 5 days while enabling analysis of sei"
-    },
-    {
-      "title": "Rocket Close transforms mortgage document processing with Amazon Bedrock and Amazon Textract",
-      "link": "https://aws.amazon.com/blogs/machine-learning/rocket-close-transforms-mortgage-document-processing-with-amazon-bedrock-and-amazon-textract/",
-      "date": "2026-04-02T12:59:31+00:00",
-      "source": "AWS ML Blog",
-      "summary": "Through a strategic partnership with the AWS Generative AI Innovation Center (GenAIIC), Rocket Close developed an intelligent document processing solution that has significantly reduced processing time, making the process 15 times faster. The solution, which uses Amazon Textract "
-    },
-    {
-      "title": "OpenAI acquires TBPN",
-      "link": "https://openai.com/index/openai-acquires-tbpn",
-      "date": "2026-04-02T10:30:00+00:00",
-      "source": "OpenAI",
-      "summary": "OpenAI acquires TBPN to accelerate global conversations around AI and support independent media, expanding dialogue with builders, businesses, and the broader tech community."
-    },
-    {
-      "title": "Codex now offers more flexible pricing for teams",
-      "link": "https://openai.com/index/codex-flexible-pricing-for-teams",
-      "date": "2026-04-02T10:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Codex now includes pay-as-you-go pricing for ChatGPT Business and Enterprise, providing teams a more flexible option to start and scale adoption."
-    },
-    {
-      "title": "Welcome Gemma 4: Frontier multimodal intelligence on device",
-      "link": "https://huggingface.co/blog/gemma4",
-      "date": "2026-04-02T00:00:00+00:00",
-      "source": "Hugging Face",
-      "summary": ""
-    },
-    {
-      "title": "Deepgram speech-to-text and voice models now available natively on Together AI",
-      "link": "https://www.together.ai/blog/deepgram-speech-to-text-and-voice-models-now-available-natively-on-together-ai",
-      "date": "2026-04-02T00:00:00+00:00",
-      "source": "Together AI",
-      "summary": "Production STT and TTS from Deepgram, available on Together AI Dedicated Model Inference for real-time voice agents."
-    },
-    {
-      "title": "Holo3: Breaking the Computer Use Frontier",
-      "link": "https://huggingface.co/blog/Hcompany/holo3",
-      "date": "2026-04-01T16:36:15+00:00",
-      "source": "Hugging Face",
-      "summary": ""
-    },
-    {
-      "title": "NVIDIA Platform Delivers Lowest Token Cost Enabled by Extreme Co-Design",
-      "link": "https://developer.nvidia.com/blog/nvidia-platform-delivers-lowest-token-cost-enabled-by-extreme-co-design/",
-      "date": "2026-04-01T15:00:48Z",
-      "source": "NVIDIA Developer",
-      "summary": "Co-designed hardware, software, and models are key to delivering the highest AI factory throughput and lowest token cost. Measuring this goes far beyond peak..."
-    },
-    {
-      "title": "Accelerate Token Production in AI Factories Using Unified Services and Real-Time AI",
-      "link": "https://developer.nvidia.com/blog/accelerate-token-production-in-ai-factories-using-unified-services-and-real-time-ai/",
-      "date": "2026-04-01T15:00:00Z",
-      "source": "NVIDIA Developer",
-      "summary": "In today\u2019s AI factory environment, performance is not theoretical. It is economic, competitive, and existential. A 1% drop in usable GPU time can mean..."
-    },
-    {
-      "title": "The latest AI news we announced in March 2026",
-      "link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-march-2026/",
-      "date": "2026-04-01T13:00:00+00:00",
-      "source": "Google AI Blog",
-      "summary": "March 2026 AI Recap showing new updates"
     }
   ]
 }
