@@ -12,8 +12,8 @@
   <link rel="stylesheet" href="animations.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
   <style>
-    .trends-hero{background:transparent;border-bottom:1px solid var(--border);padding:28px 32px 20px;}
-    .trends-hero-inner{}
+    .trends-hero{background:transparent;border-bottom:1px solid var(--border);padding:28px 0 20px;}
+    .trends-hero-inner{max-width:1440px;margin:0 auto;padding:0 48px;}
     .trends-hero-title{font-family:var(--font-sans);font-size:28px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em;margin-bottom:6px;}
     .trends-hero-sub{font-size:13px;color:var(--text-secondary);max-width:560px;line-height:1.6;}
     .chart-section{margin-bottom:32px;}
@@ -112,6 +112,7 @@
 <script>
 var chartInstances = [];
 var TIER_LABELS = {large:'Large (50B+)',medium:'Medium (10–50B)',small:'Small (≤10B)'};
+var TIER_COLORS = {
   large:  ['#6366f1','#8b5cf6','#a78bfa','#c4b5fd','#7c3aed','#4f46e5','#818cf8'],
   medium: ['#3b82f6','#60a5fa','#93c5fd','#2563eb','#1d4ed8','#1e40af','#38bdf8'],
   small:  ['#10b981','#34d399','#6ee7b7','#059669','#047857','#065f46','#22c55e'],
@@ -246,7 +247,7 @@ function buildTier(tier, models){
   el.querySelectorAll('.reveal').forEach(function(r){io.observe(r);});
 }
 
-('DOMContentLoaded',loadData);
+document.addEventListener('DOMContentLoaded',loadData);
 </script>
 
 <script>

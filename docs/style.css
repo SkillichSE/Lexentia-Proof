@@ -107,7 +107,9 @@ h1,h2,h3 { font-family: var(--font-sans); font-weight: 600; line-height: 1.2; co
   line-height: 1;
 }
 .header-content {
-  padding: 0 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -215,7 +217,7 @@ h1,h2,h3 { font-family: var(--font-sans); font-weight: 600; line-height: 1.2; co
 .hero {
   background: transparent;
   border-bottom: 1px solid var(--border);
-  padding: 32px 32px 24px;
+  padding: 32px 0 24px;
   position: relative;
 }
 .hero::before {
@@ -228,7 +230,12 @@ h1,h2,h3 { font-family: var(--font-sans); font-weight: 600; line-height: 1.2; co
   background: radial-gradient(ellipse at left center, rgba(255,255,255,0.03) 0%, transparent 70%);
   pointer-events: none;
 }
-.hero-inner { position: relative; }
+.hero-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  position: relative;
+}
 .hero-headline {
   font-family: var(--font-sans);
   font-size: 34px;
@@ -264,8 +271,19 @@ h1,h2,h3 { font-family: var(--font-sans); font-weight: 600; line-height: 1.2; co
   background: var(--sticky-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  padding: 10px 32px;
   border-bottom: 1px solid var(--border-subtle);
+  padding: 10px 0;
+}
+/* inner wrapper for filter row content */
+.size-filter-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 .size-filter-label { font-size: 11px; color: var(--text-secondary); letter-spacing: 0.08em; text-transform: uppercase; margin-right: 4px; font-family: var(--font-mono); }
 .size-chip {
@@ -294,7 +312,7 @@ h1,h2,h3 { font-family: var(--font-sans); font-weight: 600; line-height: 1.2; co
 }
 
 /* container */
-.container { padding: 32px 32px 64px; }
+.container { max-width: 1440px; margin: 0 auto; padding: 32px 48px 64px; }
 
 /* stats grid */
 .stats-grid {
@@ -704,7 +722,7 @@ h1,h2,h3 { font-family: var(--font-sans); font-weight: 600; line-height: 1.2; co
 .feature-card:hover::after { opacity: 1; }
 
 /* footer */
-.footer { border-top: 1px solid var(--border); padding: 28px 32px; text-align: left; }
+.footer { border-top: 1px solid var(--border); padding: 28px 48px; max-width: 1440px; margin: 0 auto; text-align: left; }
 .footer-links { display: flex; justify-content: flex-start; gap: 28px; margin-bottom: 10px; flex-wrap: wrap; }
 .footer-link { font-family: var(--font-sans); font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
 .footer-link:hover { color: #a5b4fc; }
@@ -924,13 +942,17 @@ h1,h2,h3 { font-family: var(--font-sans); font-weight: 600; line-height: 1.2; co
 
 @media (max-width: 640px) {
   .hero-headline { font-size: 22px; }
-  .hero { padding: 20px 16px 18px; }
+  .hero { padding: 16px 0 14px; }
+  .hero-inner { padding: 0 16px; }
   .hero-sub { font-size: 12px; margin-bottom: 12px; }
   .header-content { padding: 0 14px; }
   .header { height: 52px; }
   .nav-drawer { top: 52px; }
-  .size-filter-row { top: 52px; }
-  .container { padding: 16px 12px 48px; }
+  .size-filter-row { top: 52px; padding: 8px 0; }
+  .size-filter-inner { padding: 0 16px; gap: 6px; }
+  .container { padding: 16px 16px 48px; }
+  .page-hero { padding: 16px 0 14px; }
+  .page-hero-inner { padding: 0 16px; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .stat-card { padding: 12px; }
   .stat-value { font-size: 20px; }
@@ -946,7 +968,6 @@ h1,h2,h3 { font-family: var(--font-sans); font-weight: 600; line-height: 1.2; co
   .cmp-chip { font-size: 10px; padding: 0 8px; }
   .size-chip { height: 28px; padding: 0 10px; font-size: 11px; }
   .size-filter-label { display: none; }
-  .size-filter-row { gap: 6px; padding: 8px 12px; }
   .seg-btn-group { width: 100%; }
   .seg-btn { flex: 1; justify-content: center; font-size: 12px; }
   .category-header { flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -971,7 +992,12 @@ h1,h2,h3 { font-family: var(--font-sans); font-weight: 600; line-height: 1.2; co
 .page-hero {
   background: transparent;
   border-bottom: 1px solid var(--border);
-  padding: 28px 32px 20px;
+  padding: 28px 0 20px;
+}
+.page-hero-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
 }
 .page-hero-title {
   font-family: var(--font-sans);
