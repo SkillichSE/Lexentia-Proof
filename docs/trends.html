@@ -1,314 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-  <script>
-    (function(){
-      var t = localStorage.getItem('theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', t);
-    })();
-  </script>
+  <script>(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trends — Lexentia Proof</title>
+  <meta name="description" content="Score trends and comparisons within each size tier — Large, Medium, Small.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-spacing.css">
   <link rel="stylesheet" href="animations.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <style>
+    .trends-hero{background:transparent;border-bottom:1px solid var(--border);padding:48px 24px 32px;}
+    .trends-hero-inner{max-width:1600px;margin:0 auto;}
+    .trends-hero-title{font-family:var(--font-sans);font-size:34px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em;margin-bottom:10px;}
+    .trends-hero-sub{font-size:14px;color:var(--text-secondary);max-width:560px;line-height:1.6;}
+    .tier-tabs{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap;}
+    .tier-tab{padding:8px 20px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text-secondary);font-family:var(--font-sans);font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;}
+    .tier-tab:hover{border-color:var(--border-strong);color:var(--text-primary);}
+    .tier-tab.active{background:linear-gradient(135deg,#6366f1,#3b82f6);border-color:transparent;color:#fff;font-weight:600;}
+    .chart-section{margin-bottom:40px;}
+    .chart-title{font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:6px;}
+    .chart-subtitle{font-size:13px;color:var(--text-secondary);margin-bottom:16px;}
+    .chart-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;}
+    .insights-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:32px;}
+    .insight-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px 24px;}
+    .insight-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);margin-bottom:8px;}
+    .insight-value{font-size:22px;font-weight:700;color:var(--text-primary);margin-bottom:4px;line-height:1.2;}
+    .insight-value em{font-style:normal;color:var(--color-primary);}
+    .insight-sub{font-size:13px;color:var(--text-secondary);}
+    .benchmark-breakdown{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:40px;}
+    .bench-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;}
+    .bench-card-title{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:4px;}
+    .bench-card-sub{font-size:12px;color:var(--text-secondary);margin-bottom:12px;}
+    .bench-model-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border-subtle);}
+    .bench-model-row:last-child{border-bottom:none;}
+    .bench-rank{font-size:11px;color:var(--text-secondary);min-width:22px;}
+    .bench-model-name{flex:1;font-size:13px;color:var(--text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+    .bench-score{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;flex-shrink:0;}
+    .bench-bar{height:4px;background:var(--bar-empty);border-radius:2px;overflow:hidden;margin-top:3px;}
+    .bench-bar-fill{height:100%;border-radius:2px;transition:width 0.5s;}
+    .no-data{text-align:center;padding:48px;color:var(--text-secondary);}
+    .tier-section{display:none;}
+    .tier-section.active{display:block;}
+    [data-theme="light"] .chart-card,[data-theme="light"] .insight-card,[data-theme="light"] .bench-card{background:rgba(255,255,255,0.92);}
+  </style>
 </head>
 <body>
-  
-  <header class="header">
-    <div class="header-content">
-      <a href="index.html" class="logo">
-        <img src="media/L_logo.png" alt="Lexentia Proof logo" class="logo-icon">
-        <span>Lexentia Proof</span>
-      </a>
-      <nav class="nav">
-        <a href="index.html" class="nav-link">Rankings</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="search.html" class="nav-link">Search</a>
-        <a href="trends.html" class="nav-link active">Trends</a>
-        <a href="news.html" class="nav-link">News</a>
-      </nav>
-      <div class="theme-switch-wrap">
-        <span class="theme-switch-label" id="theme-label">Dark</span>
-        <label class="theme-switch" aria-label="Toggle theme">
-          <input type="checkbox" id="theme-toggle">
-          <span class="theme-switch-track"></span>
-          <span class="theme-switch-thumb" id="thumb-icon">🌙</span>
-        </label>
-      </div>
+
+<header class="header" id="app-bar">
+  <div class="header-content">
+    <a href="index.html" class="logo">
+      <img src="media/L_logo.png" alt="Lexentia Proof logo" class="logo-icon">Lexentia Proof
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Rankings</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="search.html" class="nav-link">Search</a>
+      <a href="providers.html" class="nav-link">Providers</a>
+      <a href="trends.html" class="nav-link active">Trends</a>
+      <a href="news.html" class="nav-link">News</a>
+    </nav>
+    <div class="theme-switch-wrap">
+      <span class="theme-switch-label" id="theme-label">Dark</span>
+      <label class="theme-switch" aria-label="Toggle theme">
+        <input type="checkbox" id="theme-toggle">
+        <span class="theme-switch-track"></span>
+        <span class="theme-switch-thumb" id="thumb-icon">🌙</span>
+      </label>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main class="container">
-    <h1>Performance Trends</h1>
-    <p style="color: var(--text-secondary); margin-bottom: 32px;">
-      Track how models improve over time
-    </p>
+<div class="trends-hero">
+  <div class="trends-hero-inner">
+    <h1 class="trends-hero-title">Trends</h1>
+    <p class="trends-hero-sub">Score comparisons within each size tier only — Large vs Large, Medium vs Medium, Small vs Small. Cross-tier comparisons are meaningless because parameter count is the primary quality driver.</p>
+  </div>
+</div>
 
-    <section style="margin-bottom: 48px;">
-      <div class="card">
-        <h2 style="margin-bottom: 24px;">Speed Comparison (Tokens/Second)</h2>
-        <canvas id="speed-chart"></canvas>
-      </div>
-    </section>
+<main class="container">
+  <div class="tier-tabs" id="tier-tabs">
+    <button class="tier-tab active" data-tier="large">Large — 50B+</button>
+    <button class="tier-tab" data-tier="medium">Medium — 10–50B</button>
+    <button class="tier-tab" data-tier="small">Small — ≤10B</button>
+  </div>
+  <div id="tier-large" class="tier-section active"></div>
+  <div id="tier-medium" class="tier-section"></div>
+  <div id="tier-small" class="tier-section"></div>
+</main>
 
-    <section style="margin-bottom: 48px;">
-      <div class="card">
-        <h2 style="margin-bottom: 24px;">Code Quality Score</h2>
-        <canvas id="code-chart"></canvas>
-      </div>
-    </section>
-
-    <section>
-      <h2>Key Insights</h2>
-      <div class="grid grid-2" id="insights">
-        
-      </div>
-    </section>
-  </main>
-
+<div style="border-top:1px solid var(--color-outline-var);margin-top:48px;">
   <footer class="footer">
     <div class="footer-links">
       <a href="https://skillichse.github.io/Lexentia-Proof/" class="footer-link">GitHub</a>
       <a href="about.html" class="footer-link">About</a>
       <a href="news.html" class="footer-link">News</a>
     </div>
-    <p>Open source project • Updated daily</p>
+    <div class="footer-copy">Open source · Updated daily via GitHub Actions</div>
   </footer>
-
-  <script>
-    
-    Chart.defaults.font.family = "'Roboto', sans-serif";
-    Chart.defaults.color = '#5f6368';
-
-    const chartColors = {
-      'Llama 3.1 70B': '#1a73e8',
-      'Llama 3.1 8B': '#4285f4',
-      'Mixtral 8x7B': '#ea4335',
-      'Gemini 1.5 Flash': '#34a853',
-      'Gemini 1.5 Pro': '#fbbc04'
-    };
-
-    async function loadTrends() {
-      try {
-        
-        const response = await fetch('data/results/latest.json');
-        const data = await response.json();
-        
-        createSpeedChart(data.results);
-        
-        createCodeChart(data.results);
-        
-        generateInsights(data.results);
-        
-      } catch (error) {
-        console.error('Error loading trends:', error);
-      }
-    }
-
-    function createSpeedChart(results) {
-      const ctx = document.getElementById('speed-chart').getContext('2d');
-      
-      const sortedBySpeed = [...results].sort((a, b) => 
-        (b.tests.speed?.avg_tokens_per_sec || 0) - (a.tests.speed?.avg_tokens_per_sec || 0)
-      );
-
-      new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: sortedBySpeed.map(r => r.model_name),
-          datasets: [{
-            label: 'Tokens per Second',
-            data: sortedBySpeed.map(r => Math.round(r.tests.speed?.avg_tokens_per_sec || 0)),
-            backgroundColor: sortedBySpeed.map(r => chartColors[r.model_name] || '#1a73e8'),
-            borderRadius: 8,
-            borderSkipped: false,
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: true,
-          aspectRatio: 2,
-          plugins: {
-            legend: {
-              display: false
-            },
-            tooltip: {
-              backgroundColor: 'rgba(0, 0, 0, 0.8)',
-              padding: 12,
-              titleFont: {
-                size: 14
-              },
-              bodyFont: {
-                size: 13
-              },
-              cornerRadius: 8,
-              displayColors: false
-            }
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              grid: {
-                color: '#f1f3f4'
-              },
-              ticks: {
-                callback: function(value) {
-                  return value + ' tok/s';
-                }
-              }
-            },
-            x: {
-              grid: {
-                display: false
-              }
-            }
-          }
-        }
-      });
-    }
-
-    function createCodeChart(results) {
-      const ctx = document.getElementById('code-chart').getContext('2d');
-      
-      const sortedByCode = [...results].sort((a, b) => 
-        (b.tests.code?.avg_score || 0) - (a.tests.code?.avg_score || 0)
-      );
-
-      new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: sortedByCode.map(r => r.model_name),
-          datasets: [{
-            label: 'Code Quality Score',
-            data: sortedByCode.map(r => Math.round(r.tests.code?.avg_score || 0)),
-            backgroundColor: sortedByCode.map(r => chartColors[r.model_name] || '#34a853'),
-            borderRadius: 8,
-            borderSkipped: false,
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: true,
-          aspectRatio: 2,
-          plugins: {
-            legend: {
-              display: false
-            },
-            tooltip: {
-              backgroundColor: 'rgba(0, 0, 0, 0.8)',
-              padding: 12,
-              cornerRadius: 8,
-              displayColors: false
-            }
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              max: 100,
-              grid: {
-                color: '#f1f3f4'
-              },
-              ticks: {
-                callback: function(value) {
-                  return value + '%';
-                }
-              }
-            },
-            x: {
-              grid: {
-                display: false
-              }
-            }
-          }
-        }
-      });
-    }
-
-    function generateInsights(results) {
-      const insightsContainer = document.getElementById('insights');
-      
-      const fastest = results.reduce((prev, current) => 
-        (current.tests.speed?.avg_tokens_per_sec || 0) > (prev.tests.speed?.avg_tokens_per_sec || 0) ? current : prev
-      );
-
-      const bestCode = results.reduce((prev, current) => 
-        (current.tests.code?.avg_score || 0) > (prev.tests.code?.avg_score || 0) ? current : prev
-      );
-
-      const avgSpeed = results.reduce((sum, r) => sum + (r.tests.speed?.avg_tokens_per_sec || 0), 0) / results.length;
-
-      insightsContainer.innerHTML = `
-        <div class="card">
-          <div style="font-size: 2rem; margin-bottom: 16px;">🚀</div>
-          <h3>Fastest Model</h3>
-          <p style="color: var(--text-secondary); margin: 8px 0;">
-            <strong style="color: var(--primary);">${fastest.model_name}</strong> leads with 
-            ${Math.round(fastest.tests.speed?.avg_tokens_per_sec || 0)} tokens/sec
-          </p>
-          <div style="margin-top: 16px;">
-            <span class="chip chip-blue">${fastest.provider}</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div style="font-size: 2rem; margin-bottom: 16px;">💻</div>
-          <h3>Best Code Quality</h3>
-          <p style="color: var(--text-secondary); margin: 8px 0;">
-            <strong style="color: var(--primary);">${bestCode.model_name}</strong> achieves 
-            ${Math.round(bestCode.tests.code?.avg_score || 0)}% score
-          </p>
-          <div style="margin-top: 16px;">
-            <span class="chip chip-green">${bestCode.provider}</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div style="font-size: 2rem; margin-bottom: 16px;">📊</div>
-          <h3>Average Performance</h3>
-          <p style="color: var(--text-secondary); margin: 8px 0;">
-            Models average <strong style="color: var(--primary);">${Math.round(avgSpeed)} tok/s</strong> 
-            across all tests
-          </p>
-        </div>
-
-        <div class="card">
-          <div style="font-size: 2rem; margin-bottom: 16px;">🎯</div>
-          <h3>Consistency</h3>
-          <p style="color: var(--text-secondary); margin: 8px 0;">
-            ${results.length} models tested daily with consistent benchmarks
-          </p>
-        </div>
-      `;
-    }
-
-    document.addEventListener('DOMContentLoaded', loadTrends);
-  </script>
-  <script>
-    
-    (function() {
-      var themeToggle = document.getElementById('theme-toggle');
-      var themeLabel  = document.getElementById('theme-label');
-      var thumbIcon   = document.getElementById('thumb-icon');
-      function applyTheme(t) {
-        document.documentElement.setAttribute('data-theme', t);
-        localStorage.setItem('theme', t);
-        var dark = t === 'dark';
-        themeToggle.checked = dark;
-        themeLabel.textContent = dark ? 'Dark' : 'Light';
-        thumbIcon.textContent  = dark ? '🌙' : '☀️';
-      }
-      applyTheme(localStorage.getItem('theme') || 'dark');
-      themeToggle.addEventListener('change', function() { applyTheme(themeToggle.checked ? 'dark' : 'light'); });
-    })();
-  </script>
+</div>
 
 <script>
-window.addEventListener('scroll', function() {
-  document.querySelector('.header').classList.toggle('scrolled', window.scrollY > 0);
+var chartInstances = [];
+var TIER_LABELS = {large:'Large (50B+)',medium:'Medium (10–50B)',small:'Small (≤10B)'};
+var TIER_COLORS = {
+  large:  ['#6366f1','#8b5cf6','#a78bfa','#c4b5fd','#7c3aed','#4f46e5','#818cf8'],
+  medium: ['#3b82f6','#60a5fa','#93c5fd','#2563eb','#1d4ed8','#1e40af','#38bdf8'],
+  small:  ['#10b981','#34d399','#6ee7b7','#059669','#047857','#065f46','#22c55e'],
+};
+var BENCH = [
+  {key:'code',       label:'HumanEval — Code',  color:'#6366f1', fn:function(m){return m.tests&&m.tests.code?m.tests.code.avg_score||0:0;}},
+  {key:'reasoning',  label:'GSM8K — Reasoning', color:'#3b82f6', fn:function(m){return m.tests&&m.tests.reasoning?m.tests.reasoning.score||0:0;}},
+  {key:'instruction',label:'MMLU — Knowledge',  color:'#06b6d4', fn:function(m){return m.tests&&m.tests.instruction?m.tests.instruction.avg_score||0:0;}},
+  {key:'translation',label:'Translation',        color:'#10b981', fn:function(m){return m.tests&&m.tests.translation?m.tests.translation.avg_score||0:0;}},
+  {key:'speed',      label:'Speed (tok/s)',       color:'#f59e0b', fn:function(m){return m.raw_speed||0;}},
+];
+
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function short(n){return n.length>22?n.slice(0,20)+'…':n;}
+function isDark(){return document.documentElement.getAttribute('data-theme')!=='light';}
+function gridC(){return isDark()?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';}
+function labelC(){return isDark()?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.5)';}
+function ttBg(){return isDark()?'rgba(15,20,30,0.95)':'rgba(255,255,255,0.97)';}
+function ttColor(){return isDark()?'#e8eaed':'#111827';}
+
+function countTests(m){
+  var t=m.tests||{},n=0;
+  if(t.code&&t.code.avg_score)n++;
+  if(t.reasoning&&t.reasoning.score)n++;
+  if(t.instruction&&t.instruction.avg_score)n++;
+  if(t.translation&&t.translation.avg_score)n++;
+  if((m.raw_speed||0)>0)n++;
+  return n;
+}
+
+function buildTier(tier, models){
+  var el=document.getElementById('tier-'+tier);
+  el.innerHTML='';
+  if(!models.length){el.innerHTML='<div class="no-data">No '+TIER_LABELS[tier]+' models in this run.</div>';return;}
+
+  var sorted=[].concat(models).sort(function(a,b){return (b.quality_score||0)-(a.quality_score||0);});
+  var colors=TIER_COLORS[tier];
+  var best=sorted[0];
+  var fastest=[].concat(models).sort(function(a,b){return (b.raw_speed||0)-(a.raw_speed||0);})[0];
+  var avgQ=models.reduce(function(s,m){return s+(m.quality_score||0);},0)/models.length;
+  var fullR=models.filter(function(m){return m.tests_completed===5;}).length;
+
+  var html='<div class="insights-grid reveal">'
+    +'<div class="insight-card"><div class="insight-label">🏆 Top scorer</div><div class="insight-value"><em>'+esc(best.model_name)+'</em></div><div class="insight-sub">'+esc(best.provider)+' · '+Math.round(best.quality_score||0)+'/100</div></div>'
+    +'<div class="insight-card"><div class="insight-label">⚡ Fastest</div><div class="insight-value"><em>'+esc(fastest.model_name)+'</em></div><div class="insight-sub">'+esc(fastest.provider)+' · '+Math.round(fastest.raw_speed||0)+' tok/s</div></div>'
+    +'<div class="insight-card"><div class="insight-label">📊 Tier avg quality</div><div class="insight-value"><em>'+Math.round(avgQ)+'</em><span style="font-size:16px;color:var(--text-secondary);">/100</span></div><div class="insight-sub">across '+models.length+' model'+(models.length!==1?'s':'')+'</div></div>'
+    +'<div class="insight-card"><div class="insight-label">✅ Full response</div><div class="insight-value"><em>'+fullR+'</em><span style="font-size:16px;color:var(--text-secondary);">/'+models.length+'</span></div><div class="insight-sub">completed all 5 tests</div></div>'
+    +'</div>';
+
+  var canvasId='qchart-'+tier;
+  html+='<div class="chart-section reveal"><div class="chart-title">Quality Scores</div>'
+    +'<div class="chart-subtitle">Overall quality score (0–100) within '+TIER_LABELS[tier]+'</div>'
+    +'<div class="chart-card"><canvas id="'+canvasId+'" height="260"></canvas></div></div>';
+
+  html+='<div class="chart-title reveal" style="margin-bottom:16px;">Benchmark Breakdown</div>'
+    +'<div class="benchmark-breakdown">';
+
+  BENCH.forEach(function(bench){
+    var ranked=[].concat(models).map(function(m){return{name:m.model_name,provider:m.provider,score:bench.fn(m)};})
+      .filter(function(m){return m.score>0;})
+      .sort(function(a,b){return b.score-a.score;});
+    if(!ranked.length) return;
+    var maxS=ranked[0].score;
+    var isSpd=bench.key==='speed';
+    html+='<div class="bench-card reveal"><div class="bench-card-title">'+bench.label+'</div>'
+      +'<div class="bench-card-sub">Ranked within '+TIER_LABELS[tier]+'</div>';
+    ranked.forEach(function(m,i){
+      var pct=maxS>0?m.score/maxS*100:0;
+      var display=isSpd?Math.round(m.score)+' t/s':Math.round(m.score);
+      var sc=isSpd?bench.color:(m.score>=75?'#10b981':m.score>=40?'#f59e0b':'#ef4444');
+      html+='<div class="bench-model-row">'
+        +'<span class="bench-rank">#'+(i+1)+'</span>'
+        +'<div style="flex:1;min-width:0;">'
+          +'<div style="display:flex;align-items:center;gap:6px;">'
+            +'<span class="bench-model-name" title="'+esc(m.name)+'">'+esc(short(m.name))+'</span>'
+            +'<span class="bench-score" style="color:'+sc+'">'+display+'</span>'
+          +'</div>'
+          +'<div class="bench-bar"><div class="bench-bar-fill" style="width:'+pct+'%;background:'+bench.color+';"></div></div>'
+        +'</div>'
+      +'</div>';
+    });
+    html+='</div>';
+  });
+  html+='</div>';
+  el.innerHTML=html;
+
+  requestAnimationFrame(function(){
+    var ctx=document.getElementById(canvasId);
+    if(!ctx) return;
+    var chart=new Chart(ctx,{
+      type:'bar',
+      data:{
+        labels:sorted.map(function(m){return short(m.model_name);}),
+        datasets:[{
+          label:'Quality Score',
+          data:sorted.map(function(m){return Math.round(m.quality_score||0);}),
+          backgroundColor:sorted.map(function(_,i){return colors[i%colors.length]+'cc';}),
+          borderColor:sorted.map(function(_,i){return colors[i%colors.length];}),
+          borderWidth:1,borderRadius:8,borderSkipped:false,
+        }]
+      },
+      options:{
+        responsive:true,maintainAspectRatio:false,
+        plugins:{
+          legend:{display:false},
+          tooltip:{
+            backgroundColor:ttBg(),titleColor:ttColor(),bodyColor:ttColor(),
+            borderColor:isDark()?'rgba(255,255,255,0.1)':'rgba(0,0,0,0.1)',
+            borderWidth:1,padding:12,cornerRadius:10,displayColors:false,
+            callbacks:{
+              title:function(items){return sorted[items[0].dataIndex]?sorted[items[0].dataIndex].model_name:'';},
+              label:function(item){
+                var m=sorted[item.dataIndex];
+                return m?['Quality: '+item.raw+'/100','Provider: '+m.provider,'Size: '+m.size]:[];
+              }
+            }
+          }
+        },
+        scales:{
+          y:{beginAtZero:true,max:100,grid:{color:gridC()},border:{display:false},ticks:{color:labelC(),font:{size:11},callback:function(v){return v+'/100';}}},
+          x:{grid:{display:false},border:{display:false},ticks:{color:labelC(),font:{size:11},maxRotation:30}}
+        },
+        animation:{duration:700,easing:'easeOutQuart'}
+      }
+    });
+    chartInstances.push(chart);
+  });
+
+  // Reveal
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.07});
+  el.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+}
+
+async function loadData(){
+  try{
+    var today=new Date().toISOString().split('T')[0];
+    var data;
+    var r1=await fetch('data/results/'+today+'.json');
+    if(r1.ok){data={results:await r1.json()};}
+    else{var r2=await fetch('data/results/latest.json');if(!r2.ok)throw new Error('HTTP '+r2.status);data=await r2.json();}
+    var all=(data.results||[]).map(function(m){
+      var spd=m.raw_speed||((m.tests&&m.tests.speed)?m.tests.speed.avg_tokens_per_sec||0:0);
+      return Object.assign({},m,{
+        quality_score:m.quality_score!=null?m.quality_score:(m.overall_score||0),
+        raw_speed:spd,
+        size_category:m.size_category||'unknown',
+        tests_completed:countTests(Object.assign({},m,{raw_speed:spd}))
+      });
+    });
+    var byTier={large:all.filter(function(m){return m.size_category==='large';}),medium:all.filter(function(m){return m.size_category==='medium';}),small:all.filter(function(m){return m.size_category==='small';})};
+    ['large','medium','small'].forEach(function(t){buildTier(t,byTier[t]);});
+  }catch(err){
+    ['large','medium','small'].forEach(function(t){document.getElementById('tier-'+t).innerHTML='<div class="no-data">Could not load: '+esc(String(err))+'</div>';});
+  }
+}
+
+document.getElementById('tier-tabs').addEventListener('click',function(e){
+  var btn=e.target.closest('.tier-tab');if(!btn)return;
+  var tier=btn.dataset.tier;
+  document.querySelectorAll('.tier-tab').forEach(function(b){b.classList.remove('active');});
+  document.querySelectorAll('.tier-section').forEach(function(s){s.classList.remove('active');});
+  btn.classList.add('active');
+  document.getElementById('tier-'+tier).classList.add('active');
 });
+
+document.addEventListener('DOMContentLoaded',loadData);
+</script>
+
+<script>
+(function(){
+  var themeToggle=document.getElementById('theme-toggle');
+  var themeLabel=document.getElementById('theme-label');
+  var thumbIcon=document.getElementById('thumb-icon');
+  function applyTheme(t){
+    document.documentElement.setAttribute('data-theme',t);
+    localStorage.setItem('theme',t);
+    var isLight=t==='light';
+    themeToggle.checked=isLight;
+    themeLabel.textContent=isLight?'Light':'Dark';
+    if(thumbIcon)thumbIcon.textContent=isLight?'☀️':'🌙';
+  }
+  applyTheme(localStorage.getItem('theme')||'dark');
+  themeToggle.addEventListener('change',function(){applyTheme(themeToggle.checked?'light':'dark');});
+  window.addEventListener('scroll',function(){var h=document.getElementById('app-bar');if(h)h.classList.toggle('scrolled',window.scrollY>0);});
+})();
 </script>
 
 </body>

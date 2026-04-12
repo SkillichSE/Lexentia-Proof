@@ -29,6 +29,7 @@
       <a href="index.html" class="nav-link active">Rankings</a>
       <a href="about.html" class="nav-link">About</a>
       <a href="search.html" class="nav-link">Search</a>
+      <a href="providers.html" class="nav-link">Providers</a>
       <a href="trends.html" class="nav-link">Trends</a>
       <a href="news.html" class="nav-link">News</a>
     </nav>
@@ -92,11 +93,7 @@
           Scores are normalized within each size tier — a Small model's #1 rank is against other Small models only
         </p>
       </div>
-      <div class="seg-btn-group" style="margin-top:4px;">
-        <button class="seg-btn active" data-tab="quality">Quality</button>
-        <button class="seg-btn" data-tab="speed">Speed</button>
       </div>
-    </div>
 
     <div class="size-filter-row" style="margin-top:12px;">
       <span class="size-filter-label">Show:</span>
@@ -118,11 +115,9 @@
       <span class="legend-item"><span class="legend-dot" style="background:linear-gradient(90deg,#06b6d4,#3b82f6)"></span>MMLU · knowledge</span>
       <span class="legend-item"><span class="legend-dot" style="background:linear-gradient(90deg,#10b981,#06b6d4)"></span>Translation</span>
     </div>
-    <div class="legend" id="speed-legend" style="display:none;margin-top:16px;">
-      <span class="legend-item"><span class="legend-dot" style="background:linear-gradient(90deg,#f59e0b,#10b981)"></span>Tokens/second — averaged over short, medium, and long prompts</span>
-    </div>
+    
 
-    <div class="leaderboard-panel active" id="panel-quality">
+    <div class="leaderboard-panel active" id="panel-quality" style="display:block;">
       <div class="category-section" data-tier="large">
         <div class="category-header">
           <div class="category-header-left">
@@ -155,66 +150,37 @@
       </div>
     </div>
 
-    <div class="leaderboard-panel" id="panel-speed">
-      <div class="category-section" data-tier="large">
-        <div class="category-header">
-          <div class="category-header-left">
-            <span class="size-badge large">Large</span>
-            <span class="category-name">50B+ parameters</span>
-          </div>
-        </div>
-        <div class="grid-cards" id="speed-board-large"></div>
-      </div>
-      <div class="category-section" data-tier="medium">
-        <div class="category-header">
-          <div class="category-header-left">
-            <span class="size-badge medium">Medium</span>
-            <span class="category-name">10–50B parameters</span>
-          </div>
-        </div>
-        <div class="grid-cards" id="speed-board-medium"></div>
-      </div>
-      <div class="category-section" data-tier="small">
-        <div class="category-header">
-          <div class="category-header-left">
-            <span class="size-badge small">Small</span>
-            <span class="category-name">≤10B parameters</span>
-          </div>
-        </div>
-        <div class="grid-cards" id="speed-board-small"></div>
-      </div>
-    </div>
-  </section>
+    </section>
 
   <section style="margin-bottom:64px;">
     <h2 class="section-title reveal">What We Test</h2>
     <p class="section-sub reveal reveal-d1">Industry-standard benchmarks — no invented metrics</p>
     <div class="feature-grid">
-      <div class="feature-card" onclick="window.location.href='methodology.html#humaneval'" role="button" tabindex="0" aria-label="Learn more about HumanEval benchmark">
+      <div class="feature-card" onclick="window.location.href='about.html#humaneval'" role="button" tabindex="0" aria-label="Learn more about HumanEval benchmark">
         <div class="feature-icon" style="">HE</div>
         <div class="feature-name">HumanEval</div>
         <div class="feature-metric" style="color:var(--metric-code);">Code quality</div>
         <div class="feature-desc">Functions are executed against real test cases. Syntax and edge-case logic must pass.</div>
       </div>
-      <div class="feature-card" onclick="window.location.href='methodology.html#gsm8k'" role="button" tabindex="0" aria-label="Learn more about GSM8K benchmark">
+      <div class="feature-card" onclick="window.location.href='about.html#gsm8k'" role="button" tabindex="0" aria-label="Learn more about GSM8K benchmark">
         <div class="feature-icon" style="">GS</div>
         <div class="feature-name">GSM8K</div>
         <div class="feature-metric" style="color:var(--metric-reason);">Reasoning</div>
         <div class="feature-desc">Math word problems and multi-step logic. Verified correct answers only, no partial credit.</div>
       </div>
-      <div class="feature-card" onclick="window.location.href='methodology.html#mmlu'" role="button" tabindex="0" aria-label="Learn more about MMLU benchmark">
+      <div class="feature-card" onclick="window.location.href='about.html#mmlu'" role="button" tabindex="0" aria-label="Learn more about MMLU benchmark">
         <div class="feature-icon" style="">ML</div>
         <div class="feature-name">MMLU</div>
         <div class="feature-metric" style="color:var(--metric-mmlu);">Knowledge &amp; instructions</div>
         <div class="feature-desc">Instruction following, format compliance, and multi-domain knowledge checks.</div>
       </div>
-      <div class="feature-card" onclick="window.location.href='methodology.html#translation'" role="button" tabindex="0" aria-label="Learn more about Translation benchmark">
+      <div class="feature-card" onclick="window.location.href='about.html#translation'" role="button" tabindex="0" aria-label="Learn more about Translation benchmark">
         <div class="feature-icon" style="">TR</div>
         <div class="feature-name">Translation</div>
         <div class="feature-metric" style="color:var(--metric-trans);">Multilingual</div>
         <div class="feature-desc">English ↔ Russian, English ↔ Spanish. Scored via script detection and vocabulary matching.</div>
       </div>
-      <div class="feature-card" onclick="window.location.href='methodology.html#throughput'" role="button" tabindex="0" aria-label="Learn more about Speed benchmark">
+      <div class="feature-card" onclick="window.location.href='about.html#throughput'" role="button" tabindex="0" aria-label="Learn more about Speed benchmark">
         <div class="feature-icon" style="">SP</div>
         <div class="feature-name">Throughput</div>
         <div class="feature-metric" style="color:var(--color-primary);">Speed</div>
@@ -382,6 +348,7 @@ function renderCard(m, i) {
     <div class="card-score-footer">
       <span class="score-footer-label">Quality score</span>
       <span class="score-footer-val">${Math.round(q)}<span>/100</span></span>
+      <span style="margin-left:auto;font-size:12px;color:var(--text-secondary);font-family:var(--font-mono);">${m.raw_speed > 0 ? Math.round(m.raw_speed) + ' tok/s' : ''}</span>
     </div>
     <div style="padding:10px 0 2px;border-top:1px solid var(--color-outline-var);margin-top:4px;">
       <a href="model.html?id=${encodeURIComponent(m.model_id)}" style="font-size:13px;font-weight:500;color:var(--color-primary);text-decoration:none;">View full test breakdown →</a>
@@ -605,16 +572,7 @@ document.getElementById('dialog-scrim').addEventListener('click', e => {
   if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
 });
 
-document.querySelectorAll('.seg-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.seg-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.leaderboard-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
-    document.getElementById('quality-legend').style.display = btn.dataset.tab === 'quality' ? '' : 'none';
-    document.getElementById('speed-legend').style.display   = btn.dataset.tab === 'speed'   ? '' : 'none';
-  });
-});
+// speed/quality tabs removed
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
@@ -669,7 +627,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     s('stat-quality', Math.round(Math.max(...allResults.map(r => r.quality_score||0))));
 
     buildQualityBoard(allResults);
-    buildSpeedBoard(allResults);
+    // speed board removed - speed shown on quality cards
     applyTierFilter('all');
 
     try {

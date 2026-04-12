@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Providers — Lexentia Proof</title>
+  <meta name="description" content="Which AI providers actually respond? See response rates, average quality, and top models per provider.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-spacing.css">
+  <link rel="stylesheet" href="animations.css">
+  <style>
+    .prov-hero {
+      background: transparent;
+      border-bottom: 1px solid var(--border);
+      padding: 48px 24px 32px;
+    }
+    .prov-hero-inner { max-width: 1600px; margin: 0 auto; }
+    .prov-hero-title {
+      font-family: var(--font-sans);
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+    .prov-hero-sub { font-size: 14px; color: var(--text-secondary); max-width: 560px; line-height: 1.6; }
+
+    .prov-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .provider-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+    .provider-card:hover { box-shadow: 0 6px 32px rgba(0,0,0,0.2); transform: translateY(-2px); }
+
+    .prov-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .prov-card-name { font-size: 22px; font-weight: 700; color: var(--text-primary); }
+    .prov-reliability-badge {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 99px;
+      letter-spacing: 0.02em;
+    }
+    .badge-excellent { background: rgba(16,185,129,0.15); color: #059669; }
+    .badge-good      { background: rgba(99,102,241,0.15); color: #6366f1; }
+    .badge-partial   { background: rgba(245,158,11,0.15); color: #d97706; }
+    .badge-low       { background: rgba(239,68,68,0.15); color: #dc2626; }
+
+    .prov-stat-row {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .prov-stat-item { }
+    .prov-stat-val {
+      font-size: 26px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: var(--color-primary);
+      line-height: 1;
+    }
+    .prov-stat-label { font-size: 11px; color: var(--text-secondary); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    .prov-bar-wrap {
+      height: 6px;
+      background: var(--bar-empty);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .prov-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #6366f1, #3b82f6);
+      width: 0%;
+      transition: width 0.7s cubic-bezier(.4,0,.2,1);
+    }
+
+    .prov-section-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    .prov-model-list { display: flex; flex-direction: column; gap: 6px; }
+    .prov-model-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: var(--glass-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      font-size: 13px;
+    }
+    .prov-model-rank {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      min-width: 20px;
+      text-align: right;
+    }
+    .prov-model-name {
+      flex: 1;
+      color: var(--text-primary);
+      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .prov-model-score {
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: var(--color-primary);
+      font-size: 14px;
+    }
+    .prov-model-tests {
+      font-size: 11px;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+    }
+    .prov-model-responded {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot-full    { background: #10b981; }
+    .dot-partial { background: #f59e0b; }
+    .dot-none    { background: #ef4444; }
+
+    .response-legend {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 32px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+    }
+    .response-legend-item { display: flex; align-items: center; gap: 6px; }
+    .response-legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+    .summary-stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+    }
+    .summary-stat-val { font-size: 32px; font-weight: 700; color: var(--color-primary); font-variant-numeric: tabular-nums; }
+    .summary-stat-label { font-size: 12px; color: var(--text-secondary); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    .page-error { text-align: center; padding: 80px 24px; color: var(--text-secondary); }
+    .page-error h2 { font-size: 24px; color: var(--text-primary); margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+
+<header class="header" id="app-bar">
+  <div class="header-content">
+    <a href="index.html" class="logo">
+      <img src="media/L_logo.png" alt="Lexentia Proof logo" class="logo-icon">Lexentia Proof
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Rankings</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="search.html" class="nav-link">Search</a>
+      <a href="providers.html" class="nav-link active">Providers</a>
+      <a href="trends.html" class="nav-link">Trends</a>
+      <a href="news.html" class="nav-link">News</a>
+    </nav>
+    <div class="theme-switch-wrap">
+      <span class="theme-switch-label" id="theme-label">Dark</span>
+      <label class="theme-switch" aria-label="Toggle theme">
+        <input type="checkbox" id="theme-toggle">
+        <span class="theme-switch-track"></span>
+        <span class="theme-switch-thumb" id="thumb-icon">🌙</span>
+      </label>
+    </div>
+  </div>
+</header>
+
+<div class="prov-hero">
+  <div class="prov-hero-inner">
+    <h1 class="prov-hero-title">Providers</h1>
+    <p class="prov-hero-sub">
+      Not all models answer all tests. This page shows which providers are most reliable —
+      ranked by response rate across all benchmark categories, and which of their models perform best.
+    </p>
+  </div>
+</div>
+
+<main class="container">
+
+  <div class="prov-summary-grid" id="summary-grid"></div>
+
+  <div class="response-legend">
+    <div class="response-legend-item"><div class="response-legend-dot dot-full"></div> All 5 tests completed</div>
+    <div class="response-legend-item"><div class="response-legend-dot dot-partial"></div> 2–4 tests completed</div>
+    <div class="response-legend-item"><div class="response-legend-dot dot-none"></div> 0–1 tests completed</div>
+  </div>
+
+  <div class="provider-grid" id="provider-grid">
+    <div class="page-error"><h2>Loading…</h2></div>
+  </div>
+
+</main>
+
+<div style="border-top:1px solid var(--color-outline-var);margin-top:48px;">
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="https://skillichse.github.io/Lexentia-Proof/" class="footer-link">GitHub</a>
+      <a href="about.html" class="footer-link">About</a>
+      <a href="news.html" class="footer-link">News</a>
+    </div>
+    <div class="footer-copy">Open source · Updated daily via GitHub Actions · All models are free to use</div>
+  </footer>
+</div>
+
+<script>
+function reliabilityBadge(rate) {
+  if (rate >= 95) return { label: 'Excellent', cls: 'badge-excellent' };
+  if (rate >= 75) return { label: 'Good', cls: 'badge-good' };
+  if (rate >= 40) return { label: 'Partial', cls: 'badge-partial' };
+  return { label: 'Unreliable', cls: 'badge-low' };
+}
+
+function dotClass(tests) {
+  if (tests >= 5) return 'dot-full';
+  if (tests >= 2) return 'dot-partial';
+  return 'dot-none';
+}
+
+function esc(str) {
+  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function providerColor(name) {
+  const colors = {
+    'Groq': '#f97316',
+    'Google': '#3b82f6',
+    'OpenRouter': '#8b5cf6',
+    'Cerebras': '#10b981',
+    'SambaNova': '#ec4899',
+  };
+  return colors[name] || '#6366f1';
+}
+
+function countTests(m) {
+  const t = m.tests || {};
+  let n = 0;
+  if (t.code?.avg_score)        n++;
+  if (t.reasoning?.score)       n++;
+  if (t.instruction?.avg_score) n++;
+  if (t.translation?.avg_score) n++;
+  const spd = m.raw_speed || t.speed?.avg_tokens_per_sec || 0;
+  if (spd > 0) n++;
+  return n;
+}
+
+async function loadData() {
+  try {
+    const today = new Date().toISOString().split('T')[0];
+    let data;
+    const r1 = await fetch(`data/results/${today}.json`);
+    if (r1.ok) {
+      data = { results: await r1.json() };
+    } else {
+      const r2 = await fetch('data/results/latest.json');
+      if (!r2.ok) throw new Error('HTTP ' + r2.status);
+      data = await r2.json();
+    }
+
+    const all = (data.results || []).map(m => ({
+      ...m,
+      quality_score: m.quality_score ?? m.overall_score ?? 0,
+      raw_speed: m.raw_speed ?? m.tests?.speed?.avg_tokens_per_sec ?? 0,
+      tests_completed: countTests(m),
+    }));
+
+    if (!all.length) {
+      document.getElementById('provider-grid').innerHTML = '<div class="page-error"><h2>No data yet</h2></div>';
+      return;
+    }
+
+    // Group by provider
+    const provMap = {};
+    all.forEach(m => {
+      const p = m.provider || 'Unknown';
+      if (!provMap[p]) provMap[p] = [];
+      provMap[p].push(m);
+    });
+
+    // Build provider stats
+    const providers = Object.entries(provMap).map(([name, models]) => {
+      const totalTests = models.length * 5;
+      const doneTests  = models.reduce((s, m) => s + m.tests_completed, 0);
+      const responseRate = totalTests > 0 ? doneTests / totalTests * 100 : 0;
+      const respondedModels = models.filter(m => m.quality_score > 0);
+      const avgQuality = respondedModels.length > 0
+        ? respondedModels.reduce((s, m) => s + m.quality_score, 0) / respondedModels.length
+        : 0;
+      const topModel = [...models].sort((a,b) => b.quality_score - a.quality_score)[0];
+      return { name, models, responseRate, avgQuality, respondedModels: respondedModels.length, topModel };
+    }).sort((a, b) => b.responseRate - a.responseRate || b.avgQuality - a.avgQuality);
+
+    // Summary stats
+    const totalModels = all.length;
+    const fullyResponded = all.filter(m => m.tests_completed === 5).length;
+    const partiallyResponded = all.filter(m => m.tests_completed >= 2 && m.tests_completed < 5).length;
+    const noResponse = all.filter(m => m.tests_completed < 2).length;
+
+    const summaryGrid = document.getElementById('summary-grid');
+    summaryGrid.innerHTML = [
+      { val: totalModels, label: 'Models Tested' },
+      { val: fullyResponded, label: 'Fully Responded' },
+      { val: partiallyResponded, label: 'Partial Response' },
+      { val: noResponse, label: 'Low Response' },
+      { val: providers.length, label: 'Providers' },
+    ].map(s => `
+      <div class="summary-stat-card reveal">
+        <div class="summary-stat-val">${s.val}</div>
+        <div class="summary-stat-label">${s.label}</div>
+      </div>`).join('');
+
+    // Provider cards
+    const grid = document.getElementById('provider-grid');
+    grid.innerHTML = providers.map(prov => {
+      const rb = reliabilityBadge(prov.responseRate);
+      const color = providerColor(prov.name);
+      const sortedModels = [...prov.models].sort((a,b) => b.quality_score - a.quality_score);
+
+      const modelRows = sortedModels.map((m, i) => {
+        const dot = dotClass(m.tests_completed);
+        const q = m.quality_score;
+        const scoreColor = q >= 80 ? '#10b981' : q >= 50 ? '#f59e0b' : '#ef4444';
+        return `<div class="prov-model-row">
+          <div class="prov-model-responded ${dot}"></div>
+          <span class="prov-model-rank">#${i+1}</span>
+          <span class="prov-model-name" title="${esc(m.model_name)}">${esc(m.model_name)}</span>
+          <span class="prov-model-tests">${m.tests_completed}/5</span>
+          <span class="prov-model-score" style="color:${scoreColor}">${Math.round(q)}</span>
+        </div>`;
+      }).join('');
+
+      return `<div class="provider-card reveal">
+        <div class="prov-card-header">
+          <div class="prov-card-name" style="color:${color}">${esc(prov.name)}</div>
+          <span class="prov-reliability-badge ${rb.cls}">${rb.label}</span>
+        </div>
+        <div class="prov-stat-row">
+          <div class="prov-stat-item">
+            <div class="prov-stat-val">${Math.round(prov.responseRate)}%</div>
+            <div class="prov-stat-label">Response rate</div>
+          </div>
+          <div class="prov-stat-item">
+            <div class="prov-stat-val">${Math.round(prov.avgQuality)}</div>
+            <div class="prov-stat-label">Avg quality</div>
+          </div>
+          <div class="prov-stat-item">
+            <div class="prov-stat-val">${prov.models.length}</div>
+            <div class="prov-stat-label">Models</div>
+          </div>
+        </div>
+        <div class="prov-bar-wrap">
+          <div class="prov-bar-fill" style="background:linear-gradient(90deg,${color},${color}99);width:0%" data-w="${prov.responseRate}"></div>
+        </div>
+        <div class="prov-section-label">Models — ranked by quality score</div>
+        <div class="prov-model-list">${modelRows}</div>
+      </div>`;
+    }).join('');
+
+    // Animate bars
+    setTimeout(() => {
+      document.querySelectorAll('.prov-bar-fill[data-w]').forEach(bar => {
+        bar.style.width = bar.dataset.w + '%';
+      });
+    }, 150);
+
+    // Reveal animation
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  } catch(err) {
+    document.getElementById('provider-grid').innerHTML =
+      `<div class="page-error"><h2>Could not load data</h2><p>${esc(String(err))}</p></div>`;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadData);
+</script>
+
+<script>
+  (function(){
+    var themeToggle = document.getElementById('theme-toggle');
+    var themeLabel  = document.getElementById('theme-label');
+    var thumbIcon   = document.getElementById('thumb-icon');
+    function applyTheme(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      localStorage.setItem('theme', t);
+      var isLight = t === 'light';
+      themeToggle.checked = isLight;
+      themeLabel.textContent = isLight ? 'Light' : 'Dark';
+      if (thumbIcon) thumbIcon.textContent = isLight ? '☀️' : '🌙';
+    }
+    applyTheme(localStorage.getItem('theme') || 'dark');
+    themeToggle.addEventListener('change', function() {
+      applyTheme(themeToggle.checked ? 'light' : 'dark');
+    });
+    window.addEventListener('scroll', function(){
+      var h = document.getElementById('app-bar');
+      if (h) h.classList.toggle('scrolled', window.scrollY > 0);
+    });
+  })();
+</script>
+
+</body>
+</html>

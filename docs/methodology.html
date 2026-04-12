@@ -3,6 +3,7 @@
 <head>
   <script>(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
   <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=about.html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Methodology — Lexentia Proof</title>
   <meta name="description" content="How Lexentia Proof benchmarks free AI models: real code execution, verified reasoning answers, instruction following, and translation checks. Full methodology explained.">
@@ -33,10 +34,11 @@
     <a href="index.html" class="logo"><img src="media/L_logo.png" alt="Lexentia Proof logo" class="logo-icon"><span>Lexentia Proof</span></a>
           <nav class="nav">
         <a href="index.html" class="nav-link">Rankings</a>
-        <a href="methodology.html" class="nav-link active">How it works</a>
+        <a href="about.html" class="nav-link active">How it works</a>
         <a href="search.html" class="nav-link">Search</a>
         <a href="news.html" class="nav-link">News</a>
-        <a href="trends.html" class="nav-link">Trends</a>
+        <a href="providers.html" class="nav-link">Providers</a>
+      <a href="trends.html" class="nav-link">Trends</a>
       </nav>
     <div class="theme-switch-wrap">
       <span class="theme-switch-label" id="theme-label">Dark</span>
@@ -238,12 +240,12 @@
     document.documentElement.setAttribute('data-theme', t);
     localStorage.setItem('theme', t);
     var dark = t === 'dark';
-    themeToggle.checked = dark;
-    themeLabel.textContent = dark ? 'Dark' : 'Light';
-    thumbIcon.textContent  = dark ? '🌙' : '☀️';
+    themeToggle.checked = isLight;
+    themeLabel.textContent = isLight ? 'Light' : 'Dark';
+    thumbIcon.textContent = isLight ? '☀️' : '🌙';
   }
   applyTheme(localStorage.getItem('theme') || 'dark');
-  themeToggle.addEventListener('change', function() { applyTheme(themeToggle.checked ? 'dark' : 'light'); });
+  themeToggle.addEventListener('change', function() { applyTheme(themeToggle.checked ? 'light' : 'dark'); });
 })();
 </script>
 

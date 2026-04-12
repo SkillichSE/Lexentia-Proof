@@ -379,6 +379,7 @@
       <a href="index.html" class="nav-link">Rankings</a>
       <a href="about.html" class="nav-link">About</a>
       <a href="search.html" class="nav-link">Search</a>
+      <a href="providers.html" class="nav-link">Providers</a>
       <a href="trends.html" class="nav-link">Trends</a>
       <a href="news.html" class="nav-link">News</a>
     </nav>
@@ -407,12 +408,12 @@
     document.documentElement.setAttribute('data-theme', t);
     localStorage.setItem('theme', t);
     var dark = t === 'dark';
-    themeToggle.checked = dark;
-    themeLabel.textContent = dark ? 'Dark' : 'Light';
-    thumbIcon.textContent  = dark ? '🌙' : '☀️';
+    themeToggle.checked = isLight;
+    themeLabel.textContent = isLight ? 'Light' : 'Dark';
+    thumbIcon.textContent = isLight ? '☀️' : '🌙';
   }
   applyTheme(localStorage.getItem('theme') || 'dark');
-  themeToggle.addEventListener('change', function() { applyTheme(themeToggle.checked ? 'dark' : 'light'); });
+  themeToggle.addEventListener('change', function() { applyTheme(themeToggle.checked ? 'light' : 'dark'); });
   window.addEventListener('scroll', function(){
     document.getElementById('app-bar').classList.toggle('scrolled', window.scrollY > 0);
   });
@@ -445,7 +446,12 @@ var PROMPTS = {
     speed_math:    'Train A travels 120 km in 2 hours. Train B travels 180 km in 3 hours. Which train is faster?',
     river_crossing:'A farmer needs to cross a river with a fox, a chicken, and a bag of grain. The boat fits only the farmer and one item. The fox will eat the chicken if left alone together, and the chicken will eat the grain if left alone together. What does the farmer take across first?',
     coin_flip:     'I flipped a fair coin 3 times and got heads each time. What is the probability the next flip is heads?',
-    counting:      'How many letters are in the word "MISSISSIPPI"?'
+    counting:      'How many letters are in the word "MISSISSIPPI"?',
+    knights_knaves:'On an island, knights always tell the truth and knaves always lie. A person says "I am a knight." What are they?',
+    scheduling:    'Alice is free Mon/Wed/Fri. Bob is free Tue/Thu/Fri. Carol is free Mon/Thu/Sat. Is there a day all three can meet on a weekday?',
+    base_rate:     'A disease affects 1 in 1000 people. A test is 99% accurate. You test positive. Are you more likely sick or healthy?',
+    deduction:     'All mammals are warm-blooded. Whales are mammals. Are whales warm-blooded?',
+    word_problem:  'A shirt costs $6. A hat costs $2 more than the shirt. How much do they cost together?'
   },
   instruction: {
     json:       'Return a JSON object with exactly these 3 keys: "name", "age", "city". Use any realistic values.',
@@ -469,7 +475,12 @@ var REASONING_ANSWERS = {
   speed_math:    'Same speed — both travel at exactly 60 km/h',
   river_crossing:'Chicken — take it first so nothing gets eaten',
   coin_flip:     '1/2 — each flip is independent',
-  counting:      '11 — M(1) I(4) S(4) P(2)'
+  counting:      '11 — M(1) I(4) S(4) P(2)',
+  knights_knaves:'Knight — a knight always tells the truth',
+  scheduling:    'No — there is no time slot that works for all',
+  base_rate:     'Healthy — base rate dominates (rare disease)',
+  deduction:     'Yes — follows from the given premises',
+  word_problem:  '14 — solve the system of equations'
 };
 
 var TRANSLATION_LABELS = {
@@ -551,7 +562,7 @@ function renderReasoningSection(tests) {
         '<div class="qa-label">Model answered</div>' +
         '<div class="qa-box ' + (correct ? 'answer-box' : 'wrong-box') + '">' + esc(t.answer_given || '—') + '</div>' +
         '<div class="qa-label">Correct answer</div>' +
-        '<div class="qa-box">' + esc(REASONING_ANSWERS[t.test] || '—') + '</div>' +
+        '<div class="qa-box">' + esc(t.expected_answer || REASONING_ANSWERS[t.test] || (t.correct ? t.answer_given : '—')) + '</div>' +
       '</div>' +
     '</div>';
   }).join('');

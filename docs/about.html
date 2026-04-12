@@ -254,6 +254,7 @@
       <a href="index.html" class="nav-link">Rankings</a>
       <a href="about.html" class="nav-link active">About</a>
       <a href="search.html" class="nav-link">Search</a>
+      <a href="providers.html" class="nav-link">Providers</a>
       <a href="trends.html" class="nav-link">Trends</a>
       <a href="news.html" class="nav-link">News</a>
     </nav>
@@ -588,13 +589,13 @@ function applyTheme(t) {
   document.documentElement.setAttribute('data-theme', t);
   localStorage.setItem('theme', t);
   const dark = t === 'dark';
-  themeToggle.checked = dark;
-  themeLabel.textContent = dark ? 'Dark' : 'Light';
-  thumbIcon.textContent  = dark ? '🌙'   : '☀️';
+  themeToggle.checked = isLight;
+  themeLabel.textContent = isLight ? 'Light' : 'Dark';
+  thumbIcon.textContent = isLight ? '☀️' : '🌙';
 }
 
 applyTheme(localStorage.getItem('theme') || 'dark');
-themeToggle.addEventListener('change', () => applyTheme(themeToggle.checked ? 'dark' : 'light'));
+themeToggle.addEventListener('change', () => applyTheme(themeToggle.checked ? 'light' : 'dark'));
 window.addEventListener('scroll', () =>
   document.getElementById('app-bar').classList.toggle('scrolled', window.scrollY > 0));
 </script>

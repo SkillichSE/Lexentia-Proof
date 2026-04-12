@@ -17,7 +17,8 @@
         <a href="index.html" class="nav-link">Rankings</a>
         <a href="about.html" class="nav-link">About</a>
         <a href="search.html" class="nav-link active">Search</a>
-        <a href="trends.html" class="nav-link">Trends</a>
+        <a href="providers.html" class="nav-link">Providers</a>
+      <a href="trends.html" class="nav-link">Trends</a>
         <a href="news.html" class="nav-link">News</a>
       </nav>
       <div class="theme-switch-wrap">
@@ -43,7 +44,7 @@
       </div>
       <div style="display:flex;gap:24px;flex-wrap:wrap;">
         <div>
-          <div style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--md-on-surface-low);margin-bottom:8px;">Provider</div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text-secondary);margin-bottom:8px;">Provider</div>
           <div class="filters" id="provider-filters">
             <button class="filter-btn active" data-provider="all">All</button>
             <button class="filter-btn" data-provider="Groq">Groq</button>
@@ -52,7 +53,7 @@
           </div>
         </div>
         <div>
-          <div style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--md-on-surface-low);margin-bottom:8px;">Sort by</div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text-secondary);margin-bottom:8px;">Sort by</div>
           <div class="filters" id="sort-filters">
             <button class="filter-btn active" data-sort="quality">Quality</button>
             <button class="filter-btn" data-sort="speed">Speed</button>
@@ -62,9 +63,9 @@
       </div>
     </div>
 
-    <div id="results-count" style="font-size:13px;color:var(--md-on-surface-low);margin-bottom:16px;"></div>
-    <div class="grid grid-2" id="search-results"></div>
-    <div id="no-results" style="display:none;text-align:center;padding:64px;color:var(--md-on-surface-var);">
+    <div id="results-count" style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;"></div>
+    <div class="grid-cards" id="search-results"></div>
+    <div id="no-results" style="display:none;text-align:center;padding:64px;color:var(--text-secondary);">
       No models match your search.
     </div>
   </main>
@@ -82,9 +83,9 @@
     let allModels=[], currentProvider='all', currentSort='quality', searchQuery='';
 
     function sizeBadge(cat){
-      const m={small:'size-small',medium:'size-medium',large:'size-large',unknown:'size-unknown'};
-      const l={small:'small',medium:'medium',large:'large',unknown:'?'};
-      return `<span class="size-badge ${m[cat]||'size-unknown'}">${l[cat]||cat}</span>`;
+      const cls={small:'size-small',medium:'size-medium',large:'size-large',unknown:'size-unknown'};
+      const lbl={small:'Small',medium:'Medium',large:'Large',unknown:'?'};
+      return `<span class="${cls[cat]||'size-unknown'}" style="font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px;margin-left:6px;background:var(--accent-dim);color:var(--accent);">${lbl[cat]||cat}</span>`;
     }
 
     function scoreLine(label,val,cls){
@@ -156,14 +157,17 @@
             </div>
             <div class="rank-badge">#${i+1}</div>
           </div>
-          <div class="score-row">
-            ${scoreLine('Quality',q,'fill-quality')}
+          <div class="score-block" style="display:flex;flex-direction:column;gap:4px;">
+            ${scoreLine('Quality',q,'fill-mmlu')}
             ${scoreLine('Code',c,'fill-code')}
-            ${scoreLine('Reasoning',rs,'fill-reasoning')}
+            ${scoreLine('Reasoning',rs,'fill-reason')}
           </div>
-          <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--md-outline-var);">
-            <span style="font-size:12px;color:var(--md-on-surface-low);">${Math.round(spd)} tok/s</span>
-            <span style="font-size:18px;font-weight:700;color:var(--md-primary);">${Math.round(q)}<span style="font-size:11px;font-weight:400;color:var(--md-on-surface-low);">/100</span></span>
+                    <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--border-subtle);">
+            <span style="font-size:12px;color:var(--text-secondary);font-family:var(--font-mono);">${spd>0?Math.round(spd)+' tok/s':''}</span>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="font-size:18px;font-weight:700;color:var(--color-primary);">${Math.round(q)}<span style="font-size:11px;font-weight:400;color:var(--text-secondary);">/100</span></span>
+              <a href="model.html?id=${encodeURIComponent(m.model_id||m.model_name)}" style="font-size:12px;font-weight:500;color:var(--color-primary);text-decoration:none;">Details →</a>
+            </div>
           </div>
         </div>`;
       }).join('');
@@ -196,13 +200,13 @@
       function applyTheme(t) {
         document.documentElement.setAttribute('data-theme', t);
         localStorage.setItem('theme', t);
-        var dark = t === 'dark';
-        themeToggle.checked = dark;
-        themeLabel.textContent = dark ? 'Dark' : 'Light';
-        thumbIcon.textContent  = dark ? '🌙' : '☀️';
+        var dark = t === 'dark'; var isLight = !dark;
+        themeToggle.checked = isLight;
+        themeLabel.textContent = isLight ? 'Light' : 'Dark';
+        thumbIcon.textContent = isLight ? '☀️' : '🌙';
       }
       applyTheme(localStorage.getItem('theme') || 'dark');
-      themeToggle.addEventListener('change', function() { applyTheme(themeToggle.checked ? 'dark' : 'light'); });
+      themeToggle.addEventListener('change', function() { applyTheme(themeToggle.checked ? 'light' : 'dark'); });
       window.addEventListener('scroll',function(){document.querySelector('.header').classList.toggle('scrolled',window.scrollY>0);});
     })();
   </script>

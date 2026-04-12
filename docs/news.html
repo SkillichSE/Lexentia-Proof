@@ -16,7 +16,8 @@
         <a href="index.html" class="nav-link">Rankings</a>
         <a href="about.html" class="nav-link">About</a>
         <a href="search.html" class="nav-link">Search</a>
-        <a href="trends.html" class="nav-link">Trends</a>
+        <a href="providers.html" class="nav-link">Providers</a>
+      <a href="trends.html" class="nav-link">Trends</a>
         <a href="news.html" class="nav-link active">News</a>
       </nav>
       <div class="theme-switch-wrap">
@@ -33,7 +34,7 @@
   <main class="container">
     <div class="section-header" style="margin-bottom:var(--sp-xl);">
       <h1 class="section-title" style="font-size:28px;">AI News</h1>
-      <span id="last-update" style="font-size:12px;color:var(--md-on-surface-low);"></span>
+      <span id="last-update" style="font-size:12px;color:var(--text-secondary);"></span>
     </div>
 
     <div class="filters" id="source-filters" style="margin-bottom:24px;">
@@ -49,7 +50,7 @@
     </div>
 
     <div id="news-feed"></div>
-    <div id="no-news" style="display:none;text-align:center;padding:64px;color:var(--md-on-surface-var);">
+    <div id="no-news" style="display:none;text-align:center;padding:64px;color:var(--text-secondary);">
       No news yet — check back after the next daily run.
     </div>
   </main>
@@ -104,7 +105,7 @@
         <div class="news-item">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
             <span class="news-date">${new Date(item.date).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'})}</span>
-            <span style="font-size:11px;font-weight:500;color:var(--md-on-surface-low);">${item.source}</span>
+            <span style="font-size:11px;font-weight:500;color:var(--text-secondary);">${item.source}</span>
           </div>
           <h3 class="news-title"><a href="${item.link}" target="_blank" rel="noopener">${item.title}</a></h3>
           ${item.summary?`<p class="news-summary">${item.summary}</p>`:''}
@@ -130,13 +131,13 @@
       function applyTheme(t) {
         document.documentElement.setAttribute('data-theme', t);
         localStorage.setItem('theme', t);
-        var dark = t === 'dark';
-        themeToggle.checked = dark;
-        themeLabel.textContent = dark ? 'Dark' : 'Light';
-        thumbIcon.textContent  = dark ? '🌙' : '☀️';
+        var dark = t === 'dark'; var isLight = !dark;
+        themeToggle.checked = isLight;
+        themeLabel.textContent = isLight ? 'Light' : 'Dark';
+        thumbIcon.textContent = isLight ? '☀️' : '🌙';
       }
       applyTheme(localStorage.getItem('theme') || 'dark');
-      themeToggle.addEventListener('change', function() { applyTheme(themeToggle.checked ? 'dark' : 'light'); });
+      themeToggle.addEventListener('change', function() { applyTheme(themeToggle.checked ? 'light' : 'dark'); });
       window.addEventListener('scroll',function(){document.querySelector('.header').classList.toggle('scrolled',window.scrollY>0);});
     })();
   </script>
