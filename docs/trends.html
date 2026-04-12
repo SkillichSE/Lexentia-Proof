@@ -46,6 +46,7 @@
     .tier-section.active{display:block;}
     [data-theme="light"] .chart-card,[data-theme="light"] .insight-card,[data-theme="light"] .bench-card{background:rgba(255,255,255,0.92);}
   </style>
+  <script src="app.js"></script>
 </head>
 <body>
 
@@ -72,6 +73,18 @@
     </div>
   </div>
 </header>
+<button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<nav class="nav-drawer" id="nav-drawer" style="display:none;">
+  <a href="index.html" class="nav-link">Rankings</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="search.html" class="nav-link">Search</a>
+  <a href="providers.html" class="nav-link">Providers</a>
+  <a href="trends.html" class="nav-link active">Trends</a>
+  <a href="news.html" class="nav-link">News</a>
+</nav>
+
 
 <div class="trends-hero">
   <div class="trends-hero-inner">

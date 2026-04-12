@@ -367,6 +367,7 @@
       .summary-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
+  <script src="app.js"></script>
 </head>
 <body>
 
@@ -393,6 +394,18 @@
     </div>
   </div>
 </header>
+<button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<nav class="nav-drawer" id="nav-drawer" style="display:none;">
+  <a href="index.html" class="nav-link">Rankings</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="search.html" class="nav-link">Search</a>
+  <a href="providers.html" class="nav-link">Providers</a>
+  <a href="trends.html" class="nav-link">Trends</a>
+  <a href="news.html" class="nav-link">News</a>
+</nav>
+
 
 <div id="page-root">
   <div class="page-loading">Loading model data…</div>
