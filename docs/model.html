@@ -407,7 +407,7 @@
   function applyTheme(t) {
     document.documentElement.setAttribute('data-theme', t);
     localStorage.setItem('theme', t);
-    var dark = t === 'dark';
+    var isLight = t === 'light';
     themeToggle.checked = isLight;
     themeLabel.textContent = isLight ? 'Light' : 'Dark';
     thumbIcon.textContent = isLight ? '☀️' : '🌙';

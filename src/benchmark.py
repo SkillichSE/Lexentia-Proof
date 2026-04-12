@@ -185,7 +185,7 @@ class ModelBenchmark:
                 body = r.json()
                 content = body["choices"][0]["message"].get("content") or ""
                 usage = body.get("usage", {})
-                tokens = usage.get("total_tokens", 0) or usage.get("completion_tokens", 0)
+                tokens = usage.get("completion_tokens", 0) or usage.get("total_tokens", 0)
                 return {"success": True, "content": content,
                         "total_time": round(elapsed, 3), "tokens": tokens,
                         "tokens_per_sec": round(tokens / elapsed, 2) if elapsed > 0 else 0}
@@ -224,7 +224,7 @@ class ModelBenchmark:
                 if not body.get("candidates"):
                     return {"success": False, "error": "no candidates"}
                 content = body["candidates"][0]["content"]["parts"][0].get("text") or ""
-                tokens = body.get("usageMetadata", {}).get("totalTokenCount", 0)
+                tokens = body.get("usageMetadata", {}).get("candidatesTokenCount", 0) or body.get("usageMetadata", {}).get("totalTokenCount", 0)
                 return {"success": True, "content": content,
                         "total_time": round(elapsed, 3), "tokens": tokens,
                         "tokens_per_sec": round(tokens / elapsed, 2) if elapsed > 0 else 0}
