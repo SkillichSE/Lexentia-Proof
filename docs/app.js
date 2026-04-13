@@ -55,10 +55,6 @@ function initNavIndicator() {
   const nav = document.querySelector('.nav');
   if (!nav) return;
 
-  // Reset old indicator
-  const existing = nav.querySelector('.nav-indicator');
-  if (existing) existing.remove();
-
   // Create indicator element
   const indicator = document.createElement('div');
   indicator.className = 'nav-indicator';
@@ -122,7 +118,7 @@ function initHamburger() {
 
 let currentMode = 'proof'; // 'proof' or 'lab'
 let currentSubsection = 'rankings'; // for lab: 'library', 'presets', 'insights'
-let originalShellContent = ''; // to store the original proof content
+let originalMainContent = ''; // to store the original proof content
 
 const promptsData = [
   {
@@ -175,8 +171,7 @@ function switchMode(mode) {
   document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
   
   if (mode === 'proof') {
-    logo.querySelector('.logo-title').textContent = 'Lexentia Proof';
-    logo.querySelector('.logo-icon').alt = 'Lexentia Proof logo';
+    logo.innerHTML = '<img src="media/L_logo.png" alt="Lexentia Proof logo" class="logo-icon">Lexentia Proof';
     heroHeadline.textContent = 'Lexentia Proof';
     heroSub.textContent = 'Free AI models, ranked daily';
     nav.innerHTML = `
@@ -187,13 +182,13 @@ function switchMode(mode) {
       <a href="trends.html" class="nav-link">Trends</a>
       <a href="news.html" class="nav-link">News</a>
     `;
-    const shell = document.querySelector('.content-shell');
-    if (shell && originalShellContent) {
-      shell.innerHTML = originalShellContent;
+    // Restore original content
+    const main = document.querySelector('main');
+    if (main && originalMainContent) {
+      main.innerHTML = originalMainContent;
     }
   } else {
-    logo.querySelector('.logo-title').textContent = 'Lexentia Lab';
-    logo.querySelector('.logo-icon').alt = 'Lexentia Lab logo';
+    logo.innerHTML = '<img src="media/L_logo.png" alt="Lexentia Lab logo" class="logo-icon">Lexentia Lab';
     heroHeadline.textContent = 'Lexentia Lab';
     heroSub.textContent = 'AI Research & Tools';
     nav.innerHTML = `
@@ -220,7 +215,7 @@ function loadLabContent(sub) {
   let content = '';
   
   if (sub === 'library') {
-    content = '<div class="lab-section"><h2>Лаборатория промптов</h2><div class="prompts-grid">';
+    content = '<div class="lab-section"><h2>Library</h2><div class="prompts-grid">';
     promptsData.forEach(prompt => {
       content += `
         <div class="card prompt-card">
@@ -235,13 +230,12 @@ function loadLabContent(sub) {
       `;
     });
     content += '</div></div>';
-    document.querySelector('.content-shell').innerHTML = content;
+    main.innerHTML = content;
   } else if (sub === 'presets') {
     content = '<div class="lab-section"><h2>Presets</h2><div class="presets-list">';
     // Load presets
-    const presetFiles = ['llama-3.3-groq.json', 'llama-3.3-openrouter.json', 'nemotron-3-together.json'];
+    const presetFiles = ['llama-3.3-groq.json', 'grok-1-xai.json', 'nemotron-3-together.json'];
     let loaded = 0;
-    const shell = document.querySelector('.content-shell');
     presetFiles.forEach(file => {
       fetch(`content/presets/${file}`)
         .then(res => res.json())
@@ -255,8 +249,8 @@ function loadLabContent(sub) {
             </div>
           `;
           loaded++;
-          if (loaded === presetFiles.length && shell) {
-            shell.innerHTML = content + '</div></div>';
+          if (loaded === presetFiles.length) {
+            main.innerHTML = content + '</div></div>';
           }
         });
     });
@@ -265,7 +259,6 @@ function loadLabContent(sub) {
     // Load articles
     const articleFiles = ['nemotron-3-breakthrough.md', 'token-optimization-tips.md'];
     let loaded = 0;
-    const shell = document.querySelector('.content-shell');
     articleFiles.forEach(file => {
       fetch(`content/articles/${file}`)
         .then(res => res.text())
@@ -273,8 +266,8 @@ function loadLabContent(sub) {
           const html = marked.parse(md);
           content += `<div class="card article-card">${html}</div>`;
           loaded++;
-          if (loaded === articleFiles.length && shell) {
-            shell.innerHTML = content + '</div></div>';
+          if (loaded === articleFiles.length) {
+            main.innerHTML = content + '</div></div>';
           }
         });
     });
@@ -292,10 +285,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavIndicator();
   initHamburger();
   
-  // Save original content shell only
-  const shell = document.querySelector('.content-shell');
-  if (shell) {
-    originalShellContent = shell.innerHTML;
+  // Save original content
+  const main = document.querySelector('main');
+  if (main) {
+    originalMainContent = main.innerHTML;
   }
   
   // Mode switcher
