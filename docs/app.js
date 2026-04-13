@@ -118,6 +118,7 @@ function initHamburger() {
 
 let currentMode = 'proof'; // 'proof' or 'lab'
 let currentSubsection = 'rankings'; // for lab: 'library', 'presets', 'insights'
+let originalMainContent = ''; // to store the original proof content
 
 const promptsData = [
   {
@@ -143,6 +144,18 @@ const promptsData = [
     systemPrompt: "You are a mathematics tutor. Explain concepts clearly, solve problems step-by-step, and provide proofs when appropriate.",
     optimizedFor: ["GPT-4o", "Mathstral"],
     tags: ["Математика", "Обучение"]
+  },
+  {
+    title: "Технический писатель",
+    systemPrompt: "You are a technical writer. Create clear, concise documentation, tutorials, and explanations for technical concepts.",
+    optimizedFor: ["Llama 3.3", "Nemotron 3"],
+    tags: ["Технический", "Документация"]
+  },
+  {
+    title: "Анализ данных",
+    systemPrompt: "You are a data analyst. Help with data interpretation, statistical analysis, and visualization recommendations.",
+    optimizedFor: ["Claude 3.5", "GPT-4o"],
+    tags: ["Данные", "Анализ"]
   }
 ];
 
@@ -169,7 +182,11 @@ function switchMode(mode) {
       <a href="trends.html" class="nav-link">Trends</a>
       <a href="news.html" class="nav-link">News</a>
     `;
-    loadProofContent();
+    // Restore original content
+    const main = document.querySelector('main');
+    if (main && originalMainContent) {
+      main.innerHTML = originalMainContent;
+    }
   } else {
     logo.innerHTML = '<img src="media/L_logo.png" alt="Lexentia Lab logo" class="logo-icon">Lexentia Lab';
     heroHeadline.textContent = 'Lexentia Lab';
@@ -191,12 +208,6 @@ function switchSubsection(sub) {
   navLinks.forEach(link => link.classList.remove('active'));
   document.querySelector(`[data-sub="${sub}"]`).classList.add('active');
   loadLabContent(sub);
-}
-
-function loadProofContent() {
-  // Load original rankings content
-  // This would need to be implemented based on existing logic
-  // For now, assume it's loaded by default
 }
 
 function loadLabContent(sub) {
@@ -223,7 +234,7 @@ function loadLabContent(sub) {
   } else if (sub === 'presets') {
     content = '<div class="lab-section"><h2>Presets</h2><div class="presets-list">';
     // Load presets
-    const presetFiles = ['llama-3.3-groq.json', 'grok-1-xai.json'];
+    const presetFiles = ['llama-3.3-groq.json', 'grok-1-xai.json', 'nemotron-3-together.json'];
     let loaded = 0;
     presetFiles.forEach(file => {
       fetch(`content/presets/${file}`)
@@ -273,6 +284,12 @@ function copyToClipboard(text) {
 document.addEventListener('DOMContentLoaded', () => {
   initNavIndicator();
   initHamburger();
+  
+  // Save original content
+  const main = document.querySelector('main');
+  if (main) {
+    originalMainContent = main.innerHTML;
+  }
   
   // Mode switcher
   document.querySelectorAll('.mode-btn').forEach(btn => {
