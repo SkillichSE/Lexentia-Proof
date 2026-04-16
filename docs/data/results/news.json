@@ -1,13 +1,55 @@
 {
-  "updated": "2026-04-15T14:34:27.444714+00:00",
+  "updated": "2026-04-16T06:22:08.122754+00:00",
   "count": 30,
   "items": [
+    {
+      "title": "Accelerating decode-heavy LLM inference with speculative decoding on AWS Trainium and vLLM",
+      "link": "https://aws.amazon.com/blogs/machine-learning/accelerating-decode-heavy-llm-inference-with-speculative-decoding-on-aws-trainium-and-vllm/",
+      "date": "2026-04-15T15:20:58+00:00",
+      "source": "AWS ML Blog",
+      "summary": "In this post, you will learn how speculative decoding works and why it helps reduce cost per generated token on AWS Trainium2."
+    },
+    {
+      "title": "Rede Mater Dei de Sa\u00fade: Monitoring AI agents in the revenue cycle with Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/rede-mater-dei-de-saude-monitoring-ai-agents-in-the-revenue-cycle-with-amazon-bedrock-agentcore/",
+      "date": "2026-04-15T15:15:23+00:00",
+      "source": "AWS ML Blog",
+      "summary": "This post is cowritten by Renata Salvador Grande, Gabriel Bueno and Paulo Laurentys at Rede Mater Dei de Sa\u00fade. The growing adoption of multi-agent AI systems is redefining critical operations in healthcare. In large hospital networks, where thousands of decisions directly impact"
+    },
+    {
+      "title": "Gemini 3.1 Flash TTS: the next generation of expressive AI speech",
+      "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-tts/",
+      "date": "2026-04-15T15:00:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "Gemini logo next to the text \"3.1 Flash TTS\", all over colored dots"
+    },
+    {
+      "title": "Inside VAKRA: Reasoning, Tool Use, and Failure Modes of Agents",
+      "link": "https://huggingface.co/blog/ibm-research/vakra-benchmark-analysis",
+      "date": "2026-04-15T12:07:25+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "The next evolution of the Agents SDK",
+      "link": "https://openai.com/index/the-next-evolution-of-the-agents-sdk",
+      "date": "2026-04-15T10:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "OpenAI updates the Agents SDK with native sandbox execution and a model-native harness, helping developers build secure, long-running agents across files and tools."
+    },
     {
       "title": "Meet HoloTab by HCompany. Your AI browser companion.",
       "link": "https://huggingface.co/blog/Hcompany/holotab",
       "date": "2026-04-15T09:25:20+00:00",
       "source": "Hugging Face",
       "summary": ""
+    },
+    {
+      "title": "Parcae: Doing more with fewer parameters using stable looped models",
+      "link": "https://www.together.ai/blog/parcae",
+      "date": "2026-04-15T00:00:00+00:00",
+      "source": "Together AI",
+      "summary": "Parcae is a stable looped language model that matches the quality of a Transformer twice its size \u2014 a 770M model reaching 1.3B-level performance. We introduce the first scaling laws for looping and show that increasing recurrence, not just data, is a compute-efficient path to bet"
     },
     {
       "title": "Use-case based deployments on SageMaker JumpStart",
@@ -101,39 +143,11 @@
       "summary": "The release of&nbsp;MiniMax M2.7&nbsp;adds enhancements to the popular&nbsp;MiniMax&nbsp;M2.5 model,&nbsp;built for agentic harnesses,..."
     },
     {
-      "title": "Responsible and safe use of AI",
-      "link": "https://openai.com/academy/responsible-and-safe-use",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to use AI responsibly with best practices for safety, accuracy, and transparency when using tools like ChatGPT."
-    },
-    {
-      "title": "Research with ChatGPT",
-      "link": "https://openai.com/academy/search-and-deep-research",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to research with ChatGPT using search and deep research to find up-to-date information, analyze sources, and generate structured insights."
-    },
-    {
       "title": "Prompting fundamentals",
       "link": "https://openai.com/academy/prompting",
       "date": "2026-04-10T00:00:00+00:00",
       "source": "OpenAI",
       "summary": "Learn prompting fundamentals and how to write clear, effective prompts to get better, more useful responses from ChatGPT."
-    },
-    {
-      "title": "ChatGPT for customer success teams",
-      "link": "https://openai.com/academy/customer-success",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how customer success teams use ChatGPT to manage accounts, improve communication, reduce churn, and drive adoption and renewals."
-    },
-    {
-      "title": "ChatGPT for managers",
-      "link": "https://openai.com/academy/managers",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how managers use ChatGPT to prepare for conversations, write clear feedback, stay organized, and improve team effectiveness."
     },
     {
       "title": "Using projects in ChatGPT",
@@ -143,46 +157,11 @@
       "summary": "Learn how to use orojects in ChatGPT to organize chats, files, and instructions, manage ongoing work, and collaborate more effectively."
     },
     {
-      "title": "AI fundamentals",
-      "link": "https://openai.com/academy/what-is-ai",
+      "title": "ChatGPT for research",
+      "link": "https://openai.com/academy/research",
       "date": "2026-04-10T00:00:00+00:00",
       "source": "OpenAI",
-      "summary": "Learn what AI is, how it works, and how tools like ChatGPT use large language models. A clear, beginner-friendly guide to understanding artificial intelligence."
-    },
-    {
-      "title": "Financial services",
-      "link": "https://openai.com/academy/financial-services",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Explore AI resources for financial services, including prompt packs, GPTs, guides, and tools to help institutions deploy and scale AI securely."
-    },
-    {
-      "title": "Getting started with ChatGPT",
-      "link": "https://openai.com/academy/getting-started",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to use ChatGPT, start your first conversation, and discover simple ways to write, brainstorm, and solve problems with AI."
-    },
-    {
-      "title": "Healthcare",
-      "link": "https://openai.com/academy/healthcare",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Explore how clinicians use ChatGPT to support diagnosis, documentation, and patient care with secure, HIPAA-compliant AI tools."
-    },
-    {
-      "title": "Our response to the Axios developer tool compromise",
-      "link": "https://openai.com/index/axios-developer-tool-compromise",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "OpenAI responds to the Axios supply chain attack by rotating macOS code signing certificates, updating apps, and confirming no user data was compromised."
-    },
-    {
-      "title": "ChatGPT for marketing teams",
-      "link": "https://openai.com/academy/marketing",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how marketing teams use ChatGPT to plan campaigns, generate content, analyze performance, and move from ideas to execution faster."
+      "summary": "Learn how to use ChatGPT for research to gather sources, analyze information, and create structured, citation-backed insights."
     },
     {
       "title": "ChatGPT for finance teams",
@@ -192,11 +171,39 @@
       "summary": "Learn how finance teams use ChatGPT to streamline reporting, analyze data, improve forecasts, and communicate insights more clearly."
     },
     {
-      "title": "Applications of AI at OpenAI",
-      "link": "https://openai.com/academy/applications-of-ai",
+      "title": "Using custom GPTs",
+      "link": "https://openai.com/academy/custom-gpts",
       "date": "2026-04-10T00:00:00+00:00",
       "source": "OpenAI",
-      "summary": "Explore how OpenAI products like ChatGPT, Codex, and APIs bring AI into real-world use for work, development, and everyday tasks."
+      "summary": "Learn how to build and use custom GPTs to automate workflows, maintain consistent outputs, and create purpose-built AI assistants."
+    },
+    {
+      "title": "Working with files in ChatGPT",
+      "link": "https://openai.com/academy/working-with-files",
+      "date": "2026-04-10T00:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "Learn how to upload and work with files in ChatGPT to analyze data, summarize documents, and generate content from PDFs, spreadsheets, and more."
+    },
+    {
+      "title": "Getting started with ChatGPT",
+      "link": "https://openai.com/academy/getting-started",
+      "date": "2026-04-10T00:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "Learn how to use ChatGPT, start your first conversation, and discover simple ways to write, brainstorm, and solve problems with AI."
+    },
+    {
+      "title": "Creating images with ChatGPT",
+      "link": "https://openai.com/academy/image-generation",
+      "date": "2026-04-10T00:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "Learn how to create and refine images with ChatGPT using clear prompts, iterate on designs, and generate high-quality visuals in minutes."
+    },
+    {
+      "title": "Our response to the Axios developer tool compromise",
+      "link": "https://openai.com/index/axios-developer-tool-compromise",
+      "date": "2026-04-10T00:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "OpenAI responds to the Axios supply chain attack by rotating macOS code signing certificates, updating apps, and confirming no user data was compromised."
     },
     {
       "title": "Brainstorming with ChatGPT",
@@ -204,13 +211,6 @@
       "date": "2026-04-10T00:00:00+00:00",
       "source": "OpenAI",
       "summary": "Learn how to use ChatGPT to brainstorm ideas, organize thinking, and turn rough concepts into structured, actionable plans."
-    },
-    {
-      "title": "ChatGPT for sales teams",
-      "link": "https://openai.com/academy/sales",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how sales teams use ChatGPT to research accounts, personalize outreach, manage deals, and improve pipeline and conversion."
     }
   ]
 }
