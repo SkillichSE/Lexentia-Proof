@@ -1,7 +1,70 @@
 {
-  "updated": "2026-04-16T06:22:08.122754+00:00",
+  "updated": "2026-04-17T06:16:37.537153+00:00",
   "count": 30,
   "items": [
+    {
+      "title": "Cost-efficient custom text-to-SQL using Amazon Nova Micro and Amazon Bedrock on-demand inference",
+      "link": "https://aws.amazon.com/blogs/machine-learning/cost-efficient-custom-text-to-sql-using-amazon-nova-micro-and-amazon-bedrock-on-demand-inference/",
+      "date": "2026-04-16T17:43:03+00:00",
+      "source": "AWS ML Blog",
+      "summary": "In this post, we demonstrate two approaches to fine-tune Amazon Nova Micro for custom SQL dialect generation to deliver both cost efficiency and production ready performance."
+    },
+    {
+      "title": "How Automated Reasoning checks in Amazon Bedrock transform generative AI compliance",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-automated-reasoning-checks-in-amazon-bedrock-transform-generative-ai-compliance/",
+      "date": "2026-04-16T17:34:42+00:00",
+      "source": "AWS ML Blog",
+      "summary": "In this post, you'll learn why probabilistic AI validation falls short in regulated industries and how Automated Reasoning checks use formal verification to deliver mathematically proven results. You'll also see how customers across six industries use this technology to produce f"
+    },
+    {
+      "title": "A new way to explore the web with AI Mode in Chrome",
+      "link": "https://blog.google/products-and-platforms/products/search/ai-mode-chrome/",
+      "date": "2026-04-16T17:00:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "AI Mode in Chrome"
+    },
+    {
+      "title": "New ways to create personalized images in the Gemini app",
+      "link": "https://blog.google/innovation-and-ai/products/gemini-app/personal-intelligence-nano-banana/",
+      "date": "2026-04-16T16:00:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "Example images made with Personal Intelligence"
+    },
+    {
+      "title": "Codex for (almost) everything",
+      "link": "https://openai.com/index/codex-for-almost-everything",
+      "date": "2026-04-16T10:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "The updated Codex app for macOS and Windows adds computer use, in-app browsing, image generation, memory, and plugins to accelerate developer workflows."
+    },
+    {
+      "title": "Introducing GPT-Rosalind for life sciences research",
+      "link": "https://openai.com/index/introducing-gpt-rosalind",
+      "date": "2026-04-16T01:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "OpenAI introduces GPT-Rosalind, a frontier reasoning model built to accelerate drug discovery, genomics analysis, protein reasoning, and scientific research workflows."
+    },
+    {
+      "title": "The PR you would have opened yourself",
+      "link": "https://huggingface.co/blog/transformers-to-mlx",
+      "date": "2026-04-16T00:00:00+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "Training and Finetuning Multimodal Embedding & Reranker Models with Sentence Transformers",
+      "link": "https://huggingface.co/blog/train-multimodal-sentence-transformers",
+      "date": "2026-04-16T00:00:00+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "Accelerating the cyber defense ecosystem that protects us all",
+      "link": "https://openai.com/index/accelerating-cyber-defense-ecosystem",
+      "date": "2026-04-16T00:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "Leading security firms and enterprises join OpenAI\u2019s Trusted Access for Cyber, using GPT-5.4-Cyber and $10M in API grants to strengthen global cyber defense."
+    },
     {
       "title": "Accelerating decode-heavy LLM inference with speculative decoding on AWS Trainium and vLLM",
       "link": "https://aws.amazon.com/blogs/machine-learning/accelerating-decode-heavy-llm-inference-with-speculative-decoding-on-aws-trainium-and-vllm/",
@@ -143,74 +206,11 @@
       "summary": "The release of&nbsp;MiniMax M2.7&nbsp;adds enhancements to the popular&nbsp;MiniMax&nbsp;M2.5 model,&nbsp;built for agentic harnesses,..."
     },
     {
-      "title": "Prompting fundamentals",
-      "link": "https://openai.com/academy/prompting",
+      "title": "AI fundamentals",
+      "link": "https://openai.com/academy/what-is-ai",
       "date": "2026-04-10T00:00:00+00:00",
       "source": "OpenAI",
-      "summary": "Learn prompting fundamentals and how to write clear, effective prompts to get better, more useful responses from ChatGPT."
-    },
-    {
-      "title": "Using projects in ChatGPT",
-      "link": "https://openai.com/academy/projects",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to use orojects in ChatGPT to organize chats, files, and instructions, manage ongoing work, and collaborate more effectively."
-    },
-    {
-      "title": "ChatGPT for research",
-      "link": "https://openai.com/academy/research",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to use ChatGPT for research to gather sources, analyze information, and create structured, citation-backed insights."
-    },
-    {
-      "title": "ChatGPT for finance teams",
-      "link": "https://openai.com/academy/finance",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how finance teams use ChatGPT to streamline reporting, analyze data, improve forecasts, and communicate insights more clearly."
-    },
-    {
-      "title": "Using custom GPTs",
-      "link": "https://openai.com/academy/custom-gpts",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to build and use custom GPTs to automate workflows, maintain consistent outputs, and create purpose-built AI assistants."
-    },
-    {
-      "title": "Working with files in ChatGPT",
-      "link": "https://openai.com/academy/working-with-files",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to upload and work with files in ChatGPT to analyze data, summarize documents, and generate content from PDFs, spreadsheets, and more."
-    },
-    {
-      "title": "Getting started with ChatGPT",
-      "link": "https://openai.com/academy/getting-started",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to use ChatGPT, start your first conversation, and discover simple ways to write, brainstorm, and solve problems with AI."
-    },
-    {
-      "title": "Creating images with ChatGPT",
-      "link": "https://openai.com/academy/image-generation",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to create and refine images with ChatGPT using clear prompts, iterate on designs, and generate high-quality visuals in minutes."
-    },
-    {
-      "title": "Our response to the Axios developer tool compromise",
-      "link": "https://openai.com/index/axios-developer-tool-compromise",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "OpenAI responds to the Axios supply chain attack by rotating macOS code signing certificates, updating apps, and confirming no user data was compromised."
-    },
-    {
-      "title": "Brainstorming with ChatGPT",
-      "link": "https://openai.com/academy/brainstorming",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to use ChatGPT to brainstorm ideas, organize thinking, and turn rough concepts into structured, actionable plans."
+      "summary": "Learn what AI is, how it works, and how tools like ChatGPT use large language models. A clear, beginner-friendly guide to understanding artificial intelligence."
     }
   ]
 }
