@@ -1240,13 +1240,14 @@ main { min-height: calc(100vh - 60px); }
   padding-bottom: 24px;
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
-  transition: width 0.22s cubic-bezier(0.4,0,0.2,1),
-              min-width 0.22s cubic-bezier(0.4,0,0.2,1);
+  transition: width 0.25s cubic-bezier(0.4,0,0.2,1),
+              min-width 0.25s cubic-bezier(0.4,0,0.2,1);
   z-index: 10;
 }
 .left-sidebar:hover {
   width: 220px;
   min-width: 220px;
+  overflow-x: visible;
 }
 .left-sidebar::-webkit-scrollbar { width: 4px; }
 .left-sidebar::-webkit-scrollbar-track { background: transparent; }
@@ -1309,54 +1310,62 @@ main { min-height: calc(100vh - 60px); }
   flex-shrink: 0;
 }
 
-/* Collapsed sidebar: hide text, show only icons */
-.left-sidebar .sidebar-product-btn .btn-label,
-.left-sidebar .sidebar-topnav-link .link-label {
+/* ── Collapsed sidebar: icons only, expand on hover ── */
+
+/* Hide text labels when collapsed */
+.left-sidebar .btn-label,
+.left-sidebar .link-label {
   opacity: 0;
-  width: 0;
+  max-width: 0;
   overflow: hidden;
   white-space: nowrap;
-  transition: opacity 0.18s, width 0.18s;
   display: inline-block;
+  transition: opacity 0.2s, max-width 0.25s cubic-bezier(0.4,0,0.2,1);
+  pointer-events: none;
 }
-.left-sidebar:hover .sidebar-product-btn .btn-label,
-.left-sidebar:hover .sidebar-topnav-link .link-label {
+.left-sidebar:hover .btn-label,
+.left-sidebar:hover .link-label {
   opacity: 1;
-  width: auto;
+  max-width: 180px;
+  pointer-events: auto;
 }
 
-/* Center icons when collapsed */
+/* Product buttons: column when collapsed, row when expanded */
 .left-sidebar .sidebar-product-btns {
   flex-direction: column;
   padding: 10px 6px;
   gap: 6px;
+  transition: padding 0.25s, gap 0.25s;
 }
 .left-sidebar:hover .sidebar-product-btns {
   flex-direction: row;
   padding: 12px 12px 10px;
   gap: 8px;
 }
+
+/* Center icons when collapsed */
 .left-sidebar .sidebar-product-btn {
   justify-content: center;
-  padding: 8px 6px;
+  gap: 0;
+  transition: gap 0.25s;
 }
+.left-sidebar:hover .sidebar-product-btn {
+  justify-content: center;
+  gap: 7px;
+}
+
+/* Nav links: center icon when collapsed */
 .left-sidebar .sidebar-topnav-link {
   justify-content: center;
   padding: 10px 0;
+  gap: 0;
+  position: relative;
+  transition: padding 0.25s, gap 0.25s, background 0.12s, color 0.12s;
 }
 .left-sidebar:hover .sidebar-topnav-link {
   justify-content: flex-start;
   padding: 7px 14px 7px 16px;
-}
-
-/* Nav links tooltip — show short label on collapsed */
-.left-sidebar .sidebar-topnav-link {
-  position: relative;
-}
-
-/* Nav section padding adjustment */
-.left-sidebar .sidebar-nav {
-  padding: 8px 0;
+  gap: 8px;
 }
 
 /* Nav section */
