@@ -477,6 +477,7 @@ h1,h2,h3 { font-family: var(--font-sans); font-weight: 600; line-height: 1.2; co
   transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), box-shadow 0.25s, background 0.2s, border-color 0.2s;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 .model-card::before {
   content: '';
@@ -495,6 +496,17 @@ h1,h2,h3 { font-family: var(--font-sans); font-weight: 600; line-height: 1.2; co
   box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(99,102,241,0.15), 0 1px 0 rgba(255,255,255,0.2) inset;
 }
 .model-card:hover::before { opacity: 1; }
+.card-breakdown-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.model-card .cmp-chip,
+.model-card button {
+  position: relative;
+  z-index: 2;
+}
 .model-card.rank-1 {
   border-color: rgba(99,102,241,0.45);
   border-top-color: rgba(165,180,252,0.5);
