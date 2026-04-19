@@ -369,7 +369,8 @@ function renderCard(m, i) {
   const enc = btoa(unescape(encodeURIComponent(JSON.stringify(m))));
   const rm  = rankMeta(i);
 
-  return `<div class="model-card ${cardClass(i)}">
+  const breakdownUrl = `model.html?id=${encodeURIComponent(m.model_id)}`;
+  return `<div class="model-card ${cardClass(i)}" style="cursor:pointer" onclick="if(!event.target.closest('button'))location.href='${breakdownUrl}'">
     <div class="card-header">
       <div class="card-title-wrap">
         <div class="card-model-name">${m.model_name}</div>
@@ -394,7 +395,7 @@ function renderCard(m, i) {
       <span style="margin-left:auto;font-size:12px;color:var(--text-secondary);font-family:var(--font-mono);">${m.raw_speed > 0 ? Math.round(m.raw_speed) + ' tok/s' : ''}</span>
     </div>
     <div style="padding:10px 0 2px;border-top:1px solid var(--color-outline-var);margin-top:4px;">
-      <a href="model.html?id=${encodeURIComponent(m.model_id)}" class="card-breakdown-link" style="font-size:13px;font-weight:500;color:var(--color-primary);text-decoration:none;position:relative;z-index:1;">View full test breakdown →</a>
+      <a href="${breakdownUrl}" class="card-breakdown-link" style="font-size:13px;font-weight:500;color:var(--color-primary);text-decoration:none;">View full test breakdown →</a>
     </div>
   </div>`;
 }
