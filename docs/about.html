@@ -4,9 +4,9 @@
   <script>(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — Lexentia Proof</title>
+  <title>About — Klyxe</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <meta name="description" content="How Lexentia Proof works — daily automated benchmarks of free AI models. Real code execution, verified answers, no human grading.">
+  <meta name="description" content="How Klyxe works — daily automated benchmarks of free AI models. Real code execution, verified answers, no human grading.">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="style-spacing.css">
   <link rel="stylesheet" href="animations.css">
@@ -233,8 +233,8 @@
 <header class="header" id="app-bar">
   <div class="header-content">
     <a href="index.html" class="logo" style="padding-left:0;margin-left:0;">
-      <img src="media/L_logo.png" alt="Lexentia logo" class="logo-icon" style="margin-left:0;">
-      <span style="font-size:17px;font-weight:700;letter-spacing:-0.02em;">Lexentia Proof</span>
+      <img src="media/L_logo.png" alt="Klyxe logo" class="logo-icon" style="margin-left:0;">
+      <span style="font-size:17px;font-weight:700;letter-spacing:-0.02em;">Klyxe</span>
     </a>
     <div style="flex:1;"></div>
     <div class="theme-switch-wrap">
@@ -259,7 +259,7 @@
 
 <div class="page-hero">
   <div class="page-hero-inner">
-  <h1 class="page-hero-title">How Lexentia Proof Works</h1>
+  <h1 class="page-hero-title">How Klyxe Works</h1>
   <p class="page-hero-sub">Daily automated benchmarks of free AI models — no human grading, no sponsorships. Every score comes from code that actually runs, logic puzzles with known answers, and strict formatting checks.</p>
   </div>
 </div>
@@ -523,7 +523,7 @@
 
     <div class="code-block" style="margin-top:20px;">
       <span class="comment">// Minimal example — fetch top 5 models</span><br>
-      <span class="hl">const</span> res = <span class="hl">await</span> fetch(<span class="str">'https://skillichse.github.io/Lexentia-Proof/data/results/summary.json'</span>);<br>
+      <span class="hl">const</span> res = <span class="hl">await</span> fetch(<span class="str">'https://skillichse.github.io/Klyxe/data/results/summary.json'</span>);<br>
       <span class="hl">const</span> { models } = <span class="hl">await</span> res.json();<br>
       <span class="hl">const</span> top5 = models.slice(<span class="num">0</span>, <span class="num">5</span>); <span class="comment">// already sorted by quality desc</span><br><br>
       top5.forEach(m =&gt; {<br>
@@ -534,7 +534,7 @@
     <div class="code-block" style="margin-top:12px;">
       <span class="comment"># Python example</span><br>
       <span class="hl">import</span> requests<br>
-      data = requests.get(<span class="str">'https://skillichse.github.io/Lexentia-Proof/data/results/summary.json'</span>).json()<br>
+      data = requests.get(<span class="str">'https://skillichse.github.io/Klyxe/data/results/summary.json'</span>).json()<br>
       <span class="hl">for</span> m <span class="hl">in</span> data[<span class="str">'models'</span>][:5]:<br>
       &nbsp;&nbsp;<span class="hl">print</span>(<span class="str">f"#{m['rank']} {m['name']} — {m['quality']}/100 quality, {m['speed']} tok/s"</span>)
     </div>
@@ -549,7 +549,7 @@
       <p>All benchmark code, scoring logic, and raw result data is public.
       No hidden weights, no paid placements, no LLM-as-judge black boxes.
       Every score can be reproduced by running <code>benchmark.py</code> yourself.</p>
-      <a href="https://github.com/SkillichSE/Lexentia-Proof/" target="_blank" rel="noopener" class="btn-outline">
+      <a href="https://github.com/SkillichSE/Klyxe/" target="_blank" rel="noopener" class="btn-outline">
         View on GitHub →
       </a>
     </div>
@@ -559,7 +559,7 @@
 
 <footer class="footer">
   <div class="footer-links">
-    <a href="https://skillichse.github.io/Lexentia-Proof/" class="footer-link">GitHub</a>
+    <a href="https://skillichse.github.io/Klyxe/" class="footer-link">GitHub</a>
     <a href="about.html" class="footer-link">About</a>
     <a href="news.html" class="footer-link">News</a>
   </div>

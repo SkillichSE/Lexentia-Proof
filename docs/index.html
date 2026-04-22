@@ -7,12 +7,12 @@
   })();</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lexentia — AI Hub</title>
+  <title>Klyxe — AI Hub</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="shortcut icon" href="/favicon.ico">
   <meta name="description" content="Daily automated benchmark of the best free AI models. Compare quality, speed, and reasoning across Groq, OpenRouter, and Google. Updated every 24 hours.">
-  <meta property="og:title" content="Best Free AI Models Ranked — Lexentia Proof">
+  <meta property="og:title" content="Best Free AI Models Ranked — Klyxe">
   <meta property="og:description" content="Daily benchmark of free AI models. Real scores, real speed, tested automatically every 24 hours.">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="style.css">
@@ -26,8 +26,8 @@
 <header class="header" id="app-bar">
   <div class="header-content">
     <a href="index.html" class="logo" style="padding-left:0;margin-left:0;">
-      <img src="media/L_logo.png" alt="Lexentia logo" class="logo-icon" style="margin-left:0;">
-      <span style="font-size:17px;font-weight:700;letter-spacing:-0.02em;">Lexentia <span style="color:rgb(176,188,207);">Proof</span></span>
+      <img src="media/L_logo.png" alt="Klyxe logo" class="logo-icon" style="margin-left:0;">
+      <span style="font-size:17px;font-weight:700;letter-spacing:-0.02em;">Klyxe</span>
     </a>
     <div style="flex:1;"></div>
     <div class="theme-switch-wrap">
@@ -54,7 +54,7 @@
 
 <div class="hero">
   <div class="hero-inner">
-    <h1 class="hero-headline" id="hero-headline">Lexentia Proof</h1>
+    <h1 class="hero-headline" id="hero-headline">Klyxe</h1>
     <p class="hero-sub">
       <span id="hero-sub-text">Free AI models, ranked daily</span>
       <span class="hero-updated" id="last-update">
@@ -217,7 +217,7 @@
 <div style="border-top:1px solid var(--color-outline-var);margin-top:48px;">
   <footer class="footer">
     <div class="footer-links">
-      <a href="https://skillichse.github.io/Lexentia-Proof/" class="footer-link">GitHub</a>
+      <a href="https://skillichse.github.io/Klyxe/" class="footer-link">GitHub</a>
       <a href="about.html" class="footer-link">About</a>
       <a href="news.html" class="footer-link">News</a>
     </div>
@@ -627,7 +627,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       `<em>${n}</em> leads ${t}`).join(' · ');
     if (parts) {
       document.getElementById('hero-headline').innerHTML = parts;
-      document.title = `${byQ[0].model_name} #1 today — Lexentia Proof`;
+      document.title = `${byQ[0].model_name} #1 today — Klyxe`;
     }
     document.getElementById('hero-sub-text').textContent =
       `${allResults.length} free models benchmarked · real code execution · verified answers`;
@@ -655,7 +655,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (e) {}
 
   } catch (err) {
-    console.error('Lexentia Proof error:', err);
+    console.error('Klyxe error:', err);
     document.querySelector('main.container').innerHTML = `
       <div style="text-align:center;padding:64px;">
         <h2 style="font-family:'Google Sans',sans-serif;font-weight:400;margin-bottom:12px;">Could not load results</h2>

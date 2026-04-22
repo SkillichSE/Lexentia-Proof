@@ -35,7 +35,7 @@ async function loadNews() {
         <h3 style="color: var(--md-on-surface);">Unable to load news</h3>
         <p style="color: var(--md-on-surface-var); margin-top: 12px;">
           Please check back later or view our 
-          <a href="https://github.com/SkillichSE/Lexentia Proof" target="_blank" style="color: var(--md-primary);">GitHub repository</a> 
+          <a href="https://github.com/SkillichSE/Klyxe" target="_blank" style="color: var(--md-primary);">GitHub repository</a> 
           for updates.
         </p>
       </div>

@@ -7,7 +7,7 @@
   })();</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Playground — Lexentia</title>
+  <title>Playground — Klyxe</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="stylesheet" href="style.css">
@@ -711,8 +711,8 @@
 <header class="header" id="app-bar">
   <div class="header-content">
     <a href="index.html" class="logo" style="padding-left:0;margin-left:0;">
-      <img src="media/L_logo.png" alt="Lexentia logo" class="logo-icon" style="margin-left:0;">
-      <span style="font-size:17px;font-weight:700;letter-spacing:-0.02em;">Lexentia</span>
+      <img src="media/L_logo.png" alt="Klyxe logo" class="logo-icon" style="margin-left:0;">
+      <span style="font-size:17px;font-weight:700;letter-spacing:-0.02em;">Klyxe</span>
     </a>
     <div style="flex:1;"></div>
     <div class="theme-switch-wrap">
@@ -929,7 +929,7 @@
 
     <footer class="footer">
       <div class="footer-links">
-        <a href="https://skillichse.github.io/Lexentia-Proof/" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+        <a href="https://skillichse.github.io/Klyxe/" target="_blank" rel="noopener" class="footer-link">GitHub</a>
         <a href="about.html" class="footer-link">About</a>
         <a href="news.html" class="footer-link">News</a>
       </div>
@@ -1294,7 +1294,7 @@ async function streamResponse(side, modelId, messages, apiKey, signal, temperatu
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${apiKey}`,
         'HTTP-Referer': window.location.origin,
-        'X-Title': 'Lexentia Playground',
+        'X-Title': 'Klyxe Playground',
       },
       body: JSON.stringify({
         model: modelId,
@@ -1553,7 +1553,7 @@ function exportJSON() {
   const url  = URL.createObjectURL(blob);
   const a    = document.createElement('a');
   a.href = url;
-  a.download = `lexentia-playground-${Date.now()}.json`;
+  a.download = `klyxe-playground-${Date.now()}.json`;
   a.click();
   URL.revokeObjectURL(url);
 }
