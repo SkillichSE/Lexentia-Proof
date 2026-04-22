@@ -1,14 +1,55 @@
 {
-<<<<<<< HEAD
-  "updated": "2026-04-21T06:47:05.006306+00:00",
+  "updated": "2026-04-22T06:05:35.270271+00:00",
   "count": 30,
   "items": [
+    {
+      "title": "From developer desks to the whole organization: Running Claude Cowork in Amazon Bedrock",
+      "link": "https://aws.amazon.com/blogs/machine-learning/from-developer-desks-to-the-whole-organization-running-claude-cowork-in-amazon-bedrock/",
+      "date": "2026-04-21T19:13:49+00:00",
+      "source": "AWS ML Blog",
+      "summary": "Today, we're excited to announce Claude Cowork in Amazon Bedrock. You can now run Cowork and Claude Code Desktop through Amazon Bedrock, directly or using an LLM gateway. In this post, we walk through how Claude Cowork integrates with Amazon Bedrock and show an example of how kno"
+    },
+    {
+      "title": "End-to-end lineage with DVC and Amazon SageMaker AI MLflow apps",
+      "link": "https://aws.amazon.com/blogs/machine-learning/end-to-end-lineage-with-dvc-and-amazon-sagemaker-ai-mlflow-apps/",
+      "date": "2026-04-21T16:43:03+00:00",
+      "source": "AWS ML Blog",
+      "summary": "In this post, we show how to combine DVC (Data Version Control), Amazon SageMaker AI, and Amazon SageMaker AI MLflow Apps to build end-to-end ML model lineage. We walk through two deployable patterns \u2014 dataset-level lineage and record-level lineage \u2014 that you can run in your own "
+    },
+    {
+      "title": "QIMMA \u0642\u0650\u0645\u0651\u0629 \u26f0: A Quality-First Arabic LLM Leaderboard",
+      "link": "https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard",
+      "date": "2026-04-21T10:09:58+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
     {
       "title": "How to Ground a Korean AI Agent in Real Demographics with Synthetic Personas",
       "link": "https://huggingface.co/blog/nvidia/build-korean-agents-with-nemotron-personas",
       "date": "2026-04-21T00:40:10+00:00",
       "source": "Hugging Face",
       "summary": ""
+    },
+    {
+      "title": "AI and the Future of Cybersecurity: Why Openness Matters",
+      "link": "https://huggingface.co/blog/cybersecurity-openness",
+      "date": "2026-04-21T00:00:00+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "Capacity without conflict: A guide to multi-tenant GPU cluster design for AI-native teams",
+      "link": "https://www.together.ai/blog/multi-tenant-gpu-cluster-design-for-ai-native-teams",
+      "date": "2026-04-21T00:00:00+00:00",
+      "source": "Together AI",
+      "summary": "Learn how AI-native companies design multi-tenant GPU clusters that pool capacity without sacrificing team isolation \u2014 and how Together AI makes it work in practice."
+    },
+    {
+      "title": "Scaling Codex to enterprises worldwide",
+      "link": "https://openai.com/index/scaling-codex-to-enterprises-worldwide",
+      "date": "2026-04-21T00:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "OpenAI launches Codex Labs, partners with with Accenture, PwC, Infosys, and others to help enterprises deploy and scale Codex across the software development lifecycle, and hits 4M Codex WAU."
     },
     {
       "title": "Maximizing Memory Efficiency to Run Bigger Models on NVIDIA Jetson",
@@ -170,262 +211,6 @@
       "date": "2026-04-16T00:00:00+00:00",
       "source": "OpenAI",
       "summary": "Leading security firms and enterprises join OpenAI\u2019s Trusted Access for Cyber, using GPT-5.4-Cyber and $10M in API grants to strengthen global cyber defense."
-    },
-    {
-      "title": "Accelerating decode-heavy LLM inference with speculative decoding on AWS Trainium and vLLM",
-      "link": "https://aws.amazon.com/blogs/machine-learning/accelerating-decode-heavy-llm-inference-with-speculative-decoding-on-aws-trainium-and-vllm/",
-      "date": "2026-04-15T15:20:58+00:00",
-      "source": "AWS ML Blog",
-      "summary": "In this post, you will learn how speculative decoding works and why it helps reduce cost per generated token on AWS Trainium2."
-    },
-    {
-      "title": "Rede Mater Dei de Sa\u00fade: Monitoring AI agents in the revenue cycle with Amazon Bedrock AgentCore",
-      "link": "https://aws.amazon.com/blogs/machine-learning/rede-mater-dei-de-saude-monitoring-ai-agents-in-the-revenue-cycle-with-amazon-bedrock-agentcore/",
-      "date": "2026-04-15T15:15:23+00:00",
-      "source": "AWS ML Blog",
-      "summary": "This post is cowritten by Renata Salvador Grande, Gabriel Bueno and Paulo Laurentys at Rede Mater Dei de Sa\u00fade. The growing adoption of multi-agent AI systems is redefining critical operations in healthcare. In large hospital networks, where thousands of decisions directly impact"
-    },
-    {
-      "title": "Gemini 3.1 Flash TTS: the next generation of expressive AI speech",
-      "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-tts/",
-      "date": "2026-04-15T15:00:00+00:00",
-      "source": "Google AI Blog",
-      "summary": "Gemini logo next to the text \"3.1 Flash TTS\", all over colored dots"
-    },
-    {
-      "title": "Inside VAKRA: Reasoning, Tool Use, and Failure Modes of Agents",
-      "link": "https://huggingface.co/blog/ibm-research/vakra-benchmark-analysis",
-      "date": "2026-04-15T12:07:25+00:00",
-      "source": "Hugging Face",
-      "summary": ""
-    },
-    {
-      "title": "The next evolution of the Agents SDK",
-      "link": "https://openai.com/index/the-next-evolution-of-the-agents-sdk",
-      "date": "2026-04-15T10:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "OpenAI updates the Agents SDK with native sandbox execution and a model-native harness, helping developers build secure, long-running agents across files and tools."
-    },
-    {
-      "title": "Meet HoloTab by HCompany. Your AI browser companion.",
-      "link": "https://huggingface.co/blog/Hcompany/holotab",
-      "date": "2026-04-15T09:25:20+00:00",
-      "source": "Hugging Face",
-      "summary": ""
-=======
-  "updated": "2026-04-15T05:27:00.516946+00:00",
-  "count": 30,
-  "items": [
-    {
-      "title": "Use-case based deployments on SageMaker JumpStart",
-      "link": "https://aws.amazon.com/blogs/machine-learning/use-case-based-deployments-on-sagemaker-jumpstart/",
-      "date": "2026-04-14T18:14:54+00:00",
-      "source": "AWS ML Blog",
-      "summary": "We're excited to announce the launch of Amazon SageMaker JumpStart optimized deployments. SageMaker JumpStart improved deployments address the need for rich and straightforward deployment customization on SageMaker JumpStart by offering pre-defined deployment configurations, desi"
-    },
-    {
-      "title": "Best practices to run inference on Amazon SageMaker HyperPod",
-      "link": "https://aws.amazon.com/blogs/machine-learning/best-practices-to-run-inference-on-amazon-sagemaker-hyperpod/",
-      "date": "2026-04-14T18:09:22+00:00",
-      "source": "AWS ML Blog",
-      "summary": "This post explores how Amazon SageMaker HyperPod provides a comprehensive solution for inference workloads. We walk you through the platform\u2019s key capabilities for dynamic scaling, simplified deployment, and intelligent resource management. By the end of this post, you\u2019ll underst"
-    },
-    {
-      "title": "How Guidesly built AI-generated trip reports for outdoor guides on AWS",
-      "link": "https://aws.amazon.com/blogs/machine-learning/how-guidesly-built-ai-generated-trip-reports-for-outdoor-guides-on-aws/",
-      "date": "2026-04-14T18:02:56+00:00",
-      "source": "AWS ML Blog",
-      "summary": "In this post, we walk through how Guidesly built Jack AI on AWS using AWS Lambda, AWS Step Functions, Amazon Simple Storage Service (Amazon S3), Amazon Relational Database Service (Amazon RDS), Amazon SageMaker AI, and Amazon Bedrock to ingest trip media, enrich it with context, "
-    },
-    {
-      "title": "Turn your best AI prompts into one-click tools in Chrome",
-      "link": "https://blog.google/products-and-platforms/products/chrome/skills-in-chrome/",
-      "date": "2026-04-14T17:00:00+00:00",
-      "source": "Google AI Blog",
-      "summary": "Video showing Skills in Chrome"
-    },
-    {
-      "title": "NVIDIA NVbandwidth: Your Essential Tool for Measuring GPU Interconnect and Memory Performance",
-      "link": "https://developer.nvidia.com/blog/nvidia-nvbandwidth-your-essential-tool-for-measuring-gpu-interconnect-and-memory-performance/",
-      "date": "2026-04-14T16:00:00Z",
-      "source": "NVIDIA Developer",
-      "summary": "When you\u2019re writing CUDA applications, one of the most important things you need to focus on to write great code is data transfer performance. This applies to..."
-    },
-    {
-      "title": "NVIDIA Ising Introduces AI-Powered Workflows to Build Fault-Tolerant Quantum Systems",
-      "link": "https://developer.nvidia.com/blog/nvidia-ising-introduces-ai-powered-workflows-to-build-fault-tolerant-quantum-systems/",
-      "date": "2026-04-14T14:15:56Z",
-      "source": "NVIDIA Developer",
-      "summary": "NVIDIA Ising is the world's first family of open AI models for building quantum processors, launching with two model domains: Ising Calibration and Ising..."
-    },
-    {
-      "title": "Spring AI SDK for Amazon Bedrock AgentCore is now Generally Available",
-      "link": "https://aws.amazon.com/blogs/machine-learning/spring-ai-sdk-for-amazon-bedrock-agentcore-is-now-generally-available/",
-      "date": "2026-04-14T12:40:47+00:00",
-      "source": "AWS ML Blog",
-      "summary": "With the new Spring AI AgentCore SDK, you can build production-ready AI agents and run them on the highly scalable AgentCore Runtime. The Spring AI AgentCore SDK is an open source library that brings Amazon Bedrock AgentCore capabilities into Spring AI. In this post, we build an "
-    },
-    {
-      "title": "Bringing people together at AI for the Economy Forum",
-      "link": "https://blog.google/company-news/outreach-and-initiatives/creating-opportunity/ai-economy-forum/",
-      "date": "2026-04-14T09:00:00+00:00",
-      "source": "Google AI Blog",
-      "summary": "Woman working with a large tool. On the left are the Google and MIT FutureTech logos, \"AI for the Economy Forum\", and \"Innovation and Adaption in the New Era\""
-    },
-    {
-      "title": "Trusted access for the next era of cyber defense",
-      "link": "https://openai.com/index/scaling-trusted-access-for-cyber-defense",
-      "date": "2026-04-14T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "OpenAI expands its Trusted Access for Cyber program, introducing GPT-5.4-Cyber to vetted defenders and strengthening safeguards as AI cybersecurity capabilities advance."
-    },
-    {
-      "title": "How to build effective reward functions with AWS Lambda for Amazon Nova model customization",
-      "link": "https://aws.amazon.com/blogs/machine-learning/how-to-build-effective-reward-functions-with-aws-lambda-for-amazon-nova-model-customization/",
-      "date": "2026-04-13T16:01:18+00:00",
-      "source": "AWS ML Blog",
-      "summary": "This post demonstrates how Lambda enables scalable, cost-effective reward functions for Amazon Nova customization. You'll learn to choose between Reinforcement Learning via Verifiable Rewards (RLVR) for objectively verifiable tasks and Reinforcement Learning via AI Feedback (RLAI"
-    },
-    {
-      "title": "Enterprises power agentic workflows in Cloudflare Agent Cloud with OpenAI",
-      "link": "https://openai.com/index/cloudflare-openai-agent-cloud",
-      "date": "2026-04-13T06:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Cloudflare brings OpenAI\u2019s GPT-5.4 and Codex to Agent Cloud, enabling enterprises to build, deploy, and scale AI agents for real-world tasks with speed and security."
-    },
-    {
-      "title": "EinsteinArena: Harnessing the collective intelligence of agents in the wild to advance science",
-      "link": "https://www.together.ai/blog/einsteinarena",
-      "date": "2026-04-13T00:00:00+00:00",
-      "source": "Together AI",
-      "summary": "EinsteinArena is a platform where AI agents collaborate and compete on open math problems. AI agents on EinsteinArena have already set 11 new state-of-the-art results on open math problems \u2014 including pushing the kissing number lower bound in dimension 11 from 593 to 604."
-    },
-    {
-      "title": "MiniMax M2.7\u00a0Advances\u00a0Scalable Agentic Workflows on\u00a0NVIDIA Platforms for Complex AI Applications",
-      "link": "https://developer.nvidia.com/blog/minimax-m2-7-advances-scalable-agentic-workflows-on-nvidia-platforms-for-complex-ai-applications/",
-      "date": "2026-04-12T01:02:44Z",
-      "source": "NVIDIA Developer",
-      "summary": "The release of&nbsp;MiniMax M2.7&nbsp;adds enhancements to the popular&nbsp;MiniMax&nbsp;M2.5 model,&nbsp;built for agentic harnesses,..."
-    },
-    {
-      "title": "ChatGPT for finance teams",
-      "link": "https://openai.com/academy/finance",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how finance teams use ChatGPT to streamline reporting, analyze data, improve forecasts, and communicate insights more clearly."
-    },
-    {
-      "title": "ChatGPT for marketing teams",
-      "link": "https://openai.com/academy/marketing",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how marketing teams use ChatGPT to plan campaigns, generate content, analyze performance, and move from ideas to execution faster."
-    },
-    {
-      "title": "Getting started with ChatGPT",
-      "link": "https://openai.com/academy/getting-started",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to use ChatGPT, start your first conversation, and discover simple ways to write, brainstorm, and solve problems with AI."
-    },
-    {
-      "title": "Financial services",
-      "link": "https://openai.com/academy/financial-services",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Explore AI resources for financial services, including prompt packs, GPTs, guides, and tools to help institutions deploy and scale AI securely."
-    },
-    {
-      "title": "Our response to the Axios developer tool compromise",
-      "link": "https://openai.com/index/axios-developer-tool-compromise",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "OpenAI responds to the Axios supply chain attack by rotating macOS code signing certificates, updating apps, and confirming no user data was compromised."
-    },
-    {
-      "title": "Brainstorming with ChatGPT",
-      "link": "https://openai.com/academy/brainstorming",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to use ChatGPT to brainstorm ideas, organize thinking, and turn rough concepts into structured, actionable plans."
-    },
-    {
-      "title": "Responsible and safe use of AI",
-      "link": "https://openai.com/academy/responsible-and-safe-use",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to use AI responsibly with best practices for safety, accuracy, and transparency when using tools like ChatGPT."
-    },
-    {
-      "title": "Writing with ChatGPT",
-      "link": "https://openai.com/academy/writing",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to use ChatGPT for writing to draft, revise, and refine content with clear structure, tone, and intent."
-    },
-    {
-      "title": "ChatGPT for research",
-      "link": "https://openai.com/academy/research",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to use ChatGPT for research to gather sources, analyze information, and create structured, citation-backed insights."
-    },
-    {
-      "title": "Creating images with ChatGPT",
-      "link": "https://openai.com/academy/image-generation",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to create and refine images with ChatGPT using clear prompts, iterate on designs, and generate high-quality visuals in minutes."
-    },
-    {
-      "title": "ChatGPT for sales teams",
-      "link": "https://openai.com/academy/sales",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how sales teams use ChatGPT to research accounts, personalize outreach, manage deals, and improve pipeline and conversion."
-    },
-    {
-      "title": "Applications of AI at OpenAI",
-      "link": "https://openai.com/academy/applications-of-ai",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Explore how OpenAI products like ChatGPT, Codex, and APIs bring AI into real-world use for work, development, and everyday tasks."
-    },
-    {
-      "title": "Using custom GPTs",
-      "link": "https://openai.com/academy/custom-gpts",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to build and use custom GPTs to automate workflows, maintain consistent outputs, and create purpose-built AI assistants."
-    },
-    {
-      "title": "Working with files in ChatGPT",
-      "link": "https://openai.com/academy/working-with-files",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to upload and work with files in ChatGPT to analyze data, summarize documents, and generate content from PDFs, spreadsheets, and more."
-    },
-    {
-      "title": "Prompting fundamentals",
-      "link": "https://openai.com/academy/prompting",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn prompting fundamentals and how to write clear, effective prompts to get better, more useful responses from ChatGPT."
-    },
-    {
-      "title": "Personalizing ChatGPT",
-      "link": "https://openai.com/academy/personalization",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to personalize ChatGPT using custom instructions and memory to get more relevant, consistent, and tailored responses."
-    },
-    {
-      "title": "Analyzing data with ChatGPT",
-      "link": "https://openai.com/academy/data-analysis",
-      "date": "2026-04-10T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to analyze data with ChatGPT by exploring datasets, generating insights, creating visualizations, and turning findings into actionable decisions."
->>>>>>> 8b71da5 (playground)
     }
   ]
 }
