@@ -16,6 +16,7 @@ const SIDEBAR_LINKS = [
   {
     section: 'Tools', id: 'sec-tools',
     links: [
+      { href: 'chat.html',       label: 'Chat',             icon: '<path d="M13 3H3a1 1 0 00-1 1v7a1 1 0 001 1h2v2.5l3-2.5h5a1 1 0 001-1V4a1 1 0 00-1-1z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>' },
       { href: 'playground.html', label: 'Playground',       icon: '<rect x="2" y="3" width="12" height="9" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M5 7l2 2-2 2M9 11h2" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' },
       { href: 'tokens.html',     label: 'Token counter',    icon: '<path d="M3 4h10M3 8h7M3 12h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>' },
       { href: 'cost.html',       label: 'Cost calculator',  icon: '<rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5.5 7.5h4a1 1 0 010 2h-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>' },
@@ -67,7 +68,6 @@ class LexSidebar extends HTMLElement {
       </div>`;
     }
 
-    // about в футере
     const aboutActive = page === 'about.html' ? ' active' : '';
     html += `
       <div class="sidebar-footer-links">
