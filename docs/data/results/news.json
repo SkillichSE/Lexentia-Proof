@@ -1,7 +1,147 @@
 {
-  "updated": "2026-04-23T06:29:57.379795+00:00",
+  "updated": "2026-04-27T07:00:31.655471+00:00",
   "count": 30,
   "items": [
+    {
+      "title": "Our principles",
+      "link": "https://openai.com/index/our-principles",
+      "date": "2026-04-26T16:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "Our mission is to ensure that AGI benefits all of humanity. Sam Altman shares five principles that guide our work."
+    },
+    {
+      "title": "Build with DeepSeek V4 Using NVIDIA Blackwell and GPU-Accelerated Endpoints",
+      "link": "https://developer.nvidia.com/blog/build-with-deepseek-v4-using-nvidia-blackwell-and-gpu-accelerated-endpoints/",
+      "date": "2026-04-24T23:29:56Z",
+      "source": "NVIDIA Developer",
+      "summary": "DeepSeek just launched its fourth generation of flagship models with DeepSeek-V4-Pro and DeepSeek-V4-Flash, both targeted at enabling highly efficient..."
+    },
+    {
+      "title": "8 Gemini tips for organizing your space (and life)",
+      "link": "https://blog.google/products-and-platforms/products/gemini/gemini-spring-cleaning-tips/",
+      "date": "2026-04-24T19:00:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "Black screen with illustrations including a laptop with document and email icons streaming out, a smiling person holding a phone and looking at a checklist, and a user activating Gemini Live"
+    },
+    {
+      "title": "Building Workforce AI Agents with Visier and Amazon Quick",
+      "link": "https://aws.amazon.com/blogs/machine-learning/building-workforce-ai-agents-with-visier-and-amazon-quick/",
+      "date": "2026-04-24T18:04:20+00:00",
+      "source": "AWS ML Blog",
+      "summary": "In this post, we show how connecting the Visier Workforce AI platform with Amazon Quick through Model Context Protocol (MCP) gives every knowledge worker a unified agentic workspace to ask questions in. Visier helps ground the workspace in live workforce data and the organization"
+    },
+    {
+      "title": "DeepSeek-V4: a million-token context that agents can actually use",
+      "link": "https://huggingface.co/blog/deepseekv4",
+      "date": "2026-04-24T00:00:00+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "Accelerate RL rollouts by up to 50% with distribution-aware speculative decoding",
+      "link": "https://www.together.ai/blog/distribution-aware-speculative-decoding",
+      "date": "2026-04-24T00:00:00+00:00",
+      "source": "Together AI",
+      "summary": "Rollout is the silent bottleneck in RL post-training. DAS fixes it with adaptive speculative decoding \u2014 up to 50% faster, zero degradation in reward quality."
+    },
+    {
+      "title": "Winning a Kaggle Competition with Generative AI\u2013Assisted Coding",
+      "link": "https://developer.nvidia.com/blog/winning-a-kaggle-competition-with-generative-ai-assisted-coding/",
+      "date": "2026-04-23T20:15:02Z",
+      "source": "NVIDIA Developer",
+      "summary": "In March 2026, three LLM agents generated over 600,000 lines of code, ran 850 experiments, and helped secure a first-place finish in a Kaggle playground..."
+    },
+    {
+      "title": "Applying multimodal biological foundation models across therapeutics and patient care",
+      "link": "https://aws.amazon.com/blogs/machine-learning/applying-multimodal-biological-foundation-models-across-therapeutics-and-patient-care/",
+      "date": "2026-04-23T16:17:29+00:00",
+      "source": "AWS ML Blog",
+      "summary": "In this post, we'll explore how multimodal BioFMs work, showcase real-world applications in drug discovery and clinical development, and contextualize how AWS enables organizations to build and deploy multimodal BioFMs."
+    },
+    {
+      "title": "Here\u2019s how our TPUs power increasingly demanding AI workloads.",
+      "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/what-is-a-tpu/",
+      "date": "2026-04-23T12:00:00+00:00",
+      "source": "Google AI Blog",
+      "summary": "Learn how Google\u2019s TPUs power increasingly demanding AI workloads with this new video."
+    },
+    {
+      "title": "GPT-5.5 System Card",
+      "link": "https://openai.com/index/gpt-5-5-system-card",
+      "date": "2026-04-23T11:00:00+00:00",
+      "source": "OpenAI",
+      "summary": ""
+    },
+    {
+      "title": "Introducing GPT-5.5",
+      "link": "https://openai.com/index/introducing-gpt-5-5",
+      "date": "2026-04-23T11:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "Introducing GPT-5.5, our smartest model yet\u2014faster, more capable, and built for complex tasks like coding, research, and data analysis across tools."
+    },
+    {
+      "title": "Automations",
+      "link": "https://openai.com/academy/codex-automations",
+      "date": "2026-04-23T10:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "Learn how to automate tasks in Codex using schedules and triggers to create reports, summaries, and recurring workflows without manual effort."
+    },
+    {
+      "title": "How to get started with Codex",
+      "link": "https://openai.com/academy/codex-how-to-start",
+      "date": "2026-04-23T10:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "Learn how to get started with Codex by setting up projects, creating threads, and completing your first tasks with step-by-step guidance."
+    },
+    {
+      "title": "What is Codex?",
+      "link": "https://openai.com/academy/what-is-codex",
+      "date": "2026-04-23T10:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "Learn how Codex helps you go beyond chat by automating tasks, connecting tools, and producing real outputs like docs and dashboards."
+    },
+    {
+      "title": "Codex settings",
+      "link": "https://openai.com/academy/codex-settings",
+      "date": "2026-04-23T10:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "Learn how to configure Codex settings, including personalization, detail level, and permissions, to run tasks smoothly and customize your workflow."
+    },
+    {
+      "title": "Working with Codex",
+      "link": "https://openai.com/academy/working-with-codex",
+      "date": "2026-04-23T10:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "Learn how to set up your Codex workspace, create threads and projects, manage files, and start completing tasks with step-by-step guidance."
+    },
+    {
+      "title": "Plugins and skills",
+      "link": "https://openai.com/academy/codex-plugins-and-skills",
+      "date": "2026-04-23T10:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "Learn how to use Codex plugins and skills to connect tools, access data, and follow repeatable workflows to automate tasks and improve results."
+    },
+    {
+      "title": "Top 10 uses for Codex at work",
+      "link": "https://openai.com/academy/top-10-use-cases-codex-for-work",
+      "date": "2026-04-23T10:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "Explore 10 practical Codex use cases to automate tasks, create deliverables, and turn real inputs into outputs across tools, files, and workflows."
+    },
+    {
+      "title": "How to Use Transformers.js in a Chrome Extension",
+      "link": "https://huggingface.co/blog/transformersjs-chrome-extension",
+      "date": "2026-04-23T00:00:00+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "GPT-5.5 Bio Bug Bounty",
+      "link": "https://openai.com/index/gpt-5-5-bio-bug-bounty",
+      "date": "2026-04-23T00:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "Explore the GPT-5.5 Bio Bug Bounty: a red-teaming challenge to find universal jailbreaks for bio safety risks, with rewards up to $25,000."
+    },
     {
       "title": "Cost-effective multilingual audio transcription at scale with Parakeet-TDT and AWS Batch",
       "link": "https://aws.amazon.com/blogs/machine-learning/cost-effective-multilingual-audio-transcription-at-scale-with-parakeet-tdt-and-aws-batch/",
@@ -71,146 +211,6 @@
       "date": "2026-04-22T10:00:00+00:00",
       "source": "OpenAI",
       "summary": "Workspace agents in ChatGPT are Codex-powered agents that automate complex workflows, run in the cloud, and help teams scale work across tools securely."
-    },
-    {
-      "title": "Workspace agents",
-      "link": "https://openai.com/academy/workspace-agents",
-      "date": "2026-04-22T10:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to build, use, and scale workspace agents in ChatGPT to automate repeatable workflows, connect tools, and streamline team operations."
-    },
-    {
-      "title": "Speeding up agentic workflows with WebSockets in the Responses API",
-      "link": "https://openai.com/index/speeding-up-agentic-workflows-with-websockets",
-      "date": "2026-04-22T10:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "A deep dive into the Codex agent loop, showing how WebSockets and connection-scoped caching reduced API overhead and improved model latency."
-    },
-    {
-      "title": "Introducing OpenAI Privacy Filter",
-      "link": "https://openai.com/index/introducing-openai-privacy-filter",
-      "date": "2026-04-22T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "OpenAI Privacy Filter is an open-weight model for detecting and redacting personally identifiable information (PII) in text with state-of-the-art accuracy"
-    },
-    {
-      "title": "From developer desks to the whole organization: Running Claude Cowork in Amazon Bedrock",
-      "link": "https://aws.amazon.com/blogs/machine-learning/from-developer-desks-to-the-whole-organization-running-claude-cowork-in-amazon-bedrock/",
-      "date": "2026-04-21T19:13:49+00:00",
-      "source": "AWS ML Blog",
-      "summary": "Today, we're excited to announce Claude Cowork in Amazon Bedrock. You can now run Cowork and Claude Code Desktop through Amazon Bedrock, directly or using an LLM gateway. In this post, we walk through how Claude Cowork integrates with Amazon Bedrock and show an example of how kno"
-    },
-    {
-      "title": "End-to-end lineage with DVC and Amazon SageMaker AI MLflow apps",
-      "link": "https://aws.amazon.com/blogs/machine-learning/end-to-end-lineage-with-dvc-and-amazon-sagemaker-ai-mlflow-apps/",
-      "date": "2026-04-21T16:43:03+00:00",
-      "source": "AWS ML Blog",
-      "summary": "In this post, we show how to combine DVC (Data Version Control), Amazon SageMaker AI, and Amazon SageMaker AI MLflow Apps to build end-to-end ML model lineage. We walk through two deployable patterns \u2014 dataset-level lineage and record-level lineage \u2014 that you can run in your own "
-    },
-    {
-      "title": "Introducing ChatGPT Images 2.0",
-      "link": "https://openai.com/index/introducing-chatgpt-images-2-0",
-      "date": "2026-04-21T12:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "ChatGPT Images 2.0 introduces a state-of-the-art image generation model with improved text rendering, multilingual support, and advanced visual reasoning."
-    },
-    {
-      "title": "QIMMA \u0642\u0650\u0645\u0651\u0629 \u26f0: A Quality-First Arabic LLM Leaderboard",
-      "link": "https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard",
-      "date": "2026-04-21T10:09:58+00:00",
-      "source": "Hugging Face",
-      "summary": ""
-    },
-    {
-      "title": "AI and the Future of Cybersecurity: Why Openness Matters",
-      "link": "https://huggingface.co/blog/cybersecurity-openness",
-      "date": "2026-04-21T00:00:00+00:00",
-      "source": "Hugging Face",
-      "summary": ""
-    },
-    {
-      "title": "Capacity without conflict: A guide to multi-tenant GPU cluster design for AI-native teams",
-      "link": "https://www.together.ai/blog/multi-tenant-gpu-cluster-design-for-ai-native-teams",
-      "date": "2026-04-21T00:00:00+00:00",
-      "source": "Together AI",
-      "summary": "Learn how AI-native companies design multi-tenant GPU clusters that pool capacity without sacrificing team isolation \u2014 and how Together AI makes it work in practice."
-    },
-    {
-      "title": "Scaling Codex to enterprises worldwide",
-      "link": "https://openai.com/index/scaling-codex-to-enterprises-worldwide",
-      "date": "2026-04-21T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "OpenAI launches Codex Labs, partners with with Accenture, PwC, Infosys, and others to help enterprises deploy and scale Codex across the software development lifecycle, and hits 4M Codex WAU."
-    },
-    {
-      "title": "Maximizing Memory Efficiency to Run Bigger Models on NVIDIA Jetson",
-      "link": "https://developer.nvidia.com/blog/maximizing-memory-efficiency-to-run-bigger-models-on-nvidia-jetson/",
-      "date": "2026-04-20T23:01:04Z",
-      "source": "NVIDIA Developer",
-      "summary": "The boom in open source generative AI models is pushing beyond data centers into machines operating in the physical world. Developers are eager to deploy these..."
-    },
-    {
-      "title": "Run High-Throughput Reinforcement Learning Training with End-to-End FP8 Precision",
-      "link": "https://developer.nvidia.com/blog/run-high-throughput-reinforcement-learning-training-with-end-to-end-fp8-precision/",
-      "date": "2026-04-20T22:52:15Z",
-      "source": "NVIDIA Developer",
-      "summary": "As LLMs transition from simple text generation to complex reasoning, reinforcement learning (RL) plays a central role. Algorithms like Group Relative Policy..."
-    },
-    {
-      "title": "Accelerate Generative AI Inference on Amazon SageMaker AI with G7e Instances",
-      "link": "https://aws.amazon.com/blogs/machine-learning/accelerate-generative-ai-inference-on-amazon-sagemaker-ai-with-g7e-instances/",
-      "date": "2026-04-20T19:38:10+00:00",
-      "source": "AWS ML Blog",
-      "summary": "Today, we are thrilled to announce the availability of G7e instances powered by NVIDIA RTX PRO 6000 Blackwell Server Edition GPUs on Amazon SageMaker AI. You can provision nodes with 1, 2, 4, and 8 RTX PRO 6000 GPU instances, with each GPU providing 96 GB of GDDR7 memory. This la"
-    },
-    {
-      "title": "ToolSimulator: scalable tool testing for AI agents",
-      "link": "https://aws.amazon.com/blogs/machine-learning/toolsimulator-scalable-tool-testing-for-ai-agents/",
-      "date": "2026-04-20T17:06:26+00:00",
-      "source": "AWS ML Blog",
-      "summary": "You can use ToolSimulator, an&nbsp;LLM-powered tool simulation framework within Strands Evals, to thoroughly and safely test AI agents that rely on external tools, at scale. Instead of risking live API calls that expose personally identifiable information (PII), trigger unintende"
-    },
-    {
-      "title": "Omnichannel ordering with Amazon Bedrock AgentCore and Amazon Nova 2 Sonic",
-      "link": "https://aws.amazon.com/blogs/machine-learning/omnichannel-ordering-with-amazon-bedrock-agentcore-and-amazon-nova-2-sonic/",
-      "date": "2026-04-20T15:03:28+00:00",
-      "source": "AWS ML Blog",
-      "summary": "In this post, we'll show you how to build a complete omnichannel ordering system using Amazon Bedrock AgentCore, an agentic platform, to build, deploy, and operate highly effective AI agents securely at scale using any framework and foundation model and Amazon Nova 2 Sonic."
-    },
-    {
-      "title": "OpenAI helps Hyatt advance AI among colleagues",
-      "link": "https://openai.com/index/hyatt-advances-ai-with-chatgpt-enterprise",
-      "date": "2026-04-20T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Hyatt deploys ChatGPT Enterprise across its global workforce, using GPT-5.4 and Codex to improve productivity, operations, and guest experiences."
-    },
-    {
-      "title": "Full-Stack Optimizations for Agentic Inference with NVIDIA Dynamo",
-      "link": "https://developer.nvidia.com/blog/full-stack-optimizations-for-agentic-inference-with-nvidia-dynamo/",
-      "date": "2026-04-17T22:52:47Z",
-      "source": "NVIDIA Developer",
-      "summary": "Coding agents are starting to write production code at scale. Stripe\u2019s agents generate 1,300+ PRs per week. Ramp attributes 30% of merged PRs to agents...."
-    },
-    {
-      "title": "Introducing granular cost attribution for Amazon Bedrock",
-      "link": "https://aws.amazon.com/blogs/machine-learning/introducing-granular-cost-attribution-for-amazon-bedrock/",
-      "date": "2026-04-17T22:04:15+00:00",
-      "source": "AWS ML Blog",
-      "summary": "In this post, we share how Amazon Bedrock's granular cost attribution works and walk through example cost tracking scenarios."
-    },
-    {
-      "title": "Optimize video semantic search intent with Amazon Nova Model Distillation on Amazon Bedrock",
-      "link": "https://aws.amazon.com/blogs/machine-learning/optimize-video-semantic-search-intent-with-amazon-nova-model-distillation-on-amazon-bedrock/",
-      "date": "2026-04-17T19:43:38+00:00",
-      "source": "AWS ML Blog",
-      "summary": "In this post, we show you how to use Model Distillation, a model customization technique on Amazon Bedrock, to transfer routing intelligence from a large teacher model (Amazon Nova Premier) into a much smaller student model (Amazon Nova Micro). This approach cuts inference cost b"
-    },
-    {
-      "title": "Power video semantic search with Amazon Nova Multimodal Embeddings",
-      "link": "https://aws.amazon.com/blogs/machine-learning/power-video-semantic-search-with-amazon-nova-multimodal-embeddings/",
-      "date": "2026-04-17T19:43:35+00:00",
-      "source": "AWS ML Blog",
-      "summary": "In this post, we show you how to build a video semantic search solution on Amazon Bedrock using Nova Multimodal Embeddings that intelligently understands user intent and retrieves accurate video results across all signal types simultaneously. We also share a reference implementat"
     }
   ]
 }
