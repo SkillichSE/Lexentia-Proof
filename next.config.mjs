@@ -18,7 +18,7 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/",
+        source: "/index.html",
         destination: "/legacy/index"
       },
       {
