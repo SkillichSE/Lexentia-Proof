@@ -12,7 +12,12 @@ async function readJson<T>(relativePath: string, fallback: T): Promise<T> {
 }
 
 export async function loadLegacyNews() {
-  return readJson<Array<{ title?: string; summary?: string; date?: string }>>("data/results/news.json", []);
+  const raw = await readJson<{
+    items?: Array<{ title?: string; summary?: string; date?: string }>;
+  } | Array<{ title?: string; summary?: string; date?: string }>>("data/results/news.json", []);
+  if (Array.isArray(raw)) return raw;
+  if (raw && Array.isArray(raw.items)) return raw.items;
+  return [];
 }
 
 export async function loadLegacySummary() {
