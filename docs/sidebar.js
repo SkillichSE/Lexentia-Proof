@@ -75,8 +75,17 @@ class LexSidebar extends HTMLElement {
         </a>
       </div>`;
 
+    html += `
+      <div id="sidebar-auth-widget" style="margin-top:14px;padding:10px;border:1px solid rgba(148,163,184,.18);border-radius:10px;background:rgba(2,6,23,.45);">
+        <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">author account</div>
+        <div id="sidebar-auth-status" style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">not signed in</div>
+        <button id="sidebar-auth-login" class="btn btn-sm" style="width:100%;margin-bottom:6px;">sign in github</button>
+        <button id="sidebar-auth-logout" class="btn btn-sm btn-ghost" style="width:100%;display:none;">sign out</button>
+      </div>`;
+
     html += '</nav>';
     this.innerHTML = html;
+    if (window.initLegacyAuthWidget) window.initLegacyAuthWidget();
   }
 }
 

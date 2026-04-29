@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="animations.css">
   <link rel="stylesheet" href="lab.css">
   <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -60,10 +61,26 @@
 
     <main class="container">
       <div id="lab-cards" class="lab-cards-grid reveal"></div>
+      <section class="reveal" style="margin-top:20px;border:1px solid rgba(52,211,153,.2);border-radius:14px;padding:16px;background:rgba(15,23,42,.35);">
+        <h2 style="margin:0 0 8px 0;font-size:18px;">publish to lab</h2>
+        <p style="margin:0 0 12px 0;color:var(--text-secondary);font-size:13px;">
+          sign in with github and publish your article card for lab feed
+        </p>
+        <div style="display:grid;gap:10px;">
+          <input id="lab-pub-title" class="input" placeholder="article title" />
+          <textarea id="lab-pub-summary" class="input" rows="4" placeholder="short summary"></textarea>
+          <input id="lab-pub-link" class="input" placeholder="link to article or demo" />
+          <div style="display:flex;gap:8px;align-items:center;">
+            <button id="lab-pub-btn" class="btn btn-sm">publish</button>
+            <span id="lab-pub-status" style="font-size:12px;color:var(--text-secondary);"></span>
+          </div>
+        </div>
+      </section>
     </main>
   </div>
 </div>
 
+<script src="lab-publish.js"></script>
 <script src="lab-index.js"></script>
 <script src="sidebar.js"></script>
 </body>
