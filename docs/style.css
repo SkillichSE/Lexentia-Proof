@@ -1220,6 +1220,12 @@ main { min-height: calc(100vh - 60px); }
 /* ═══════════════════════════════════════════════════════════════════════════
    LEFT SIDEBAR NAVIGATION (shared by Proof & Lab layouts)
    ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Custom element container */
+lex-sidebar {
+  display: contents;
+}
+
 .app-layout {
   display: flex;
   min-height: calc(100vh - 60px);
@@ -1746,6 +1752,10 @@ main { min-height: calc(100vh - 60px); }
   border-radius: 10px;
   background: rgba(2,6,23,.45);
   flex-shrink: 0;
+  width: calc(100% - 16px);
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 12px;
 }
 
 .sidebar-auth-title {
