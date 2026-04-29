@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    mdxRs: true
+    mdxRs: true,
+    outputFileTracingIncludes: {
+      "/app/legacy/[...path]/route": ["./docs/**/*"]
+    }
   },
   async redirects() {
     return [
