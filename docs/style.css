@@ -1747,28 +1747,49 @@ lex-sidebar {
 /* Sidebar auth widget */
 .sidebar-auth-widget {
   margin-top: auto;
-  padding: 12px;
-  border: 1px solid rgba(148,163,184,.18);
-  border-radius: 10px;
-  background: rgba(2,6,23,.45);
+  padding: 10px;
+  border: 1px solid rgba(148,163,184,.2);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(59,130,246,0.05));
   flex-shrink: 0;
   width: calc(100% - 16px);
   margin-left: 8px;
   margin-right: 8px;
   margin-bottom: 12px;
+  transition: all 0.2s ease;
+}
+
+.left-sidebar:not(.expanded) .sidebar-auth-widget {
+  padding: 8px 6px;
+  width: calc(100% - 12px);
+  margin-left: 6px;
+  margin-right: 6px;
 }
 
 .sidebar-auth-title {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--text-secondary);
-  margin-bottom: 6px;
-  text-transform: lowercase;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.left-sidebar:not(.expanded) .sidebar-auth-title {
+  display: none;
 }
 
 .sidebar-auth-status {
-  font-size: 12px;
-  color: var(--text-secondary);
-  margin-bottom: 10px;
+  font-size: 11px;
+  color: var(--text-tertiary);
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.left-sidebar:not(.expanded) .sidebar-auth-status {
+  display: none;
 }
 
 .sidebar-auth-btn {
@@ -1777,10 +1798,64 @@ lex-sidebar {
   position: relative;
   z-index: 10;
   cursor: pointer;
+  height: 32px;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.sidebar-auth-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99,102,241,0.4);
+}
+
+.sidebar-auth-btn.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.sidebar-auth-btn.btn-ghost:hover {
+  border-color: var(--border-strong);
+  background: rgba(255,255,255,0.06);
+  box-shadow: none;
 }
 
 .sidebar-auth-btn:last-child {
   margin-bottom: 0;
+}
+
+/* Collapsed sidebar - show only icon */
+.left-sidebar:not(.expanded) .sidebar-auth-btn {
+  padding: 0;
+  height: 36px;
+  border-radius: 10px;
+}
+
+.left-sidebar:not(.expanded) .sidebar-auth-btn::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M13.8 12H3'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+.left-sidebar:not(.expanded) .sidebar-auth-btn.btn-ghost::before {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b0bccf' stroke-width='2'%3E%3Cpath d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+.left-sidebar:not(.expanded) .sidebar-auth-btn span,
+.left-sidebar:not(.expanded) .sidebar-auth-btn::after {
+  display: none;
 }
 
 /* Mobile sidebar adjustments */
@@ -1789,5 +1864,23 @@ lex-sidebar {
     margin-top: 20px;
     position: relative;
     bottom: 0;
+  }
+  
+  .left-sidebar:not(.expanded) .sidebar-auth-title,
+  .left-sidebar:not(.expanded) .sidebar-auth-status {
+    display: block;
+  }
+  
+  .left-sidebar:not(.expanded) .sidebar-auth-btn {
+    padding: 0 12px;
+    height: 32px;
+  }
+  
+  .left-sidebar:not(.expanded) .sidebar-auth-btn::before {
+    display: none;
+  }
+  
+  .left-sidebar:not(.expanded) .sidebar-auth-btn span {
+    display: inline;
   }
 }
