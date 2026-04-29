@@ -1223,7 +1223,7 @@ main { min-height: calc(100vh - 60px); }
 
 /* Custom element container */
 lex-sidebar {
-  display: contents;
+  display: block;
 }
 
 .app-layout {
