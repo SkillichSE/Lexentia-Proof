@@ -12,6 +12,16 @@ const nextConfig = {
         source: "/lab.html",
         destination: "/lab",
         permanent: false
+      },
+      {
+        source: "/playground.html",
+        destination: "/playground",
+        permanent: false
+      },
+      {
+        source: "/chat.html",
+        destination: "/chat",
+        permanent: false
       }
     ];
   },
