@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function HomePage() {
-  redirect("/legacy/index.html");
+  redirect("/legacy/index");
 }
