@@ -210,7 +210,35 @@ document.addEventListener('DOMContentLoaded', () => {
   initHamburger();
   initSidebar();
   initLegacyAuthWidget();
+  handleOAuthCallback();
 });
+
+// Handle OAuth callback and redirect to production if needed
+function handleOAuthCallback() {
+  const hash = window.location.hash;
+  if (hash && hash.includes('access_token')) {
+    // We're on localhost but got auth callback - redirect to production with same hash
+    if (window.location.origin.includes('localhost')) {
+      const prodUrl = 'https://klyxe-ai.vercel.app/' + hash;
+      window.location.replace(prodUrl);
+      return;
+    }
+    // On production - exchange token and clear hash
+    exchangeTokenAndClearHash();
+  }
+}
+
+async function exchangeTokenAndClearHash() {
+  const sb = await window.ensureSupabase();
+  if (!sb) return;
+  try {
+    // Supabase automatically handles the hash on init, just clear it
+    history.replaceState(null, '', window.location.pathname);
+    await window.initLegacyAuthWidget?.();
+  } catch (err) {
+    console.error('Auth exchange failed:', err);
+  }
+}
 
 // Export for use in other scripts
 if (typeof module !== 'undefined' && module.exports) {
@@ -239,6 +267,7 @@ if (typeof module !== 'undefined' && module.exports) {
     supabaseClient = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey);
     return supabaseClient;
   }
+  window.ensureSupabase = ensureSupabase;
 
   async function refreshAuthUi() {
     const status = document.getElementById("sidebar-auth-status");
