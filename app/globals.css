@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-black text-zinc-100 antialiased;
+}
+
+.klyxe-shell {
+  @apply min-h-screen bg-black text-zinc-100;
+}
+
+.klyxe-container {
+  @apply mx-auto w-full max-w-6xl px-4 md:px-6;
+}
+
+.klyxe-panel {
+  @apply rounded-xl border border-zinc-800 bg-zinc-950/70;
+}
+
+.klyxe-accent {
+  color: #39ff14;
+}

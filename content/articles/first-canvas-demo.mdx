@@ -1,0 +1,25 @@
+---
+title: "canvas reasoning in browser"
+author: "klyxe team"
+tags: ["ai", "canvas", "edge"]
+status: "published"
+interactive: true
+---
+
+This article demonstrates how klyxe embeds runnable ai modules directly inside editorial content.
+
+## interactive preset
+
+<CanvasPreview modelUrl="https://example.com/model.onnx" />
+
+## byok flow
+
+If reader keys are configured, playground can call external model providers.
+
+<LLMPlayground provider="openai" />
+
+## sandbox block
+
+This editor executes local javascript snippets for reproducible examples.
+
+<CodeRunner />

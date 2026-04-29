@@ -24,5 +24,15 @@ Thumbs.db
 *.key
 secrets.json
 
+# Node / Next
+node_modules/
+.next/
+*.tsbuildinfo
+npm-debug.log*
+yarn-error.log*
+
+# Local archives
+*.zip
+
 # Data (don't ignore - we want to commit results)
 # data/ is intentionally not ignored
