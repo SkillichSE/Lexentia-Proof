@@ -1737,3 +1737,47 @@ main { min-height: calc(100vh - 60px); }
     min-height: calc(100vh - 52px);
   }
 }
+
+/* Sidebar auth widget */
+.sidebar-auth-widget {
+  margin-top: auto;
+  padding: 12px;
+  border: 1px solid rgba(148,163,184,.18);
+  border-radius: 10px;
+  background: rgba(2,6,23,.45);
+  flex-shrink: 0;
+}
+
+.sidebar-auth-title {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  text-transform: lowercase;
+}
+
+.sidebar-auth-status {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.sidebar-auth-btn {
+  width: 100%;
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.sidebar-auth-btn:last-child {
+  margin-bottom: 0;
+}
+
+/* Mobile sidebar adjustments */
+@media (max-width: 768px) {
+  .sidebar-auth-widget {
+    margin-top: 20px;
+    position: relative;
+    bottom: 0;
+  }
+}

@@ -209,9 +209,85 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavIndicator();
   initHamburger();
   initSidebar();
+  initLegacyAuthWidget();
 });
 
 // Export for use in other scripts
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { formatNumber, formatDate, getRelativeTime, handleError };
 }
+
+// Auth widget for sidebar
+(function () {
+  let supabaseClient = null;
+  let currentUser = null;
+
+  async function getPublicConfig() {
+    try {
+      const res = await fetch("/api/public-config");
+      if (!res.ok) throw new Error("config fetch failed");
+      return res.json();
+    } catch (e) {
+      return {};
+    }
+  }
+
+  async function ensureSupabase() {
+    if (supabaseClient) return supabaseClient;
+    const cfg = await getPublicConfig();
+    if (!cfg.supabaseUrl || !cfg.supabaseAnonKey || !window.supabase) return null;
+    supabaseClient = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey);
+    return supabaseClient;
+  }
+
+  async function refreshAuthUi() {
+    const status = document.getElementById("sidebar-auth-status");
+    const login = document.getElementById("sidebar-auth-login");
+    const logout = document.getElementById("sidebar-auth-logout");
+    if (!status || !login || !logout) return;
+    try {
+      const sb = await ensureSupabase();
+      if (!sb) {
+        status.textContent = "auth unavailable";
+        return;
+      }
+      const { data: { user } } = await sb.auth.getUser();
+      currentUser = user || null;
+      if (currentUser) {
+        status.textContent = currentUser.email || "signed in";
+        login.style.display = "none";
+        logout.style.display = "";
+      } else {
+        status.textContent = "not signed in";
+        login.style.display = "";
+        logout.style.display = "none";
+      }
+    } catch (err) {
+      status.textContent = err.message || "auth error";
+    }
+  }
+
+  async function onLogin() {
+    const sb = await ensureSupabase();
+    if (!sb) return;
+    await sb.auth.signInWithOAuth({
+      provider: "github",
+      options: { redirectTo: window.location.href }
+    });
+  }
+
+  async function onLogout() {
+    const sb = await ensureSupabase();
+    if (!sb) return;
+    await sb.auth.signOut();
+    await refreshAuthUi();
+  }
+
+  window.initLegacyAuthWidget = function () {
+    const login = document.getElementById("sidebar-auth-login");
+    const logout = document.getElementById("sidebar-auth-logout");
+    if (login) login.addEventListener('click', () => void onLogin());
+    if (logout) logout.addEventListener('click', () => void onLogout());
+    void refreshAuthUi();
+  };
+})();
