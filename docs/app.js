@@ -270,9 +270,10 @@ if (typeof module !== 'undefined' && module.exports) {
   async function onLogin() {
     const sb = await ensureSupabase();
     if (!sb) return;
+    const redirectUrl = window.location.origin + window.location.pathname;
     await sb.auth.signInWithOAuth({
       provider: "github",
-      options: { redirectTo: window.location.href }
+      options: { redirectTo: redirectUrl }
     });
   }
 
