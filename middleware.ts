@@ -2,6 +2,13 @@ import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 
 export async function middleware(request: NextRequest) {
+  // Rewrite root path to legacy index without changing URL
+  if (request.nextUrl.pathname === "/") {
+    const rewriteUrl = request.nextUrl.clone();
+    rewriteUrl.pathname = "/legacy/index";
+    return NextResponse.rewrite(rewriteUrl);
+  }
+
   let response = NextResponse.next({ request });
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL || "",
@@ -40,5 +47,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/author/:path*", "/dashboard/:path*"]
+  matcher: ["/", "/author/:path*", "/dashboard/:path*"]
 };
