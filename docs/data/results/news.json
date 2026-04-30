@@ -1,7 +1,70 @@
 {
-  "updated": "2026-04-29T06:36:20.146220+00:00",
+  "updated": "2026-04-30T07:23:50.075919+00:00",
   "count": 30,
   "items": [
+    {
+      "title": "Announcing Together AI and Adaption Partnership",
+      "link": "https://www.together.ai/blog/announcing-together-ai-and-adaption-partnership",
+      "date": "2026-04-30T00:00:00+00:00",
+      "source": "Together AI",
+      "summary": "Together AI and Adaption partner to bring Together Fine-Tuning natively into Adaptive Data, helping teams optimize datasets, run fine-tuning, evaluate results, and deploy stronger open models."
+    },
+    {
+      "title": "Where the goblins came from",
+      "link": "https://openai.com/index/where-the-goblins-came-from",
+      "date": "2026-04-29T20:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "How goblin outputs spread in AI models: timeline, root cause, and fixes behind personality-driven quirks in GPT-5 behavior."
+    },
+    {
+      "title": "AI evals are becoming the new compute bottleneck",
+      "link": "https://huggingface.co/blog/evaleval/eval-costs-bottleneck",
+      "date": "2026-04-29T16:45:09+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "Granite 4.1 LLMs: How They\u2019re Built",
+      "link": "https://huggingface.co/blog/ibm-granite/granite-4-1",
+      "date": "2026-04-29T15:01:48+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "Building the compute infrastructure for the Intelligence Age",
+      "link": "https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age",
+      "date": "2026-04-29T15:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "OpenAI scales Stargate to build the compute infrastructure powering AGI, adding new data center capacity to meet growing AI demand."
+    },
+    {
+      "title": "Run custom MCP proxies serverless on Amazon Bedrock AgentCore Runtime",
+      "link": "https://aws.amazon.com/blogs/machine-learning/run-custom-mcp-proxies-serverless-on-amazon-bedrock-agentcore-runtime/",
+      "date": "2026-04-29T11:52:16+00:00",
+      "source": "AWS ML Blog",
+      "summary": "This post shows you how to deploy a serverless MCP proxy on Amazon Bedrock AgentCore Runtime that gives you a programmable layer to implement proper governance, controls, and observability aligned with an organization's security policies."
+    },
+    {
+      "title": "Cybersecurity in the Intelligence Age",
+      "link": "https://openai.com/index/cybersecurity-in-the-intelligence-age",
+      "date": "2026-04-29T04:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "OpenAI outlines a five-part action plan for strengthening cybersecurity in the Intelligence Age, focused on democratizing AI-powered cyber defense and protecting critical systems."
+    },
+    {
+      "title": "DeepInfra on Hugging Face Inference Providers \ud83d\udd25",
+      "link": "https://huggingface.co/blog/inference-providers-deepinfra",
+      "date": "2026-04-29T00:00:00+00:00",
+      "source": "Hugging Face",
+      "summary": ""
+    },
+    {
+      "title": "DeepSeek-V4 Pro now available on Together AI",
+      "link": "https://www.together.ai/blog/deepseek-v4-pro-now-available-on-together-ai",
+      "date": "2026-04-29T00:00:00+00:00",
+      "source": "Together AI",
+      "summary": "DeepSeek-V4 Pro is now available on Together AI with 512K context, controllable reasoning modes, and cached-input pricing for long-context reasoning workloads like code agents, document intelligence, and research synthesis."
+    },
     {
       "title": "Scaling Biomolecular Modeling Using Context Parallelism in NVIDIA BioNeMo",
       "link": "https://developer.nvidia.com/blog/scaling-biomolecular-modeling-using-context-parallelism-in-nvidia-bionemo/",
@@ -38,18 +101,18 @@
       "summary": "NVIDIA Nemotron 3 Nano Omni is now on Together AI: a single open model that reasons across video, images, audio, and text, built for agentic workloads at scale."
     },
     {
-      "title": "OpenAI models, Codex, and Managed Agents come to AWS",
-      "link": "https://openai.com/index/openai-on-aws",
-      "date": "2026-04-28T00:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "OpenAI GPT models, Codex, and Managed Agents are now available on AWS, enabling enterprises to build secure AI in their AWS environments."
-    },
-    {
       "title": "Our commitment to community safety",
       "link": "https://openai.com/index/our-commitment-to-community-safety",
       "date": "2026-04-28T00:00:00+00:00",
       "source": "OpenAI",
       "summary": "Learn how OpenAI protects community safety in ChatGPT through model safeguards, misuse detection, policy enforcement, and collaboration with safety experts."
+    },
+    {
+      "title": "OpenAI models, Codex, and Managed Agents come to AWS",
+      "link": "https://openai.com/index/openai-on-aws",
+      "date": "2026-04-28T00:00:00+00:00",
+      "source": "OpenAI",
+      "summary": "OpenAI GPT models, Codex, and Managed Agents are now available on AWS, enabling enterprises to build secure AI in their AWS environments."
     },
     {
       "title": "Build and deploy an automatic sync solution for Amazon Bedrock Knowledge Bases",
@@ -148,69 +211,6 @@
       "date": "2026-04-24T00:00:00+00:00",
       "source": "Hugging Face",
       "summary": ""
-    },
-    {
-      "title": "Accelerate RL rollouts by up to 50% with distribution-aware speculative decoding",
-      "link": "https://www.together.ai/blog/distribution-aware-speculative-decoding",
-      "date": "2026-04-24T00:00:00+00:00",
-      "source": "Together AI",
-      "summary": "Rollout is the silent bottleneck in RL post-training. DAS fixes it with adaptive speculative decoding \u2014 up to 50% faster, zero degradation in reward quality."
-    },
-    {
-      "title": "Winning a Kaggle Competition with Generative AI\u2013Assisted Coding",
-      "link": "https://developer.nvidia.com/blog/winning-a-kaggle-competition-with-generative-ai-assisted-coding/",
-      "date": "2026-04-23T20:15:02Z",
-      "source": "NVIDIA Developer",
-      "summary": "In March 2026, three LLM agents generated over 600,000 lines of code, ran 850 experiments, and helped secure a first-place finish in a Kaggle playground..."
-    },
-    {
-      "title": "Applying multimodal biological foundation models across therapeutics and patient care",
-      "link": "https://aws.amazon.com/blogs/machine-learning/applying-multimodal-biological-foundation-models-across-therapeutics-and-patient-care/",
-      "date": "2026-04-23T16:17:29+00:00",
-      "source": "AWS ML Blog",
-      "summary": "In this post, we'll explore how multimodal BioFMs work, showcase real-world applications in drug discovery and clinical development, and contextualize how AWS enables organizations to build and deploy multimodal BioFMs."
-    },
-    {
-      "title": "Here\u2019s how our TPUs power increasingly demanding AI workloads.",
-      "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/what-is-a-tpu/",
-      "date": "2026-04-23T12:00:00+00:00",
-      "source": "Google AI Blog",
-      "summary": "Learn how Google\u2019s TPUs power increasingly demanding AI workloads with this new video."
-    },
-    {
-      "title": "GPT-5.5 System Card",
-      "link": "https://openai.com/index/gpt-5-5-system-card",
-      "date": "2026-04-23T11:00:00+00:00",
-      "source": "OpenAI",
-      "summary": ""
-    },
-    {
-      "title": "Introducing GPT-5.5",
-      "link": "https://openai.com/index/introducing-gpt-5-5",
-      "date": "2026-04-23T11:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Introducing GPT-5.5, our smartest model yet\u2014faster, more capable, and built for complex tasks like coding, research, and data analysis across tools."
-    },
-    {
-      "title": "What is Codex?",
-      "link": "https://openai.com/academy/what-is-codex",
-      "date": "2026-04-23T10:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how Codex helps you go beyond chat by automating tasks, connecting tools, and producing real outputs like docs and dashboards."
-    },
-    {
-      "title": "How to get started with Codex",
-      "link": "https://openai.com/academy/codex-how-to-start",
-      "date": "2026-04-23T10:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to get started with Codex by setting up projects, creating threads, and completing your first tasks with step-by-step guidance."
-    },
-    {
-      "title": "Codex settings",
-      "link": "https://openai.com/academy/codex-settings",
-      "date": "2026-04-23T10:00:00+00:00",
-      "source": "OpenAI",
-      "summary": "Learn how to configure Codex settings, including personalization, detail level, and permissions, to run tasks smoothly and customize your workflow."
     }
   ]
 }
